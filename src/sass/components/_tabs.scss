@@ -1,0 +1,46 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+
+.tab {
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    gap: fluid(10, 20);
+
+    @media (max-width: $breakpoint-md) {
+      width: 100%;
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__item {
+    white-space: nowrap; // Запобігає переносу довгих назв
+
+    background: transparent;
+  
+    cursor: pointer;
+    position: relative;
+    @include transition(.5);
+
+    @media (max-width: $breakpoint-md) {
+      max-width: 100%;
+
+    }
+
+    &.is--active {
+     
+    }
+  }
+
+  &__panel {
+
+    display: none;
+
+    &.is--active {
+      display: block;
+    }
+
+  }
+}

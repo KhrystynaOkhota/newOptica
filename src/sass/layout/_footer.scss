@@ -1,0 +1,164 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.contacts {
+  font-style: normal; // Знімає курсив з <address>
+
+  &__list {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: currentColor;
+  }
+
+  &__link {
+    font-size: fluid(15, 18);
+    color: currentColor;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover {
+      opacity: 0.75;
+    }
+
+    &--bold {
+      font-weight: 700;
+    }
+  }
+
+  // --- Варіанти розташування (Модифікатори) ---
+
+  // 1. Колонковий режим (для футера / сайдбара / мобільного меню)
+  &--column {
+    .contacts__list {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: fluid(12, 20);
+    }
+  }
+
+  // 2. Рядковий режим з адаптивним переходом у колонку
+  &--row {
+    .contacts__list {
+      flex-direction: row;
+      align-items: center;
+      gap: fluid(20, 30);
+
+      @media (max-width: $breakpoint-md) {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: fluid(12, 20);
+      }
+    }
+  }
+}
+
+.footer {
+
+  background: rgba(29, 33, 40, 1);
+  border-radius: 80px 80px 0 0;
+  padding: 50px 0;
+
+  &__logo img {
+    max-width: 100%;
+    height: auto;
+  }
+
+
+  &__description {
+    margin-block-end: 20px;
+
+    p {
+      margin-block: 0 10px;
+
+      &:last-child {
+        margin-block-end: 0;
+      }
+    }
+  }
+
+  &__copyright {
+    p {
+      margin-block: 0 8px;
+
+      &:last-child {
+        margin-block-end: 0;
+      }
+    }
+  }
+
+  &__developer {
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+  }
+
+  .footer-nav {
+
+
+
+    &__title {
+      color: #ffffff;
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .menu {
+      list-style: none;
+      -webkit-padding-start: 0;
+      padding-inline-start: 0;
+      margin-block: 0;
+      display: grid;
+
+
+
+      .menu-item,
+      li {
+        a {
+          color: $color-white;
+          text-decoration: none;
+          transition: color 0.2s ease;
+          font-size: fluid(15, 18);
+
+        }
+
+        // Активний стан сторінки за стандартами WP
+        &.current-menu-item,&:hover {
+          >a {
+            color: $color-accent;
+      
+          }
+        }
+      }
+    }
+  }
+
+
+}

@@ -1,0 +1,108 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.popup-wrapper {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  transition: visibility 0s 0.3s, left 0s 0.3s;
+
+  &.active {
+    left: 0;
+    visibility: visible;
+    transition-delay: 0s;
+
+    .bg-layer {
+      opacity: 1;
+    }
+  }
+
+  .bg-layer {
+    position: absolute;
+    inset: -6.25rem 0;
+    background: rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+  }
+}
+
+.popup-content {
+  position: absolute;
+  inset: 0;
+  padding: 0.9375rem calc(var(--bs-gutter-x) / 2);
+  overflow: auto;
+  font-size: 0;
+  text-align: center;
+  letter-spacing: 0;
+  opacity: 0;
+  transform: scale(1.2);
+  backface-visibility: hidden;
+  -webkit-overflow-scrolling: touch;
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out, left 0s 0.3s;
+
+  &::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+  }
+
+  &.active {
+    z-index: 5;
+    left: 0;
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out, left 0s 0s;
+  }
+
+  .layer-close {
+    position: absolute;
+    inset: 0;
+  }
+}
+
+.popup-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  max-width: 685px;
+
+  padding: 50px;
+  text-align: center;
+  vertical-align: middle;
+
+  @media (max-width: $breakpoint-md) {
+    padding: 50px 15px 15px 15px;
+    max-width: 515px;
+  }
+
+  &__inner {
+    background: #fff;
+    border-radius: 20px;
+    padding: 30px 51px 20px;
+
+    @media (max-width: $breakpoint-md) {
+      padding: 30px 15px 10px 15px;
+    }
+  }
+}
+
+.popup-form {
+  &__heading {
+    margin-bottom: fluid(24, 30);
+    font-size: fluid(25, 40);
+  }
+
+  .form-field {
+    margin-bottom: 20px;
+  }
+
+  & .btn--primary {
+    max-width: 280px;
+    margin: 0 auto;
+  }
+}

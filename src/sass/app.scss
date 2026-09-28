@@ -1,0 +1,55 @@
+// ==========================================================================
+// 1. ABSTRACTS (Глобальні налаштування — без генерації реального CSS)
+// ==========================================================================
+@use "abstracts/_variables";
+@use "abstracts/_mixins";
+
+// ==========================================================================
+// 2. BASE (Скидання стилів, шрифти та базові правила для HTML/Body)
+// ==========================================================================
+@use "base/_reset";
+@use "base/_fonts";
+@use "base/_typography";
+@use "base/_base";
+@use "base/_animations";
+
+// ==========================================================================
+// 3. LAYOUT (Структурна сітка сайту та глобальні блоки макету)
+// ==========================================================================
+@use "layout/_grid";
+@use "layout/_header";
+@use "layout/_footer";
+
+// ==========================================================================
+// 4. COMPONENTS (Дрібні перевикористовувані модулі та UI-елементи)
+// ==========================================================================
+// Базові елементи інтерфейсу
+@use "components/_social";
+@use "components/_buttons";
+@use "components/_forms";
+@use "components/_breadcrumb";
+@use "components/_pagination";
+@use "components/_subscription";
+@use "components/_rating";
+@use "components/_search";
+
+// Складніші інтерактивні UI-компоненти
+@use "components/_modals";
+@use "components/_tabs";
+@use "components/_accordeon";
+@use "components/_filter";
+
+@use "components/_scrollable-tabs"; 
+@use "components/_editor-style"; 
+@use "pages/_home";
+@use "pages/_about";
+
+@use "pages/_contacts";
+@use "pages/_promo";
+@use "pages/_blog";
+@use "pages/_catalog";
+@use "pages/_review";
+@use "pages/_services";
+@use "pages/_account";
+//@use "pages/_other";
+

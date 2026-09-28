@@ -1,0 +1,260 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+html {
+  scrollbar-gutter: stable;
+  overflow-y: scroll;
+
+  &.overflow-menu,
+  &.overflow-menu body {
+    overflow: hidden;
+  }
+
+  &.overflow-hidden,
+  &.overflow-hidden body {
+    overflow: hidden;
+  }
+}
+
+html:not(.touch-screen) {
+
+  &::-webkit-scrollbar,
+  *::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-track,
+  *::-webkit-scrollbar-track {
+    background-color: #eee;
+  }
+
+  &::-webkit-scrollbar-thumb,
+  *::-webkit-scrollbar-thumb {
+    background-color: $color-accent !important;
+  }
+}
+
+html,
+body {
+  & .hide-scrollbar {
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: auto;
+
+  &::selection {
+    background-color: transparent;
+  }
+}
+
+
+.--relative {
+  position: relative;
+}
+
+.overlap {
+  position: relative;
+  z-index: 3;
+}
+
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: rgba($color-primary, 0.1);
+      max-width: 1250px;
+    margin: auto;
+    
+}
+
+.body-padding {
+  height: 145px;
+
+  @media (max-width: $breakpoint-xl) {
+    height: 104px;
+  }
+
+  @media (max-width: $breakpoint-md) {
+    height: 105px;
+  }
+}
+
+.section,
+section {
+  //overflow-x: hidden;
+  position: relative;
+}
+
+.main {
+  overflow: hidden;
+  min-height: 50vh;
+  padding-top: 188px;
+
+  @media (max-width: $breakpoint-lg) {
+    padding-top: 88px;
+  }
+
+  &-wrapper {
+    z-index: 1;
+  }
+
+  &.overflow-visible {
+    overflow: visible;
+  }
+}
+
+.swiper {
+  &-entry__bottom-bar {
+    margin-top: fluid(20, 35);
+    padding-top: fluid(20, 34);
+    border-top: 1px solid rgba(111, 111, 111, .2);
+  }
+
+  &-container {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    overflow: hidden;
+    list-style: none;
+    padding: 0;
+    z-index: 1;
+    width: 100%;
+    opacity: 0;
+
+    &.swiper-initialized {
+      opacity: 1;
+    }
+
+    &:not(.swiper-no-swiping) {
+      cursor: grab;
+    }
+  }
+}
+
+.custom {
+  &-current {
+    @include fontSize(20, 30);
+    color: rgba(111, 111, 111, 1);
+  }
+
+  &-fraction {
+    &-wrap {
+      display: flex;
+      align-items: baseline;
+      color: rgba(111, 111, 111, 1);
+    }
+
+    &-separator {
+      @include fontSize(14, 20);
+    }
+  }
+
+  &-total {
+    @include fontSize(14, 20);
+    color: rgba(111, 111, 111, 1);
+  }
+
+}
+
+.custom-fraction {
+  &__wrap {
+    display: flex;
+    align-items: baseline;
+    color: #fff;
+  }
+
+  &__current {
+    @include fontSize(20, 30);
+
+  }
+
+  &__separator,
+  &__total {
+    @include fontSize(14, 20);
+  }
+}
+
+.swiper-button__wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  // Базові стилі для обох кнопок Swiper
+  .swiper-button-prev,
+  .swiper-button-next {
+    position: static; // Скидаємо абсолютне позиціонування Swiper за замовчуванням
+    margin: 0;
+    width: 44px;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    color: rgba(177, 177, 175, 1); // Основний колір стрілки
+    cursor: pointer;
+    transition: color 0.4s ease;
+
+    // Перебиваємо дефолтний псевдоелемент Swiper
+    &::after {
+      display: none;
+    }
+
+    .icon-arrow {
+      display: block;
+      width: 39px;
+      height: 30px;
+      background-color: currentColor; // Бере колір з color батьківської кнопки
+      mask: url('../img/ar-right.svg') no-repeat center / contain;
+      -webkit-mask: url('../img/ar-right.svg') no-repeat center / contain;
+      transition: transform 0.25s ease;
+    }
+
+    // Ховер-ефекти
+    &:hover:not(.swiper-button-disabled) {
+      color: rgba(139, 30, 30, 1); // Стрілка автоматично стає білою
+    }
+
+    // Неактивний стан Swiper (початок або кінець слайдера)
+    &.swiper-button-disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+  }
+
+  // Повертаємо іконку для кнопки "Назад"
+  .swiper-button-prev {
+    .icon-arrow {
+      transform: rotate(180deg);
+    }
+
+    &:hover:not(.swiper-button-disabled) .icon-arrow {
+      transform: rotate(180deg) translateX(2px); // Плавний зсув вліво при ховері
+    }
+  }
+
+  // Анімація при ховері для кнопки "Вперед"
+  .swiper-button-next {
+    &:hover:not(.swiper-button-disabled) .icon-arrow {
+      transform: translateX(2px); // Плавний зсув вправо при ховері
+    }
+  }
+}

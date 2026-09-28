@@ -1,0 +1,128 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.pagination {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: transparent;
+
+  .screen-reader-text {
+    display: none;
+  }
+
+  .nav-links {
+    position: relative;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    gap: 15px;
+
+    @media (max-width: 768px) {
+      gap: 10px;
+    }
+
+    @media (max-width: 576px) {
+      gap: 5px;
+    }
+
+    .page-numbers {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      margin: 0;
+      font-size: 17px;
+      font-weight: 400;
+      text-align: center;
+      color: #233D4D;
+      text-decoration: none;
+      background: transparent;
+      border-radius: 50%;
+      cursor: pointer;
+      // Плавна анімація для кольорів та масштабування
+      transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                  color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                  transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+      @media (max-width: 768px) {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+      }
+
+      @media (max-width: 576px) {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+      }
+
+      &.prev,
+      &.next {
+        position: relative;
+        font-size: 0;
+        background-color: #EFF2F7;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 8px;
+          height: 8px;
+          border-style: solid;
+          border-color: #233D4D;
+          border-width: 1px 1px 0 0;
+          background: transparent;
+          // Плавний перехід кольору лінії та її зсуву
+          transition: border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                      transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+      }
+
+      &.prev::before {
+        transform: translate(-30%, -50%) rotate(-135deg);
+      }
+
+      &.next::before {
+        transform: translate(-70%, -50%) rotate(45deg);
+      }
+
+      &:hover {
+        color: $color-white;
+        background-color: $color-accent;
+        transform: translateY(-2px); // Легке підняття елемента при наведенні
+
+        &::before {
+          border-color: $color-white;
+        }
+
+        // Мікро-зсув стрілочок при ховері для живого ефекту
+        &.prev::before {
+          transform: translate(-45%, -50%) rotate(-135deg);
+        }
+
+        &.next::before {
+          transform: translate(-55%, -50%) rotate(45deg);
+        }
+      }
+
+      &.current {
+        color: $color-white;
+        background-color: $color-accent;
+        cursor: default;
+        transform: none;
+
+        &::before {
+          border-color: $color-white;
+        }
+      }
+
+      &:active {
+        transform: translateY(0) scale(0.95);
+      }
+    }
+  }
+}

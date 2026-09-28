@@ -1,0 +1,94 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+// ==========================================
+// Блок: .rating (Універсальний рейтинг зірками)
+// ==========================================
+.rating {
+  // Базові змінні для розмірів за замовчуванням (можна перевизначати через модифікатори або ілайн-стилі)
+  --star-w: 15px;
+  --star-gap: 6px;
+  --star-h: 14px;
+  --star-count: 5;
+  
+  // Обчислення загальної ширини: (15px * 5) + (6px * 4) = 99px
+  --rating-width: calc((var(--star-w) * var(--star-count)) + (var(--star-gap) * (var(--star-count) - 1)));
+
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+
+  &__stars {
+    position: relative;
+    width: var(--rating-width);
+    height: var(--star-h);
+    flex-shrink: 0;
+
+    // 1. Нижній сірий шар (фон)
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url('../img/stars-5.svg');
+      background-repeat: no-repeat;
+      background-size: var(--rating-width) var(--star-h);
+      background-position: left center;
+      filter: grayscale(100%) opacity(0.25);
+    }
+
+    // 2. Верхній заповнений шар
+    &-fill {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      // Обрізаємо заповнення пропорційно --rating
+      width: calc((var(--rating, 0) / var(--star-count)) * 100%);
+      overflow: hidden;
+      z-index: 1;
+
+      &::before {
+        content: '';
+        display: block;
+        width: var(--rating-width);
+        height: var(--star-h);
+        background-image: url('../img/stars-5.svg');
+        background-repeat: no-repeat;
+        background-size: var(--rating-width) var(--star-h);
+        background-position: left center;
+      }
+    }
+  }
+
+  &__value {
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1;
+    color: $color-primary;
+  }
+
+  // ------------------------------------------
+  // Модифікатори розмірів (за потреби)
+  // ------------------------------------------
+  &--sm {
+    --star-w: 12px;
+    --star-gap: 4px;
+    --star-h: 11px;
+    gap: 8px;
+
+    .rating__value {
+      font-size: 14px;
+    }
+  }
+
+  &--lg {
+    --star-w: 20px;
+    --star-gap: 8px;
+    --star-h: 18px;
+
+    .rating__value {
+      font-size: 28px;
+      font-weight: 600;
+    }
+  }
+}

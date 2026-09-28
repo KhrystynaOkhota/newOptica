@@ -1,0 +1,162 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.benefit-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  // Адаптив під мобільний: іконка ліворуч, текстовий блок праворуч
+  @media (max-width: $breakpoint-sm) {
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  &__icon {
+    &-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      width: fluid(43, 68);
+      height: fluid(43, 68);
+      margin-bottom: 23px;
+      background-color: $color-white; // Фон за замовчуванням
+      border-radius: 10px;
+
+      @media (max-width: $breakpoint-sm) {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__value {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #070404;
+    margin-bottom: 4px;
+  }
+
+  &__title {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #070404;
+    margin-bottom: 12px;
+  }
+
+  &__desc {
+    font-size: 14px;
+    line-height: 1.45;
+    color: #666666;
+  }
+}
+
+.benefits {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+
+  @media (max-width: $breakpoint-lg) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  &--bg-gray {
+    .benefit-card__icon-wrap {
+      background-color: red;
+    }
+  }
+
+  &--bg-white {
+    .benefit-card__icon-wrap {
+      background-color: $color-white;
+    }
+  }
+}
+
+.s-about {
+  &--bg {
+    background-color: #F3F3F5;
+    padding: fluid(50, 100) 0;
+    margin-bottom: fluid(50, 70);
+  }
+
+  &:not(.s-about--bg) {
+    background-color: transparent;
+    padding: 20px 0 fluid(50, 100) 0;
+
+    & .container {
+      padding-bottom: fluid(50, 100);
+    }
+  }
+
+  & .heading {
+    margin-bottom: 20px;
+  }
+
+  & .btn-more {}
+
+  & .intro-block {
+    margin-bottom: 30px;
+
+    &__link {
+      color: $color-accent;
+      margin-top: 28px;
+      display: block;
+    }
+  }
+
+  & .media {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+
+    &__video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    &__btn.btn-play {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      width: 48px;
+      height: 48px;
+      background-color: #ffffff;
+      border-radius: 50%;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      cursor: pointer;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      z-index: 2;
+
+      &.hide {
+        display: none;
+      }
+
+      img {
+        width: 14px;
+        height: 14px;
+        margin-left: 2px; // Центрування іконки Play
+      }
+
+      &:hover {
+        transform: scale(1.08);
+      }
+    }
+  }
+}

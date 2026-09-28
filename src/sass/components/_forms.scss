@@ -1,0 +1,494 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+/* ==========================================================================
+   RESET & BASE INPUT STYLES
+   ========================================================================== */
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// Reset number inputs
+input[type="number"] {
+  -moz-appearance: textfield;
+
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    margin: 0;
+    -webkit-appearance: none;
+  }
+}
+
+// Reset search inputs
+input[type="search"] {
+
+  &::-webkit-search-decoration,
+  &::-webkit-search-cancel-button,
+  &::-webkit-search-results-button,
+  &::-webkit-search-results-decoration {
+    -webkit-appearance: none;
+  }
+}
+
+input {
+  -webkit-border-radius: 0;
+}
+
+input,
+button {
+  &:focus {
+    outline: none;
+  }
+}
+
+// Universal Placeholders
+::placeholder {
+  font-family: $font-primary;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1;
+  color: rgba(35, 61, 77, 1);
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+:focus::placeholder {
+  opacity: 0;
+}
+
+// Autofill styles
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  caret-color: $color-white;
+  -webkit-text-fill-color: $color-white;
+  -webkit-box-shadow: 0 0 0 1000px #21242c inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+// WordPress CF7 Clean Loader
+div.wpcf7 .ajax-loader {
+  display: none !important;
+}
+
+/* ==========================================================================
+   FORM COMPONENTS
+   ========================================================================== */
+
+.field {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 20px;
+
+  &__note {
+    font-size: 16px;
+  }
+
+  & .field {
+
+    &__options {
+      gap: 60px;
+    }
+  }
+
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+
+    @media (max-width: $breakpoint-lg) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &--full {
+    grid-column: 1 / -1;
+  }
+
+  &__label {
+    display: block;
+    font-size: 17px;
+    color: $color-primary;
+  }
+
+  &__input,
+  &__textarea {
+    display: block;
+    width: 100%;
+    padding: 16px 18px;
+    font-family: $font-primary;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1;
+    color: rgba(7, 4, 4, 1);
+    background-color: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(227, 227, 227, 1);
+    border-radius: 50px;
+    resize: none;
+    &:focus {
+      border-color: $color-accent;
+    }
+  }
+
+  &__input--date {
+    position: relative;
+    display: block;
+    width: 100%;
+    min-height: 48px; // Комфортна область тапу для тачскрінів
+    padding: 14px 45px 14px 20px; // Додано правий відступ (45px), щоб текст не налізав на іконку
+
+    font-family: "Gilroy", sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.2;
+    color: #1e1e1e;
+
+    background-color: #f7f8f8;
+    border: 1px solid #eaeaea;
+    border-radius: 50px;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    // Вирівнювання тексту на iOS Safari
+    &::-webkit-date-and-time-value {
+      text-align: left;
+      margin: 0;
+    }
+
+    // Налаштування та відображення іконки календаря
+    &::-webkit-calendar-picker-indicator {
+      position: absolute;
+      top: 50%;
+      right: 18px;
+      transform: translateY(-50%);
+
+      width: 20px;
+      height: 20px;
+      margin: 0;
+      padding: 0;
+
+      opacity: 0.6; // Видимість іконки
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+
+      &:hover {
+        opacity: 1;
+      }
+
+    }
+  }
+
+  &__textarea {
+    border-radius: 20px;
+  }
+
+  &__search-btn {
+    position: absolute;
+    top: 0;
+    right: 15px;
+    width: 20px;
+    height: 100%;
+    padding: 0;
+    background: transparent;
+    border: none;
+  }
+
+  &__btn {
+    padding: 15px 33px 17px;
+    margin: 0 auto;
+    line-height: 1;
+
+    @media (min-width: $breakpoint-md) {
+      width: max-content;
+    }
+
+    @media (max-width: $breakpoint-md) {
+      max-width: 100%;
+      margin-top: 10px;
+    }
+  }
+
+  &__radio-group{
+     display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-bottom: 25px;
+  }
+}
+
+
+/* ==========================================================================
+   CUSTOM RADIO & CHECKBOXES
+   ========================================================================== */
+
+
+.radio {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+
+  &__input {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    cursor: pointer;
+
+    &:checked~.radio__custom::after {
+      opacity: 1;
+    }
+  }
+
+  &__custom {
+    position: relative;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin-right: 7px;
+    background-color: #ffffff;
+    border: 1px solid #c0c0c0;
+    border-radius: 50%;
+    transition: all 0.4s ease-out;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 13px;
+      height: 13px;
+      background: $color-accent;
+      border-radius: 50%;
+      opacity: 0;
+      transform: translate(-50%, -50%);
+      transition: all 0.4s ease-out;
+    }
+  }
+
+  &__text {
+    font-size: 16px;
+    color: #1b1b1b;
+  }
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+
+  &__wrap {
+    display: grid;
+    gap: 30px;
+  }
+
+  &__input {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    cursor: pointer;
+
+    &:checked~.checkbox__custom::after {
+      opacity: 1;
+    }
+  }
+
+  &__custom {
+    position: relative;
+    display: inline-block;
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    margin-right: 15px;
+    background-color: #ffffff;
+    border: 1px solid #8b1e1e;
+    border-radius: 5px;
+    transition: all 0.4s ease-out;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 14px;
+      height: 14px;
+      background: #8b1e1e;
+      border-radius: 3px;
+      opacity: 0;
+      transform: translate(-50%, -50%);
+      transition: all 0.4s ease-out;
+    }
+  }
+
+  &__text {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.4;
+    color: #6f6f6f;
+  }
+
+  &__link {
+    color: #8b181b;
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+/* ==========================================================================
+   FILE UPLOAD COMPONENT
+   ========================================================================== */
+
+.file-upload {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &__controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    background-color: #727272;
+    border-radius: 20px;
+    user-select: none;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #5a5a5a;
+    }
+
+    &:active {
+      transform: translateY(1px);
+    }
+  }
+
+  &__input {
+    display: none;
+  }
+
+  &__info {
+    font-size: 12px;
+    line-height: 1.3;
+    color: #aaaaaa;
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 4px;
+  }
+
+  &__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    font-size: 12px;
+    color: #333333;
+    background-color: #f1f1f1;
+    border-radius: 12px;
+  }
+
+  &__remove {
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1;
+    color: #8b181b;
+    cursor: pointer;
+
+    &:hover {
+      color: #dc3545;
+    }
+  }
+}
+
+// --------------------------------------------------
+// Кастомний Перемикач (Toggle Switch)
+// --------------------------------------------------
+.toggle {
+  position: relative;
+  display: inline-block;
+  width: 52px;
+  height: 28px;
+  flex-shrink: 0;
+
+  &__input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+
+    &:checked + .toggle__slider {
+      background-color: $color-accent;
+
+      &::before {
+        transform: translateX(24px);
+      }
+    }
+
+    &:focus-visible + .toggle__slider {
+      outline: 2px solid $color-accent;
+      outline-offset: 2px;
+    }
+  }
+
+  &__slider {
+    position: absolute;
+    cursor: pointer;
+    inset: 0;
+    background-color: red;
+    border-radius: 30px;
+    transition: background-color 0.25s ease;
+
+    &::before {
+      content: '';
+      position: absolute;
+      height: 22px;
+      width: 22px;
+      left: 3px;
+      bottom: 3px;
+      background-color: $color-white;
+      border-radius: 50%;
+      transition: transform 0.25s ease;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    }
+  }
+}

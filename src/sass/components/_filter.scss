@@ -1,0 +1,65 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.fl-item {
+  border-bottom: 1px solid #e0e0e0;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 16px 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  &__arrow {
+    position: relative;
+    width: 12px;
+    height: 12px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 6px;
+      height: 6px;
+      border-right: 2px solid #1a1a1a;
+      border-bottom: 2px solid #1a1a1a;
+      transform: rotate(45deg);
+      transition: transform 0.3s ease, top 0.3s ease;
+    }
+  }
+
+  &__content {
+    padding-bottom: 20px;
+  }
+
+  // Скриваємо контент для елементів, які початково закриті
+  &:not(.is-open) > &__content {
+    display: none;
+  }
+
+  // Обертаємо стрілочку при відкритті
+  &.is-open {
+    .fl-item__arrow::before {
+      transform: rotate(-135deg);
+      top: 5px;
+    }
+  }
+}
+.fl-item {
+  &__content {
+    display: none; // Початковий стан керується цим стилем, а не :not(.is-open)
+  }
+
+  // Якщо елемент за замовчуванням має бути відкритий при завантаженні:
+  &.is-open {
+    .fl-item__content {
+      display: block;
+    }
+  }
+}

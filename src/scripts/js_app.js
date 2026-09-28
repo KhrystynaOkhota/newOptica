@@ -1,0 +1,470 @@
+var _functions = {}, winWidth, shareButton;
+
+jQuery(function ($) {
+    // 1. ПЕРЕВІРКА ПРИСТРОЇВ ТА БРАУЗЕРІВ
+    const isTouchScreen = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    if (isTouchScreen) {
+        $('html').addClass('touch-screen');
+    }
+
+    const userAgent = navigator.userAgent;
+    const is_Mac = (navigator.userAgentData?.platform || navigator.platform).toUpperCase().indexOf('MAC') >= 0;
+    const is_IE = /MSIE 9/i.test(userAgent) || /rv:11.0/i.test(userAgent) || /MSIE 10/i.test(userAgent) || /Edge\/\d+/.test(userAgent);
+    const is_Chrome = userAgent.indexOf('Chrome') >= 0 && userAgent.indexOf('Edge') < 0;
+
+    winWidth = $(window).width();
+    let winHeight = $(window).height();
+
+    if (is_Mac) $('html').addClass('mac');
+    if (is_IE) $('html').addClass('ie');
+    if (is_Chrome) $('html').addClass('chrome');
+
+    // 2. МОДАЛЬНІ ВІКНА (POPUP)
+    let popupTop = 0;
+
+    _functions.removeScroll = function () {
+        popupTop = $(window).scrollTop(); $('html').css({
+            "position": "fixed",
+            "top": -popupTop,
+            "width": "100%"
+        });
+    };
+
+    _functions.addScroll = function () {
+        $('html').css({ "position": "static" });
+        window.scroll(0, popupTop);
+    };
+
+    _functions.openPopup = function (popup) {
+        $('.popup-content').removeClass('active'); $(popup + ', .popup-wrapper').addClass('active');
+        _functions.removeScroll();
+    };
+
+    _functions.closePopup = function () {
+        $('.popup-wrapper, .popup-content').removeClass('active');
+        _functions.addScroll();
+    };
+
+    $(document).on('click', '.open-popup', function (e) {
+        e.preventDefault();
+        _functions.openPopup('.popup-content[data-rel="' + $(this).data('rel') + '"]');
+    });
+
+    $(document).on('click', '.popup-wrapper .btn--close, .popup-wrapper .layer-close', function (e) {
+        e.preventDefault();
+        _functions.closePopup();
+    });
+
+    // 3. СКРОЛ ФУНКЦІЇ (ХЕДЕР ТА АНІМАЦІЇ ЕЛЕМЕНТІВ)
+    let prev_scroll = 0;
+
+    _functions.scrollCall = function () {
+        const winScr = $(window).scrollTop();
+
+        if (winScr > prev_scroll) {
+            $("header").addClass("scrolled");
+        }
+        prev_scroll = winScr;
+
+        if (winScr <= 10) {
+            $("header").removeClass("scrolled");
+            prev_scroll = 0;
+        }
+
+        scrollAnime(winScr);
+    };
+
+    function scrollAnime(winScr) {
+        const $animationElements = $('.animation').not('.animated');
+        if ($animationElements.length) {
+            const currentWinWidth = $(window).width();
+            const currentWinHeight = $(window).height();
+
+            $animationElements.each(function () {
+                const $th = $(this);
+                const triggerCoef = currentWinWidth < 768 ? 0.95 : 0.85;
+
+                if (winScr >= $th.offset().top - (currentWinHeight * triggerCoef)) {
+                    $th.addClass('animated');
+                }
+            });
+        }
+    }
+
+    window.addEventListener('scroll', _functions.scrollCall, { passive: true });
+
+    _functions.scrollCall();
+    window.addEventListener('load', _functions.scrollCall);
+
+    // 4. МОБІЛЬНЕ МЕНЮ (БУРГЕР)
+    let pageScrollPosition = 0;
+
+    $(document).on("click", ".burger", function () {
+        const $html = $("html");
+        const $body = $("body");
+        const $header = $(this).parents("header");
+
+        $(this).toggleClass("burger--active");
+        $header.toggleClass("is-open");
+
+        if (!$html.hasClass("overflow-menu")) {
+            $html.addClass("overflow-menu");
+        } else {
+            $html.removeClass("overflow-menu");
+        }
+    });
+
+    // 5. ТАБИ (DESKTOP) ТА АКОРДЕОН (MOBILE)
+    const $tabBtns = $('.p-tabs__nav-btn');
+    const $tabPanels = $('.p-tabs__panel');
+
+    // Клік на таб на десктопі
+    $(document).on('click', '.p-tabs__nav-btn', function () {
+        const targetId = $(this).data('tab');
+
+        $tabBtns.removeClass('is-active'); $(this).addClass('is-active');
+
+        $tabPanels.removeClass('is-active').find('.p-tabs__body').removeAttr('style'); $(`#${targetId}`).addClass('is-active');
+    });
+
+    // Клік на заголовок акордеона на мобілці
+    $(document).on('click', '.js-tab-acc-btn', function () {
+        const $currentPanel = $(this).closest('.p-tabs__panel');
+        const $currentBody = $currentPanel.find('.p-tabs__body');
+        const isOpen = $currentPanel.hasClass('is-active');
+
+        // Закриваємо інші відкриті блоки
+        $tabPanels.not($currentPanel).removeClass('is-active');
+        $('.p-tabs__body').not($currentBody).slideUp(300);
+
+        // Перемикаємо поточний блок
+        if (isOpen) {
+            $currentPanel.removeClass('is-active'); $currentBody.slideUp(300);
+        } else {
+            $currentPanel.addClass('is-active'); $currentBody.slideDown(300);
+
+            // Синхронізація активної кнопки на десктопі
+            const panelId = $currentPanel.attr('id');
+            $tabBtns.removeClass('is-active'); $tabBtns.filter(`[data-tab="${panelId}"]`).addClass('is-active');
+        }
+    });
+
+    // 6. ПОШУК (Оболонка шапки)
+    $(document).on("click", ".js-open-search", function () {
+        $("header").addClass("search-open");
+        setTimeout(function () {
+            $(".h-search").find("input").focus();
+        }, 100);
+    });
+
+    $(document).on("click", ".js-close-search", function () {
+        $("header").removeClass("search-open");
+        $(".h-search").find("input").val("");
+        $(".cab-search, .search__results-wrap").removeClass("active");
+    });
+
+    $(document).on("input", ".search input", function () {
+        const val = $(this).val();
+        const $res = $(this).closest(".search").find(".search__results-wrap");
+        if (val.length) {
+            $res.addClass("active");
+        } else {
+            $res.removeClass("active");
+        }
+    });
+
+});
+
+// ==========================================================================
+// НАТИВНИЙ JAVASCRIPT (ПРАЦЮЄ БЕЗ CHROME/JQUERY ОБОРУДОК)
+// ==========================================================================
+
+document.addEventListener('DOMContentLoaded', () => {
+    const header = document.querySelector('.js-header');
+    const menuToggle = document.querySelector('.js-menu-toggle');
+
+    if (menuToggle && header) {
+        menuToggle.addEventListener('click', () => {
+            header.classList.toggle('is-active');
+            document.body.classList.toggle('menu-open');
+        });
+    }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    // 1. АКОРДЕОНИ (Загальні)
+    document.addEventListener('click', function (e) {
+        const $title = $(e.target).closest('.accordeon-title');
+        if (!$title.length) return;
+
+        const $item = $title.closest('.accordeon-item');
+        const $accordeon = $title.closest('.accordeon');
+        const isOpen = $item.hasClass('active');
+
+        $accordeon.find('.accordeon-item.active').not($item).removeClass('active').find('.accordeon-title').next().slideUp();
+
+        $item.toggleClass('active', !isOpen); $title.next().slideToggle(!isOpen);
+    });
+
+    // 2. КЛІКЕР КІЛЬКОСТІ (INCREMENT / DECREMENT)
+    document.addEventListener('click', (e) => {
+        const btn = e.target.closest('.quantity-picker__btn');
+        if (!btn) return;
+
+        const container = btn.closest('.quantity-picker');
+        const input = container.querySelector('.quantity-picker__input');
+        if (!input) return;
+
+        const isIncrement = btn.classList.contains('quantity-picker__btn--increment');
+        const value = parseInt(input.value, 10) || 0;
+        const min = input.dataset.min ? Number(input.dataset.min) : 1;
+        const max = input.dataset.max ? Number(input.dataset.max) : Infinity;
+
+        if (isIncrement && value < max) {
+            input.value = value + 1;
+        } else if (!isIncrement && value > min) {
+            input.value = value - 1;
+        }
+
+        input.dispatchEvent(new Event('change', { bubbles: true }));
+    });
+
+    // 3. ВІДЕОПЛЕЄР
+    jQuery(document).on('click', '.media__btn', function () {
+        const $btn = jQuery(this);
+        const $container = $btn.closest('.media');
+        const $video = $container.find('.media__video');
+        const videoItem = $video.get(0);
+
+        if (!videoItem) return;
+
+        if (videoItem.paused) {
+            videoItem.play();
+            $video.attr('controls', '');
+            $btn.addClass('hide');
+            $container.find('.heading').hide();
+        } else {
+            videoItem.pause();
+            $video.removeAttr('controls');
+            $btn.removeClass('hide');
+            $container.find('.heading').show();
+        }
+    });
+
+    // Додатково: повертаємо кнопку та ховаємо controls, якщо відео закінчилося
+    jQuery(document).on('ended', '.media__video', function () {
+        const $video = jQuery(this);
+        const $container = $video.closest('.media');
+
+        $video.removeAttr('controls');
+        $container.find('.media__btn').removeClass('hide');
+        $container.find('.heading').show();
+    });
+    // 4. ТАБИ (Універсальні)
+    const tabs = document.querySelectorAll(".tab");
+    function tabify(tab) {
+        const tabList = tab.querySelector(".tab__list");
+        if (tabList) {
+            const tabItems = [...tabList.children];
+            const tabContent = tab.querySelector(".tab__content");
+            const tabContentItems = [...tabContent.children];
+
+            let tabIndex = tabItems.findIndex(item => item.classList.contains("is--active"));
+            if (tabIndex === -1) tabIndex = 0;
+
+            function setTab(index) {
+                tabItems.forEach(x => x.classList.remove("is--active"));
+                tabContentItems.forEach(x => x.classList.remove("is--active"));
+                tabItems[index].classList.add("is--active");
+                tabContentItems[index].classList.add("is--active");
+            }
+
+            tabItems.forEach((x, index) => x.addEventListener("click", () => setTab(index)));
+            setTab(tabIndex);
+        }
+    }
+    tabs.forEach(tabify);
+
+    // 5. АНІМАЦІЯ ЛІЧИЛЬНИКІВ (STATS)
+    const obsCounter = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add("animated");
+
+            $(entry.target).find(".stats__value--number").each(function () {
+                $(this).prop("Counter", 0).animate({
+                    Counter: $(this).text(),
+                }, {
+                    duration: 1500,
+                    easing: "swing",
+                    step: function (now) {
+                        $(this).text(Math.ceil(now));
+                    },
+                });
+            });
+            observer.unobserve(entry.target);
+        });
+    });
+    document.querySelectorAll(".stats__grid").forEach(block => obsCounter.observe(block));
+
+    // 6. ЗАВАНТАЖЕННЯ ФАЙЛУ (ДЛЯ ФОРМ)
+    $(document).on('change', '.upload-file', function () {
+        const format = $(this).val();
+        const fileName = format.substring(format.lastIndexOf("\\") + 1);
+        const $nameLabel = $('.upload-file__name');
+
+        if (format === '') {
+            $nameLabel.text($nameLabel.data('placeholder-text'));
+        } else {
+            $nameLabel.text(fileName);
+        }
+    });
+
+    // 7. СЕО БЛОК (SEO Блок з плавною висотою)
+    document.querySelectorAll('.info-block').forEach(function (infoBlock) {
+        const content = infoBlock.querySelector('.info-block__content');
+        const text = content ? content.querySelector('.info-block__text') : null;
+        const button = infoBlock.querySelector('.btn-more');
+
+        if (!content || !text || !button) return;
+
+        const fullHeight = text.scrollHeight;
+        const minHeight = parseInt(window.getComputedStyle(content).minHeight) || 0;
+
+        if (fullHeight <= minHeight) {
+            button.style.display = 'none';
+            return;
+        }
+
+        button.addEventListener('click', function () {
+            const isActive = this.classList.toggle('is-active');
+            const targetHeight = isActive ? fullHeight : minHeight;
+
+            content.style.transition = 'height .5s ease';
+            content.style.height = targetHeight + 'px';
+
+            if (isActive) {
+                setTimeout(() => { content.style.height = 'auto'; }, 600);
+            }
+        });
+    });
+
+    // 8. ПЕРЕМИКАЧ МОВ (LANG SWITCHER)
+    const langWrap = document.querySelector('.lang__wrap');
+    if (langWrap) {
+        const langBtn = langWrap.querySelector('.lang__current');
+
+        const toggleLang = () => {
+            const isExpanded = langBtn.getAttribute('aria-expanded') === 'true';
+            langBtn.setAttribute('aria-expanded', !isExpanded);
+        };
+
+        langBtn.addEventListener('click', (e) => {
+            if (window.matchMedia('(pointer: coarse)').matches) {
+                e.preventDefault();
+                e.stopPropagation();
+                toggleLang();
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!langWrap.contains(e.target)) {
+                langBtn.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        langWrap.addEventListener('mouseenter', () => {
+            if (window.matchMedia('(hover: hover)').matches) {
+                langBtn.setAttribute('aria-expanded', 'true');
+            }
+        });
+
+        langWrap.addEventListener('mouseleave', () => {
+            if (window.matchMedia('(hover: hover)').matches) {
+                langBtn.setAttribute('aria-expanded', 'false');
+            }
+        });
+    }
+
+    _functions.initSelect = function (parent) {
+        var $container = parent ? $(parent) : $(document);
+
+        $container.find('.SelectBox select').each(function () {
+            var $select = $(this);
+
+            // Ініціалізація SumoSelect
+            $select.SumoSelect({
+                floatWidth: 0,
+                nativeOnDevice: [],
+                placeholder: ''
+            });
+
+            // Перевірка початкового значення при ініціалізації
+            var $box = $select.closest('.SelectBox');
+            $box.toggleClass('value', !!$select.val());
+
+            // Обробники подій відкриття / закриття
+            $select.on('sumo:opened', function () {
+                $box.addClass('focus');
+            });
+
+            $select.on('sumo:closed', function () {
+                $box.removeClass('focus');
+            });
+        });
+    };
+
+    $(document).ready(function () {
+        _functions.initSelect('body');
+    });
+
+    // Глобальний обробник зміни значення
+    $(document).on('change', '.SelectBox select', function () {
+        $(this).closest('.SelectBox').toggleClass('value', !!$(this).val());
+    });
+
+    $(document).ready(function () {
+        $('.file-upload__input').on('change', function (e) {
+            if (this.files) {
+                $.each(this.files, function (index, file) {
+                    $(e.target).closest('.file-upload').find('.file-upload__list').append(
+                        '<div class="file-upload__item">' +
+                        '<span>' + file.name + '</span>' +
+                        '<span class="file-upload__remove">&times;</span>' +
+                        '</div>'
+                    );
+                });
+            }
+        });
+
+        $(document).on('click', '.file-upload__remove', function () {
+            $(this).closest('.file-upload__item').remove();
+        });
+    });
+
+    $(function () {
+        var body = $('body'); $('.location__current').on('click', function (e) {
+            e.preventDefault();
+
+            var winW = $(window).width();
+            var $wrap = $(this).closest('.location__wrap');
+
+            if (winW > 1199) {
+                $wrap.toggleClass('open');
+            } else {
+                $wrap.find('.location').slideToggle(); $wrap.toggleClass('open');
+            }
+        });
+
+        body.on('click', function (e) {
+            if (!$(e.target).closest('.location__wrap').length) {
+                $('.location__wrap').removeClass('open');
+                if ($(window).width() <= 1199) {
+                    $('.location__wrap .location').slideUp();
+                }
+            }
+        });
+    });
+
+});

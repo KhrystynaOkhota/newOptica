@@ -1,0 +1,107 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+$social-colors: (
+  "viber": rgba(124, 80, 154, 1),
+  "whatsapp": rgba(72, 201, 95, 1),
+  "telegram": rgba(39, 166, 229, 1),
+  "youtube": rgba(244, 0, 0, 1),
+  "threads": rgba(255, 255, 255, 1),
+  "facebook": rgba(11, 132, 238, 1),
+  "instagram": radial-gradient(230.93% 230.93% at 102.01% 2.03%, #F9ED32 0%, #EE2A7B 36%, #D22A8A 44%, #8B2AB2 60%, #1B2AF0 83%, #002AFF 88%),
+  "tiktok": rgba(17, 17, 17, 1)
+);
+
+.socials {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  @media (max-width: 1360px) {
+    flex-direction: column;
+    align-items: start;
+  }
+
+  &--col {
+    display: grid;
+  }
+
+  &__label {
+    font-size: fluid(15, 17);
+    color: $color-primary;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+
+
+    // Автоматично створює капсулу, якщо всередині є .socials__text
+    &:has(.socials__text) {
+      border-radius: 50px;
+      padding: 5px 10px;
+      background-color: transparent;
+      border: 1px solid rgba(227, 227, 227, 1);
+      gap: 8px;
+
+      @media (max-width: $breakpoint-md) {
+        gap: 5px;
+        padding: 5px;
+      }
+
+      &:hover {
+        border-color: #d0d0d0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      }
+    }
+
+    // Генерація фонів для іконок через SCSS-цикл
+    @each $name, $bg in $social-colors {
+      &--#{$name} .socials__icon-wrap {
+        background: $bg;
+      }
+    }
+  }
+
+  &__icon {
+    &-wrap {
+      width: 36px;
+      height: 36px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      display: block;
+      color: currentColor;
+
+      @media (max-width: $breakpoint-md) {
+        width: 25px;
+        height: 25px;
+      }
+    }
+  }
+
+  &__text {
+    font-size: fluid(13, 17);
+    font-weight: 400;
+    color: $color-primary;
+    line-height: 1;
+  }
+}
