@@ -227,8 +227,8 @@
 
         </div>
     </header>
-
     <main class="main">
+
         <div class="kama_breadcrumbs__wrap">
             <div class="container">
                 <div class="row m-row">
@@ -239,28 +239,90 @@
                                     <span>Головна</span>
                                 </a>
                                 <span class="kb_sep">/</span>
-                                <span class="kb_title">Пошук</span>
+                                <span class="kb_title">Політика конфіденційності</span>
                             </span>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
 
-        <section class="s-search">
+        <section class="s-privacy">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-16 col-lg-16 col-md-16 col-sm-16 col-xs-16 column">
                         <h1 class="heading h2 text-bold">
-                            За вашим запитом {DJjkkks} нічого не знайдено
+                            Політика конфіденційності
                         </h1>
-                        <div class="description text-bold h4">Спробуйте змінити пошуковий запит або перевірте
-                            правильність написання.</div>
-                        <div class=" btn btn--primary">Перейти до каталогу</div>
+                        <div class="cms-content">
+                          
+                            <h2>1. Дані, що збираються</h2>
+
+                            <p><strong>Ми можемо збирати:</strong></p>
+
+                            <ul>
+                                <li>ім'я, прізвище, по батькові (за наявності);</li>
+                                <li>контактні дані: телефон, електронну пошту, адресу доставки;</li>
+                                <li>інформацію про замовлення та історію покупок;</li>
+                                <li>технічні дані, такі як IP-адреса, тип браузера, cookie;</li>
+                                <li>інші дані можуть оброблятися, якщо користувач їх добровільно надає.</li>
+                            </ul>
+
+                            <h2>2. Цілі обробки</h2>
+
+                            <p><strong>Обробка даних здійснюється для:</strong></p>
+
+                            <ul>
+                                <li>виконання замовлень;</li>
+                                <li>покращення роботи сайту;</li>
+                                <li>обробки звернень користувачів;</li>
+                                <li>виконання законодавчих вимог;</li>
+                                <li>інформування про акції та пропозиції за згодою користувача.</li>
+                            </ul>
+
+                            <h2>3. Правові підстави</h2>
+
+                            <p><strong>Обробки Підстави обробки:</strong></p>
+
+                            <ul>
+                                <li>Згода користувача, виконання договору, законодавчі вимоги.</li>
+                                <li>Користувач може відкликати згоду, звернувшись до Адміністрації.</li>
+                            </ul>
+
+                            <h2>4. Передача даних</h2>
+
+                            <p>Дані можуть передаватися платіжним сервісам, службам доставки, IT-підприємствам,
+                                хостинг-провайдерам для обробки замовлень і роботи сайту. Передача державним органам –
+                                лише згідно із законом.</p>
+
+                            <h2>5. Зберігання та захист</h2>
+
+                            <p>Дані зберігаються протягом строків, передбачених цілями обробки або законом.
+                                Адміністрація впроваджує заходи для захисту даних від несанкціонованого доступу.</p>
+
+                            <h2>6. Права користувачів</h2>
+
+                            <p>Користувачі мають право знати про свої дані, вимагати їх зміни або видалення, обмежувати
+                                обробку, відкликати згоду. Для реалізації прав звертайтеся до Адміністрації.</p>
+
+                            <h2>7. Cookies і аналітика</h2>
+
+                            <p>Сайт використовує cookie для збереження налаштувань і збору статистики відвідувань.
+                                Користувач може змінити налаштування браузера для керування cookie.</p>
+
+                            <h2>8. Зміни до політики</h2>
+
+                            <p>Адміністрація може змінювати політику, нова редакція набирає чинності з моменту
+                                публікації. Рекомендуємо регулярно переглядати цей розділ.</p>
+
+                            <h2>9. Контакти</h2>
+
+                            <p>Для питань обробки даних: <strong>телефон: +38 (050) 013-68-88</strong> <strong>адреса:
+                                    82647, Львівська обл., Стрийський р-н, село Хітар, вул. Шевченка, буд. 161.</strong>
+                            </p>
+                        </div>
                     </div>
                 </div>
-
             </div>
         </section>
     </main>
@@ -508,22 +570,76 @@
         </div>
 
     </div>
-
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9h5L2xSWEvRFgLc7y4d16KPUDydNgs9Y"
         type="text/javascript"></script>
 
     <script src="./assets/js/jquery-3.7.0.min.js"></script>
-    <script src="assets/js/jquery-ui.min.js"></script>
+
     <script src="assets/js/swiper-bundle.min.js"></script>
     <script src="assets/js/jquery.sumoselect.min.js"></script>
-    <script src="assets/js/sumoselectCustom.js"></script>
+
 
 
     <script src="src/scripts/app-swiper.js"></script>
-    <script src="src/scripts/app.js"></script>
     <script src="src/scripts/js_app.js"></script>
-
     <script src="src/scripts/app_map.js"></script>
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchForms = document.querySelectorAll('.header__search-form');
+
+            if (!searchForms.length) return;
+
+            searchForms.forEach((form) => {
+                const input = form.querySelector('input[name="s"]');
+                if (!input) return;
+
+                // Введення символів
+                input.addEventListener('input', (e) => {
+                    const value = e.target.value.trim();
+
+                    if (value.length >= 2) {
+                        // Закриваємо інші відкриті форми, якщо такі є
+                        searchForms.forEach(f => f !== form && f.classList.remove('is-active'));
+                        form.classList.add('is-active');
+
+                        // Тут логіка AJAX-запиту (fetch) для поточного значення `value`
+                    } else {
+                        form.classList.remove('is-active');
+                    }
+                });
+
+                // Фокус на інпут
+                input.addEventListener('focus', () => {
+                    if (input.value.trim().length >= 2) {
+                        form.classList.add('is-active');
+                    }
+                });
+            });
+
+            // Закриття всіх випадаючих вікон при кліку поза формами
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.header__search-form')) {
+                    searchForms.forEach(form => form.classList.remove('is-active'));
+                }
+            });
+
+            // Закриття по натисканню Esc
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    searchForms.forEach(form => {
+                        form.classList.remove('is-active');
+                        const input = form.querySelector('input[name="s"]');
+                        if (input) input.blur();
+                    });
+                }
+            });
+        });
+
+
+
+    </script>
 
 </body>
 

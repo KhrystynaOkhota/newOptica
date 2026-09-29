@@ -71,7 +71,7 @@
   display: flex;
   flex-direction: column;
   background: $color-white;
-  border: 1px solid #E3E3E3;
+
   border-radius: 20px;
   overflow: hidden;
   padding: fluid(10, 20) fluid(10, 20) 0;
@@ -127,8 +127,7 @@
     line-height: 1.35;
     text-align: center;
     margin: 0 0 16px 0;
-    padding-top: 20px;
-    border-top: 1px solid #E3E3E3;
+
 
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -138,8 +137,6 @@
   }
 
   &__price-wrap {
-    margin-top: auto;
-    margin-bottom: 16px;
 
     .price {
       display: flex;
@@ -151,10 +148,11 @@
       ins,
       >.amount,
       bdi {
-        font-size: 18px;
+        font-size: fluid(15, 20);
         font-weight: 800;
         color: #0f172a;
         text-decoration: none;
+        line-height: 1;
       }
 
       del+ins bdi,
@@ -170,6 +168,7 @@
           color: #949597;
           text-decoration: line-through;
           font-weight: 300;
+          line-height: 1;
         }
       }
 
@@ -191,6 +190,25 @@
     font-size: fluid(12, 14);
     color: #233D4D;
     text-align: center;
+  }
+
+  &:not(.product--horizontal) {
+    border: 1px solid #E3E3E3;
+
+    & .product {
+
+      &__title {
+        padding-top: 20px;
+        border-top: 1px solid #E3E3E3;
+      }
+
+
+
+      &__price-wrap {
+        margin-top: auto;
+        margin-bottom: 16px;
+      }
+    }
   }
 }
 

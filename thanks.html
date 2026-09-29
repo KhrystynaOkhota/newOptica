@@ -8,173 +8,138 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
     <meta name="format-detection" content="telephone=no" />
 
-    <title>Veromed</title>
+    <title>Файна-оптика</title>
     <meta name="description" content="" />
 
     <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
-    <!--<link rel="stylesheet" href="assets/css/jquery-ui.css" />-->
+
     <link rel="stylesheet" href="assets/css/sumoselect.min.css" />
     <link rel="stylesheet" href="assets/css/app.min.css" />
 
 </head>
 
 <body>
+
     <header class="header js-header bg">
         <div class="container">
 
             <div class="header__topbar d-none d-lg-flex align-right align-middle">
+                <nav class="header__nav">
+                    <ul class="menu d-flex align-justify align-middle">
+                        <li class="menu-item"><a href="about.html">Про компанію</a></li>
+                        <li class="menu-item"><a href="services.html">Послуги</a></li>
+                        <li class="menu-item active"><a href="delivery.html">Доставка і оплата</a></li>
+                        <li class="menu-item"><a href="return.html">Омін і повернення</a></li>
+                        <li class="menu-item"><a href="blog.html">Блог</a></li>
+                        <li class="menu-item"><a href="contacts.html">Мережа салонів</a></li>
+                    </ul>
+                </nav>
 
-                <div class="d-flex align-middle align-right">
-                    <div class="header__location d-flex align-middle align-right">
-                        <svg class="icon" aria-hidden="true" width="20" height="20">
-                            <use href="assets/img/sprite.svg#location"></use>
-                        </svg>
-                        <span class="d-md-none d-xl-flex">Оберіть ваше місто:</span>
-                    </div>
-                    <div class="location__wrap --relative">
-
-                        <div class="location__current d-flex align-middle">
-                            <a href="#">Івано-Франківськ</a>
-                            <svg class="icon" aria-hidden="true" width="13" height="8">
-                                <use href="assets/img/sprite.svg#ar-bottom"></use>
-                            </svg>
-                        </div>
-
-                        <ul class="location">
-                            <li class="location__item"><a href="#">Львів</a></li>
-                            <li class="location__item"><a href="#">Ужгород</a></li>
-                            <li class="location__item"><a href="#">Мукачево</a></li>
-                            <li class="location__item"><a href="#">Івано-Франківськ</a></li>
-                        </ul>
-                    </div>
-
+                <div class="header__contacts d-none d-lg-flex align-middle">
+                    <span class="header__contacts--title">Є питання? Телефонуйте - допоможемо</span>
+                    <a href="tel:+380672626680" class="header__contacts--phone"> +38 (050) 07-49-888</a>
                 </div>
+                <button type="button" class="control-btn control-btn--search js-open-search"
+                    aria-label="Відкрити пошук">
+                    <span class="control-btn__icon"></span>
+                    <span class="control-btn__text d-none d-xl-inline">Пошук</span>
+                </button>
 
-                <div class="header__address d-flex align-middle align-right">
-                    <svg class="icon" aria-hidden="true" width="20" height="20">
-                        <use href="assets/img/sprite.svg#location"></use>
-                    </svg>
-                    <span>Івано-Франківськ, вул. Генерала Юнаківа, 9</span>
-                </div>
-
-                <a href="mailto:call.centre.veromed@gmail.com"
-                    class="header__email d-md-none d-xl-flex align-middle align-right">
-                    <svg class="icon" aria-hidden="true" width="20" height="20">
-                        <use href="assets/img/sprite.svg#mail"></use>
-                    </svg>
-                    <span>call.centre.veromed@gmail.com</span>
+                <a href="#" class="control-btn control-btn--user open-popup" data-rel="login"
+                    aria-label="Особистий кабінет">
+                    <span class="control-btn__icon"></span>
                 </a>
 
-                <div class="lang d-flex align-middle">
-                    <a href="#" class="lang-item active"><img src="assets/img/flag-ua.svg" alt="UA"></a>
-                    <a href="#" class="lang-item"><img src="assets/img/flag-us.svg" alt="EN"></a>
-                </div>
+                <a href="#" class="control-btn control-btn--wishlist is-animated" aria-label="Обране">
+                    <div class="control-btn__icon-wrap">
+                        <span class="control-btn__icon"></span>
+                        <!-- <span class="control-btn__badge">0</span> -->
+                    </div>
+                </a>
+
+                <a href="#" class="control-btn control-btn--cart is-animated" aria-label="Кошик, товарів у кошику: 0">
+                    <div class="control-btn__icon-wrap">
+                        <span class="control-btn__icon"></span>
+                        <span class="control-btn__badge">0</span>
+                    </div>
+                </a>
+
+                <button type="button" class="burger burger--spring" aria-label="Відкрити мобільне меню">
+                    <span class="burger__box">
+                        <span class="burger__inner"></span>
+                    </span>
+                </button>
+
+                <button class="burger burger--spring" aria-label="Відкрити мобільне меню">
+                    <span class="burger__box">
+                        <span class="burger__inner"></span>
+                    </span>
+                </button>
+
 
             </div>
 
             <div class="header__main d-flex align-justify align-middle">
                 <a href="index.html" class="logo__wrap">
-                    <img src="assets/img/logo-color.svg" alt="VEROMED" class="logo">
+                    <img src="assets/img/logo.svg" alt="Файна оптика" class="logo">
                 </a>
 
-                <form action="/search" method="GET" class="header__search-form d-none d-lg-block">
-                    <input name="s" type="text" placeholder="Пошук" autocomplete="off">
-                    <button type="submit" aria-label="Пошук">
-                        <svg class="icon" aria-hidden="true" width="20" height="20">
-                            <use href="assets/img/sprite.svg#search"></use>
+                <form class="search-form" action="#" method="get" role="search">
+                    <input type="search" class="search-form__input" placeholder="Пошук по замовленню"
+                        aria-label="Пошук по замовленню">
+                    <button type="submit" class="search-form__btn" aria-label="Шукати">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                         </svg>
                     </button>
-
-                    <div class="header__search-popup">
-                        <div class="header__search-meta">
-                            По результату <span class="header__search-query">«гінеколог»</span> знайдено <span
-                                class="header__search-count">6 результатів</span>
-                        </div>
-
-                        <ul class="header__search-list">
-
-                            <li class="header__search-item">
-                                <a href="doctor-detail.html" class="search-result-card search-result-card--doctor">
-                                    <div class="search-result-card__avatar">
-                                        <img src="assets/img/team-1.png" alt="Ковальчук Олена Євгенівна" loading="lazy">
-                                    </div>
-                                    <div class="search-result-card__info">
-                                        <h4 class="search-result-card__title">Ковальчук Олена Євгенівна</h4>
-                                        <p class="search-result-card__desc">Акушер-гінеколог, підлітковий гінеколог, УЗД
-                                        </p>
-                                    </div>
-                                </a>
-                            </li>
-
-                            <li class="header__search-item">
-                                <a href="doctor-detail.html" class="search-result-card search-result-card--doctor">
-                                    <div class="search-result-card__avatar">
-                                        <img src="assets/img/team-4.png" alt="Ковальчук Олена Євгенівна" loading="lazy">
-                                    </div>
-                                    <div class="search-result-card__info">
-                                        <h4 class="search-result-card__title">Ковальчук Олена Євгенівна</h4>
-                                        <p class="search-result-card__desc">Акушер-гінеколог, підлітковий гінеколог, УЗД
-                                        </p>
-                                    </div>
-                                </a>
-                            </li>
-
-                            <li class="header__search-item">
-                                <a href="article.html" class="search-result-card search-result-card--article">
-                                    <div class="search-result-card__thumb">
-                                        <img src="assets/img/article-1.jpg" alt="Варикоз: симптоми" loading="lazy">
-                                    </div>
-                                    <div class="search-result-card__info">
-                                        <h4 class="search-result-card__title">Варикоз: симптоми, стадії та лікування у
-                                            флеболога у Львові</h4>
-                                    </div>
-                                </a>
-                            </li>
-
-                        </ul>
-
-                        <div class="header__search-footer">
-                            <a href="search.html" class="header__search-all-link">Усі результати</a>
-                        </div>
-                    </div>
                 </form>
+                <a href="#" class="btn btn--primary open-popup" data-rel="cta">
+                    Записатися на прийом
+                </a>
+                <div class="header__controls">
 
-                <div class="header__contacts d-none d-lg-flex align-middle">
-                    <a href="tel:+380672626680" class="header__phone">+380 (67) 262–66–80</a>
-                    <div class="header__socials d-flex align-middle">
-                        <div class="socials">
-                            <ul class="socials__list" role="list">
-                                <li class="socials__item">
-                                    <a href="#" class="socials__link socials__link--telegram" target="_blank"
-                                        rel="noopener" aria-label="Telegram">
-                                        <svg class="icon" aria-hidden="true" width="20" height="20">
-                                            <use href="assets/img/sprite.svg#telegram"></use>
-                                        </svg>
-                                    </a>
-                                </li>
-                                <li class="socials__item">
-                                    <a href="#" class="socials__link socials__link--whathapp" target="_blank"
-                                        rel="noopener" aria-label="WhatsApp">
-                                        <svg class="icon" aria-hidden="true" width="20" height="20">
-                                            <use href="assets/img/sprite.svg#whatsapp"></use>
-                                        </svg>
-                                    </a>
-                                </li>
-                                <li class="socials__item">
-                                    <a href="#" class="socials__link socials__link--viber" target="_blank"
-                                        rel="noopener" aria-label="Viber">
-                                        <svg class="icon" aria-hidden="true" width="20" height="20">
-                                            <use href="assets/img/sprite.svg#viber"></use>
-                                        </svg>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <a href="#" class="btn btn--primary open-popup" data-rel="cta">
-                        Записатися на прийом
+                    <button type="button" class="control-btn control-btn--search js-open-search"
+                        aria-label="Відкрити пошук">
+                        <span class="control-btn__icon"></span>
+                        <span class="control-btn__text d-none d-xl-inline">Пошук</span>
+                    </button>
+
+                    <a href="#" class="control-btn control-btn--user open-popup" data-rel="login"
+                        aria-label="Особистий кабінет">
+                        <span class="control-btn__icon"></span>
                     </a>
+
+                    <a href="#" class="control-btn control-btn--wishlist is-animated" aria-label="Обране">
+                        <div class="control-btn__icon-wrap">
+                            <span class="control-btn__icon"></span>
+                            <!-- <span class="control-btn__badge">0</span> -->
+                        </div>
+                    </a>
+
+                    <a href="#" class="control-btn control-btn--cart is-animated"
+                        aria-label="Кошик, товарів у кошику: 0">
+                        <div class="control-btn__icon-wrap">
+                            <span class="control-btn__icon"></span>
+                            <span class="control-btn__badge">0</span>
+                        </div>
+                    </a>
+
+                    <button type="button" class="burger burger--spring" aria-label="Відкрити мобільне меню">
+                        <span class="burger__box">
+                            <span class="burger__inner"></span>
+                        </span>
+                    </button>
+
+                    <button class="burger burger--spring" aria-label="Відкрити мобільне меню">
+                        <span class="burger__box">
+                            <span class="burger__inner"></span>
+                        </span>
+                    </button>
+
                 </div>
+
 
                 <div class="header__mobile-controls d-flex d-lg-none align-middle">
                     <a href="tel:+380672626680" class="btn-phone" aria-label="Зателефонувати">
@@ -192,85 +157,30 @@
 
             <div class="header__inner">
 
-                <form action="/search" method="GET" class="header__search-form d-block d-lg-none">
-                    <input name="s" type="text" placeholder="Пошук" autocomplete="off">
-                    <button type="submit" aria-label="Пошук">
+                <form class="search-form" action="#" method="get" role="search">
+                    <input type="search" class="search-form__input" placeholder="Пошук по замовленню"
+                        aria-label="Пошук по замовленню">
+                    <button type="submit" class="search-form__btn" aria-label="Шукати">
                         <svg class="icon" aria-hidden="true" width="20" height="20">
-                            <use href="assets/img/sprite.svg#search"></use>
+                            <use href="assets/img/symbol.svg#ssearch"></use>
                         </svg>
                     </button>
-
-                    <div class="header__search-popup">
-                        <div class="header__search-meta">
-                            По результату <span class="header__search-query">«гінеколог»</span> знайдено <span
-                                class="header__search-count">6 результатів</span>
-                        </div>
-
-                        <ul class="header__search-list">
-
-                            <li class="header__search-item">
-                                <a href="doctor-detail.html" class="search-result-card search-result-card--doctor">
-                                    <div class="search-result-card__avatar">
-                                        <img src="assets/img/team-1.png" alt="Ковальчук Олена Євгенівна" loading="lazy">
-                                    </div>
-                                    <div class="search-result-card__info">
-                                        <h4 class="search-result-card__title">Ковальчук Олена Євгенівна</h4>
-                                        <p class="search-result-card__desc">Акушер-гінеколог, підлітковий гінеколог, УЗД
-                                        </p>
-                                    </div>
-                                </a>
-                            </li>
-
-                            <li class="header__search-item">
-                                <a href="doctor-detail.html" class="search-result-card search-result-card--doctor">
-                                    <div class="search-result-card__avatar">
-                                        <img src="assets/img/team-4.png" alt="Ковальчук Олена Євгенівна" loading="lazy">
-                                    </div>
-                                    <div class="search-result-card__info">
-                                        <h4 class="search-result-card__title">Ковальчук Олена Євгенівна</h4>
-                                        <p class="search-result-card__desc">Акушер-гінеколог, підлітковий гінеколог, УЗД
-                                        </p>
-                                    </div>
-                                </a>
-                            </li>
-
-                            <li class="header__search-item">
-                                <a href="article.html" class="search-result-card search-result-card--article">
-                                    <div class="search-result-card__thumb">
-                                        <img src="assets/img/article-1.jpg" alt="Варикоз: симптоми" loading="lazy">
-                                    </div>
-                                    <div class="search-result-card__info">
-                                        <h4 class="search-result-card__title">Варикоз: симптоми, стадії та лікування у
-                                            флеболога у Львові</h4>
-                                    </div>
-                                </a>
-                            </li>
-
-                        </ul>
-
-                        <div class="header__search-footer">
-                            <a href="search.html" class="header__search-all-link">Усі результати</a>
-                        </div>
-                    </div>
                 </form>
-
                 <nav class="header__nav">
                     <ul class="menu d-flex align-justify align-middle">
-                        <li class="menu-item"><a href="services.html">Послуги</a></li>
-                        <li class="menu-item"><a href="price.html">Вартість послуг</a></li>
-                        <li class="menu-item active"><a href="results.html">Результати</a></li>
-                        <li class="menu-item"><a href="blog.html">Блог</a></li>
-                        <li class="menu-item"><a href="doctors.html">Наші лікарі</a></li>
-                        <li class="menu-item"><a href="ask-doctor.html">Питання лікарю</a></li>
-                        <li class="menu-item"><a href="about.html">Про нас</a></li>
-                        <li class="menu-item"><a href="contacts.html">Контакт</a></li>
+                        <li class="menu-item"><a href="">Оправи для зору</a></li>
+                        <li class="menu-item"><a href="">Сонцезахисні окуляри</a></li>
+                        <li class="menu-item active"><a href="">Контактні лінзи</a></li>
+                        <li class="menu-item"><a href="">Аксесуари/засоби догляду</a></li>
+                        <li class="menu-item"><a href="">Акції</a></li>
+
                     </ul>
                 </nav>
 
                 <div class="header__inner-contacts d-lg-none">
                     <a href="mailto:call.centre.veromed@gmail.com" class="header__email d-flex align-left align-middle">
                         <svg class="icon" aria-hidden="true" width="20" height="20">
-                            <use href="assets/img/sprite.svg#location"></use>
+                            <use href="assets/img/symbol.svg#location"></use>
                         </svg>
                         <span>call.centre.veromed@gmail.com</span>
                     </a>
@@ -283,7 +193,7 @@
                                         <a href="#" class="socials__link socials__link--telegram" target="_blank"
                                             rel="noopener" aria-label="Telegram">
                                             <svg class="icon" aria-hidden="true" width="20" height="20">
-                                                <use href="assets/img/sprite.svg#telegram"></use>
+                                                <use href="assets/img/symbol.svg#telegram"></use>
                                             </svg>
                                         </a>
                                     </li>
@@ -291,7 +201,7 @@
                                         <a href="#" class="socials__link socials__link--whathapp" target="_blank"
                                             rel="noopener" aria-label="WhatsApp">
                                             <svg class="icon" aria-hidden="true" width="20" height="20">
-                                                <use href="assets/img/sprite.svg#whatsapp"></use>
+                                                <use href="assets/img/symbol.svg#whatsapp"></use>
                                             </svg>
                                         </a>
                                     </li>
@@ -299,7 +209,7 @@
                                         <a href="#" class="socials__link socials__link--viber" target="_blank"
                                             rel="noopener" aria-label="Viber">
                                             <svg class="icon" aria-hidden="true" width="20" height="20">
-                                                <use href="assets/img/sprite.svg#viber"></use>
+                                                <use href="assets/img/symbol.svg#viber"></use>
                                             </svg>
                                         </a>
                                     </li>
@@ -307,10 +217,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="lang d-flex align-center justify-center">
-                        <a href="#" class="lang-item active"><img src="assets/img/flag-ua.svg" alt="UA"></a>
-                        <a href="#" class="lang-item"><img src="assets/img/flag-us.svg" alt="EN"></a>
-                    </div>
+
                     <a href="#" class="btn btn--primary open-popup btn-block" data-rel="cta">
                         Записатися на прийом
                     </a>
@@ -321,327 +228,358 @@
         </div>
     </header>
 
+    <main class="main">
 
-    <main class="main ">
 
-        <section class="s-thanks">
-            <div class="bg__wrap">
-                <img src="assets/img/thanks.png" alt="thanks bg" class="bg">
-            </div>
-            <div class="container">
-                <div class="row m-row ">
-                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-16 col-xs-16 column">
-                        <div class="content">
-                            <h1 class="title text-bold">
-                                Дякуємо
-                            </h1>
-                            <div class="subtitle text-extrabold">Ваш запит успішно відправлено.</div>
-                            <div class="description text-s">
-                                <p>Найближчим часом ми зв'яжемося з вами для підтвердження запису.</p>
-                                <p>Бажаємо вам міцного здоров'я та гарного дня!</p>
+        <main class="main ">
+
+            <section class="s-thanks">
+
+                <div class="container overlap">
+                    <div class="row m-row ">
+                        <div class="col-xl-9 col-lg-9 col-md-9 col-sm-16 col-xs-16 column">
+                            <div class="content">
+                                <h1 class="title text-bold">
+                                    Дякуємо за замовлення!
+                                </h1>
+                                <div class="subtitle text-extrabold">Ми отримали ваш запит і вже почали його обробку.
+                                </div>
+                                <div class="description text-s">
+                                    Наш спеціаліст зв’яжеться з вами найближчим часом.
+                                </div>
+
                             </div>
 
-                            <a href="index.html" class=" btn btn--white">
-                                Повернутись на головну
+                            <div class="order-summary">
+                                <!-- Продукти -->
+                                <div class="cart-products">
+                                    <article class="cart-product">
+                                        <div class="cart-product__media">
+                                            <img src="assets/img/product-1.png" alt="Сонцезахисні окуляри RAY-BAN 3767"
+                                                class="cart-product__img" loading="lazy" width="80" height="65">
+                                        </div>
+                                        <div class="cart-product__content">
+                                            <h3 class="cart-product__title">Сонцезахисні окуляри RAY-BAN 3767</h3>
+                                            <span class="cart-product__qty">1x</span>
+                                            <span class="cart-product__price">8 099 грн</span>
+                                        </div>
+                                    </article>
+
+                                    <article class="cart-product">
+                                        <div class="cart-product__media">
+                                            <img src="assets/img/product-1.png" alt="Сонцезахисні окуляри RAY-BAN 3767"
+                                                class="cart-product__img" loading="lazy" width="80" height="65">
+                                        </div>
+                                        <div class="cart-product__content">
+                                            <h3 class="cart-product__title">Сонцезахисні окуляри RAY-BAN 3767</h3>
+                                            <span class="cart-product__qty">1x</span>
+                                            <span class="cart-product__price">1 099 грн</span>
+                                        </div>
+                                    </article>
+                                </div>
+
+                                <!-- Деталі замовлення -->
+                                <div class="order-summary__details">
+                                    <div class="order-summary__row">
+                                        <span class="order-summary__label">2 товар на суму:</span>
+                                        <span class="order-summary__value">12 098 грн</span>
+                                    </div>
+                                    <div class="order-summary__row">
+                                        <span class="order-summary__label">Вартість доставки:</span>
+                                        <span class="order-summary__value">0 грн</span>
+                                    </div>
+                                    <div class="order-summary__row">
+                                        <span class="order-summary__label">Спосіб оплати:</span>
+                                        <span class="order-summary__value">Оплата після уточнення деталей</span>
+                                    </div>
+                                    <div class="order-summary__row">
+                                        <span class="order-summary__label">Дата:</span>
+                                        <span class="order-summary__value"><time datetime="2026-09-03">03 вересня
+                                                2026</time></span>
+                                    </div>
+                                    <div class="order-summary__row order-summary__row--total">
+                                        <span class="order-summary__label">Разом:</span>
+                                        <span class="order-summary__value">12 098 грн</span>
+                                    </div>
+                                </div>
+
+                                <!-- Кнопка -->
+                                <div class="order-summary__actions">
+                                    <a href="/" class="order-summary__btn">На головну</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="bg__wrap">
+                    <img src="assets/img/thanks.png" alt="thanks bg" class="bg">
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="footer">
+            <div class="footer__inner">
+                <div class="container">
+                    <h2 class="visually-hidden">Інформація про компанію та навігація</h2>
+                    <div class="row m-row">
+                        <div class="col-xl-5 col-lg-5 col-md-16 col-sm-16 col-xs-16 column">
+                            <a href="/" class="footer__logo" aria-label="VeroMed — На головну">
+                                <img src="assets/img/logo-light.svg" alt="" width="180" height="60" loading="lazy">
+                            </a>
+                            <div class="subscription">
+                                <div class="subscription__heading"><strong>Підпишись на нашу розсилку</strong>
+                                    і отримай знижку 10%.
+                                </div>
+                                <form>
+                                    <div class="subscription__field --relative">
+                                        <input type="email" value="" name="email"
+                                            class="subscription__input form-field__input" placeholder="E-mail">
+                                        <button class="subscription__btn btn btn--primary"
+                                            type="submit">Підписатись</button>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-5 col-sm-16 col-xs-16 column">
+
+                            <div class="footer-nav">
+                                <h3 class="footer-nav__title text-bold">Про нас</h3>
+                                <div>
+                                    <ul class="menu">
+                                        <li class="menu-item current-menu-item"><a href="about.html">Про компанію</a>
+                                        </li>
+                                        <li class="menu-item "><a href="services.html">Послуги</a></li>
+                                        <li class="menu-item "><a href="delivery.html">Доставка і оплата</a></li>
+                                        <li class="menu-item "><a href="#">Обмін і повернення</a></li>
+                                        <li class="menu-item "><a href="blog.html">Блог</a></li>
+                                        <li class="menu-item "><a href="#">Мережа салонів</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-5 col-sm-16 col-xs-16 column">
+                            <div class="footer-nav">
+                                <h3 class="footer-nav__title text-bold">Каталог</h3>
+                                <div>
+                                    <ul class="menu">
+                                        <li class="menu-item "><a href="">Оправи для зору</a></li>
+                                        <li class="menu-item "><a href="">Сонцезахисні окуляри</a></li>
+                                        <li class="menu-item "><a href="">Контактні лінзи</a></li>
+                                        <li class="menu-item "><a href="">Аксесуари/засоби догляду</a></li>
+                                        <li class="menu-item "><a href="">Акції</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-16 col-xs-16 column">
+                            <div class="footer-nav">
+                                <h3 class="footer-nav__title text-bold">Контакти</h3>
+                                <div class="contact">
+                                    <div class="contact__item">
+                                        <a href="mailto:info@rybnuy-kombinat.com" class="contact__text">
+                                            info@rybnuy-kombinat.com
+                                        </a>
+                                    </div>
+
+                                    <div class="contact__item ">
+                                        <a href="tel:+380500749888" class="contact__text">+38 050 07 49 888</a>
+                                    </div>
+                                </div>
+                                <div class="socials">
+                                    <span class="socials__label">Написати нам:</span>
+
+                                    <ul class="socials__list" role="list">
+                                        <li class="socials__item">
+                                            <a href="viber://chat?number=%2B380500136888"
+                                                class="socials__link socials__link--viber" target="_blank"
+                                                rel="noopener" aria-label="Viber">
+                                                <svg class="icon" aria-hidden="true" width="36" height="36">
+                                                    <use href="assets/img/sprite.svg#viber"></use>
+                                                </svg>
+
+                                            </a>
+                                        </li>
+
+                                        <li class="socials__item">
+                                            <a href="https://wa.me/380500136888"
+                                                class="socials__link socials__link--whatsapp" target="_blank"
+                                                rel="noopener" aria-label="WhatsApp">
+                                                <svg class="icon" aria-hidden="true" width="36" height="36">
+                                                    <use href="assets/img/sprite.svg#whatsapp"></use>
+                                                </svg>
+
+                                            </a>
+                                        </li>
+
+                                        <li class="socials__item">
+                                            <a href="https://t.me/+380500136888"
+                                                class="socials__link socials__link--telegram" target="_blank"
+                                                rel="noopener" aria-label="Telegram">
+                                                <svg class="icon" aria-hidden="true" width="36" height="36">
+                                                    <use href="assets/img/sprite.svg#telegram"></use>
+                                                </svg>
+
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="socials socials--col">
+                                    <span class="socials__label d-block">Підписуйтесь:</span>
+
+                                    <ul class="socials__list" role="list">
+                                        <li class="socials__item">
+                                            <a href="#" class="socials__link socials__link--youtube" target="_blank"
+                                                rel="noopener" aria-label="YouTube">
+                                                <svg class="icon" aria-hidden="true" width="36" height="36">
+                                                    <use href="assets/img/sprite.svg#youtube"></use>
+                                                </svg>
+                                            </a>
+                                        </li>
+
+                                        <li class="socials__item">
+                                            <a href="#" class="socials__link socials__link--threads" target="_blank"
+                                                rel="noopener" aria-label="Threads">
+                                                <svg class="icon" aria-hidden="true" width="36" height="36">
+                                                    <use href="assets/img/sprite.svg#threads"></use>
+                                                </svg>
+                                            </a>
+                                        </li>
+
+                                        <li class="socials__item">
+                                            <a href="#" class="socials__link socials__link--facebook" target="_blank"
+                                                rel="noopener" aria-label="Facebook">
+                                                <svg class="icon" aria-hidden="true" width="36" height="36">
+                                                    <use href="assets/img/sprite.svg#facebook"></use>
+                                                </svg>
+                                            </a>
+                                        </li>
+
+                                        <li class="socials__item">
+                                            <a href="#" class="socials__link socials__link--instagram" target="_blank"
+                                                rel="noopener" aria-label="Instagram">
+                                                <svg class="icon" aria-hidden="true" width="36" height="36">
+                                                    <use href="assets/img/sprite.svg#instagram"></use>
+                                                </svg>
+                                            </a>
+                                        </li>
+
+                                        <li class="socials__item">
+                                            <a href="#" class="socials__link socials__link--tiktok" target="_blank"
+                                                rel="noopener" aria-label="TikTok">
+                                                <svg class="icon" aria-hidden="true" width="36" height="36">
+                                                    <use href="assets/img/sprite.svg#tiktok"></use>
+                                                </svg>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="container footer__bottom">
+                <div class="row m-row">
+                    <div class="col-xl-5 col-lg-5 col-md-16 col-sm-16 col-xs-16 column ">
+                        <div class="copyright">© 2026 Усі права захищено </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-16 col-sm-16 col-xs-16 column ">
+                        <ul class="menu">
+                            <li class="menu-item current-menu-item"><a href="">Договір оферта</a></li>
+                            <li class="menu-item "><a href="">Політика конфіденційності</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-16 col-sm-16 col-xs-16 column ">
+                        <div class="develop d-flex align-middle align-left">
+                            Дизайн та розробка -
+                            <a href="https://webtune.com.ua/" target="_blank" rel="nofollow" class="develop__link">
+                                WebTune
                             </a>
                         </div>
                     </div>
                 </div>
-                <div class="row m-row">
-                    <div class="col-xl-16 col-lg-16 col-md-16 col-sm-16 col-xs-16 column d-flex align-right">
-                        <div class="socials d-flex align-right align-middle ">
-                            <span class="socials__title">Приєднуйтесь до нас</span>
-                            <ul class="socials__list" role="list">
-                                <li class="socials__item">
-                                    <a href="#" class="socials__link" aria-label="Facebook" target="_blank"
-                                        rel="noopener">
-                                        <svg class="icon" aria-hidden="true" width="20" height="20">
-                                            <use href="assets/img/sprite.svg#facebook"></use>
-                                        </svg>
-                                    </a>
-                                </li>
-                                <li class="socials__item">
-                                    <a href="#" class="socials__link" aria-label="Instagram" target="_blank"
-                                        rel="noopener">
-                                        <svg class="icon" aria-hidden="true" width="20" height="20">
-                                            <use href="assets/img/sprite.svg#instagram"></use>
-                                        </svg>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
             </div>
-        </section>
-        <section class="s-urgent has-flower has-flower--right-center">
-            
-            <div class="s-urgent__contacts">
-                <div class="container">
-                    <div class="row m-row align-center text-center">
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-16 col-xs-16 column">
-                            <h2 class="s-urgent__title text-bold">Якщо ваше питання термінове, будь ласка, зателефонуйте
-                                нам:</h2>
-                            <a href="tel:+380671207452" class="s-urgent__phone text-extrabold">+38 (067) 262-66-80</a>
-                        </div>
+        </footer>
+
+        <div class="popup-wrapper">
+            <div class="bg-layer"></div>
+
+            <div class="popup-content cta" data-rel="cta">
+                <div class="layer-close"></div>
+                <div class="popup-container ">
+                    <div class="btn-close d-flex align-middle align-center"><img src="assets/img/close.svg"
+                            alt="close icon">
                     </div>
-                </div>
-            </div>
-            <div class="s-urgent__next-steps overlap">
-                <div class="container">
-                    <div class="row m-row align-center text-center ">
-                        <div class="col-xl-16 col-lg-16 col-md-16 col-sm-16 col-xs-16 column">
-                            <div class="step__grid align-middle">
-                                <h2 class="heading text-bold h2">Що далі?</h2>
-                                <div class="step">
-                                    <div class="step__icon--wrap d-flex align-center align-middle">
-                                        <img src="assets/img/step-1.svg" alt="" class="step__icon">
-                                    </div>
-                                    <h4 class="step__title text-s text-left">Очікуйте дзвінка адміністратора</h4>
+
+                    <div class="popup-form text-center">
+                        <h4 class="popup-form__heading heading-accent h2 text-bold">Записатись на прийом</h4>
+                        <form class="">
+
+                            <div class="form-field__grid">
+                                <div class="form-field form-field--full">
+                                    <label class="form-field__label text-left" for="user-name">Як до вас
+                                        звертатися?</label>
+                                    <input class="form-field__input" type="text" id="p-user-name" name="name"
+                                        placeholder="Ваше ім’я">
                                 </div>
-                                <div class="step">
-                                    <div class="step__icon--wrap d-flex align-center align-middle">
-                                        <img src="assets/img/step-2.svg" alt="" class="step__icon">
-                                    </div>
-                                    <h4 class="step__title text-s text-left">Підготуйте документи для візиту</h4>
+
+                                <div class="form-field form-field--full">
+                                    <label class="form-field__label text-left" for="user-phone">Ваш номер
+                                        телефону</label>
+                                    <input class="form-field__input" type="tel" id="p-user-phone" name="phone"
+                                        value="+38 (_ _ _) _ _ _  - _ _ - _ _" aria-invalid="true"
+                                        aria-describedby="phone-error">
+
                                 </div>
-                                <div class="step">
-                                    <div class="step__icon--wrap d-flex align-center align-middle">
-                                        <img src="assets/img/step-3.svg" alt="" class="step__icon">
+
+
+
+                                <div class="form-field form-field--full">
+                                    <label class="form-field__label text-left" for="user-direction">Обрати
+                                        напрямок</label>
+                                    <div class="form-select">
+                                        <select class="form-field__select" name="direction">
+                                            <option value="" disabled selected hidden>Вибрати</option>
+                                            <option value="1">Напрямок 1</option>
+                                            <option value="2">Напрямок 2</option>
+                                        </select>
                                     </div>
-                                    <h4 class="step__title text-s text-left">Перегляньте рекомендації лікаря</h4>
+                                </div>
+
+                                <div class="form-field form-field--full">
+                                    <button class="btn btn--primary" type="submit">
+                                        Записатися на прийом
+                                    </button>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
-        </section>
 
-
-    </main>
-
-    <footer class="footer  footer--radius">
-        <div class="footer__inner">
-            <div class="container">
-                <h2 class="visually-hidden">Інформація про компанію та навігація</h2>
-
-                <div class="footer__top">
-
-                    <address class="contacts contacts--row">
-                        <ul class="contacts__list">
-                            <li class="contacts__item">
-                                <span class="contacts__icon contacts__icon--pin" aria-hidden="true">
-                                    <svg class="icon" aria-hidden="true" width="20" height="20">
-                                        <use href="assets/img/sprite.svg#location"></use>
-                                    </svg>
-                                </span>
-                                <a class="contacts__link"
-                                    href="https://maps.google.com/?q=Львів,+вул.+Генерала+Юнаківа,+9" target="_blank"
-                                    rel="noopener noreferrer">
-                                    м. Львів, вул. Генерала Юнаківа, 9
-                                </a>
-                            </li>
-
-                            <li class="contacts__item">
-                                <span class="contacts__icon contacts__icon--phone" aria-hidden="true">
-                                    <svg class="icon" aria-hidden="true" width="20" height="20">
-                                        <use href="img/icons/sprite.svg#phone"></use>
-                                    </svg>
-                                </span>
-                                <a class="contacts__link contacts__link--bold" href="tel:+380671207452">
-                                    <b> +380 (67) 120-74-52</b>
-                                </a>
-                            </li>
-
-                            <li class="contacts__item">
-                                <span class="contacts__icon contacts__icon--email" aria-hidden="true">
-                                    <svg class="icon" aria-hidden="true" width="20" height="20">
-                                        <use href="assets/img/sprite.svg#mail"></use>
-                                    </svg>
-                                </span>
-                                <a class="contacts__link" href="mailto:call.centre.veromed@gmail.com">
-                                    call.centre.veromed@gmail.com
-                                </a>
-                            </li>
-                        </ul>
-                    </address>
-
-                    <div class="socials socials--light">
-                        <ul class="socials__list" role="list">
-                            <li class="socials__item">
-                                <a href="#" class="socials__link" aria-label="Instagram" target="_blank" rel="noopener">
-                                    <svg class="icon" aria-hidden="true" width="20" height="20">
-                                        <use href="assets/img/sprite.svg#instagram"></use>
-                                    </svg>
-                                </a>
-                            </li>
-                            <li class="socials__item">
-                                <a href="#" class="socials__link" aria-label="Facebook" target="_blank" rel="noopener">
-                                    <svg class="icon" aria-hidden="true" width="20" height="20">
-                                        <use href="assets/img/sprite.svg#facebook"></use>
-                                    </svg>
-                                </a>
-                            </li>
-                            <li class="socials__item">
-                                <a href="#" class="socials__link" aria-label="YouTube" target="_blank" rel="noopener">
-                                    <svg class="icon" aria-hidden="true" width="20" height="20">
-                                        <use href="assets/img/sprite.svg#youtube"></use>
-                                    </svg>
-                                </a>
-                            </li>
-                            <li class="socials__item">
-                                <a href="#" class="socials__link" aria-label="TikTok" target="_blank" rel="noopener">
-                                    <svg class="icon" aria-hidden="true" width="20" height="20">
-                                        <use href="assets/img/sprite.svg#tiktok"></use>
-                                    </svg>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-
-                <div class="footer__body">
-                    <a href="/" class="footer__logo d-none d-lg-block" aria-label="VeroMed — На головну">
-                        <img src="assets/img/logo.svg" alt="" width="180" height="60" loading="lazy">
-                    </a>
-
-                    <div class="footer-nav__grid">
-
-                        <div class="footer-nav">
-                            <h3 class="footer-nav__title text-extrabold">Веромед</h3>
-                            <div>
-                                <ul class="menu">
-                                    <li class="menu-item "><a href="#">Спеціальні пропозиції</a></li>
-                                    <li class="menu-item "><a href="#">Блог</a></li>
-                                    <li class="menu-item current-menu-item ">
-                                        <a href="#" aria-current="page">Про нас</a>
-                                    </li>
-                                    <li class="menu-item "><a href="#">Наші лікарі</a></li>
-                                    <li class="menu-item "><a href="#">Наші партнери</a></li>
-                                    <li class="menu-item "><a href="#">Питання лікарю</a></li>
-                                    <li class="menu-item "><a href="#">Вартість послуг</a></li>
-                                    <li class="menu-item "><a href="#">Публічна оферта</a></li>
-                                    <li class="menu-item "><a href="#">Статті</a></li>
-                                    <li class="menu-item "><a href="#">Відгуки</a></li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <!-- Колонка 3 -->
-                        <div class="footer-nav">
-                            <h3 class="footer-nav__title text-extrabold">Послуги</h3>
-                            <div class="">
-                                <ul class="menu">
-                                    <li class="menu-item "><a href="#">Флебологія</a></li>
-                                    <li class="menu-item "><a href="#">Блефаропластика</a></li>
-                                    <li class="menu-item "><a href="#">Ліпосакція</a></li>
-                                    <li class="menu-item "><a href="#">Абдомінопластика у Львові</a></li>
-                                    <li class="menu-item "><a href="#">Трансплантація волосся</a></li>
-                                    <li class="menu-item "><a href="#">Трихологія</a></li>
-                                    <li class="menu-item "><a href="#">Дерматолог у Львові</a></li>
-                                    <li class="menu-item "><a href="#">Дерматоонкологія</a></li>
-                                    <li class="menu-item"><a href="#">Проктолог у Львові</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="footer__bottom">
-                    <div class="footer__description">
-                        <p>«VeroMed» — це багатопрофільний медичний центр, що відповідає найвищим світовим стандартам
-                            надання медичної допомоги.</p>
-                        <p>Наші спеціалісти забезпечать Вас лише якісним медичним обслуговуванням. Колектив центру — це
-                            велика дружня сім'я. І ми з великою любов'ю і турботою відносимось до кожного нашого
-                            пацієнта. Лікарі медичного центру «VeroMed» постійно підтримують і підвищують рівень своїх
-                            професійних навиків на основі передових досягнень світової медицини. І все це завдяки
-                            вузькій спеціалізації кожного нашого працівника.</p>
-                    </div>
-
-                    <div class="footer__copyright">
-                        <div>© 2026 Веромед. Всі права захищені. Заборонено використання матеріалів сайту без згоди його
-                            авторів і зворотнього посилання. Ми використовуємо за замовчуванням державну мову, але
-                            повідомляємо, що сайт може відкриватися на мові, яка встановлена на браузері/інтерфейсі
-                            користувача</div>
-                        <div class="footer__developer">Design and development — <a href="">WebTune</a></div>
-                    </div>
-                </div>
-            </div>
         </div>
-    </footer>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9h5L2xSWEvRFgLc7y4d16KPUDydNgs9Y"
+            type="text/javascript"></script>
 
-    <div class="popup-wrapper">
-        <div class="bg-layer"></div>
-
-        <div class="popup-content cta" data-rel="cta">
-            <div class="layer-close"></div>
-            <div class="popup-container ">
-                <div class="btn-close d-flex align-middle align-center"><img src="assets/img/close.svg"
-                        alt="close icon">
-                </div>
-
-                <div class="popup-form text-center">
-                    <h4 class="popup-form__heading heading-accent h2 text-bold">Записатись на прийом</h4>
-                    <form class="">
-
-                        <div class="form-field__grid">
-                            <div class="form-field form-field--full">
-                                <label class="form-field__label text-left" for="user-name">Як до вас звертатися?</label>
-                                <input class="form-field__input" type="text" id="p-user-name" name="name"
-                                    placeholder="Ваше ім’я">
-                            </div>
-
-                            <div class="form-field form-field--full">
-                                <label class="form-field__label text-left" for="user-phone">Ваш номер телефону</label>
-                                <input class="form-field__input" type="tel" id="p-user-phone" name="phone"
-                                    value="+38 (_ _ _) _ _ _  - _ _ - _ _" aria-invalid="true"
-                                    aria-describedby="phone-error">
-
-                            </div>
+        <script src="./assets/js/jquery-3.7.0.min.js"></script>
+        <script src="assets/js/jquery-ui.min.js"></script>
+        <script src="assets/js/swiper-bundle.min.js"></script>
+        <script src="assets/js/jquery.sumoselect.min.js"></script>
+        <script src="assets/js/sumoselectCustom.js"></script>
 
 
+        <script src="src/scripts/app-swiper.js"></script>
+        <script src="src/scripts/app.js"></script>
+        <script src="src/scripts/js_app.js"></script>
 
-                            <div class="form-field form-field--full">
-                                <label class="form-field__label text-left" for="user-direction">Обрати напрямок</label>
-                                <div class="form-select">
-                                    <select class="form-field__select" name="direction">
-                                        <option value="" disabled selected hidden>Вибрати</option>
-                                        <option value="1">Напрямок 1</option>
-                                        <option value="2">Напрямок 2</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="form-field form-field--full">
-                                <button class="btn btn--primary" type="submit">
-                                    Записатися на прийом
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9h5L2xSWEvRFgLc7y4d16KPUDydNgs9Y"
-        type="text/javascript"></script>
-
-    <script src="./assets/js/jquery-3.7.0.min.js"></script>
-    <script src="assets/js/jquery-ui.min.js"></script>
-    <script src="assets/js/swiper-bundle.min.js"></script>
-    <script src="assets/js/jquery.sumoselect.min.js"></script>
-    <script src="assets/js/sumoselectCustom.js"></script>
-
-
-    <script src="src/scripts/app-swiper.js"></script>
-    <script src="src/scripts/app.js"></script>
-    <script src="src/scripts/js_app.js"></script>
-
-    <script src="src/scripts/app_map.js"></script>
+        <script src="src/scripts/app_map.js"></script>
 </body>
 
 </html>

@@ -256,19 +256,19 @@ div.wpcf7 .ajax-loader {
     opacity: 0;
     cursor: pointer;
 
-    &:checked~.radio__custom::after {
+    &:checked~.radio__ui::after {
       opacity: 1;
     }
   }
 
-  &__custom {
+  &__ui {
     position: relative;
     display: inline-block;
     width: 24px;
     height: 24px;
-    margin-right: 7px;
-    background-color: #ffffff;
-    border: 1px solid #c0c0c0;
+    margin-right: 20px;
+    background-color: $color-white;
+    border: 1px solid rgba(227, 227, 227, 1);
     border-radius: 50%;
     transition: all 0.4s ease-out;
 
@@ -287,7 +287,7 @@ div.wpcf7 .ajax-loader {
     }
   }
 
-  &__text {
+  &__label {
     font-size: 16px;
     color: #1b1b1b;
   }

@@ -1,0 +1,1491 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <title>Файна-оптика</title>
+    <meta name="description" content="" />
+
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
+
+    <link rel="stylesheet" href="assets/css/sumoselect.min.css" />
+    <link rel="stylesheet" href="assets/css/app.min.css" />
+
+</head>
+
+<body>
+
+    <header class="header js-header bg">
+        <div class="container">
+
+            <div class="header__topbar d-none d-lg-flex align-right align-middle">
+                <nav class="header__nav">
+                    <ul class="menu d-flex align-justify align-middle">
+                        <li class="menu-item"><a href="about.html">Про компанію</a></li>
+                        <li class="menu-item"><a href="services.html">Послуги</a></li>
+                        <li class="menu-item active"><a href="delivery.html">Доставка і оплата</a></li>
+                        <li class="menu-item"><a href="return.html">Омін і повернення</a></li>
+                        <li class="menu-item"><a href="blog.html">Блог</a></li>
+                        <li class="menu-item"><a href="contacts.html">Мережа салонів</a></li>
+                    </ul>
+                </nav>
+
+                <div class="header__contacts d-none d-lg-flex align-middle">
+                    <span class="header__contacts--title">Є питання? Телефонуйте - допоможемо</span>
+                    <a href="tel:+380672626680" class="header__contacts--phone"> +38 (050) 07-49-888</a>
+                </div>
+                <button type="button" class="control-btn control-btn--search js-open-search"
+                    aria-label="Відкрити пошук">
+                    <span class="control-btn__icon"></span>
+                    <span class="control-btn__text d-none d-xl-inline">Пошук</span>
+                </button>
+
+                <a href="#" class="control-btn control-btn--user open-popup" data-rel="login"
+                    aria-label="Особистий кабінет">
+                    <span class="control-btn__icon"></span>
+                </a>
+
+                <a href="#" class="control-btn control-btn--wishlist is-animated" aria-label="Обране">
+                    <div class="control-btn__icon-wrap">
+                        <span class="control-btn__icon"></span>
+                        <!-- <span class="control-btn__badge">0</span> -->
+                    </div>
+                </a>
+
+                <a href="#" class="control-btn control-btn--cart is-animated" aria-label="Кошик, товарів у кошику: 0">
+                    <div class="control-btn__icon-wrap">
+                        <span class="control-btn__icon"></span>
+                        <span class="control-btn__badge">0</span>
+                    </div>
+                </a>
+
+                <button type="button" class="burger burger--spring" aria-label="Відкрити мобільне меню">
+                    <span class="burger__box">
+                        <span class="burger__inner"></span>
+                    </span>
+                </button>
+
+                <button class="burger burger--spring" aria-label="Відкрити мобільне меню">
+                    <span class="burger__box">
+                        <span class="burger__inner"></span>
+                    </span>
+                </button>
+
+
+            </div>
+
+            <div class="header__main d-flex align-justify align-middle">
+                <a href="index.html" class="logo__wrap">
+                    <img src="assets/img/logo.svg" alt="Файна оптика" class="logo">
+                </a>
+
+                <form action="/search" method="GET" class="header__search-form d-none d-lg-block">
+                    <input name="s" type="text" placeholder="Пошук" autocomplete="off">
+                    <button type="submit" aria-label="Пошук">
+                        <svg class="icon" aria-hidden="true" width="20" height="20">
+                            <use href="assets/img/sprite.svg#search"></use>
+                        </svg>
+                    </button>
+
+                    <div class="header__search-popup">
+                        <div class="header__search-meta">
+                            По результату <span class="header__search-query">«гінеколог»</span> знайдено <span
+                                class="header__search-count">6 результатів</span>
+                        </div>
+
+                        <ul class="header__search-list">
+
+                            <li class="header__search-item">
+                                <a href="doctor-detail.html" class="search-result-card search-result-card--doctor">
+                                    <div class="search-result-card__avatar">
+                                        <img src="assets/img/team-1.png" alt="Ковальчук Олена Євгенівна" loading="lazy">
+                                    </div>
+                                    <div class="search-result-card__info">
+                                        <h4 class="search-result-card__title">Ковальчук Олена Євгенівна</h4>
+                                        <p class="search-result-card__desc">Акушер-гінеколог, підлітковий гінеколог, УЗД
+                                        </p>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <li class="header__search-item">
+                                <a href="doctor-detail.html" class="search-result-card search-result-card--doctor">
+                                    <div class="search-result-card__avatar">
+                                        <img src="assets/img/team-4.png" alt="Ковальчук Олена Євгенівна" loading="lazy">
+                                    </div>
+                                    <div class="search-result-card__info">
+                                        <h4 class="search-result-card__title">Ковальчук Олена Євгенівна</h4>
+                                        <p class="search-result-card__desc">Акушер-гінеколог, підлітковий гінеколог, УЗД
+                                        </p>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <li class="header__search-item">
+                                <a href="article.html" class="search-result-card search-result-card--article">
+                                    <div class="search-result-card__thumb">
+                                        <img src="assets/img/article-1.jpg" alt="Варикоз: симптоми" loading="lazy">
+                                    </div>
+                                    <div class="search-result-card__info">
+                                        <h4 class="search-result-card__title">Варикоз: симптоми, стадії та лікування у
+                                            флеболога у Львові</h4>
+                                    </div>
+                                </a>
+                            </li>
+
+                        </ul>
+
+                        <div class="header__search-footer">
+                            <a href="search.html" class="header__search-all-link">Усі результати</a>
+                        </div>
+                    </div>
+                </form>
+                <a href="#" class="btn btn--primary open-popup" data-rel="cta">
+                    Записатися на прийом
+                </a>
+                <div class="header__controls">
+
+                    <button type="button" class="control-btn control-btn--search js-open-search"
+                        aria-label="Відкрити пошук">
+                        <span class="control-btn__icon"></span>
+                        <span class="control-btn__text d-none d-xl-inline">Пошук</span>
+                    </button>
+
+                    <a href="#" class="control-btn control-btn--user open-popup" data-rel="login"
+                        aria-label="Особистий кабінет">
+                        <span class="control-btn__icon"></span>
+                    </a>
+
+                    <a href="#" class="control-btn control-btn--wishlist is-animated" aria-label="Обране">
+                        <div class="control-btn__icon-wrap">
+                            <span class="control-btn__icon"></span>
+                            <!-- <span class="control-btn__badge">0</span> -->
+                        </div>
+                    </a>
+
+                    <a href="#" class="control-btn control-btn--cart is-animated"
+                        aria-label="Кошик, товарів у кошику: 0">
+                        <div class="control-btn__icon-wrap">
+                            <span class="control-btn__icon"></span>
+                            <span class="control-btn__badge">0</span>
+                        </div>
+                    </a>
+
+                    <button type="button" class="burger burger--spring" aria-label="Відкрити мобільне меню">
+                        <span class="burger__box">
+                            <span class="burger__inner"></span>
+                        </span>
+                    </button>
+
+                    <button class="burger burger--spring" aria-label="Відкрити мобільне меню">
+                        <span class="burger__box">
+                            <span class="burger__inner"></span>
+                        </span>
+                    </button>
+
+                </div>
+
+
+                <div class="header__mobile-controls d-flex d-lg-none align-middle">
+                    <a href="tel:+380672626680" class="btn-phone" aria-label="Зателефонувати">
+                        <svg class="icon" aria-hidden="true" width="20" height="20">
+                            <use href="assets/img/sprite.svg#phone"></use>
+                        </svg>
+                    </a>
+                    <button type="button" class="burger js-menu-toggle" aria-label="Переключити меню">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="header__inner">
+
+                <form action="/search" method="GET" class="header__search-form d-block d-lg-none">
+                    <input name="s" type="text" placeholder="Пошук" autocomplete="off">
+                    <button type="submit" aria-label="Пошук">
+                        <svg class="icon" aria-hidden="true" width="20" height="20">
+                            <use href="assets/img/sprite.svg#search"></use>
+                        </svg>
+                    </button>
+
+                    <div class="header__search-popup">
+                        <div class="header__search-meta">
+                            По результату <span class="header__search-query">«гінеколог»</span> знайдено <span
+                                class="header__search-count">6 результатів</span>
+                        </div>
+
+                        <ul class="header__search-list">
+
+                            <li class="header__search-item">
+                                <a href="doctor-detail.html" class="search-result-card search-result-card--doctor">
+                                    <div class="search-result-card__avatar">
+                                        <img src="assets/img/team-1.png" alt="Ковальчук Олена Євгенівна" loading="lazy">
+                                    </div>
+                                    <div class="search-result-card__info">
+                                        <h4 class="search-result-card__title">Ковальчук Олена Євгенівна</h4>
+                                        <p class="search-result-card__desc">Акушер-гінеколог, підлітковий гінеколог, УЗД
+                                        </p>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <li class="header__search-item">
+                                <a href="doctor-detail.html" class="search-result-card search-result-card--doctor">
+                                    <div class="search-result-card__avatar">
+                                        <img src="assets/img/team-4.png" alt="Ковальчук Олена Євгенівна" loading="lazy">
+                                    </div>
+                                    <div class="search-result-card__info">
+                                        <h4 class="search-result-card__title">Ковальчук Олена Євгенівна</h4>
+                                        <p class="search-result-card__desc">Акушер-гінеколог, підлітковий гінеколог, УЗД
+                                        </p>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <li class="header__search-item">
+                                <a href="article.html" class="search-result-card search-result-card--article">
+                                    <div class="search-result-card__thumb">
+                                        <img src="assets/img/article-1.jpg" alt="Варикоз: симптоми" loading="lazy">
+                                    </div>
+                                    <div class="search-result-card__info">
+                                        <h4 class="search-result-card__title">Варикоз: симптоми, стадії та лікування у
+                                            флеболога у Львові</h4>
+                                    </div>
+                                </a>
+                            </li>
+
+                        </ul>
+
+                        <div class="header__search-footer">
+                            <a href="search.html" class="header__search-all-link">Усі результати</a>
+                        </div>
+                    </div>
+                </form>
+
+                <nav class="header__nav">
+                    <ul class="menu d-flex align-justify align-middle">
+                        <li class="menu-item"><a href="">Оправи для зору</a></li>
+                        <li class="menu-item"><a href="">Сонцезахисні окуляри</a></li>
+                        <li class="menu-item active"><a href="">Контактні лінзи</a></li>
+                        <li class="menu-item"><a href="">Аксесуари/засоби догляду</a></li>
+                        <li class="menu-item"><a href="">Акції</a></li>
+
+                    </ul>
+                </nav>
+
+                <div class="header__inner-contacts d-lg-none">
+                    <a href="mailto:call.centre.veromed@gmail.com" class="header__email d-flex align-left align-middle">
+                        <svg class="icon" aria-hidden="true" width="20" height="20">
+                            <use href="assets/img/sprite.svg#location"></use>
+                        </svg>
+                        <span>call.centre.veromed@gmail.com</span>
+                    </a>
+                    <div class="header__contacts-row d-flex align-justify align-middle">
+                        <a href="tel:+380672626680" class="header__phone">+380 (67) 262–66–80</a>
+                        <div class="header__socials d-flex align-middle">
+                            <div class="socials">
+                                <ul class="socials__list" role="list">
+                                    <li class="socials__item">
+                                        <a href="#" class="socials__link socials__link--telegram" target="_blank"
+                                            rel="noopener" aria-label="Telegram">
+                                            <svg class="icon" aria-hidden="true" width="20" height="20">
+                                                <use href="assets/img/sprite.svg#telegram"></use>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                    <li class="socials__item">
+                                        <a href="#" class="socials__link socials__link--whathapp" target="_blank"
+                                            rel="noopener" aria-label="WhatsApp">
+                                            <svg class="icon" aria-hidden="true" width="20" height="20">
+                                                <use href="assets/img/sprite.svg#whatsapp"></use>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                    <li class="socials__item">
+                                        <a href="#" class="socials__link socials__link--viber" target="_blank"
+                                            rel="noopener" aria-label="Viber">
+                                            <svg class="icon" aria-hidden="true" width="20" height="20">
+                                                <use href="assets/img/sprite.svg#viber"></use>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lang d-flex align-center justify-center">
+                        <a href="#" class="lang-item active"><img src="assets/img/flag-ua.svg" alt="UA"></a>
+                        <a href="#" class="lang-item"><img src="assets/img/flag-us.svg" alt="EN"></a>
+                    </div>
+                    <a href="#" class="btn btn--primary open-popup btn-block" data-rel="cta">
+                        Записатися на прийом
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+    </header>
+
+    <main class="main ">
+        <div class="kama_breadcrumbs__wrap">
+            <div class="container">
+                <div class="row m-row">
+                    <div class="col-xl-16 col-lg-16 col-md-16 col-sm-16 col-xs-16 column">
+                        <div class="kama_breadcrumbs">
+                            <span>
+                                <a href="" itemprop="item">
+                                    <span>Головна</span>
+                                </a>
+                                <span class="kb_sep">/</span>
+                                <span class="kb_title">Оформлення замовлення</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="s-cart">
+            <div class="container">
+                <div class="row m-row">
+                    <div class="col-xl-16 col-lg-16 col-md-16 col-sm-16 col-xs-16 column">
+                        <h1 class="heading h2 text-bold">Ваш кошик</h1>
+                    </div>
+                </div>
+                <div class="row m-row">
+                    <div class="col-xl-16 col-lg-16 col-md-16 col-sm-16 col-xs-16 column">
+                        <div class="form delivery-form">
+                            <div class="cart-products">
+                                <article class="product product--horizontal js-product">
+
+                                    <a class="product__img-link" href="product-detail.html">
+                                        <img src="assets/img/product-1.png" alt="Сонцезахисні окуляри GUESS GU00289"
+                                            class="product__img" loading="lazy">
+                                    </a>
+
+
+                                    <div class="product__content">
+                                        <a href="product-detail.html" class="product__title" itemprop="name">
+                                            Сонцезахисні окуляри GUESS GU00289 32A SMOKE
+                                        </a>
+
+                                        <!-- Ціна за 1 шт -->
+                                        <div class="product__price-wrap product__price-wrap--unit">
+                                            <p class="price">
+                                                <ins>
+                                                    <span class="woocommerce-Price-amount amount">
+                                                        <bdi>3 999 <span
+                                                                class="woocommerce-Price-currencySymbol">грн</span></bdi>
+                                                    </span>
+                                                </ins>
+                                                <del aria-hidden="true">
+                                                    <span class="woocommerce-Price-amount amount">
+                                                        <bdi>5 699 <span
+                                                                class="woocommerce-Price-currencySymbol">грн</span></bdi>
+                                                    </span>
+                                                </del>
+                                            </p>
+                                        </div>
+
+
+                                        <!-- 3. Вибір кількості -->
+                                        <div class="product__quantity ">
+                                            <div class="quantity-picker">
+                                                <button type="button"
+                                                    class="quantity-picker__btn quantity-picker__btn--decrement"
+                                                    aria-label="Зменшити кількість">&minus;</button>
+                                                <input type="number" class="quantity-picker__input" value="1"
+                                                    data-min="1" data-max="100" readonly>
+                                                <button type="button"
+                                                    class="quantity-picker__btn quantity-picker__btn--increment"
+                                                    aria-label="Додати кількість">&plus;</button>
+                                            </div>
+                                        </div>
+
+                                        <!-- 4. Підсумкова вартість (Загальна ціна) -->
+                                        <div class="product__price-wrap product__price-wrap--total">
+                                            <p class="price">
+                                                <ins>
+                                                    <span class="woocommerce-Price-amount amount">
+                                                        <bdi>3 999 <span
+                                                                class="woocommerce-Price-currencySymbol">грн</span></bdi>
+                                                    </span>
+                                                </ins>
+                                            </p>
+                                        </div>
+
+                                        <!-- 5. Кнопка видалення -->
+                                        <button class="product__remove-btn js-remove-product" type="button"
+                                            aria-label="Видалити з кошика">
+                                            <svg width="16" height="18" viewBox="0 0 16 18" fill="none"
+                                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round">
+                                                <path
+                                                    d="M1 4.5h14M5.5 4.5V3a1.5 1.5 0 011.5-1.5h2A1.5 1.5 0 0110.5 3v1.5M13.5 4.5v10.5a1.5 1.5 0 01-1.5 1.5H4a1.5 1.5 0 01-1.5-1.5V4.5" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </article>
+                                <article class="product product--horizontal js-product">
+
+                                    <a class="product__img-link" href="product-detail.html">
+                                        <img src="assets/img/product-1.png" alt="Сонцезахисні окуляри GUESS GU00289"
+                                            class="product__img" loading="lazy">
+                                    </a>
+
+
+                                    <div class="product__content">
+                                        <a href="product-detail.html" class="product__title" itemprop="name">
+                                            Сонцезахисні окуляри GUESS GU00289 32A SMOKE
+                                        </a>
+
+                                        <!-- Ціна за 1 шт -->
+                                        <div class="product__price-wrap product__price-wrap--unit">
+                                            <p class="price">
+                                                <ins>
+                                                    <span class="woocommerce-Price-amount amount">
+                                                        <bdi>3 999 <span
+                                                                class="woocommerce-Price-currencySymbol">грн</span></bdi>
+                                                    </span>
+                                                </ins>
+                                                <del aria-hidden="true">
+                                                    <span class="woocommerce-Price-amount amount">
+                                                        <bdi>5 699 <span
+                                                                class="woocommerce-Price-currencySymbol">грн</span></bdi>
+                                                    </span>
+                                                </del>
+                                            </p>
+                                        </div>
+
+
+                                        <!-- 3. Вибір кількості -->
+                                        <div class="product__quantity quantity-picker">
+                                            <button type="button"
+                                                class="quantity-picker__btn quantity-picker__btn--decrement"
+                                                aria-label="Зменшити кількість">&minus;</button>
+                                            <input type="number" class="quantity-picker__input" value="1" data-min="1"
+                                                data-max="100" readonly>
+                                            <button type="button"
+                                                class="quantity-picker__btn quantity-picker__btn--increment"
+                                                aria-label="Додати кількість">&plus;</button>
+                                        </div>
+
+                                        <!-- 4. Підсумкова вартість (Загальна ціна) -->
+                                        <div class="product__price-wrap product__price-wrap--total">
+                                            <p class="price">
+                                                <ins>
+                                                    <span class="woocommerce-Price-amount amount">
+                                                        <bdi>3 999 <span
+                                                                class="woocommerce-Price-currencySymbol">грн</span></bdi>
+                                                    </span>
+                                                </ins>
+                                            </p>
+                                        </div>
+
+                                        <!-- 5. Кнопка видалення -->
+                                        <button class="product__remove-btn js-remove-product" type="button"
+                                            aria-label="Видалити з кошика">
+                                            <svg width="16" height="18" viewBox="0 0 16 18" fill="none"
+                                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round">
+                                                <path
+                                                    d="M1 4.5h14M5.5 4.5V3a1.5 1.5 0 011.5-1.5h2A1.5 1.5 0 0110.5 3v1.5M13.5 4.5v10.5a1.5 1.5 0 01-1.5 1.5H4a1.5 1.5 0 01-1.5-1.5V4.5" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </article>
+                                <article class="product product--horizontal js-product">
+
+                                    <a class="product__img-link" href="product-detail.html">
+                                        <img src="assets/img/product-1.png" alt="Сонцезахисні окуляри GUESS GU00289"
+                                            class="product__img" loading="lazy">
+                                    </a>
+
+
+                                    <div class="product__content">
+                                        <a href="product-detail.html" class="product__title" itemprop="name">
+                                            Сонцезахисні окуляри GUESS GU00289 32A SMOKE
+                                        </a>
+
+                                        <!-- Ціна за 1 шт -->
+                                        <div class="product__price-wrap product__price-wrap--unit">
+                                            <p class="price">
+                                                <ins>
+                                                    <span class="woocommerce-Price-amount amount">
+                                                        <bdi>3 999 <span
+                                                                class="woocommerce-Price-currencySymbol">грн</span></bdi>
+                                                    </span>
+                                                </ins>
+                                                <del aria-hidden="true">
+                                                    <span class="woocommerce-Price-amount amount">
+                                                        <bdi>5 699 <span
+                                                                class="woocommerce-Price-currencySymbol">грн</span></bdi>
+                                                    </span>
+                                                </del>
+                                            </p>
+                                        </div>
+
+
+                                        <!-- 3. Вибір кількості -->
+                                        <div class="product__quantity quantity-picker">
+                                            <button type="button"
+                                                class="quantity-picker__btn quantity-picker__btn--decrement"
+                                                aria-label="Зменшити кількість">&minus;</button>
+                                            <input type="number" class="quantity-picker__input" value="1" data-min="1"
+                                                data-max="100" readonly>
+                                            <button type="button"
+                                                class="quantity-picker__btn quantity-picker__btn--increment"
+                                                aria-label="Додати кількість">&plus;</button>
+                                        </div>
+
+                                        <!-- 4. Підсумкова вартість (Загальна ціна) -->
+                                        <div class="product__price-wrap product__price-wrap--total">
+                                            <p class="price">
+                                                <ins>
+                                                    <span class="woocommerce-Price-amount amount">
+                                                        <bdi>3 999 <span
+                                                                class="woocommerce-Price-currencySymbol">грн</span></bdi>
+                                                    </span>
+                                                </ins>
+                                            </p>
+                                        </div>
+
+                                        <!-- 5. Кнопка видалення -->
+                                        <button class="product__remove-btn js-remove-product" type="button"
+                                            aria-label="Видалити з кошика">
+                                            <svg width="16" height="18" viewBox="0 0 16 18" fill="none"
+                                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round">
+                                                <path
+                                                    d="M1 4.5h14M5.5 4.5V3a1.5 1.5 0 011.5-1.5h2A1.5 1.5 0 0110.5 3v1.5M13.5 4.5v10.5a1.5 1.5 0 01-1.5 1.5H4a1.5 1.5 0 01-1.5-1.5V4.5" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </article>
+                                <article class="product product--horizontal js-product">
+
+                                    <a class="product__img-link" href="product-detail.html">
+                                        <img src="assets/img/product-1.png" alt="Сонцезахисні окуляри GUESS GU00289"
+                                            class="product__img" loading="lazy">
+                                    </a>
+
+
+                                    <div class="product__content">
+                                        <a href="product-detail.html" class="product__title" itemprop="name">
+                                            Сонцезахисні окуляри GUESS GU00289 32A SMOKE
+                                        </a>
+
+                                        <!-- Ціна за 1 шт -->
+                                        <div class="product__price-wrap product__price-wrap--unit">
+                                            <p class="price">
+                                                <ins>
+                                                    <span class="woocommerce-Price-amount amount">
+                                                        <bdi>3 999 <span
+                                                                class="woocommerce-Price-currencySymbol">грн</span></bdi>
+                                                    </span>
+                                                </ins>
+                                                <del aria-hidden="true">
+                                                    <span class="woocommerce-Price-amount amount">
+                                                        <bdi>5 699 <span
+                                                                class="woocommerce-Price-currencySymbol">грн</span></bdi>
+                                                    </span>
+                                                </del>
+                                            </p>
+                                        </div>
+
+
+                                        <!-- 3. Вибір кількості -->
+                                        <div class="product__quantity quantity-picker">
+                                            <button type="button"
+                                                class="quantity-picker__btn quantity-picker__btn--decrement"
+                                                aria-label="Зменшити кількість">&minus;</button>
+                                            <input type="number" class="quantity-picker__input" value="1" data-min="1"
+                                                data-max="100" readonly>
+                                            <button type="button"
+                                                class="quantity-picker__btn quantity-picker__btn--increment"
+                                                aria-label="Додати кількість">&plus;</button>
+                                        </div>
+
+                                        <!-- 4. Підсумкова вартість (Загальна ціна) -->
+                                        <div class="product__price-wrap product__price-wrap--total">
+                                            <p class="price">
+                                                <ins>
+                                                    <span class="woocommerce-Price-amount amount">
+                                                        <bdi>3 999 <span
+                                                                class="woocommerce-Price-currencySymbol">грн</span></bdi>
+                                                    </span>
+                                                </ins>
+                                            </p>
+                                        </div>
+
+                                        <!-- 5. Кнопка видалення -->
+                                        <button class="product__remove-btn js-remove-product" type="button"
+                                            aria-label="Видалити з кошика">
+                                            <svg width="16" height="18" viewBox="0 0 16 18" fill="none"
+                                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round">
+                                                <path
+                                                    d="M1 4.5h14M5.5 4.5V3a1.5 1.5 0 011.5-1.5h2A1.5 1.5 0 0110.5 3v1.5M13.5 4.5v10.5a1.5 1.5 0 01-1.5 1.5H4a1.5 1.5 0 01-1.5-1.5V4.5" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="s-checkout">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-16 col-lg-16 col-md-16 col-sm-16 col-xs-16 column">
+                        <h2 class="heading h2 text-bold">
+                            Оформлення замовлення
+                        </h2>
+                        <form class="checkout-form">
+                            <!-- 1. Контактні дані -->
+                            <div class="checkout-form__section">
+                                <h2 class="checkout-form__title">Контактні дані</h2>
+
+                                <div class="checkout-form__grid">
+                                    <div class="field">
+                                        <label class="field__label" for="first_name">Ім’я</label>
+                                        <input class="field__input" id="first_name" type="text" name="first_name"
+                                            placeholder="Ім’я" aria-label="Ім’я" required>
+                                    </div>
+
+                                    <div class="field">
+                                        <label class="field__label" for="phone">Телефон</label>
+                                        <input class="field__input" id="phone" type="tel" name="phone"
+                                            placeholder="Телефон" aria-label="Телефон" required>
+                                    </div>
+
+                                    <div class="field">
+                                        <label class="field__label" for="email">Email</label>
+                                        <input class="field__input" id="email" type="email" name="email"
+                                            placeholder="Email" aria-label="Email">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 2. Спосіб отримання -->
+                            <div class="checkout-form__section">
+                                <h2 class="checkout-form__title">Спосіб отримання</h2>
+
+                                <div class="checkout-form__delivery delivery-list js-delivery-group">
+                                    <!-- Самовивіз -->
+                                    <div class="delivery-card is-active">
+                                        <label class="radio">
+                                            <input type="radio" name="delivery" value="pickup"
+                                                class="radio__input js-delivery-toggle" data-target="pickup-block"
+                                                checked>
+                                            <span class="radio__ui"></span>
+                                            <span class="radio__label">Самовивіз з філії</span>
+                                        </label>
+
+                                        <div class="delivery-card__content js-delivery-block" id="pickup-block">
+                                            <div class="field">
+                                                <select class="field__input field__input--select"
+                                                    name="pickup_location">
+                                                    <option value="" disabled selected hidden>Адреса</option>
+                                                    <option value="1">м. Київ, вул. Хрещатик, 1</option>
+                                                    <option value="2">м. Львів, вул. Франка, 10</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Нова пошта -->
+                                    <div class="delivery-card">
+                                        <label class="radio">
+                                            <input type="radio" name="delivery" value="np"
+                                                class="radio__input js-delivery-toggle" data-target="np-block">
+                                            <span class="radio__ui"></span>
+                                            <span class="radio__label">
+                                                <img class="radio__icon" src="assets/img/nova-poshta.svg"
+                                                    alt="Нова пошта" width="18" height="18">
+                                                Нова пошта
+                                            </span>
+                                        </label>
+
+                                        <div class="delivery-card__content js-delivery-block" id="np-block" hidden>
+                                            <div class="field">
+                                                <select class="field__input field__input--select" name="np_branch">
+                                                    <option value="" disabled selected hidden>Оберіть відділення або
+                                                        поштомат</option>
+                                                    <option value="1">Відділення №1: вул. Пирогівський шлях, 135
+                                                    </option>
+                                                    <option value="2">Відділення №2: вул. Бережанська, 9</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Укрпошта -->
+                                    <div class="delivery-card">
+                                        <label class="radio">
+                                            <input type="radio" name="delivery" value="ukrposhta"
+                                                class="radio__input js-delivery-toggle" data-target="ukrposhta-block">
+                                            <span class="radio__ui"></span>
+                                            <span class="radio__label">
+                                                <img class="radio__icon" src="assets/img/ukrposhta.svg" alt="Укрпошта"
+                                                    width="18" height="18">
+                                                Укрпошта
+                                            </span>
+                                        </label>
+
+                                        <div class="delivery-card__content js-delivery-block" id="ukrposhta-block"
+                                            hidden>
+                                            <div class="field">
+                                                <select class="field__input field__input--select"
+                                                    name="ukrposhta_branch">
+                                                    <option value="" disabled selected hidden>Оберіть відділення
+                                                        Укрпошти</option>
+                                                    <option value="01001">01001 — м. Київ, вул. Хрещатик, 22</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 3. Спосіб оплати -->
+                            <div class="checkout-form__section">
+                                <h2 class="checkout-form__title">Спосіб оплати</h2>
+
+                                <div class="checkout-form__options">
+                                    <label class="radio">
+                                        <input type="radio" name="payment" value="online" class="radio__input">
+                                        <span class="radio__ui"></span>
+                                        <span class="radio__label">Онлайн-оплата</span>
+                                    </label>
+
+                                    <label class="radio">
+                                        <input type="radio" name="payment" value="cod" class="radio__input" checked>
+                                        <span class="radio__ui"></span>
+                                        <span class="radio__label">Оплата при отриманні</span>
+                                    </label>
+
+                                    <label class="radio">
+                                        <input type="radio" name="payment" value="store" class="radio__input">
+                                        <span class="radio__ui"></span>
+                                        <span class="radio__label">Оплата в магазині</span>
+                                    </label>
+                                </div>
+
+                                <div class="field checkout-form__comment">
+                                    <label class="field__label" for="comment">Коментар до замовлення</label>
+                                    <textarea class="field__input field__input--textarea" id="comment" name="comment"
+                                        placeholder="Текст"></textarea>
+                                </div>
+                            </div>
+
+                            <!-- 4. Промокод / Сертифікат -->
+                            <div class="checkout-form__section checkout-form__promo promo-code">
+                                <label class="promo-code__label" for="promocode">Промокод/сертифікат</label>
+                                <div class="promo-code__group">
+                                    <input class="field__input promo-code__input" id="promocode" type="text"
+                                        name="promocode" placeholder="Промокод/сертифікат">
+                                    <button class="btn btn--secondary promo-code__btn"
+                                        type="button">Застосувати</button>
+                                </div>
+                            </div>
+
+                            <!-- 6. Підсумок та кнопка оформлення -->
+                            <div class="checkout-summary">
+                                <div class="checkout-summary__details">
+                                    <p class="checkout-summary__item">
+                                        2 товари на суму <strong class="checkout-summary__price">12 098 грн</strong>
+                                    </p>
+
+                                    <p class="checkout-summary__item">
+                                        Вартість доставки: <strong class="checkout-summary__price">0 грн</strong>
+                                    </p>
+
+                                    <p class="checkout-summary__total">
+                                        Разом: <strong class="checkout-summary__total-price">12 098 грн</strong>
+                                    </p>
+                                </div>
+
+                                <button class="checkout-summary__btn btn btn--primary" type="submit">
+                                    Підтвердити замовлення
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="s-cta">
+
+            <div class="container">
+                <div class="row cta__wrap">
+                    <div class="col-xl-9 col-lg-9 col-md-16 col-sm-16 col-xs-16 overlap">
+                        <h2 class="cta__heading h2 text-bold">Виникли запитання?</h2>
+                        <div class="cta__description text-bold">Наш спеціаліст відповість на них впродовж 15
+                            хв</div>
+
+                        <div class="cta__form">
+                            <form>
+                                <div class="row m-row">
+                                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-16 col-xs-16 column">
+                                        <div class="field">
+                                            <label class="field__label" for="user-name">Ваше
+                                                ім’я</label>
+                                            <input class="field__input" type="text" id="user-name" name="name"
+                                                placeholder="Ваше ім’я">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-8 col-lg-16 col-md-8 col-sm-16 col-xs-16 column">
+                                        <div class="field ">
+                                            <label class="field__label" for="user-phone">Ваш номер
+                                                телефону</label>
+                                            <input class="field__input" type="tel" id="user-phone" name="phone"
+                                                placeholder="Ваш номер телефону">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row m-row">
+                                    <div class="col-xl-16 col-lg-16 col-md-16 col-sm-16 col-xs-16 column">
+                                        <button class="btn btn--primary" type="submit">
+                                            Відправити
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Блок 1: Написати нам (месенджери) -->
+                        <div class="socials">
+                            <span class="socials__label">Написати нам:</span>
+
+                            <ul class="socials__list" role="list">
+                                <li class="socials__item">
+                                    <a href="viber://chat?number=%2B380500136888"
+                                        class="socials__link socials__link--viber" target="_blank" rel="noopener"
+                                        aria-label="Viber">
+
+                                        <div class="socials__icon-wrap">
+                                            <svg class="socials__icon" aria-hidden="true" width="36" height="36">
+                                                <use href="assets/img/sprite.svg#viber"></use>
+                                            </svg>
+                                        </div>
+                                        <span class="socials__text">Viber</span>
+                                    </a>
+                                </li>
+
+                                <li class="socials__item">
+                                    <a href="https://wa.me/380500136888" class="socials__link socials__link--whatsapp"
+                                        target="_blank" rel="noopener" aria-label="WhatsApp">
+                                        <div class="socials__icon-wrap">
+                                            <svg class="socials__icon" aria-hidden="true" width="36" height="36">
+                                                <use href="assets/img/sprite.svg#whatsapp"></use>
+                                            </svg>
+                                        </div>
+                                        <span class="socials__text">WhatsApp</span>
+                                    </a>
+                                </li>
+
+                                <li class="socials__item">
+                                    <a href="https://t.me/+380500136888" class="socials__link socials__link--telegram"
+                                        target="_blank" rel="noopener" aria-label="Telegram">
+                                        <div class="socials__icon-wrap">
+                                            <svg class="socials__icon" aria-hidden="true" width="36" height="36">
+                                                <use href="assets/img/sprite.svg#telegram"></use>
+                                            </svg>
+                                        </div>
+                                        <span class="socials__text">Telegram</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Блок 2: Підписуйтесь (соцмережі) -->
+                        <div class="socials">
+                            <span class="socials__label">Підписуйтесь:</span>
+
+                            <ul class="socials__list" role="list">
+                                <li class="socials__item">
+                                    <a href="#" class="socials__link socials__link--youtube" target="_blank"
+                                        rel="noopener" aria-label="YouTube">
+                                        <div class="socials__icon-wrap">
+                                            <svg class="socials__icon" aria-hidden="true" width="36" height="36">
+                                                <use href="assets/img/sprite.svg#youtube"></use>
+                                            </svg>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li class="socials__item">
+                                    <a href="#" class="socials__link socials__link--threads" target="_blank"
+                                        rel="noopener" aria-label="Threads">
+                                        <div class="socials__icon-wrap">
+                                            <svg class="socials__icon" aria-hidden="true" width="36" height="36">
+                                                <use href="assets/img/sprite.svg#threads"></use>
+                                            </svg>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li class="socials__item">
+                                    <a href="#" class="socials__link socials__link--facebook" target="_blank"
+                                        rel="noopener" aria-label="Facebook">
+                                        <div class="socials__icon-wrap">
+                                            <svg class="socials__icon" aria-hidden="true" width="36" height="36">
+                                                <use href="assets/img/sprite.svg#facebook"></use>
+                                            </svg>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li class="socials__item">
+                                    <a href="#" class="socials__link socials__link--instagram" target="_blank"
+                                        rel="noopener" aria-label="Instagram">
+                                        <div class="socials__icon-wrap">
+                                            <svg class="socials__icon" aria-hidden="true" width="36" height="36">
+                                                <use href="assets/img/sprite.svg#instagram"></use>
+                                            </svg>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li class="socials__item">
+                                    <a href="#" class="socials__link socials__link--tiktok" target="_blank"
+                                        rel="noopener" aria-label="TikTok">
+                                        <div class="socials__icon-wrap">
+                                            <svg class="socials__icon" aria-hidden="true" width="36" height="36">
+                                                <use href="assets/img/sprite.svg#tiktok"></use>
+                                            </svg>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="socials">
+                            <span class="socials__label">Написати нам:</span>
+
+                            <ul class="socials__list" role="list">
+                                <li class="socials__item">
+                                    <a href="viber://chat?number=%2B380500136888"
+                                        class="socials__link socials__link--viber" target="_blank" rel="noopener"
+                                        aria-label="Viber">
+                                        <div class="socials__icon-wrap">
+                                            <svg class="socials__icon" aria-hidden="true" width="36" height="36">
+                                                <use href="assets/img/sprite.svg#viber"></use>
+                                            </svg>
+                                        </div>
+                                        <span class="socials__text">Viber</span>
+                                    </a>
+                                </li>
+
+                                <li class="socials__item">
+                                    <a href="https://wa.me/380500136888" class="socials__link socials__link--whatsapp"
+                                        target="_blank" rel="noopener" aria-label="WhatsApp">
+                                        <div class="socials__icon-wrap">
+                                            <svg class="socials__icon" aria-hidden="true" width="36" height="36">
+                                                <use href="assets/img/sprite.svg#whatsapp"></use>
+                                            </svg>
+                                        </div>
+                                        <span class="socials__text">WhatsApp</span>
+                                    </a>
+                                </li>
+
+                                <li class="socials__item">
+                                    <a href="https://t.me/+380500136888" class="socials__link socials__link--telegram"
+                                        target="_blank" rel="noopener" aria-label="Telegram">
+                                        <div class="socials__icon-wrap">
+                                            <svg class="socials__icon" aria-hidden="true" width="36" height="36">
+                                                <use href="assets/img/sprite.svg#telegram"></use>
+                                            </svg>
+                                        </div>
+                                        <span class="socials__text">Telegram</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="cta__img--wrap">
+                        <img src="assets/img/consultation-2.png" alt="cta img" class="cta__img">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <footer class="footer">
+        <div class="footer__inner">
+            <div class="container">
+                <h2 class="visually-hidden">Інформація про компанію та навігація</h2>
+                <div class="row m-row">
+                    <div class="col-xl-5 col-lg-5 col-md-16 col-sm-16 col-xs-16 column">
+                        <a href="/" class="footer__logo" aria-label="VeroMed — На головну">
+                            <img src="assets/img/logo-light.svg" alt="" width="180" height="60" loading="lazy">
+                        </a>
+                        <div class="subscription">
+                            <div class="subscription__heading"><strong>Підпишись на нашу розсилку</strong>
+                                і отримай знижку 10%.
+                            </div>
+                            <form>
+                                <div class="subscription__field --relative">
+                                    <input type="email" value="" name="email"
+                                        class="subscription__input form-field__input" placeholder="E-mail">
+                                    <button class="subscription__btn btn btn--primary"
+                                        type="submit">Підписатись</button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-5 col-sm-16 col-xs-16 column">
+
+                        <div class="footer-nav">
+                            <h3 class="footer-nav__title text-bold">Про нас</h3>
+                            <div>
+                                <ul class="menu">
+                                    <li class="menu-item current-menu-item"><a href="about.html">Про компанію</a></li>
+                                    <li class="menu-item "><a href="services.html">Послуги</a></li>
+                                    <li class="menu-item "><a href="delivery.html">Доставка і оплата</a></li>
+                                    <li class="menu-item "><a href="#">Обмін і повернення</a></li>
+                                    <li class="menu-item "><a href="blog.html">Блог</a></li>
+                                    <li class="menu-item "><a href="#">Мережа салонів</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-5 col-sm-16 col-xs-16 column">
+                        <div class="footer-nav">
+                            <h3 class="footer-nav__title text-bold">Каталог</h3>
+                            <div>
+                                <ul class="menu">
+                                    <li class="menu-item "><a href="">Оправи для зору</a></li>
+                                    <li class="menu-item "><a href="">Сонцезахисні окуляри</a></li>
+                                    <li class="menu-item "><a href="">Контактні лінзи</a></li>
+                                    <li class="menu-item "><a href="">Аксесуари/засоби догляду</a></li>
+                                    <li class="menu-item "><a href="">Акції</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-16 col-xs-16 column">
+                        <div class="footer-nav">
+                            <h3 class="footer-nav__title text-bold">Контакти</h3>
+                            <div class="contact">
+                                <div class="contact__item">
+                                    <a href="mailto:info@rybnuy-kombinat.com" class="contact__text">
+                                        info@rybnuy-kombinat.com
+                                    </a>
+                                </div>
+
+                                <div class="contact__item ">
+                                    <a href="tel:+380500749888" class="contact__text">+38 050 07 49 888</a>
+                                </div>
+                            </div>
+                            <div class="socials">
+                                <span class="socials__label">Написати нам:</span>
+
+                                <ul class="socials__list" role="list">
+                                    <li class="socials__item">
+                                        <a href="viber://chat?number=%2B380500136888"
+                                            class="socials__link socials__link--viber" target="_blank" rel="noopener"
+                                            aria-label="Viber">
+                                            <svg class="icon" aria-hidden="true" width="36" height="36">
+                                                <use href="assets/img/sprite.svg#viber"></use>
+                                            </svg>
+
+                                        </a>
+                                    </li>
+
+                                    <li class="socials__item">
+                                        <a href="https://wa.me/380500136888"
+                                            class="socials__link socials__link--whatsapp" target="_blank" rel="noopener"
+                                            aria-label="WhatsApp">
+                                            <svg class="icon" aria-hidden="true" width="36" height="36">
+                                                <use href="assets/img/sprite.svg#whatsapp"></use>
+                                            </svg>
+
+                                        </a>
+                                    </li>
+
+                                    <li class="socials__item">
+                                        <a href="https://t.me/+380500136888"
+                                            class="socials__link socials__link--telegram" target="_blank" rel="noopener"
+                                            aria-label="Telegram">
+                                            <svg class="icon" aria-hidden="true" width="36" height="36">
+                                                <use href="assets/img/sprite.svg#telegram"></use>
+                                            </svg>
+
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="socials socials--col">
+                                <span class="socials__label d-block">Підписуйтесь:</span>
+
+                                <ul class="socials__list" role="list">
+                                    <li class="socials__item">
+                                        <a href="#" class="socials__link socials__link--youtube" target="_blank"
+                                            rel="noopener" aria-label="YouTube">
+                                            <svg class="icon" aria-hidden="true" width="36" height="36">
+                                                <use href="assets/img/sprite.svg#youtube"></use>
+                                            </svg>
+                                        </a>
+                                    </li>
+
+                                    <li class="socials__item">
+                                        <a href="#" class="socials__link socials__link--threads" target="_blank"
+                                            rel="noopener" aria-label="Threads">
+                                            <svg class="icon" aria-hidden="true" width="36" height="36">
+                                                <use href="assets/img/sprite.svg#threads"></use>
+                                            </svg>
+                                        </a>
+                                    </li>
+
+                                    <li class="socials__item">
+                                        <a href="#" class="socials__link socials__link--facebook" target="_blank"
+                                            rel="noopener" aria-label="Facebook">
+                                            <svg class="icon" aria-hidden="true" width="36" height="36">
+                                                <use href="assets/img/sprite.svg#facebook"></use>
+                                            </svg>
+                                        </a>
+                                    </li>
+
+                                    <li class="socials__item">
+                                        <a href="#" class="socials__link socials__link--instagram" target="_blank"
+                                            rel="noopener" aria-label="Instagram">
+                                            <svg class="icon" aria-hidden="true" width="36" height="36">
+                                                <use href="assets/img/sprite.svg#instagram"></use>
+                                            </svg>
+                                        </a>
+                                    </li>
+
+                                    <li class="socials__item">
+                                        <a href="#" class="socials__link socials__link--tiktok" target="_blank"
+                                            rel="noopener" aria-label="TikTok">
+                                            <svg class="icon" aria-hidden="true" width="36" height="36">
+                                                <use href="assets/img/sprite.svg#tiktok"></use>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="container footer__bottom">
+            <div class="row m-row">
+                <div class="col-xl-5 col-lg-5 col-md-16 col-sm-16 col-xs-16 column ">
+                    <div class="copyright">© 2026 Усі права захищено </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-16 col-sm-16 col-xs-16 column ">
+                    <ul class="menu">
+                        <li class="menu-item current-menu-item"><a href="">Договір оферта</a></li>
+                        <li class="menu-item "><a href="">Політика конфіденційності</a></li>
+                    </ul>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-16 col-sm-16 col-xs-16 column ">
+                    <div class="develop d-flex align-middle align-left">
+                        Дизайн та розробка -
+                        <a href="https://webtune.com.ua/" target="_blank" rel="nofollow" class="develop__link">
+                            WebTune
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="popup-wrapper">
+        <div class="bg-layer"></div>
+
+        <div class="popup-content cta" data-rel="cta">
+            <div class="layer-close"></div>
+            <div class="popup-container ">
+                <div class="popup-container__inner">
+                    <div class="btn--close d-flex align-middle align-center">
+                        <svg class="icon" aria-hidden="true" width="18" height="18">
+                            <use href="assets/img/sprite.svg#close"></use>
+                        </svg>
+                    </div>
+
+                    <div class="popup-form text-center">
+                        <h4 class="popup-form__heading text-bold">Записатись на прийом</h4>
+                        <form class="">
+
+                            <div class="row m-row">
+                                <div class="col-xl-16 col-lg-16 col-md-16 col-sm-16 col-xs-16 column">
+                                    <div class="form-field">
+                                        <label class="form-field__label text-left" for="user-name">Як до вас
+                                            звертатися?</label>
+                                        <input class="form-field__input" type="text" id="p-user-name" name="name"
+                                            placeholder="Ваше ім’я">
+                                    </div>
+                                    <div class="form-field ">
+                                        <label class="form-field__label text-left" for="user-phone">Ваш номер
+                                            телефону</label>
+                                        <input class="form-field__input" type="tel" id="p-user-phone" name="phone"
+                                            value="+38 (_ _ _) _ _ _  - _ _ - _ _" aria-invalid="true"
+                                            aria-describedby="phone-error">
+
+                                    </div>
+                                    <div class="form-field SelectBox  text-left">
+                                        <label class="form-field__label">Напрямок / спеціальність</label>
+                                        <select name="direction">
+                                            <option value="" disabled selected hidden>Вибрати</option>
+                                            <option value="1">Напрямок 1</option>
+                                            <option value="2">Напрямок 2</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-field ">
+                                        <button class="btn btn--primary" type="submit">
+                                            Записатися на прийом
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9h5L2xSWEvRFgLc7y4d16KPUDydNgs9Y&libraries=places&callback=initMapComponent"
+        async defer>
+        </script>
+    <script src="./assets/js/jquery-3.7.0.min.js"></script>
+
+    <script src="assets/js/swiper-bundle.min.js"></script>
+    <script src="assets/js/jquery.sumoselect.min.js"></script>
+
+
+
+    <script src="src/scripts/app-swiper.js"></script>
+    <script src="src/scripts/js_app.js"></script>
+
+    <script>
+        let map = null;
+        let markers = [];
+        let customTooltip = null;
+
+        function initMapComponent() {
+            const pickerItems = document.querySelectorAll(".picker__item");
+            if (!pickerItems.length) return;
+
+            // Оголошуємо клас СТРОГО всередині функції — після завантаження Google Maps API
+            class CustomTooltip extends google.maps.OverlayView {
+                constructor() {
+                    super();
+                    this.div = null;
+                    this.position = null;
+                    this.text = "";
+                }
+
+                onAdd() {
+                    this.div = document.createElement("div");
+                    this.div.className = "map-custom-tooltip";
+                    this.div.innerHTML = `<div class="map-custom-tooltip__content"></div>`;
+
+                    const panes = this.getPanes();
+                    panes.floatPane.appendChild(this.div);
+                }
+
+                draw() {
+                    if (!this.div || !this.position) return;
+
+                    const overlayProjection = this.getProjection();
+                    const point = overlayProjection.fromLatLngToDivPixel(this.position);
+
+                    if (point) {
+                        this.div.style.left = point.x + "px";
+                        this.div.style.top = point.y + "px";
+                        const contentEl = this.div.querySelector(".map-custom-tooltip__content");
+                        if (contentEl) contentEl.textContent = this.text;
+                    }
+                }
+
+                onRemove() {
+                    if (this.div && this.div.parentNode) {
+                        this.div.parentNode.removeChild(this.div);
+                        this.div = null;
+                    }
+                }
+
+                show(position, text, mapInstance) {
+                    this.position = position;
+                    this.text = text;
+                    this.setMap(mapInstance);
+                    this.draw();
+                }
+
+                hide() {
+                    this.setMap(null);
+                }
+            }
+
+            const firstItem = pickerItems[0];
+            const initialCenter = {
+                lat: parseFloat(firstItem.dataset.lat),
+                lng: parseFloat(firstItem.dataset.lng),
+            };
+
+            map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 15,
+                center: initialCenter,
+                disableDefaultUI: true,
+                zoomControl: true,
+            });
+
+            // Створюємо екземпляр класу
+            customTooltip = new CustomTooltip();
+
+            // Додаємо маркери
+            pickerItems.forEach((item) => {
+                const id = item.dataset.id;
+                const lat = parseFloat(item.dataset.lat);
+                const lng = parseFloat(item.dataset.lng);
+
+                const marker = new google.maps.Marker({
+                    position: { lat, lng },
+                    map: map,
+                    icon: {
+                        url: "assets/img/pin.svg",
+                        scaledSize: new google.maps.Size(32, 40),
+                    },
+                });
+
+                markers.push({ id, marker, item });
+
+                marker.addListener("click", () => {
+                    setActiveLocation(item);
+                });
+            });
+
+            setActiveLocation(firstItem);
+        }
+
+        function setActiveLocation(targetItem) {
+            const id = targetItem.dataset.id;
+            const lat = parseFloat(targetItem.dataset.lat);
+            const lng = parseFloat(targetItem.dataset.lng);
+            const address = targetItem.dataset.address;
+            const phone = targetItem.dataset.phone;
+
+            const match = markers.find((m) => m.id === id);
+
+            if (map && match && customTooltip) {
+                map.panTo({ lat, lng });
+                map.setZoom(14);
+
+                const latLng = new google.maps.LatLng(lat, lng);
+                customTooltip.show(latLng, address, map);
+            }
+
+            document.querySelectorAll(".picker__item").forEach((el) => el.classList.remove("is-active"));
+            targetItem.classList.add("is-active");
+
+            const currentText = document.getElementById("picker-current-text");
+            if (currentText) currentText.textContent = address;
+
+            const phoneLink = document.getElementById("card-phone");
+            if (phoneLink) {
+                phoneLink.textContent = phone;
+                phoneLink.href = `tel:${phone.replace(/[^+\d]/g, "")}`;
+            }
+
+            const picker = document.getElementById("locations-picker");
+            if (picker) picker.classList.remove("is-open");
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const picker = document.getElementById("locations-picker");
+            if (!picker) return;
+
+            const trigger = picker.querySelector(".picker__trigger");
+            if (trigger) {
+                trigger.addEventListener("click", () => picker.classList.toggle("is-open"));
+            }
+
+            picker.querySelectorAll(".picker__item").forEach((item) => {
+                item.addEventListener("click", () => setActiveLocation(item));
+            });
+
+            document.addEventListener("click", (e) => {
+                if (!picker.contains(e.target)) picker.classList.remove("is-open");
+            });
+        });
+    </script>
+    <!--<script>
+        jQuery(document).on('click', '.media__btn', function () {
+            const $btn = jQuery(this);
+            const $container = $btn.closest('.media');
+            const $video = $container.find('.media__video');
+            const videoItem = $video.get(0);
+
+            if (!videoItem) return;
+
+            if (videoItem.paused) {
+                videoItem.play();
+                $video.attr('controls', '');
+                $btn.addClass('hide');
+                $container.find('.heading').hide();
+            } else {
+                videoItem.pause();
+                $video.removeAttr('controls');
+                $btn.removeClass('hide');
+                $container.find('.heading').show();
+            }
+        });
+
+        // Додатково: повертаємо кнопку та ховаємо controls, якщо відео закінчилося
+        jQuery(document).on('ended', '.media__video', function () {
+            const $video = jQuery(this);
+            const $container = $video.closest('.media');
+
+            $video.removeAttr('controls');
+            $container.find('.media__btn').removeClass('hide');
+            $container.find('.heading').show();
+        });
+    </script>-->
+    <script>
+        jQuery(document).ready(function ($) {
+            const $deliveryGroup = $('.js-delivery-group');
+
+            $deliveryGroup.on('change', '.js-delivery-toggle', function () {
+                // Ховаємо всі блоки та знімаємо клас активності
+                $deliveryGroup.find('.js-delivery-block').prop('hidden', true);
+                $deliveryGroup.find('.delivery-card').removeClass('is-active');
+
+                // Отримуємо поточний радіобаттон
+                const $this = $(this);
+                const targetId = $this.data('target');
+
+                // Активуємо картку та показуємо її контент
+                $this.closest('.delivery-card').addClass('is-active');
+                $('#' + targetId).prop('hidden', false);
+            });
+        });
+    </script>
+</body>
+
+</html>

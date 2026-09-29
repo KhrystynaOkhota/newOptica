@@ -350,11 +350,17 @@
 
   & .cta {
     &__heading {
-      margin-bottom: 25px;
+      margin-bottom: fluid(15,25);
     }
 
     &__description {
-      margin-bottom: 36px;
+      margin-bottom: fluid(15,30);
+
+      & p {
+        &:not(&:last-child) {
+          margin-bottom: 20px;
+        }
+      }
     }
 
     &__wrap {

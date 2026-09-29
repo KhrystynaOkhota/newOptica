@@ -1,9 +1,11 @@
+@use "sass:color";
 @use "../abstracts/variables" as *;
 @use "../abstracts/mixins" as *;
 
 // ==================================================
 // СЕКЦІЯ ОСОБИСТОГО КАБІНЕТУ (.s-cbn)
 // ==================================================
+
 
 .s-cbn {
   padding: 40px 0;
@@ -264,7 +266,7 @@
 // --------------------------------------------------
 // Кастомні Радіо-кнопки (.radio)
 // --------------------------------------------------
-.radio {
+/*.radio {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -305,7 +307,7 @@
     color: $color-primary;
   }
 }
-
+*/
 // --------------------------------------------------
 // Шапка Акордеону та Замовлення
 // --------------------------------------------------
@@ -484,13 +486,12 @@
   }
 }
 
-
 .cbn-address {
   margin-bottom: 32px;
 
   // 1. Блок основної адреси (сіра картка)
   &__primary {
-    background-color: lighten($color-primary, 97%);
+    background-color: color.scale($color-primary, $lightness: 97%);
     border-radius: 16px;
     padding: 20px;
     margin-bottom: 28px;
@@ -513,7 +514,7 @@
 
   &__item {
     padding-bottom: 24px;
-    border-bottom: 1px solid lighten($color-primary, 90%);
+    border-bottom: 1px solid color.scale($color-primary, $lightness: 90%);
 
     &:last-child {
       border-bottom: none;
