@@ -163,30 +163,24 @@
   }
 }
 
-
-
-
-
-
-.filter-tabs {
+/*
+.catalog-tabs {
   position: relative;
   width: 100%;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 0.125rem solid #F6F6F6;
 
-  // 1. Увімкнення горизонтального скролу для всіх пристроїв
   overflow-x: auto;
   overflow-y: hidden;
 
-  // 2. Плавна прокрутка та інерція
   scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
 
-  // 3. Приховуємо системний скролбар на десктопі та мобільному
-  scrollbar-width: none; // Firefox
-  -ms-overflow-style: none; // IE / Edge
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 
   &::-webkit-scrollbar {
-    display: none; // Chrome, Safari, Opera, Edge
+    display: none;
     width: 0;
     height: 0;
   }
@@ -194,64 +188,368 @@
   &__list {
     display: flex;
     align-items: center;
-    gap: 24px;
+    width: max-content;
     margin: 0;
     padding: 0;
     list-style: none;
-    white-space: nowrap; // Забороняємо перенесення пунктів
-
-    @media (min-width: 992px) {
-      gap: 32px;
-    }
+    white-space: nowrap;
   }
 
   &__item {
-    flex-shrink: 0; // КРИТИЧНО: елементи не стискаються при скролі
+    flex-shrink: 0;
+    scroll-snap-align: start;
   }
 
   &__btn {
-    position: relative;
-    padding-bottom: 12px;
-    background: transparent;
-    border: none;
-    font-size: 15px;
-    font-weight: 600;
-    color: #666666;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: color 0.25s ease;
-
-    @media (min-width: 992px) {
-      font-size: 16px;
-      padding-bottom: 16px;
-    }
-
-    // Підкреслення активного пункту
-    &::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: -1px;
-      width: 100%;
-      height: 3px;
-      background-color: #f26522;
-      border-radius: 3px 3px 0 0;
-      opacity: 0;
-      transform: scaleX(0);
-      transition: transform 0.25s ease, opacity 0.25s ease;
-    }
+    display: inline-block;
+    padding: clamp(0.625rem, 0.1693rem + 0.9494vw, 1rem) clamp(1rem, 0.3924rem + 1.2658vw, 1.5rem);
+    font-family: "Inter Tight", "Inter Tight Fallback", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1em;
+    color: #000000;
+    text-decoration: none;
+    border-bottom: 0.125rem solid transparent;
+    margin-bottom: -0.125rem;
+    transition: border-color 0.3s linear, color 0.3s linear;
 
     &:hover {
-      color: #1a1a1a;
+      border-color: currentColor;
     }
 
-    &.is-active {
-      color: #f26522;
+    &.is-active,
+    &[aria-selected="true"] {
+      border-color: #000000;
+      font-weight: 600;
+    }
+  }
 
-      &::after {
-        opacity: 1;
-        transform: scaleX(1);
+  @media (min-width: 992px) {
+    &.type-2 &__list {
+      width: 100%;
+      flex-direction: column;
+    }
+  }
+
+  @media (max-width: 1199px) {
+    font-size: 0.875rem;
+  }
+
+  @media (max-width: 575px) {
+    margin-inline: -0.75rem;
+    padding-inline: 0.75rem;
+  }
+}*/
+/*.sub-links {
+  position: relative;
+  width: 100%;
+  border-bottom: 0.125rem solid #F6F6F6;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+
+  ul {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    white-space: nowrap;
+  }
+
+  li {
+    flex-shrink: 0;
+    scroll-snap-align: start;
+
+    a {
+      display: inline-block;
+      padding: clamp(0.625rem, 0.1693rem + 0.9494vw, 1rem) clamp(1rem, 0.3924rem + 1.2658vw, 1.5rem);
+      font-family: "Inter Tight", "Inter Tight Fallback", sans-serif;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1em;
+      color: #000000;
+      text-decoration: none;
+      border-bottom: 0.125rem solid transparent;
+      margin-bottom: -0.125rem;
+      transition: border-color 0.3s linear, color 0.3s linear;
+
+      &:hover {
+        border-color: currentColor;
       }
     }
+
+    &.is-active a {
+      border-color: #000000;
+      font-weight: 600;
+    }
+  }
+
+  @media (min-width: 992px) {
+    &.type-2 ul {
+      width: 100%;
+      flex-direction: column;
+    }
+  }
+
+  @media (max-width: 1199px) {
+    font-size: 0.875rem;
+  }
+
+  @media (max-width: 575px) {
+    margin-inline: -0.75rem;
+    padding-inline: 0.75rem;
+  }
+}*/
+/*.sub-links {
+  position: relative;
+  width: 100%;
+  border-bottom: 0.125rem solid #f6f6f6;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  // Стилі для drag-to-scroll мишкою
+  cursor: grab;
+  user-select: none;
+  -webkit-user-drag: none;
+
+  &.is-dragging {
+    cursor: grabbing;
+    scroll-behavior: auto; // Вимикаємо гладкий скрол під час drag, щоб не було затримок
+    scroll-snap-type: none; // Тимчасово вимикаємо snap для плавності ручного руху
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    white-space: nowrap;
+  }
+
+  &__item {
+    flex-shrink: 0;
+    scroll-snap-align: start;
+  }
+
+  &__link {
+    position: relative;
+    display: inline-block;
+    padding: clamp(0.625rem, 0.1693rem + 0.9494vw, 1rem) clamp(1rem, 0.3924rem + 1.2658vw, 1.5rem);
+
+    font-family: "Inter Tight", "Inter Tight Fallback", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1;
+    color: #4a5055;
+    text-decoration: none;
+    white-space: nowrap;
+    -webkit-user-drag: none;
+
+    border-bottom: 0.125rem solid transparent;
+    margin-bottom: -0.125rem;
+
+    transition: color 0.3s linear, border-color 0.3s linear;
+
+    &:hover {
+      color: #000000;
+      border-color: rgba(0, 0, 0, 0.3);
+    }
+
+    &.is-active,
+    &[aria-selected="true"],
+    &[aria-current="page"] {
+      color: #000000;
+      font-weight: 600;
+      border-color: #000000;
+    }
+  }
+
+  @media (min-width: 992px) {
+    &.type-2 {
+      border-bottom: none;
+      cursor: default;
+
+      .sub-links__list {
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .sub-links__link {
+        margin-bottom: 0;
+        border-bottom: none;
+        padding-inline: 0;
+      }
+    }
+  }
+
+  @media (max-width: 1199px) {
+    font-size: 0.875rem;
+  }
+
+  @media (max-width: 575px) {
+    margin-inline: -0.75rem;
+    padding-inline: 0.75rem;
+  }
+}*/
+
+.sub-links {
+  position: relative;
+  width: 100%;
+  border-bottom: 0.125rem solid #f6f6f6;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  // Стилі для drag-scroll мишкою
+  cursor: grab;
+  user-select: none;
+  -webkit-user-drag: none;
+
+  &.is-dragging {
+    cursor: grabbing;
+    scroll-behavior: auto;
+    scroll-snap-type: none;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    white-space: nowrap;
+  }
+
+  &__item {
+    flex-shrink: 0;
+    scroll-snap-align: start;
+  }
+
+  &__link {
+    position: relative;
+    display: inline-block;
+    padding: clamp(0.625rem, 0.1693rem + 0.9494vw, 1rem) clamp(1rem, 0.3924rem + 1.2658vw, 1.5rem);
+
+    font-family: "Inter Tight", "Inter Tight Fallback", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1;
+    color: #4a5055;
+    text-decoration: none;
+    white-space: nowrap;
+    -webkit-user-drag: none;
+
+    border-bottom: 0.125rem solid transparent;
+    margin-bottom: -0.125rem;
+
+    transition: color 0.3s linear, border-color 0.3s linear;
+
+    &:hover {
+      color: #000000;
+      border-color: rgba(0, 0, 0, 0.3);
+    }
+
+    // Універсальне визначення активного стану (клас або ARIA)
+    &.is-active,
+    &[aria-selected="true"],
+    &[aria-current="page"] {
+      color: #000000;
+      font-weight: 600;
+      border-color: #000000;
+    }
+  }
+
+  /* --- МОДИФІКАТОРИ ДЛЯ ІНШИХ МІСЦЬ ВЕРИФІКАЦІЇ --- */
+
+  // 1. Модифікатор для вертикального меню (наприклад, у колоні/сайдбарі)
+  &--vertical {
+    border-bottom: none;
+    overflow: visible;
+    cursor: default;
+
+    .sub-links__list {
+      width: 100%;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .sub-links__item {
+      width: 100%;
+    }
+
+    .sub-links__link {
+      display: block;
+      width: 100%;
+      margin-bottom: 0;
+      border-bottom: none;
+      padding-inline: 0;
+    }
+  }
+
+  // 2. Модифікатор для вирівнювання по центру (якщо блоку не потрібен скрол)
+  &--center {
+    .sub-links__list {
+      margin-inline: auto;
+    }
+  }
+
+  // 3. Модифікатор без нижньої лінії розмежувача
+  &--no-border {
+    border-bottom: none;
+  }
+
+  @media (max-width: 1199px) {
+    font-size: 0.875rem;
+  }
+
+  @media (max-width: 575px) {
+    margin-inline: -0.75rem;
+    padding-inline: 0.75rem;
   }
 }

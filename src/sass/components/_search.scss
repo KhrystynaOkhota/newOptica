@@ -9,8 +9,8 @@
     width: 100%;
     height: 48px;
     padding: 0 48px 0 16px;
-    background-color: red;
-    border: 1px solid red;
+    background-color: $color-white;
+    border: 1px solid rgba(243, 243, 245, 1);
     border-radius: 24px;
     font-family: $font-primary;
     font-size: 14px;
@@ -24,7 +24,7 @@
     }
 
     &::placeholder {
-      color: red;
+      color: $color-primary;;
     }
 
     &:focus {
@@ -41,7 +41,7 @@
     background: none;
     border: none;
     padding: 0;
-    color: red;
+    color: $color-primary;;
     cursor: pointer;
     display: flex;
     align-items: center;

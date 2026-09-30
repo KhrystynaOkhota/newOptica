@@ -84,17 +84,7 @@ img {
     
 }
 
-.body-padding {
-  height: 145px;
 
-  @media (max-width: $breakpoint-xl) {
-    height: 104px;
-  }
-
-  @media (max-width: $breakpoint-md) {
-    height: 105px;
-  }
-}
 
 .section,
 section {
@@ -105,7 +95,7 @@ section {
 .main {
   overflow: hidden;
   min-height: 50vh;
-  padding-top: 188px;
+  padding-top: 210px;
 
   @media (max-width: $breakpoint-lg) {
     padding-top: 88px;

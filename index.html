@@ -20,214 +20,169 @@
 
 <body>
 
-    <header class="header js-header bg">
-        <div class="container">
 
-            <div class="header__topbar d-none d-lg-flex align-right align-middle">
-                <nav class="header__nav">
-                    <ul class="menu d-flex align-justify align-middle">
-                        <li class="menu-item"><a href="about.html">Про компанію</a></li>
-                        <li class="menu-item"><a href="services.html">Послуги</a></li>
-                        <li class="menu-item active"><a href="delivery.html">Доставка і оплата</a></li>
-                        <li class="menu-item"><a href="return.html">Омін і повернення</a></li>
-                        <li class="menu-item"><a href="blog.html">Блог</a></li>
-                        <li class="menu-item"><a href="contacts.html">Мережа салонів</a></li>
-                    </ul>
-                </nav>
+    <header class="header">
+        <div class="h-menu-overlay"></div>
 
-                <div class="header__contacts d-none d-lg-flex align-middle">
-                    <span class="header__contacts--title">Є питання? Телефонуйте - допоможемо</span>
-                    <a href="tel:+380672626680" class="header__contacts--phone"> +38 (050) 07-49-888</a>
-                </div>
-                <button type="button" class="control-btn control-btn--search js-open-search"
-                    aria-label="Відкрити пошук">
-                    <span class="control-btn__icon"></span>
-                    <span class="control-btn__text d-none d-xl-inline">Пошук</span>
-                </button>
+        <div class="h-wrap">
+            <div class="container">
 
-                <a href="#" class="control-btn control-btn--user open-popup" data-rel="login"
-                    aria-label="Особистий кабінет">
-                    <span class="control-btn__icon"></span>
-                </a>
-
-                <a href="#" class="control-btn control-btn--wishlist is-animated" aria-label="Обране">
-                    <div class="control-btn__icon-wrap">
-                        <span class="control-btn__icon"></span>
-                        <!-- <span class="control-btn__badge">0</span> -->
-                    </div>
-                </a>
-
-                <a href="#" class="control-btn control-btn--cart is-animated" aria-label="Кошик, товарів у кошику: 0">
-                    <div class="control-btn__icon-wrap">
-                        <span class="control-btn__icon"></span>
-                        <span class="control-btn__badge">0</span>
-                    </div>
-                </a>
-
-                <button type="button" class="burger burger--spring" aria-label="Відкрити мобільне меню">
-                    <span class="burger__box">
-                        <span class="burger__inner"></span>
-                    </span>
-                </button>
-
-                <button class="burger burger--spring" aria-label="Відкрити мобільне меню">
-                    <span class="burger__box">
-                        <span class="burger__inner"></span>
-                    </span>
-                </button>
-
-
-            </div>
-
-            <div class="header__main d-flex align-justify align-middle">
-                <a href="index.html" class="logo__wrap">
-                    <img src="assets/img/logo.svg" alt="Файна оптика" class="logo">
-                </a>
-
-                <form class="search-form" action="#" method="get" role="search">
-                    <input type="search" class="search-form__input" placeholder="Пошук по замовленню"
-                        aria-label="Пошук по замовленню">
-                    <button type="submit" class="search-form__btn" aria-label="Шукати">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <circle cx="11" cy="11" r="8"></circle>
-                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                        </svg>
-                    </button>
-                </form>
-                <a href="#" class="btn btn--primary open-popup" data-rel="cta">
-                    Записатися на прийом
-                </a>
-                <div class="header__controls">
-
-                    <button type="button" class="control-btn control-btn--search js-open-search"
+                <!-- 1. Верхній блок з кнопками/іконками (у мобільній версії — сітка з 5 колонок) -->
+                <div class="h-top-controls d-flex d-md-none">
+                    <button type="button" class="control-btn control-btn--search js_search_open"
                         aria-label="Відкрити пошук">
-                        <span class="control-btn__icon"></span>
-                        <span class="control-btn__text d-none d-xl-inline">Пошук</span>
-                    </button>
-
-                    <a href="#" class="control-btn control-btn--user open-popup" data-rel="login"
-                        aria-label="Особистий кабінет">
-                        <span class="control-btn__icon"></span>
-                    </a>
-
-                    <a href="#" class="control-btn control-btn--wishlist is-animated" aria-label="Обране">
-                        <div class="control-btn__icon-wrap">
-                            <span class="control-btn__icon"></span>
-                            <!-- <span class="control-btn__badge">0</span> -->
-                        </div>
-                    </a>
-
-                    <a href="#" class="control-btn control-btn--cart is-animated"
-                        aria-label="Кошик, товарів у кошику: 0">
-                        <div class="control-btn__icon-wrap">
-                            <span class="control-btn__icon"></span>
-                            <span class="control-btn__badge">0</span>
-                        </div>
-                    </a>
-
-                    <button type="button" class="burger burger--spring" aria-label="Відкрити мобільне меню">
-                        <span class="burger__box">
-                            <span class="burger__inner"></span>
+                        <span class="h-icon">
+                            <svg class="icon" aria-hidden="true" width="22" height="22">
+                                <use href="assets/img/symbol.svg#search"></use>
+                            </svg>
                         </span>
                     </button>
 
-                    <button class="burger burger--spring" aria-label="Відкрити мобільне меню">
-                        <span class="burger__box">
-                            <span class="burger__inner"></span>
+                    <a class="control-btn control-btn--account" href="account.html" aria-label="Особистий кабінет">
+                        <span class="h-icon">
+                            <svg class="icon" aria-hidden="true" width="22" height="22">
+                                <use href="assets/img/symbol.svg#user"></use>
+                            </svg>
+                        </span>
+                    </a>
+
+                    <a class="control-btn control-btn--favorite" href="account-favourites.html"
+                        aria-label="Обрані товари">
+                        <span class="h-icon">
+                            <svg class="icon" aria-hidden="true" width="22" height="22">
+                                <use href="assets/img/symbol.svg#fav"></use>
+                            </svg>
+                            <span class="header-favorite-count">0</span>
+                        </span>
+                    </a>
+
+                    <button type="button" class="control-btn control-btn--cart js_cart_open"
+                        aria-label="Відкрити кошик">
+                        <span class="h-icon">
+                            <svg class="icon" aria-hidden="true" width="22" height="22">
+                                <use href="assets/img/symbol.svg#bag"></use>
+                            </svg>
+                            <span class="header-cart-count">0</span>
                         </span>
                     </button>
-
+                    <div class="h-burger js-open-menu"><i></i></div>
                 </div>
 
-
-                <div class="header__mobile-controls d-flex d-lg-none align-middle">
-                    <a href="tel:+380672626680" class="btn-phone" aria-label="Зателефонувати">
-                        <svg class="icon" aria-hidden="true" width="20" height="20">
-                            <use href="assets/img/sprite.svg#phone"></use>
-                        </svg>
-                    </a>
-                    <button type="button" class="burger js-menu-toggle" aria-label="Переключити меню">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-                </div>
-            </div>
-
-            <div class="header__inner">
-
-                <form class="search-form" action="#" method="get" role="search">
-                    <input type="search" class="search-form__input" placeholder="Пошук по замовленню"
-                        aria-label="Пошук по замовленню">
-                    <button type="submit" class="search-form__btn" aria-label="Шукати">
-                        <svg class="icon" aria-hidden="true" width="20" height="20">
-                            <use href="assets/img/symbol.svg#ssearch"></use>
-                        </svg>
-                    </button>
-                </form>
-                <nav class="header__nav">
-                    <ul class="menu d-flex align-justify align-middle">
-                        <li class="menu-item"><a href="">Оправи для зору</a></li>
-                        <li class="menu-item"><a href="">Сонцезахисні окуляри</a></li>
-                        <li class="menu-item active"><a href="">Контактні лінзи</a></li>
-                        <li class="menu-item"><a href="">Аксесуари/засоби догляду</a></li>
-                        <li class="menu-item"><a href="">Акції</a></li>
-
-                    </ul>
-                </nav>
-
-                <div class="header__inner-contacts d-lg-none">
-                    <a href="mailto:call.centre.veromed@gmail.com" class="header__email d-flex align-left align-middle">
-                        <svg class="icon" aria-hidden="true" width="20" height="20">
-                            <use href="assets/img/symbol.svg#location"></use>
-                        </svg>
-                        <span>call.centre.veromed@gmail.com</span>
-                    </a>
-                    <div class="header__contacts-row d-flex align-justify align-middle">
-                        <a href="tel:+380672626680" class="header__phone">+380 (67) 262–66–80</a>
-                        <div class="header__socials d-flex align-middle">
-                            <div class="socials">
-                                <ul class="socials__list" role="list">
-                                    <li class="socials__item">
-                                        <a href="#" class="socials__link socials__link--telegram" target="_blank"
-                                            rel="noopener" aria-label="Telegram">
-                                            <svg class="icon" aria-hidden="true" width="20" height="20">
-                                                <use href="assets/img/symbol.svg#telegram"></use>
-                                            </svg>
-                                        </a>
-                                    </li>
-                                    <li class="socials__item">
-                                        <a href="#" class="socials__link socials__link--whathapp" target="_blank"
-                                            rel="noopener" aria-label="WhatsApp">
-                                            <svg class="icon" aria-hidden="true" width="20" height="20">
-                                                <use href="assets/img/symbol.svg#whatsapp"></use>
-                                            </svg>
-                                        </a>
-                                    </li>
-                                    <li class="socials__item">
-                                        <a href="#" class="socials__link socials__link--viber" target="_blank"
-                                            rel="noopener" aria-label="Viber">
-                                            <svg class="icon" aria-hidden="true" width="20" height="20">
-                                                <use href="assets/img/symbol.svg#viber"></use>
-                                            </svg>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
+                <!-- Десктопний верхній рядок -->
+                <div class="h-top d-none d-md-block">
+                    <div class="h-top-inner d-flex align-justify align-middle">
+                        <nav class="h-nav">
+                            <ul class="menu">
+                                <li class="menu-item"><a href="about.html">Про компанію</a></li>
+                                <li class="menu-item"><a href="services.html">Послуги</a></li>
+                                <li class="menu-item"><a href="delivery.html">Доставка і оплата</a></li>
+                                <li class="menu-item"><a href="return.html">Обмін і повернення</a></li>
+                                <li class="menu-item"><a href="blog.html">Блог</a></li>
+                                <li class="menu-item"><a href="contacts.html">Мережа салонів</a></li>
+                            </ul>
+                        </nav>
+                        <div class="h-phone d-none d-lg-flex align-center align-middle">
+                            <span class="h-phone__text text-light d-none d-xl-block">Є питання? Телефонуйте -
+                                допоможемо</span>
+                            <a href="tel:+380500749888" class="h-phone__number text-bold">+38 (050) 07-49-888</a>
                         </div>
                     </div>
+                </div>
 
-                    <a href="#" class="btn btn--primary open-popup btn-block" data-rel="cta">
-                        Записатися на прийом
+                <!-- 2. Середній блок: Логотип та Кнопка запису -->
+                <div class="h-inner d-flex align-middle align-justify">
+                    <a class="h-logo" href="/" aria-label="Файна оптика logo">
+                        <img src="assets/img/logo.svg" alt="Файна оптика" class="h-logo__img">
                     </a>
+
+                    <div class="h-search d-none d-lg-flex">
+                        <form class="search-form" action="#" method="get" role="search">
+                            <input type="search" class="search-form__input" placeholder="Пошук" aria-label="Пошук">
+                            <button type="submit" class="search-form__btn" aria-label="Шукати">
+                                <svg class="icon" aria-hidden="true" width="22" height="22">
+                                    <use href="assets/img/symbol.svg#search"></use>
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="h-btn">
+                        <a href="#" class="btn btn--primary open-popup" data-rel="cta">Запис до лікаря</a>
+                    </div>
+
+                    <div class="h-controls align-center d-none d-md-flex">
+
+                      
+
+                        <a class="control-btn control-btn--account" href="account.html" aria-label="Особистий кабінет">
+                            <span class="h-icon">
+                                <svg class="icon" aria-hidden="true" width="22" height="22">
+                                    <use href="assets/img/symbol.svg#user"></use>
+                                </svg>
+                            </span>
+                        </a>
+
+                        <a class="control-btn control-btn--favorite" href="account-favourites.html"
+                            aria-label="Обрані товари">
+                            <span class="h-icon">
+                                <svg class="icon" aria-hidden="true" width="22" height="22">
+                                    <use href="assets/img/symbol.svg#fav"></use>
+                                </svg>
+                                <span class="header-favorite-count">0</span>
+                            </span>
+                        </a>
+
+                        <button type="button" class="control-btn control-btn--cart js_cart_open"
+                            aria-label="Відкрити кошик">
+                            <span class="h-icon">
+                                <svg class="icon" aria-hidden="true" width="22" height="22">
+                                    <use href="assets/img/symbol.svg#bag"></use>
+                                </svg>
+                                <span class="header-cart-count">0</span>
+                            </span>
+                        </button>
+
+                    </div>
+                </div>
+
+                <!-- 3. Мобільне випадаюче меню (Помаранчеві категорії -> Пошук -> Дод. посилання) -->
+                <div class="h-menu">
+                    <nav class="h-nav h-nav--top">
+                        <ul class="menu">
+                            <li class="menu-item"><a href="catalog.html">Оправи для зору</a></li>
+                            <li class="menu-item"><a href="catalog.html">Сонцезахисні окуляри</a></li>
+                            <li class="menu-item"><a href="catalog.html">Контактні лінзи</a></li>
+                            <li class="menu-item"><a href="catalog.html">Аксесуари/Засоби догляду</a></li>
+                            <li class="menu-item"><a href="catalog.html">Акції</a></li>
+                        </ul>
+                    </nav>
+
+                    <div class="h-search d-flex d-md-none">
+                        <form class="search-form" action="#" method="get" role="search">
+                            <input type="search" class="search-form__input" placeholder="Пошук" aria-label="Пошук">
+                            <button type="submit" class="search-form__btn" aria-label="Шукати">
+                                <svg class="icon" aria-hidden="true" width="22" height="22">
+                                    <use href="assets/img/symbol.svg#search"></use>
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
+
+                    <nav class="h-nav h-nav--bottom d-block d-md-none">
+                        <ul class="menu">
+                            <li class="menu-item"><a href="about.html">Про компанію</a></li>
+                            <li class="menu-item"><a href="services.html">Послуги</a></li>
+                            <li class="menu-item"><a href="delivery.html">Доставка і оплата</a></li>
+                            <li class="menu-item"><a href="return.html">Обмін і повернення</a></li>
+                            <li class="menu-item"><a href="blog.html">Блог</a></li>
+                            <li class="menu-item"><a href="contacts.html">Мережа салонів</a></li>
+                        </ul>
+                    </nav>
                 </div>
 
             </div>
-
         </div>
     </header>
-
     <main class="main">
 
 
@@ -1305,7 +1260,7 @@
 
                                         <div class="socials__icon-wrap">
                                             <svg class="socials__icon" aria-hidden="true" width="36" height="36">
-                                                <use href="assets/img/sprite.svg#viber"></use>
+                                                <use href="assets/img/symbol.svg#viber"></use>
                                             </svg>
                                         </div>
                                         <span class="socials__text">Viber</span>
@@ -1317,7 +1272,7 @@
                                         target="_blank" rel="noopener" aria-label="WhatsApp">
                                         <div class="socials__icon-wrap">
                                             <svg class="socials__icon" aria-hidden="true" width="36" height="36">
-                                                <use href="assets/img/sprite.svg#whatsapp"></use>
+                                                <use href="assets/img/symbol.svg#whatsapp"></use>
                                             </svg>
                                         </div>
                                         <span class="socials__text">WhatsApp</span>
@@ -1329,7 +1284,7 @@
                                         target="_blank" rel="noopener" aria-label="Telegram">
                                         <div class="socials__icon-wrap">
                                             <svg class="socials__icon" aria-hidden="true" width="36" height="36">
-                                                <use href="assets/img/sprite.svg#telegram"></use>
+                                                <use href="assets/img/symbol.svg#telegram"></use>
                                             </svg>
                                         </div>
                                         <span class="socials__text">Telegram</span>
@@ -1348,7 +1303,7 @@
                                         rel="noopener" aria-label="YouTube">
                                         <div class="socials__icon-wrap">
                                             <svg class="socials__icon" aria-hidden="true" width="36" height="36">
-                                                <use href="assets/img/sprite.svg#youtube"></use>
+                                                <use href="assets/img/symbol.svg#youtube"></use>
                                             </svg>
                                         </div>
                                     </a>
@@ -1359,7 +1314,7 @@
                                         rel="noopener" aria-label="Threads">
                                         <div class="socials__icon-wrap">
                                             <svg class="socials__icon" aria-hidden="true" width="36" height="36">
-                                                <use href="assets/img/sprite.svg#threads"></use>
+                                                <use href="assets/img/symbol.svg#threads"></use>
                                             </svg>
                                         </div>
                                     </a>
@@ -1370,7 +1325,7 @@
                                         rel="noopener" aria-label="Facebook">
                                         <div class="socials__icon-wrap">
                                             <svg class="socials__icon" aria-hidden="true" width="36" height="36">
-                                                <use href="assets/img/sprite.svg#facebook"></use>
+                                                <use href="assets/img/symbol.svg#facebook"></use>
                                             </svg>
                                         </div>
                                     </a>
@@ -1381,7 +1336,7 @@
                                         rel="noopener" aria-label="Instagram">
                                         <div class="socials__icon-wrap">
                                             <svg class="socials__icon" aria-hidden="true" width="36" height="36">
-                                                <use href="assets/img/sprite.svg#instagram"></use>
+                                                <use href="assets/img/symbol.svg#instagram"></use>
                                             </svg>
                                         </div>
                                     </a>
@@ -1392,7 +1347,7 @@
                                         rel="noopener" aria-label="TikTok">
                                         <div class="socials__icon-wrap">
                                             <svg class="socials__icon" aria-hidden="true" width="36" height="36">
-                                                <use href="assets/img/sprite.svg#tiktok"></use>
+                                                <use href="assets/img/symbol.svg#tiktok"></use>
                                             </svg>
                                         </div>
                                     </a>
@@ -1410,7 +1365,7 @@
                                         aria-label="Viber">
                                         <div class="socials__icon-wrap">
                                             <svg class="socials__icon" aria-hidden="true" width="36" height="36">
-                                                <use href="assets/img/sprite.svg#viber"></use>
+                                                <use href="assets/img/symbol.svg#viber"></use>
                                             </svg>
                                         </div>
                                         <span class="socials__text">Viber</span>
@@ -1422,7 +1377,7 @@
                                         target="_blank" rel="noopener" aria-label="WhatsApp">
                                         <div class="socials__icon-wrap">
                                             <svg class="socials__icon" aria-hidden="true" width="36" height="36">
-                                                <use href="assets/img/sprite.svg#whatsapp"></use>
+                                                <use href="assets/img/symbol.svg#whatsapp"></use>
                                             </svg>
                                         </div>
                                         <span class="socials__text">WhatsApp</span>
@@ -1434,7 +1389,7 @@
                                         target="_blank" rel="noopener" aria-label="Telegram">
                                         <div class="socials__icon-wrap">
                                             <svg class="socials__icon" aria-hidden="true" width="36" height="36">
-                                                <use href="assets/img/sprite.svg#telegram"></use>
+                                                <use href="assets/img/symbol.svg#telegram"></use>
                                             </svg>
                                         </div>
                                         <span class="socials__text">Telegram</span>
@@ -1664,7 +1619,7 @@
                                             class="socials__link socials__link--viber" target="_blank" rel="noopener"
                                             aria-label="Viber">
                                             <svg class="icon" aria-hidden="true" width="36" height="36">
-                                                <use href="assets/img/sprite.svg#viber"></use>
+                                                <use href="assets/img/symbol.svg#viber"></use>
                                             </svg>
 
                                         </a>
@@ -1675,7 +1630,7 @@
                                             class="socials__link socials__link--whatsapp" target="_blank" rel="noopener"
                                             aria-label="WhatsApp">
                                             <svg class="icon" aria-hidden="true" width="36" height="36">
-                                                <use href="assets/img/sprite.svg#whatsapp"></use>
+                                                <use href="assets/img/symbol.svg#whatsapp"></use>
                                             </svg>
 
                                         </a>
@@ -1686,7 +1641,7 @@
                                             class="socials__link socials__link--telegram" target="_blank" rel="noopener"
                                             aria-label="Telegram">
                                             <svg class="icon" aria-hidden="true" width="36" height="36">
-                                                <use href="assets/img/sprite.svg#telegram"></use>
+                                                <use href="assets/img/symbol.svg#telegram"></use>
                                             </svg>
 
                                         </a>
@@ -1701,7 +1656,7 @@
                                         <a href="#" class="socials__link socials__link--youtube" target="_blank"
                                             rel="noopener" aria-label="YouTube">
                                             <svg class="icon" aria-hidden="true" width="36" height="36">
-                                                <use href="assets/img/sprite.svg#youtube"></use>
+                                                <use href="assets/img/symbol.svg#youtube"></use>
                                             </svg>
                                         </a>
                                     </li>
@@ -1710,7 +1665,7 @@
                                         <a href="#" class="socials__link socials__link--threads" target="_blank"
                                             rel="noopener" aria-label="Threads">
                                             <svg class="icon" aria-hidden="true" width="36" height="36">
-                                                <use href="assets/img/sprite.svg#threads"></use>
+                                                <use href="assets/img/symbol.svg#threads"></use>
                                             </svg>
                                         </a>
                                     </li>
@@ -1719,7 +1674,7 @@
                                         <a href="#" class="socials__link socials__link--facebook" target="_blank"
                                             rel="noopener" aria-label="Facebook">
                                             <svg class="icon" aria-hidden="true" width="36" height="36">
-                                                <use href="assets/img/sprite.svg#facebook"></use>
+                                                <use href="assets/img/symbol.svg#facebook"></use>
                                             </svg>
                                         </a>
                                     </li>
@@ -1728,7 +1683,7 @@
                                         <a href="#" class="socials__link socials__link--instagram" target="_blank"
                                             rel="noopener" aria-label="Instagram">
                                             <svg class="icon" aria-hidden="true" width="36" height="36">
-                                                <use href="assets/img/sprite.svg#instagram"></use>
+                                                <use href="assets/img/symbol.svg#instagram"></use>
                                             </svg>
                                         </a>
                                     </li>
@@ -1737,7 +1692,7 @@
                                         <a href="#" class="socials__link socials__link--tiktok" target="_blank"
                                             rel="noopener" aria-label="TikTok">
                                             <svg class="icon" aria-hidden="true" width="36" height="36">
-                                                <use href="assets/img/sprite.svg#tiktok"></use>
+                                                <use href="assets/img/symbol.svg#tiktok"></use>
                                             </svg>
                                         </a>
                                     </li>
@@ -1842,7 +1797,7 @@
 
 
     <script src="src/scripts/app-swiper.js"></script>
-    <script src="src/scripts/js_app.js"></script>
+    <!--<script src="src/scripts/js_app.js"></script>-->
 
     <script>
         let map = null;
@@ -2027,6 +1982,647 @@
             $container.find('.media__btn').removeClass('hide');
             $container.find('.heading').show();
         });
+    </script>
+
+
+    <script>
+        const _functions = {};
+        let winW, winH, winScr, isTouchScreen, isAndroid, isChrome, isIPhone, isMac, isSafari, isFirefox;
+
+        jQuery(function ($) {
+            "use strict";
+
+            // CHANGE TOP COLOR ON HOME PAGE
+            function initTopThemeByTime() {
+                const body = document.body;
+
+                if (!body.classList.contains('home')) return;
+
+                const now = new Date();
+                const hour = now.getHours();
+                const isNight = hour >= 19 || hour < 7;
+                const wasNight = body.classList.contains('top-black');
+
+                body.classList.toggle('top-black', isNight);
+
+                if (wasNight !== isNight) {
+                    window.dispatchEvent(new CustomEvent('topThemeChange'));
+                }
+            }
+
+            initTopThemeByTime();
+            setInterval(initTopThemeByTime, 60 * 1000);
+
+
+            //*================================
+            //*  FUNCTIONS ON DOCUMENT READY  =
+            //*================================
+            isTouchScreen = navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i),
+                isAndroid = navigator.userAgent.match(/Android/i),
+                isChrome = navigator.userAgent.indexOf('Chrome') >= 0 && navigator.userAgent.indexOf('Edge') < 0,
+                isIPhone = navigator.userAgent.match(/iPhone/i),
+                isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0,
+                isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent),
+                isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+
+
+            if (isTouchScreen) $('html').addClass('touch-screen');
+            if (isAndroid) $('html').addClass('android');
+            if (isChrome) $('html').addClass('chrome');
+            if (isIPhone) $('html').addClass('ios');
+            if (isMac) $('html').addClass('mac');
+            if (isSafari) $('html').addClass('safari');
+            if (isFirefox) $('html').addClass('firefox');
+
+
+
+
+            //*===================================
+            //*  FUNCTIONS CALC, RESIZE, SCROLL  =
+            //*===================================
+            // Function Calculations on page
+            _functions.pageCalculations = function () {
+                winW = $(window).outerWidth();
+                winH = $(window).outerHeight();
+            }
+            _functions.pageCalculations();
+
+            /* Function on page scroll */
+            $(window).on('scroll', function () {
+                _functions.scrollCall();
+            });
+
+
+            var prev_scroll = 0;
+            var topBlackLogoDefaultScroll = null;
+
+            function getCssLengthPx(value) {
+                const cssValue = value.trim();
+                const number = parseFloat(cssValue);
+
+                if (!number) return 0;
+
+                if (cssValue.endsWith('rem')) {
+                    return number * parseFloat(getComputedStyle(document.documentElement).fontSize);
+                }
+
+                return number;
+            }
+
+            function isTopBlackLogoNotDefaultSize() {
+                if (!document.body.classList.contains('home') || !document.body.classList.contains('top-black')) {
+                    topBlackLogoDefaultScroll = null;
+                    return false;
+                }
+
+                const logo = document.querySelector('.h-logo');
+
+                if (!logo) {
+                    topBlackLogoDefaultScroll = null;
+                    return false;
+                }
+
+                const defaultLogoWidth = getCssLengthPx(
+                    getComputedStyle(document.documentElement).getPropertyValue('--h-logo-width')
+                );
+
+                if (!defaultLogoWidth) {
+                    topBlackLogoDefaultScroll = null;
+                    return false;
+                }
+
+                const isNotDefaultSize = logo.getBoundingClientRect().width > defaultLogoWidth + 1;
+
+                if (isNotDefaultSize) {
+                    topBlackLogoDefaultScroll = null;
+                    return true;
+                }
+
+                if (topBlackLogoDefaultScroll === null) {
+                    topBlackLogoDefaultScroll = winScr;
+                }
+
+                return winScr < topBlackLogoDefaultScroll + 50;
+            }
+
+            _functions.scrollCall = function () {
+                winScr = $(window).scrollTop();
+                const header = $('header');
+
+                if (winScr > header.innerHeight() && !isTopBlackLogoNotDefaultSize()) {
+                    header.addClass('scrolled');
+
+                } else {
+                    header.removeClass('scrolled');
+                    prev_scroll = 0;
+                }
+
+                //only mobile visible controls
+                if (window.innerWidth < 1200 && winScr > window.innerHeight / 4) {
+                    header.addClass('controls');
+
+                } else {
+                    header.removeClass('controls');
+                }
+
+                prev_scroll = winScr;
+            }
+            _functions.scrollCall();
+
+
+            /* Function on page resize */
+            _functions.resizeCall = function () {
+                setTimeout(function () {
+                    _functions.pageCalculations();
+                }, 100);
+            };
+
+
+            if (!isTouchScreen) {
+                $(window).on('resize', function () {
+                    _functions.resizeCall();
+                });
+
+            } else {
+                window.addEventListener("orientationchange", function (e) {
+
+                    // Portrait
+                    if (window.orientation == 0) {
+                        $('html').removeClass('landscape');
+                    }
+                    // Landscape
+                    else {
+                        $('html').addClass('landscape');
+                    }
+
+                    _functions.resizeCall();
+                }, false);
+            }
+
+
+
+            //*===========
+            //*  HEADER  =
+            //*===========
+            if (winW > 1199) {
+                // hover on header dropdown
+                $(document).on('mouseenter', '.h-drop b', function () {
+                    $(this).closest('.h-drop').addClass('is-active');
+                });
+
+                // leave header dropdown
+                $(document).on('mouseleave', '.h-drop', function () {
+                    $(this).removeClass('is-active');
+                });
+
+            }
+
+            $(document).on('click', '.h-currency a[rel]', function (e) {
+                e.preventDefault();
+
+                const currency = this.getAttribute('rel');
+                if (!currency) {
+                    return;
+                }
+
+                $.post(wp_vars.ajax_url, {
+                    action: 'wcml_switch_currency',
+                    currency: currency,
+                    force_switch: 0,
+                    params: window.location.search.substr(1)
+                }).always(function () {
+                    window.location.reload();
+                });
+            });
+
+            /* Open menu */
+            $(document).on('click', '.js-open-menu', function () {
+
+                const isOpen = !$('header').hasClass('open-menu');
+
+                $('html').toggleClass('overflow-menu');
+                $('header').removeClass('hide');
+                $('header').toggleClass('open-menu');
+                $('header').removeClass('open-search');
+
+                $('.h-search-form input').val("");
+                $(".h-search-results").removeClass("is-active");
+
+
+                /*  if (isOpen) {
+                      gsap.fromTo(
+                          $('header nav ul li'),
+                          {
+                              y: 20,
+                              opacity: 0
+                          },
+                          {
+                              y: 0,
+                              opacity: 1,
+                              duration: 0.4,
+                              delay: 0.4,
+                              stagger: 0.1,
+                              ease: "power1.out"
+                          }
+                      );
+          
+                  }*/
+
+            });
+
+            /* Close menu */
+            $(document).on('click', '.h-menu-overlay', function () {
+                $('html').removeClass('overflow-menu');
+                $('header').removeClass('open-menu open-search');
+                $('.h-search-form input').val("");
+                $(".h-search-results").removeClass("is-active");
+            });
+
+            // Open Search Dropdown
+            $(document).on('click', '.js_search_open', function () {
+                $('html').removeClass('overflow-menu');
+                $('header').addClass('open-search');
+                $('header').removeClass('open-menu');
+                setTimeout(() => {
+                    $('.h-search-form input').trigger('focus');
+                }, 100);
+            });
+
+            // Visible search results
+            $(document).on("input", ".h-search-form input", function () {
+                if ($(this).val().length > 0) {
+                    $(this).closest("header").find(".h-search-results").addClass("is-active");
+                } else {
+                    $(this).closest("header").find(".h-search-results").removeClass("is-active");
+                }
+            });
+
+            // Close Search Dropdown
+            $(document).on('click', '.js_clear-search', function () {
+                $('header').removeClass('open-search');
+                $('.h-search-form input').val("");
+                $(".h-search-results").removeClass("is-active");
+            });
+
+
+
+            //*===========
+            //*  POPUPS  =
+            //*===========
+            _functions.scrollWidth = function () {
+                let scrWidth = $(window).outerWidth() - $('body').innerWidth();
+
+                $('body, .h-wrap').css({
+                    "paddingRight": `${scrWidth}px`
+                });
+            }
+
+
+            // Popups Functions
+            let popupTop = 0;
+            _functions.removeScroll = function () {
+                _functions.scrollWidth();
+                popupTop = winScr;
+
+                window.lenis?.stop();
+
+                $('html').css({
+                    //"top": '-' + winScr,
+                    "width": "100%"
+                }).addClass("overflow-hidden");
+            }
+
+            _functions.addScroll = function () {
+                _functions.scrollWidth();
+                $('html').removeClass("overflow-hidden");
+                window.scroll(0, popupTop);
+
+                window.lenis?.start();
+            }
+
+            _functions.openPopup = function (popup) {
+                $('.popup-content').removeClass('active');
+                $(popup + ', .popup-wrapper').addClass('active');
+                _functions.removeScroll();
+            };
+
+            let _productPopupOriginalUrl = null;
+            let _productPopupOriginalTitle = null;
+
+            _functions.closePopup = function () {
+
+            };
+
+            // Close  popup
+            $(document).on('click', '.popup-content .close-popup, .popup-content .layer-close', function (e) {
+                e.preventDefault();
+                _functions.closePopup();
+            });
+
+
+            let isPopupLoading = false;
+
+
+
+
+
+            //*====================
+            //*  DYNAMIC LOAD JS  =
+            //*====================
+            const videoObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+
+                    _functions.videoLoad(entry.target);
+                    observer.unobserve(entry.target)
+                })
+            }, {
+                root: document,
+                rootMargin: "50%",
+            });
+
+            document.querySelectorAll(".video").forEach((element) => {
+                videoObserver.observe(element);
+            });
+
+            _functions.videoLoad = function (block) {
+                let videoBlock = $(block).find('video'),
+                    videoSrc = videoBlock.data('src');
+                videoBlock.attr('src', videoSrc);
+            };
+
+            //activate autoplay video
+            // The animated main banner starts its video after the reveal (initBannerReveal in app-animation.js)
+            $('.video:not(.video-control)').not('.main-banner-sec:not(.not-animated) .video').find('video').attr("autoplay", "");
+
+
+            //*=============
+            //*  OTHER JS  =
+            //*=============
+            // Seo block
+            $(document).on("click", ".seo-btn", function () {
+                let th = $(this);
+                let parent = th.closest('.seo-block');
+
+                th.toggleClass('is-active');
+                parent.find('.more-content').slideToggle(600);
+            });
+
+
+            // click news anchor
+            var page = $("html, body");
+            $('a[href^="#"]').on("click", function (e) {
+                if ($(".read-blog").length && $(window).width() < 992) {
+
+                    var target = $($.attr(this, "href"));
+                    var headerHeight = $(".h-wrap").outerHeight();
+
+                    if (target.length) {
+
+                        $(this).closest("ol").find("li").removeClass("active");
+                        $(this).closest("li").addClass("active");
+                        $(".read-blog").removeClass("open");
+
+                        page.animate({
+                            scrollTop: target.offset().top - headerHeight - 40
+                        }, 700);
+
+                        e.preventDefault();
+                    }
+                }
+            });
+
+            // START BLOG DETAIL MOB PANEL
+            if ($(".read-blog").length && $(window).width() < 992) {
+                $(window).scroll(function () {
+                    if ($(this).scrollTop() > 360) {
+                        $(".read-blog").addClass("active");
+                    } else {
+                        $(".read-blog").removeClass("active");
+                        $(".read-blog").removeClass("open");
+                        $(".read-blog").find("li").removeClass("active");
+                    }
+                });
+
+                $(document).on("click", ".read-blog .mob-title", function () {
+                    $(this).closest(".read-blog").toggleClass("open");
+                });
+            }
+
+
+            // ACTIVE MENU HIGHLIGHT ON BLOG DETAILED
+            _functions.submenuScroll = function () {
+                if ($(".read-blog").length) {
+                    let firstOffset = $(".editor-link-to-content").first().offset().top - 200;
+
+                    if (winScr < firstOffset) {
+                        $(".custom-select a.active").removeClass("active");
+                        $(".read-blog").find(".mob-title span").html('In this article');
+                        return;
+                    }
+
+                    $(".editor-link-to-content").each(function (i) {
+                        if ($(this).offset().top - 200 <= winScr) {
+                            $('.custom-select a[href*="#"]:not([href="#"]).active').removeClass("active");
+                            $(".custom-select a").eq(i).addClass("active");
+                            $(".read-blog").find(".mob-title span").html($(".custom-select a.active").html());
+                        }
+                    });
+                }
+            };
+
+            $(window).on("scroll", function () {
+                _functions.submenuScroll();
+            });
+
+
+            //decrement
+            $(document).on('click', '.stepper .decr', function () {
+                let th = $(this),
+                    input = th.closest('.stepper').find('input'),
+                    val = parseInt(input.val(), 10),
+                    hasMin = input.attr('data-min'),
+                    min = hasMin ? +hasMin : 1;
+
+                val != min ? val = val - 1 : val = min;
+
+                input.val(val).trigger('change');;
+            });
+
+            //increment
+            $(document).on('click', '.stepper .incr', function () {
+                let th = $(this),
+                    input = th.closest('.stepper').find('input'),
+                    val = parseInt(input.val(), 10);
+
+                input.val(val + 1).trigger('change');;
+            });
+
+            // Thousands separator
+            _functions.addThousandsSeparator = function (number, separator = " ") {
+                const value = Number(number);
+                if (!isFinite(value)) {
+                    return '0';
+                }
+
+                const rounded = Math.round((value + Number.EPSILON) * 100) / 100;
+                const parts = rounded.toFixed(2).split('.');
+                parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, separator);
+
+                return parts[1] === '00' ? parts[0] : parts.join('.');
+            };
+
+            // Back to Top
+            var $btn = $('.back-to-top');
+
+            $(window).on('scroll', function () {
+                var scrollTop = $(window).scrollTop();
+                var windowHeight = $(window).height();
+
+                if (scrollTop > windowHeight * 2) {
+                    $btn.fadeIn();
+                } else {
+                    $btn.fadeOut();
+                }
+            });
+
+            $btn.on('click', function () {
+                $('html, body').animate({ scrollTop: 0 }, 500);
+            });
+
+            //*====================
+            //* open video inner block
+            //*====================
+            $(document).on('click', '.js-play-video', function () {
+                const isDesktop = $(window).width() > 991;
+                const videoSrc = $(this).attr(isDesktop ? 'data-src' : 'data-mob-src');
+                const video = $(this).closest('.video-block').find('video')[0];
+
+                if (!video.src) {
+                    video.src = videoSrc;
+                    video.load();
+                }
+
+                video.muted = true;
+                video.playsInline = true;
+
+                if (video.paused) {
+                    video.play().catch(err => {
+                        console.log('Play blocked:', err);
+                    });
+                } else {
+                    video.pause();
+                }
+            });
+
+            //*====================
+            //* open video in popup
+            //*====================
+            $(document).on('click', '.js-play-popup', function () {
+                let videoSrc = '';
+
+                if (winW > 991) {
+                    videoSrc = $(this).attr('data-src');
+                }
+                else {
+                    videoSrc = $(this).attr('data-mob-src');
+                }
+
+                setTimeout(function () {
+                    if ($('.popup-video .video').length) {
+                        $('.popup-video video').attr('src', videoSrc);
+                        $('.popup-video video').attr("autoplay", "");
+                    }
+                }, 100);
+            });
+
+
+            //*====================
+            //* MARQUEE line
+            //*====================
+            class LoopingElement {
+                constructor(e, t, a, o) {
+                    this.element = e,
+                        this.currentTranslation = t,
+                        this.speed = a,
+                        this.direction = !0,
+                        this.scrollTop = 0,
+                        this.metric = 100,
+                        this.isPaused = false,
+                        this.lerp = {
+                            current: this.currentTranslation,
+                            target: this.currentTranslation,
+                            factor: .2
+                        },
+                        this.render(),
+                        this.go = o ? (this.direction = !0, this.lerp.target += 2 * this.speed) : (this.direction = !1, this.lerp.target -= 2 * this.speed)
+                }
+                lerpFunc(e, t, a) {
+                    this.lerp.current = e * (1 - a) + t * a
+                }
+                goForward() {
+                    this.lerp.target += this.speed,
+                        this.lerp.target > this.metric && (this.lerp.current -= 2 * this.metric,
+                            this.lerp.target -= 2 * this.metric)
+                }
+                goBackward() {
+                    this.lerp.target -= this.speed,
+                        this.lerp.target < -this.metric && (this.lerp.current -= 2 * -this.metric,
+                            this.lerp.target -= 2 * -this.metric)
+                }
+                animate() {
+                    if (!this.isPaused) {
+                        this.direction ? this.goForward() : this.goBackward(),
+                            this.lerpFunc(this.lerp.current, this.lerp.target, this.lerp.factor),
+                            this.element.style.setProperty("--x", this.lerp.current + "%")
+                    }
+                }
+                render() {
+                    this.animate(),
+                        window.requestAnimationFrame(() => this.render())
+                }
+            }
+
+            document.querySelectorAll(".marquee-line").forEach(el => {
+                const spd = Number(el.dataset.speed);
+                const dir = el.dataset.direction === "false" ? "" : "false";
+
+                const firstItem = el.querySelector(".marquee-item");
+                const content = firstItem.querySelector(`:scope ${'.marquee-content'}`);
+
+                let eq = Math.ceil(el.offsetWidth / content.offsetWidth);
+
+                for (let i = 0; i < eq; i++) {
+                    firstItem.appendChild(content.cloneNode(true));
+                }
+
+                el.appendChild(firstItem.cloneNode(true));
+
+                let item = el.querySelectorAll(".marquee-item");
+
+                $(item[0]).get(0)._LoopingElements = new LoopingElement(item[0], 0, spd, dir);
+                $(item[1]).get(0)._LoopingElements = new LoopingElement(item[1], -100, spd, dir);
+            });
+
+            // $(document).on('mouseenter touchstart', '.marquee', function () {
+            //     let items = $(this).find('.marquee-item');
+
+            //     items.each(function () {
+            //         $(this)[0]._LoopingElements.isPaused = true;
+            //     });
+            // });
+
+            // $(document).on('mouseleave touchend', '.marquee', function () {
+            //     let items = $(this).find('.marquee-item');
+
+            //     items.each(function () {
+            //         $(this)[0]._LoopingElements.isPaused = false;
+            //     });
+            // });
+
+
+        });
+
     </script>
 </body>
 

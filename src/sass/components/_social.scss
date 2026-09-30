@@ -83,13 +83,20 @@ $social-colors: (
   }
 
   &__icon {
+    color: currentColor;
+    width: 21px;
+    height: 21px;
+
     &-wrap {
       width: 36px;
       height: 36px;
       flex-shrink: 0;
       border-radius: 50%;
       display: block;
-      color: currentColor;
+      color: $color-white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
       @media (max-width: $breakpoint-md) {
         width: 25px;
