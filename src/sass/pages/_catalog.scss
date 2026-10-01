@@ -251,8 +251,11 @@
 }
 
 .s-catalog {
+  padding-top:fluid(20,40);
   padding-bottom: fluid(50, 90);
-
+& .heading{
+  margin-bottom: 30px;
+}
   .catalog__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

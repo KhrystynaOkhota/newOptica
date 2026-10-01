@@ -7,7 +7,7 @@
   justify-content: center;
   padding: 15px 14px 16px 14px;
   font-family: inherit;
-  font-size: fluid(15,17);
+  font-size: fluid(15, 17);
   font-weight: 700;
   line-height: 1;
   text-align: center;
@@ -21,6 +21,7 @@
     background-color: $color-accent;
     border-color: $color-accent;
     min-width: 226px;
+
     &:hover {
       background-color: rgba(205, 89, 13, 1);
       border-color: rgba(205, 89, 13, 1);
@@ -31,7 +32,7 @@
     color: #8b1818;
     background-color: #fff;
     border-color: #fff;
-   
+
   }
 
   &--outline {
@@ -45,7 +46,11 @@
     }
   }
 
-
+  &--clear {
+    padding: 15px;
+    color: $color-accent;
+    background: transparent;
+  }
 
   &--load-more {
     display: flex;

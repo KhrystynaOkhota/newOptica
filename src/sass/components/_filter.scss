@@ -1,65 +1,221 @@
 @use "../abstracts/variables" as *;
 @use "../abstracts/mixins" as *;
 
-.fl-item {
-  border-bottom: 1px solid #e0e0e0;
+// Ваші змінні:
+// $breakpoint-grid-sm: 576px;
+// $breakpoint-grid-md: 768px;
+// $breakpoint-grid-lg: 992px;
+// $breakpoint-grid-xl: 1200px;
+// $breakpoint-sm: 575px;
+// $breakpoint-md: 767px;
+// $breakpoint-lg: 991px;
+// $breakpoint-xl: 1199px;
+// $color-accent: #ee670e;
+// $color-primary: #070404;
+// $color-white: #ffffff;
+// $font-primary: 'Montserrat', sans-serif;
 
-  &__header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    padding: 16px 0;
-    background: transparent;
-    border: none;
-    cursor: pointer;
+/*--------------------*/
+/*  Filter Menu       */
+/*--------------------*/
+.fl-overlay {
+  cursor: pointer;
+  position: fixed;
+  z-index: 1;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  background: rgba(0, 0, 0, 0.7);
+  transition: 0.3s linear;
+  display: block;
+}
+
+.fl-menu-top {
+  gap: clamp(0.75rem, 0.1424rem + 1.2658vw, 1.25rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.25rem clamp(0.75rem, 0.4462rem + 0.6329vw, 1rem);
+}
+
+/*
+.fl-menu-inner {
+  // padding: clamp(0.75rem, 0.4462rem + 0.6329vw, 1rem) 1.25rem;
+  height: 100%;
+  overflow-x: clip;
+  overflow-y: auto;
+  // overscroll-behavior-y: none;// скрол прибирається коли є курсор на ньому
+  -webkit-mask-image: linear-gradient(to bottom,
+      transparent,
+      #000 1rem,
+      #000 calc(100% - 1rem),
+      transparent);
+  mask-image: linear-gradient(to bottom,
+      transparent,
+      #000 1rem,
+      #000 calc(100% - 1rem),
+      transparent);
+
+  @media (max-width: $breakpoint-md) {
+    padding-bottom: calc(clamp(0.75rem, 0.4462rem + 0.6329vw, 1rem) + 7rem);
   }
-
-  &__arrow {
-    position: relative;
-    width: 12px;
-    height: 12px;
+}*/
+/* Open state styles */
+.filter-is-open {
+  .fl-overlay {
+    opacity: 1;
+    visibility: visible;
 
     &::before {
-      content: '';
+      content: "";
       position: absolute;
-      top: 3px;
-      left: 3px;
-      width: 6px;
-      height: 6px;
-      border-right: 2px solid #1a1a1a;
-      border-bottom: 2px solid #1a1a1a;
-      transform: rotate(45deg);
-      transition: transform 0.3s ease, top 0.3s ease;
+      inset: 0;
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
     }
   }
 
-  &__content {
-    padding-bottom: 20px;
+  .fl-menu {
+    transition-delay: 0s;
+    visibility: visible;
   }
 
-  // Скриваємо контент для елементів, які початково закриті
-  &:not(.is-open) > &__content {
-    display: none;
+  .fl-menu-wrap {
+    transition-delay: 0.1s;
+    transform: translateX(0);
+  }
+}
+
+/*--------------------*/
+/*  Filter Blocks     */
+/*--------------------*/
+.fl-block {
+  $fl-padd: clamp(1rem, 0.3924rem + 1.2658vw, 1.5rem);
+  position: relative;
+  border-bottom: 1px solid rgba(7, 4, 4, .1);
+}
+
+.fl-title {
+  $fl-padd: clamp(1rem, 0.3924rem + 1.2658vw, 1.5rem);
+  position: relative;
+  font-family: $font-primary;
+  font-size: 1.125rem;
+  line-height: 1;
+  font-weight: 500;
+  color: $color-primary;
+  letter-spacing: -0.36px;
+  padding-block: $fl-padd;
+  padding-right: calc(#{$fl-padd} * 1.5);
+  transition: 0.3s linear;
+  cursor: pointer;
+
+  i {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    top: $fl-padd;
+    width: $fl-padd;
+    height: $fl-padd;
+    transition: 0.3s linear;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 35%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(45deg);
+      width: 8px;
+      height: 8px;
+      border-right: 1px solid $color-primary;
+      border-bottom: 1px solid $color-primary;
+      background-color: transparent;
+    }
   }
 
-  // Обертаємо стрілочку при відкритті
-  &.is-open {
-    .fl-item__arrow::before {
-      transform: rotate(-135deg);
-      top: 5px;
+  &.is-active i {
+    transform: rotateX(-180deg);
+  }
+
+  @media (min-width: $breakpoint-grid-xl) {
+    &:hover {
+      color: $color-accent;
     }
   }
 }
-.fl-item {
-  &__content {
-    display: none; // Початковий стан керується цим стилем, а не :not(.is-open)
-  }
 
-  // Якщо елемент за замовчуванням має бути відкритий при завантаженні:
-  &.is-open {
-    .fl-item__content {
-      display: block;
+.fl-toggle {
+  padding-bottom: clamp(1rem, 0.3924rem + 1.2658vw, 1.5rem);
+  display: none;
+}
+
+.fl-list {
+  li {
+    line-height: 0;
+
+    +li {
+      margin-top: 0.75rem;
     }
   }
+}
+
+.fl-list-btn {
+  display: none;
+  position: relative;
+  cursor: pointer;
+  margin-top: 0.75rem;
+  font-family: $font-primary;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  font-weight: 500;
+  color: $color-primary;
+
+  &::before {
+    content: attr(data-show-more);
+    display: inline-block;
+    vertical-align: middle;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    text-decoration-color: currentColor;
+    transition: 0.3s linear;
+  }
+
+  &.is-active {
+    &::before {
+      content: attr(data-show-less);
+    }
+
+    svg {
+      transform: rotateX(-180deg);
+    }
+  }
+
+  .more-options+& {
+    display: block;
+  }
+
+  @media (min-width: $breakpoint-grid-xl) {
+    &:hover::before {
+      text-decoration-color: transparent;
+      color: $color-accent;
+    }
+  }
+}
+
+.fl-search {
+  margin-bottom: 15px;
+}
+
+.fl-menu-actions {
+  margin-top: 20px;
+
+  & .btn {
+    width: 100%;
+  }
+}
+
+.fl-menu {
+  border-radius: 20px;
+  padding: 20px;
+  background-color: rgba(243, 243, 245, 1);
 }

@@ -97,8 +97,8 @@ section {
   min-height: 50vh;
   padding-top: 210px;
 
-  @media (max-width: $breakpoint-lg) {
-    padding-top: 88px;
+  @media (max-width: $breakpoint-md) {
+    padding-top: 200px;
   }
 
   &-wrapper {

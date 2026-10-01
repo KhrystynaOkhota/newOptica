@@ -20,7 +20,7 @@
 
 <body>
 
-   
+
     <header class="header">
         <div class="h-menu-overlay"></div>
 
@@ -112,7 +112,7 @@
 
                     <div class="h-controls align-center d-none d-md-flex">
 
-                      
+
 
                         <a class="control-btn control-btn--account" href="account.html" aria-label="Особистий кабінет">
                             <span class="h-icon">
@@ -514,36 +514,55 @@
             <div class="container">
                 <div class="row m-row align-center d-md-flex" id="ajax-filter-section">
                     <div class="col-xl-4 col-lg-4 col-md-4 col-sm-16 col-xs-16 column">
-                        <div class="fl-menu">
-                            <div class="fl-menu__overlay"></div>
-
-                            <div class="fl-menu__wrap">
-                                <!-- Шапка мобільного/бокового меню -->
-                                <div class="fl-menu__header">
-                                    <div class="fl-menu__count">
-                                        <i class="icon-filter" aria-hidden="true"></i>
-                                        <span>Фільтр (0)</span>
+                        <aside class="fl-menu js_filter">
+                            <form method="get" action="https://hinaus.art/books/">
+                                <div class="fl-overlay js_fl_close"></div>
+                                <div class="fl-menu-wrap">
+                                    <div class="fl-menu-top d-block d-md-none">
+                                        <div class="btn btn--close"></div>
+                                        
                                     </div>
-                                    <button type="button" class="fl-menu__close-btn" aria-label="Закрити фільтр">
-                                        <i class="icon-close" aria-hidden="true"></i>
-                                    </button>
-                                </div>
+                                    <div class="fl-menu-inner">
 
-                                <form id="filter" class="fl-menu__form">
-                                    <div class="fl-menu__body">
+                                        <!-- Ціна -->
+                                        <div class="fl-block">
+                                            <div class="fl-title">
+                                                Ціна <i></i>
+                                            </div>
+                                            <div class="fl-toggle">
+                                                <div class="range">
+                                                    <div class="range__slider-wrap">
+                                                        <div id="slider" class="range__slider"></div>
+                                                        <div class="range__slider-limits">
+                                                            <span>0</span>
+                                                            <span>10 000</span>
+                                                        </div>
+                                                    </div>
 
-                                        <!-- Блок: Стать -->
-                                        <div class="fl-menu__item fl-item">
-                                            <button type="button" class="fl-item__header js-filter-toggle">
-                                                <span class="fl-item__title">Стать</span>
-                                                <span class="fl-item__arrow"></span>
-                                            </button>
+                                                    <div class="range__inputs">
+                                                        <label class="range__field">
+                                                            <input class="range__input js-price-from" name="price_min"
+                                                                type="number" placeholder="299 грн" value="299">
+                                                        </label>
+                                                        <label class="range__field">
+                                                            <input class="range__input js-price-to" name="price_max"
+                                                                type="number" placeholder="10 000 грн" value="10000">
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                                            <div class="fl-item__content">
+                                        <!-- Стать -->
+                                        <div class="fl-block">
+                                            <div class="fl-title">
+                                                Стать <i></i>
+                                            </div>
+                                            <div class="fl-toggle">
                                                 <div class="checkbox__wrap">
                                                     <label class="checkbox">
                                                         <input type="checkbox" name="gender[]" value="kids"
-                                                            class="checkbox__input" checked>
+                                                            class="checkbox__input">
                                                         <span class="checkbox__custom"></span>
                                                         <span class="checkbox__text">
                                                             Дитячі <span class="checkbox__count">(349)</span>
@@ -580,158 +599,282 @@
                                             </div>
                                         </div>
 
-                                        <!-- Блок: Бренд -->
-                                        <div class="fl-menu__item fl-item">
-                                            <button type="button" class="fl-item__header js-filter-toggle"
-                                                aria-expanded="true">
-                                                <span class="fl-item__title">Бренд</span>
-                                                <span class="fl-item__arrow"></span>
-                                            </button>
-
-                                            <div class="fl-item__content">
-                                                <div class="checkbox__wrap">
-                                                    <label class="checkbox">
-                                                        <input type="checkbox" name="brand[]" value="ray-ban"
-                                                            class="checkbox__input" checked>
-                                                        <span class="checkbox__custom"></span>
-                                                        <span class="checkbox__text">
-                                                            Ray-Ban
-                                                        </span>
-                                                    </label>
-
-                                                    <label class="checkbox">
-                                                        <input type="checkbox" name="brand[]" value="polaroid"
-                                                            class="checkbox__input">
-                                                        <span class="checkbox__custom"></span>
-                                                        <span class="checkbox__text">
-                                                            Polaroid
-                                                        </span>
-                                                    </label>
-
-                                                    <label class="checkbox">
-                                                        <input type="checkbox" name="brand[]" value="carrera"
-                                                            class="checkbox__input">
-                                                        <span class="checkbox__custom"></span>
-                                                        <span class="checkbox__text">
-                                                            Carrera
-                                                        </span>
-                                                    </label>
-                                                </div>
-
-                                                <button type="button" class="fl-item__more">Показати всі</button>
+                                        <!-- Бренд -->
+                                        <div class="fl-block">
+                                            <div class="fl-title">
+                                                Бренд <i></i>
                                             </div>
-                                        </div>
-
-                                        <!-- Блок: За вагою -->
-                                        <div class="fl-menu__item fl-item">
-                                            <button type="button" class="fl-item__header js-filter-toggle"
-                                                aria-expanded="true">
-                                                <span class="fl-item__title">За вагою</span>
-                                                <span class="fl-item__arrow"></span>
-                                            </button>
-
-                                            <div class="fl-item__content">
-                                                <div class="checkbox__wrap">
-                                                    <label class="checkbox">
-                                                        <input type="checkbox" name="weight[]" value="to-500g"
-                                                            class="checkbox__input">
-                                                        <span class="checkbox__custom"></span>
-                                                        <span class="checkbox__text">
-                                                            до 500 г
-                                                        </span>
-                                                    </label>
-
-                                                    <label class="checkbox">
-                                                        <input type="checkbox" name="weight[]" value="500g-1kg"
-                                                            class="checkbox__input">
-                                                        <span class="checkbox__custom"></span>
-                                                        <span class="checkbox__text">
-                                                            0,5–1 кг
-                                                        </span>
-                                                    </label>
-
-                                                    <label class="checkbox">
-                                                        <input type="checkbox" name="weight[]" value="1kg-2kg"
-                                                            class="checkbox__input">
-                                                        <span class="checkbox__custom"></span>
-                                                        <span class="checkbox__text">
-                                                            1–2 кг
-                                                        </span>
-                                                    </label>
-
-                                                    <label class="checkbox">
-                                                        <input type="checkbox" name="weight[]" value="2kg-plus"
-                                                            class="checkbox__input">
-                                                        <span class="checkbox__custom"></span>
-                                                        <span class="checkbox__text">
-                                                            2+ кг
-                                                        </span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- Блок: За ціною -->
-                                        <div class="fl-menu__item fl-item">
-                                            <button type="button" class="fl-item__header js-filter-toggle"
-                                                aria-expanded="true">
-                                                <span class="fl-item__title">За ціною</span>
-                                                <span class="fl-item__arrow"></span>
-                                            </button>
-
-                                            <div class="fl-item__content">
-                                                <div class="range">
-                                                    <div class="range__inputs">
-                                                        <label class="range__field">
-                                                            <span class="range__label">Від</span>
-                                                            <input class="range__input js-price-from" name="price_min"
-                                                                type="number" value="8">
-                                                        </label>
-                                                        <label class="range__field">
-                                                            <span class="range__label">До</span>
-                                                            <input class="range__input js-price-to" name="price_max"
-                                                                type="number" value="6666">
-                                                        </label>
-                                                    </div>
-                                                    <div class="range__slider-wrap">
-                                                        <div id="slider" class="range__slider"></div>
+                                            <div class="fl-toggle">
+                                                <div class="fl-search">
+                                                    <div class="search-form --relative" action="#" method="get"
+                                                        role="search">
+                                                        <input type="search" class="search-form__input"
+                                                            placeholder="Пошук" aria-label="Пошук">
+                                                        <button type="submit" class="search-form__btn"
+                                                            aria-label="Шукати">
+                                                            <svg class="icon" aria-hidden="true" width="22" height="22">
+                                                                <use href="assets/img/symbol.svg#search"></use>
+                                                            </svg>
+                                                        </button>
                                                     </div>
                                                 </div>
+                                                <ul class="fl-list">
+                                                    <li>
+                                                        <label class="checkbox">
+                                                            <input type="checkbox" name="brand[]" value="ray-ban"
+                                                                class="checkbox__input" checked>
+                                                            <span class="checkbox__custom"></span>
+                                                            <span class="checkbox__text">Ray-Ban</span>
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <label class="checkbox">
+                                                            <input type="checkbox" name="brand[]" value="polaroid"
+                                                                class="checkbox__input">
+                                                            <span class="checkbox__custom"></span>
+                                                            <span class="checkbox__text">Polaroid</span>
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <label class="checkbox">
+                                                            <input type="checkbox" name="brand[]" value="carrera"
+                                                                class="checkbox__input">
+                                                            <span class="checkbox__custom"></span>
+                                                            <span class="checkbox__text">Carrera</span>
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <label class="checkbox">
+                                                            <input type="checkbox" name="brand[]" value="casta"
+                                                                class="checkbox__input">
+                                                            <span class="checkbox__custom"></span>
+                                                            <span class="checkbox__text">Casta</span>
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <label class="checkbox">
+                                                            <input type="checkbox" name="brand[]" value="polaroid"
+                                                                class="checkbox__input">
+                                                            <span class="checkbox__custom"></span>
+                                                            <span class="checkbox__text">Polaroid</span>
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <label class="checkbox">
+                                                            <input type="checkbox" name="brand[]" value="carrera"
+                                                                class="checkbox__input">
+                                                            <span class="checkbox__custom"></span>
+                                                            <span class="checkbox__text">Carrera</span>
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <label class="checkbox">
+                                                            <input type="checkbox" name="brand[]" value="casta"
+                                                                class="checkbox__input">
+                                                            <span class="checkbox__custom"></span>
+                                                            <span class="checkbox__text">Casta</span>
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <label class="checkbox">
+                                                            <input type="checkbox" name="brand[]" value="guess"
+                                                                class="checkbox__input">
+                                                            <span class="checkbox__custom"></span>
+                                                            <span class="checkbox__text">Guess</span>
+                                                        </label>
+                                                    </li>
+                                                </ul>
+                                                <div class="fl-list-btn btn-link" data-show-more="Більше"
+                                                    data-show-less="Менше"></div>
                                             </div>
                                         </div>
 
-                                    </div>
+                                        <!-- Колекція -->
+                                        <div class="fl-block">
+                                            <div class="fl-title">
+                                                Колекція <i></i>
+                                            </div>
+                                            <div class="fl-toggle">
+                                                <ul class="fl-list">
+                                                    <li>
+                                                        <label class="checkbox">
+                                                            <input type="checkbox" name="collection[]" value="2024"
+                                                                class="checkbox__input">
+                                                            <span class="checkbox__custom"></span>
+                                                            <span class="checkbox__text">2024</span>
+                                                        </label>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
 
-                                    <div class="fl-menu__footer">
-                                        <button type="reset" class="btn-reset">
-                                            <span>Скинути фільтри</span>
-                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M17.7101 0.292893C17.3195 -0.0976308 16.6864 -0.0976313 16.2959 0.292893L9.00148 7.58727L1.70711 0.292895C1.31658 -0.0976294 0.683417 -0.0976294 0.292893 0.292895C-0.0976308 0.683419 -0.0976313 1.31658 0.292893 1.70711L7.58727 9.00148L0.292914 16.2958C-0.0976103 16.6864 -0.0976103 17.3195 0.292914 17.71C0.683438 18.1006 1.3166 18.1006 1.70713 17.71L9.00148 10.4157L16.2958 17.71C16.6864 18.1006 17.3195 18.1006 17.71 17.7101C18.1006 17.3195 18.1006 16.6864 17.71 16.2958L10.4157 9.00148L17.7101 1.70711C18.1006 1.31658 18.1006 0.683417 17.7101 0.292893Z"
-                                                    fill="currentColor" />
-                                            </svg>
-                                        </button>
+                                        <div class="fl-block">
+                                            <div class="fl-title">
+                                                Розпродаж <i></i>
+                                            </div>
+                                            <div class="fl-toggle">
+                                                <ul class="fl-list">
+                                                    <li>
+                                                        <label class="checkbox">
+                                                            <input type="checkbox" name="sale[]" value="yes"
+                                                                class="checkbox__input">
+                                                            <span class="checkbox__custom"></span>
+                                                            <span class="checkbox__text">Акційні товари</span>
+                                                        </label>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <div class="fl-block">
+                                            <div class="fl-title">
+                                                Форма оправи <i></i>
+                                            </div>
+                                            <div class="fl-toggle">
+                                                <ul class="fl-list">
+                                                    <li>
+                                                        <label class="checkbox">
+                                                            <input type="checkbox" name="frame_shape[]" value="aviator"
+                                                                class="checkbox__input">
+                                                            <span class="checkbox__custom"></span>
+                                                            <span class="checkbox__text">Авіатор</span>
+                                                        </label>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="fl-block">
+                                            <div class="fl-title">
+                                                Матеріал оправи <i></i>
+                                            </div>
+                                            <div class="fl-toggle">
+                                                <ul class="fl-list">
+                                                    <li>
+                                                        <label class="checkbox">
+                                                            <input type="checkbox" name="frame_material[]" value="metal"
+                                                                class="checkbox__input">
+                                                            <span class="checkbox__custom"></span>
+                                                            <span class="checkbox__text">Метал</span>
+                                                        </label>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="fl-block">
+                                            <div class="fl-title">
+                                                Тип лінзи <i></i>
+                                            </div>
+                                            <div class="fl-toggle">
+                                                <ul class="fl-list">
+                                                    <li>
+                                                        <label class="checkbox">
+                                                            <input type="checkbox" name="lens_type[]" value="polarized"
+                                                                class="checkbox__input">
+                                                            <span class="checkbox__custom"></span>
+                                                            <span class="checkbox__text">Поляризаційні</span>
+                                                        </label>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="fl-block">
+                                            <div class="fl-title">
+                                                Матеріал лінзи <i></i>
+                                            </div>
+                                            <div class="fl-toggle">
+                                                <ul class="fl-list">
+                                                    <li>
+                                                        <label class="checkbox">
+                                                            <input type="checkbox" name="lens_material[]"
+                                                                value="polycarbonate" class="checkbox__input">
+                                                            <span class="checkbox__custom"></span>
+                                                            <span class="checkbox__text">Полікарбонат</span>
+                                                        </label>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="fl-block">
+                                            <div class="fl-title">
+                                                Розмір завушника <i></i>
+                                            </div>
+                                            <div class="fl-toggle">
+                                                <ul class="fl-list">
+                                                    <li>
+                                                        <label class="checkbox">
+                                                            <input type="checkbox" name="temple_size[]" value="140"
+                                                                class="checkbox__input">
+                                                            <span class="checkbox__custom"></span>
+                                                            <span class="checkbox__text">140 мм</span>
+                                                        </label>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="fl-block">
+                                            <div class="fl-title">
+                                                Розмір окуляра <i></i>
+                                            </div>
+                                            <div class="fl-toggle">
+                                                <ul class="fl-list">
+                                                    <li>
+                                                        <label class="checkbox">
+                                                            <input type="checkbox" name="eye_size[]" value="55"
+                                                                class="checkbox__input">
+                                                            <span class="checkbox__custom"></span>
+                                                            <span class="checkbox__text">55 мм</span>
+                                                        </label>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
-                                </form>
-                            </div>
-                        </div>
+                                    <div class="fl-menu-actions">
+                                        <button type="submit" class="btn btn--primary">Показати</button>
+                                        <button type="button" class="btn btn--clear">Скасувати</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </aside>
                     </div>
 
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-16 col-xs-16 column">
                         <h1 class="heading h2 text-bold">Сонцезахисні окуляри</h1>
 
-                        <div class="sorting">
-                            <span class="sorting__label">Сортувати за:</span>
-                            <select class="orderby">
-                                <option value="popular" selected>За популярністю</option>
-                                <option value="sale">Акційні</option>
-                                <option value="desc">Від А до Я</option>
-                                <option value="asc">Від Я до А</option>
-                                <option value="cheaper">Спочатку дешевші</option>
-                                <option value="expensive">Спочатку дорожчі</option>
-                            </select>
-                        </div>
+                        <nav class="sub-links" aria-label="Категорії товарів">
+                            <ul class="sub-links__list" role="tablist">
+                                <li class="sub-links__item" role="presentation">
+                                    <a href="https://hinaus.art/shop/" class="sub-links__link">Всі</a>
+                                </li>
+                                <li class="sub-links__item" role="presentation">
+                                    <a href="https://hinaus.art/art/" class="sub-links__link is-active"
+                                        aria-selected="true">Новинки</a>
+                                </li>
+                                <li class="sub-links__item" role="presentation">
+                                    <a href="https://hinaus.art/books/" class="sub-links__link">Популярні</a>
+                                </li>
+                                <li class="sub-links__item" role="presentation">
+                                    <a href="https://hinaus.art/decor/" class="sub-links__link">Дорогі</a>
+                                </li>
+                                <li class="sub-links__item" role="presentation">
+                                    <a href="https://hinaus.art/sound/" class="sub-links__link">Дешеві</a>
+                                </li>
+                                <li class="sub-links__item" role="presentation">
+                                    <a href="https://hinaus.art/shop/" class="sub-links__link">Розпродаж</a>
+                                </li>
+
+                            </ul>
+                        </nav>
 
                         <div class="fl-menu__open">
                             <div class="btn-filter d-flex d-md-none align-justify align-middle">
@@ -824,6 +967,334 @@
                                     <a class="next page-numbers" href="#"></a>
                                 </div>
                             </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+            <section class="s-cta">
+
+            <div class="container">
+                <div class="row cta__wrap">
+                    <div class="col-xl-9 col-lg-9 col-md-16 col-sm-16 col-xs-16 overlap">
+                        <h2 class="cta__heading h2 text-bold">Виникли запитання?</h2>
+                        <div class="cta__description text-bold">Наш спеціаліст відповість на них впродовж 15
+                            хв</div>
+
+                        <div class="cta__form">
+                            <form>
+                                <div class="row m-row">
+                                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-16 col-xs-16 column">
+                                        <div class="field">
+                                            <label class="field__label" for="user-name">Ваше
+                                                ім’я</label>
+                                            <input class="field__input" type="text" id="user-name" name="name"
+                                                placeholder="Ваше ім’я">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-8 col-lg-16 col-md-8 col-sm-16 col-xs-16 column">
+                                        <div class="field ">
+                                            <label class="field__label" for="user-phone">Ваш номер
+                                                телефону</label>
+                                            <input class="field__input" type="tel" id="user-phone" name="phone"
+                                                placeholder="Ваш номер телефону">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row m-row">
+                                    <div class="col-xl-16 col-lg-16 col-md-16 col-sm-16 col-xs-16 column">
+                                        <button class="btn btn--primary" type="submit">
+                                            Відправити
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Блок 1: Написати нам (месенджери) -->
+                        <div class="socials">
+                            <span class="socials__label">Написати нам:</span>
+
+                            <ul class="socials__list" role="list">
+                                <li class="socials__item">
+                                    <a href="viber://chat?number=%2B380500136888"
+                                        class="socials__link socials__link--viber" target="_blank" rel="noopener"
+                                        aria-label="Viber">
+
+                                        <div class="socials__icon-wrap">
+                                            <svg class="socials__icon" aria-hidden="true" width="36" height="36">
+                                                <use href="assets/img/symbol.svg#viber"></use>
+                                            </svg>
+                                        </div>
+                                        <span class="socials__text">Viber</span>
+                                    </a>
+                                </li>
+
+                                <li class="socials__item">
+                                    <a href="https://wa.me/380500136888" class="socials__link socials__link--whatsapp"
+                                        target="_blank" rel="noopener" aria-label="WhatsApp">
+                                        <div class="socials__icon-wrap">
+                                            <svg class="socials__icon" aria-hidden="true" width="36" height="36">
+                                                <use href="assets/img/symbol.svg#whatsapp"></use>
+                                            </svg>
+                                        </div>
+                                        <span class="socials__text">WhatsApp</span>
+                                    </a>
+                                </li>
+
+                                <li class="socials__item">
+                                    <a href="https://t.me/+380500136888" class="socials__link socials__link--telegram"
+                                        target="_blank" rel="noopener" aria-label="Telegram">
+                                        <div class="socials__icon-wrap">
+                                            <svg class="socials__icon" aria-hidden="true" width="36" height="36">
+                                                <use href="assets/img/symbol.svg#telegram"></use>
+                                            </svg>
+                                        </div>
+                                        <span class="socials__text">Telegram</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Блок 2: Підписуйтесь (соцмережі) -->
+                        <div class="socials">
+                            <span class="socials__label">Підписуйтесь:</span>
+
+                            <ul class="socials__list" role="list">
+                                <li class="socials__item">
+                                    <a href="#" class="socials__link socials__link--youtube" target="_blank"
+                                        rel="noopener" aria-label="YouTube">
+                                        <div class="socials__icon-wrap">
+                                            <svg class="socials__icon" aria-hidden="true" width="36" height="36">
+                                                <use href="assets/img/symbol.svg#youtube"></use>
+                                            </svg>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li class="socials__item">
+                                    <a href="#" class="socials__link socials__link--threads" target="_blank"
+                                        rel="noopener" aria-label="Threads">
+                                        <div class="socials__icon-wrap">
+                                            <svg class="socials__icon" aria-hidden="true" width="36" height="36">
+                                                <use href="assets/img/symbol.svg#threads"></use>
+                                            </svg>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li class="socials__item">
+                                    <a href="#" class="socials__link socials__link--facebook" target="_blank"
+                                        rel="noopener" aria-label="Facebook">
+                                        <div class="socials__icon-wrap">
+                                            <svg class="socials__icon" aria-hidden="true" width="36" height="36">
+                                                <use href="assets/img/symbol.svg#facebook"></use>
+                                            </svg>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li class="socials__item">
+                                    <a href="#" class="socials__link socials__link--instagram" target="_blank"
+                                        rel="noopener" aria-label="Instagram">
+                                        <div class="socials__icon-wrap">
+                                            <svg class="socials__icon" aria-hidden="true" width="36" height="36">
+                                                <use href="assets/img/symbol.svg#instagram"></use>
+                                            </svg>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li class="socials__item">
+                                    <a href="#" class="socials__link socials__link--tiktok" target="_blank"
+                                        rel="noopener" aria-label="TikTok">
+                                        <div class="socials__icon-wrap">
+                                            <svg class="socials__icon" aria-hidden="true" width="36" height="36">
+                                                <use href="assets/img/symbol.svg#tiktok"></use>
+                                            </svg>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="socials">
+                            <span class="socials__label">Написати нам:</span>
+
+                            <ul class="socials__list" role="list">
+                                <li class="socials__item">
+                                    <a href="viber://chat?number=%2B380500136888"
+                                        class="socials__link socials__link--viber" target="_blank" rel="noopener"
+                                        aria-label="Viber">
+                                        <div class="socials__icon-wrap">
+                                            <svg class="socials__icon" aria-hidden="true" width="36" height="36">
+                                                <use href="assets/img/symbol.svg#viber"></use>
+                                            </svg>
+                                        </div>
+                                        <span class="socials__text">Viber</span>
+                                    </a>
+                                </li>
+
+                                <li class="socials__item">
+                                    <a href="https://wa.me/380500136888" class="socials__link socials__link--whatsapp"
+                                        target="_blank" rel="noopener" aria-label="WhatsApp">
+                                        <div class="socials__icon-wrap">
+                                            <svg class="socials__icon" aria-hidden="true" width="36" height="36">
+                                                <use href="assets/img/symbol.svg#whatsapp"></use>
+                                            </svg>
+                                        </div>
+                                        <span class="socials__text">WhatsApp</span>
+                                    </a>
+                                </li>
+
+                                <li class="socials__item">
+                                    <a href="https://t.me/+380500136888" class="socials__link socials__link--telegram"
+                                        target="_blank" rel="noopener" aria-label="Telegram">
+                                        <div class="socials__icon-wrap">
+                                            <svg class="socials__icon" aria-hidden="true" width="36" height="36">
+                                                <use href="assets/img/symbol.svg#telegram"></use>
+                                            </svg>
+                                        </div>
+                                        <span class="socials__text">Telegram</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="cta__img--wrap">
+                        <img src="assets/img/consultation-2.png" alt="cta img" class="cta__img">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="s-locations">
+            <div class="container">
+                <div class="row m-row">
+                    <div class="column col-xl-16 col-lg-16 col-md-16 col-sm-16 col-xs-16">
+                        <h3 class="heading h2 heading-font text-bold">Неодмінно відвідайте нас!</h3>
+                    </div>
+                </div>
+                <div class="row m-row">
+                    <div class="col-xl-8 col-lg-8 col-md-16 col-sm-16 col-xs-16 column">
+                        <div class="s-locations__picker picker" id="locations-picker">
+
+                            <button type="button" class="picker__trigger" aria-expanded="false"
+                                aria-label="Оберіть адресу">
+                                <span class="picker__trigger-icon"></span>
+                                <span class="picker__trigger-text" id="picker-current-text">вул. Городоцька,
+                                    35</span>
+                                <span class="picker__trigger-arrow"></span>
+                            </button>
+
+
+                            <div class="picker__list">
+                                <button type="button" class="picker__item is-active" data-id="1" data-lat="49.8397"
+                                    data-lng="24.0297" data-address="вул. Городоцька, 35"
+                                    data-phone="+38 (050) 013-68-88">
+                                    <span class="picker__item-icon"></span>
+                                    <span class="picker__item-text">вул. Городоцька, 35</span>
+                                </button>
+
+                                <button type="button" class="picker__item" data-id="2" data-lat="49.8375"
+                                    data-lng="24.0150" data-address="вул. Городоцька, 77"
+                                    data-phone="+38 (050) 013-68-88">
+                                    <span class="picker__item-icon"></span>
+                                    <span class="picker__item-text">вул. Городоцька, 77</span>
+                                </button>
+
+                                <button type="button" class="picker__item" data-id="3" data-lat="49.8335"
+                                    data-lng="23.9982" data-address="вул. Городоцька, 133"
+                                    data-phone="+38 (050) 013-68-88">
+                                    <span class="picker__item-icon"></span>
+                                    <span class="picker__item-text">вул. Городоцька, 133</span>
+                                </button>
+
+                                <button type="button" class="picker__item" data-id="4" data-lat="49.7915"
+                                    data-lng="24.0538" data-address="вул. Кавалерідзе, 1"
+                                    data-phone="+38 (050) 013-68-88">
+                                    <span class="picker__item-icon"></span>
+                                    <span class="picker__item-text">вул. Кавалерідзе, 1</span>
+                                </button>
+
+                                <button type="button" class="picker__item" data-id="5" data-lat="49.8492"
+                                    data-lng="24.0245" data-address="вул. Куліша, 43" data-phone="+38 (050) 013-68-88">
+                                    <span class="picker__item-icon"></span>
+                                    <span class="picker__item-text">вул. Куліша, 43</span>
+                                </button>
+
+                                <button type="button" class="picker__item" data-id="6" data-lat="49.8687"
+                                    data-lng="24.0312" data-address="вул. Мазепи, 25а" data-phone="+38 (050) 013-68-88">
+                                    <span class="picker__item-icon"></span>
+                                    <span class="picker__item-text">вул. Мазепи, 25а</span>
+                                </button>
+
+                                <button type="button" class="picker__item" data-id="7" data-lat="49.8236"
+                                    data-lng="23.9803" data-address="вул. Петлюри, 2" data-phone="+38 (050) 013-68-88">
+                                    <span class="picker__item-icon"></span>
+                                    <span class="picker__item-text">вул. Петлюри, 2</span>
+                                </button>
+
+                                <button type="button" class="picker__item" data-id="8" data-lat="49.8441"
+                                    data-lng="24.0261" data-address="Пр. Свободи, 37" data-phone="+38 (050) 013-68-88">
+                                    <span class="picker__item-icon"></span>
+                                    <span class="picker__item-text">Пр. Свободи, 37</span>
+                                </button>
+
+                                <button type="button" class="picker__item" data-id="9" data-lat="49.8398"
+                                    data-lng="24.0345" data-address="Соборна площа, 10"
+                                    data-phone="+38 (050) 013-68-88">
+                                    <span class="picker__item-icon"></span>
+                                    <span class="picker__item-text">Соборна площа, 10</span>
+                                </button>
+
+                                <button type="button" class="picker__item" data-id="10" data-lat="49.8406"
+                                    data-lng="24.0272" data-address="вул. Дорошенка, 13"
+                                    data-phone="+38 (050) 013-68-88">
+                                    <span class="picker__item-icon"></span>
+                                    <span class="picker__item-text">вул.Дорошенка, 13</span>
+                                </button>
+
+                                <button type="button" class="picker__item" data-id="11" data-lat="49.8430"
+                                    data-lng="23.9650" data-address="Вул. Широка-Низинна, 2"
+                                    data-phone="+38 (050) 013-68-88">
+                                    <span class="picker__item-icon"></span>
+                                    <span class="picker__item-text">Вул. Широка-Низинна, 2</span>
+                                </button>
+
+                                <button type="button" class="picker__item" data-id="12" data-lat="49.8665"
+                                    data-lng="24.0238" data-address="Пр-т. Чорновола 93, ТЦ Арсен"
+                                    data-phone="+38 (050) 013-68-88">
+                                    <span class="picker__item-icon"></span>
+                                    <span class="picker__item-text">Пр-т. Чорновола 93, ТЦ Арсен</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-8 col-lg-8 col-md-16 col-sm-16 col-xs-16 column">
+                        <div id="map" class="s-locations__map"></div>
+
+                        <!-- Інфо-картка -->
+                        <div id="map-info-card" class="map-info-card">
+                            <a href="tel:+380500136888" class="map-info-card__phone" id="card-phone">+38
+                                (050)
+                                013-68-88</a>
+
+                            <div class="map-info-card__socials">
+                                <a href="#" class="social-chip social-chip--viber" aria-label="Viber"></a>
+                                <a href="#" class="social-chip social-chip--telegram" aria-label="Telegram"></a>
+                                <a href="#" class="social-chip social-chip--whatsapp" aria-label="WhatsApp"></a>
+                            </div>
+
+                            <div class="map-info-card__schedule">
+                                <div class="map-info-card__schedule-title">Працюємо з:</div>
+                                <ul class="map-info-card__schedule-list" id="card-schedule">
+                                    <li>Пн-Пт з 10:00 до 19:00</li>
+                                    <li>Сб з 10:00 до 18:00</li>
+                                    <li>Нд з 11:00 до 18:00</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1086,11 +1557,44 @@
 
 
     <script src="src/scripts/app-swiper.js"></script>
-    <!--<script src="src/scripts/js_app.js"></script>-->
+    <script src="src/scripts/js_app.js"></script>
     <script src="src/scripts/app_map.js"></script>
 
-    <script src="src/scripts/app-filter.js"></script>
+    <!--<script src="src/scripts/app-filter.js"></script>-->
+    <script>
+        $(document).ready(function () {
+            // Живий пошук у блоці фільтра
+            $(document).on('input', '.search-form__input', function () {
+                const query = $(this).val().toLowerCase().trim();
+                const $toggle = $(this).closest('.fl-toggle');
+                const $items = $toggle.find('.fl-list li');
 
+                $items.each(function () {
+                    const brandName = $(this).find('.checkbox__text').text().toLowerCase();
+
+                    if (brandName.includes(query)) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                });
+
+                // Додатково: якщо список розгортається кнопкою "Більше/Менше", 
+                // можна автоматично скидати або приховувати її під час пошуку
+                const $moreBtn = $toggle.find('.fl-list-btn');
+                if (query.length > 0) {
+                    $moreBtn.hide();
+                } else {
+                    $moreBtn.show();
+                }
+            });
+
+            // Запобігаємо відправці форми при натисканні Enter або кліку на лупу
+            $(document).on('submit', '.fl-search .search-form', function (e) {
+                e.preventDefault();
+            });
+        });
+    </script>
 </body>
 
 </html>

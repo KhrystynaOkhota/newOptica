@@ -23,7 +23,7 @@ jQuery(function ($) {
     let popupTop = 0;
 
     _functions.removeScroll = function () {
-        popupTop = $(window).scrollTop(); $('html').css({
+        popupTop = $(window).scrollTop();$('html').css({
             "position": "fixed",
             "top": -popupTop,
             "width": "100%"
@@ -36,7 +36,7 @@ jQuery(function ($) {
     };
 
     _functions.openPopup = function (popup) {
-        $('.popup-content').removeClass('active'); $(popup + ', .popup-wrapper').addClass('active');
+        $('.popup-content').removeClass('active');$(popup + ', .popup-wrapper').addClass('active');
         _functions.removeScroll();
     };
 
@@ -45,6 +45,114 @@ jQuery(function ($) {
         _functions.addScroll();
     };
 
+    // ==========================================
+    // FILTER TOGGLE (СПИСКИ ФІЛЬТРІВ)
+    // ==========================================
+    _functions.initFilterLists = function (selector = document) {
+        $(selector).find('.fl-list').not('.full').each(function () {
+            let th = $(this);
+            let li = th.find("li");
+            let extra = li.filter(':gt(4)');
+            let btn = th.siblings('.fl-list-btn');
+
+            if (li.length > 3) {
+                th.addClass('more-options');
+
+                let isUserOpened = btn.data('user-opened') === true;
+                let hasChecked = extra.find('input:checked').length > 0;
+
+                if (isUserOpened || hasChecked) {
+                    extra.show();
+                    btn.addClass('is-active');
+                } else {
+                    extra.hide();
+                    btn.removeClass('is-active');
+                }
+            }
+        });
+    };
+
+    // Ініціалізація фільтрів
+    _functions.initFilterLists();
+
+    // Перемикання заголовка блоку фільтра
+    $(document).on('click', '.fl-title', function () {
+        const th = $(this);
+        const block = $(this).closest('.fl-block');
+        const container = $(".fl-menu");
+
+        th.toggleClass('is-active');
+        block.find('.fl-toggle').slideToggle("slow");
+    });
+
+    // Клік на кнопку "Показати ще / Сховати"
+    $(document).on('click', '.fl-list-btn', function () {
+        let $btn =$(this);
+        let list = $btn.closest('.fl-toggle').find('.fl-list');
+        let li = list.find("li:gt(4)");
+        let isVisible = li.is(":visible");
+
+        // Запам'ятовуємо ручний вибір користувача
+        $btn.data('user-opened', !isVisible);$btn.toggleClass('is-active', !isVisible);
+
+        if (isVisible) {
+            li.hide("slow");
+        } else {
+            li.show("slow");
+        }
+    });
+
+    // Реакція на зміну стану інпутів у фільтрі
+   // $(document).on('change', '.fl-list input[type="checkbox"], .fl-list input[type="radio"]', function () {
+       // let listContainer = $(this).closest('.fl-toggle');
+       // _functions.initFilterLists(listContainer);
+   // });
+
+    // Слайдер ціни / діапазону
+    if ($('#slider').length) {
+        var $slider =$("#slider");
+        var $inputFrom =$(".js-price-from");
+        var $inputTo =$(".js-price-to");
+
+        var minVal = 0;
+        var maxVal = 10000;
+        var startFrom = parseInt($inputFrom.val(), 10) || 299;
+        var startTo = parseInt($inputTo.val(), 10) || 10000;
+
+        $slider.slider({
+            range: true,
+            min: minVal,
+            max: maxVal,
+            values: [startFrom, startTo],
+            slide: function (event, ui) {
+                $inputFrom.val(ui.values[0]);$inputTo.val(ui.values[1]);
+            }
+        });
+
+        $inputFrom.on("change input", function () {
+            var val1 = parseInt($inputFrom.val(), 10) || minVal;
+            var val2 = parseInt($inputTo.val(), 10) || maxVal;
+
+            if (val1 < minVal) val1 = minVal;
+            if (val1 > val2) val1 = val2;
+
+            $slider.slider("values", 0, val1);
+        });
+
+        $inputTo.on("change input", function () {
+            var val1 = parseInt($inputFrom.val(), 10) || minVal;
+            var val2 = parseInt($inputTo.val(), 10) || maxVal;
+
+            if (val2 > maxVal) val2 = maxVal;
+            if (val2 < val1) val2 = val1;
+
+            $slider.slider("values", 1, val2);
+        });
+    }
+
+    // ==========================================
+    // ІНШІ ОБРОБНИКИ ПОДІЙ
+    // ==========================================
     $(document).on('click', '.open-popup', function (e) {
         e.preventDefault();
         _functions.openPopup('.popup-content[data-rel="' + $(this).data('rel') + '"]');
@@ -75,81 +183,74 @@ jQuery(function ($) {
     };
 
     function scrollAnime(winScr) {
-        const $animationElements = $('.animation').not('.animated');
+        const $animationElements =$('.animation').not('.animated');
         if ($animationElements.length) {
             const currentWinWidth = $(window).width();
             const currentWinHeight = $(window).height();
 
             $animationElements.each(function () {
-                const $th = $(this);
+                const $th =$(this);
                 const triggerCoef = currentWinWidth < 768 ? 0.95 : 0.85;
 
-                if (winScr >= $th.offset().top - (currentWinHeight * triggerCoef)) {
-                    $th.addClass('animated');
+                if (winScr >= $th.offset().top - (currentWinHeight * triggerCoef)) {$th.addClass('animated');
                 }
             });
         }
     }
 
     window.addEventListener('scroll', _functions.scrollCall, { passive: true });
-
     _functions.scrollCall();
     window.addEventListener('load', _functions.scrollCall);
 
-    // 4. МОБІЛЬНЕ МЕНЮ (БУРГЕР)
-    let pageScrollPosition = 0;
+    // 4. МОБІЛЬНЕ МЕНЮ
+    /* Open menu */
+    $(document).on('click', '.js-open-menu', function () {
+        const isOpen = !$('header').hasClass('open-menu');
 
-    $(document).on("click", ".burger", function () {
-        const $html = $("html");
-        const $body = $("body");
-        const $header = $(this).parents("header");
+        $('html').toggleClass('overflow-menu');$('header').removeClass('hide');
+        $('header').toggleClass('open-menu');$('header').removeClass('open-search');
 
-        $(this).toggleClass("burger--active");
-        $header.toggleClass("is-open");
+        $('.h-search-form input').val("");
+        $(".h-search-results").removeClass("is-active");
+    });
 
-        if (!$html.hasClass("overflow-menu")) {
-            $html.addClass("overflow-menu");
-        } else {
-            $html.removeClass("overflow-menu");
-        }
+    /* Close menu */
+    $(document).on('click', '.h-menu-overlay', function () {$('html').removeClass('overflow-menu');
+        $('header').removeClass('open-menu open-search');$('.h-search-form input').val("");
+        $(".h-search-results").removeClass("is-active");
     });
 
     // 5. ТАБИ (DESKTOP) ТА АКОРДЕОН (MOBILE)
-    const $tabBtns = $('.p-tabs__nav-btn');
-    const $tabPanels = $('.p-tabs__panel');
+    const $tabBtns =$('.p-tabs__nav-btn');
+    const $tabPanels =$('.p-tabs__panel');
 
-    // Клік на таб на десктопі
     $(document).on('click', '.p-tabs__nav-btn', function () {
         const targetId = $(this).data('tab');
 
-        $tabBtns.removeClass('is-active'); $(this).addClass('is-active');
+        $tabBtns.removeClass('is-active');$(this).addClass('is-active');
 
-        $tabPanels.removeClass('is-active').find('.p-tabs__body').removeAttr('style'); $(`#${targetId}`).addClass('is-active');
+        $tabPanels.removeClass('is-active').find('.p-tabs__body').removeAttr('style');$(`#${targetId}`).addClass('is-active');
     });
 
-    // Клік на заголовок акордеона на мобілці
     $(document).on('click', '.js-tab-acc-btn', function () {
-        const $currentPanel = $(this).closest('.p-tabs__panel');
-        const $currentBody = $currentPanel.find('.p-tabs__body');
+        const $currentPanel =$(this).closest('.p-tabs__panel');
+        const $currentBody =$currentPanel.find('.p-tabs__body');
         const isOpen = $currentPanel.hasClass('is-active');
 
-        // Закриваємо інші відкриті блоки
         $tabPanels.not($currentPanel).removeClass('is-active');
         $('.p-tabs__body').not($currentBody).slideUp(300);
 
-        // Перемикаємо поточний блок
         if (isOpen) {
-            $currentPanel.removeClass('is-active'); $currentBody.slideUp(300);
+            $currentPanel.removeClass('is-active');$currentBody.slideUp(300);
         } else {
-            $currentPanel.addClass('is-active'); $currentBody.slideDown(300);
+            $currentPanel.addClass('is-active');$currentBody.slideDown(300);
 
-            // Синхронізація активної кнопки на десктопі
             const panelId = $currentPanel.attr('id');
-            $tabBtns.removeClass('is-active'); $tabBtns.filter(`[data-tab="${panelId}"]`).addClass('is-active');
+            $tabBtns.removeClass('is-active');$tabBtns.filter(`[data-tab="${panelId}"]`).addClass('is-active');
         }
     });
 
-    // 6. ПОШУК (Оболонка шапки)
+    // 6. ПОШУК
     $(document).on("click", ".js-open-search", function () {
         $("header").addClass("search-open");
         setTimeout(function () {
@@ -165,49 +266,60 @@ jQuery(function ($) {
 
     $(document).on("input", ".search input", function () {
         const val = $(this).val();
-        const $res = $(this).closest(".search").find(".search__results-wrap");
-        if (val.length) {
-            $res.addClass("active");
-        } else {
-            $res.removeClass("active");
-        }
+        const $res =$(this).closest(".search").find(".search__results-wrap");
+        $res.toggleClass("active", val.length > 0);
     });
 
-});
+    // 7. СЕЛЕКТИ (SumoSelect)
+    _functions.initSelect = function (parent) {
+        var $container = parent ? $(parent) :$(document);
 
-// ==========================================================================
-// НАТИВНИЙ JAVASCRIPT (ПРАЦЮЄ БЕЗ CHROME/JQUERY ОБОРУДОК)
-// ==========================================================================
+        $container.find('.SelectBox select').each(function () {
+            var $select =$(this);
 
-document.addEventListener('DOMContentLoaded', () => {
-    const header = document.querySelector('.js-header');
-    const menuToggle = document.querySelector('.js-menu-toggle');
+            $select.SumoSelect({
+                floatWidth: 0,
+                nativeOnDevice: [],
+                placeholder: ''
+            });
 
-    if (menuToggle && header) {
-        menuToggle.addEventListener('click', () => {
-            header.classList.toggle('is-active');
-            document.body.classList.toggle('menu-open');
+            var $box =$select.closest('.SelectBox');
+            $box.toggleClass('value', !!$select.val());
+
+            $select.on('sumo:opened', function () {$box.addClass('focus');
+            });
+
+            $select.on('sumo:closed', function () {$box.removeClass('focus');
+            });
         });
-    }
+    };
+
+    _functions.initSelect('body');
+
+    $(document).on('change', '.SelectBox select', function () {
+        $(this).closest('.SelectBox').toggleClass('value', !!$(this).val());
+    });
 });
 
+// ==========================================================================
+// НАТИВНИЙ JAVASCRIPT
+// ==========================================================================
 document.addEventListener('DOMContentLoaded', () => {
 
-    // 1. АКОРДЕОНИ (Загальні)
+    // 1. АКОРДЕОНИ
     document.addEventListener('click', function (e) {
-        const $title = $(e.target).closest('.accordeon-title');
+        const $title =$(e.target).closest('.accordeon-title');
         if (!$title.length) return;
 
-        const $item = $title.closest('.accordeon-item');
-        const $accordeon = $title.closest('.accordeon');
+        const $item =$title.closest('.accordeon-item');
+        const $accordeon =$title.closest('.accordeon');
         const isOpen = $item.hasClass('active');
 
         $accordeon.find('.accordeon-item.active').not($item).removeClass('active').find('.accordeon-title').next().slideUp();
-
-        $item.toggleClass('active', !isOpen); $title.next().slideToggle(!isOpen);
+        $item.toggleClass('active', !isOpen);$title.next().slideToggle(!isOpen);
     });
 
-    // 2. КЛІКЕР КІЛЬКОСТІ (INCREMENT / DECREMENT)
+    // 2. КЛІКЕР КІЛЬКОСТІ
     document.addEventListener('click', (e) => {
         const btn = e.target.closest('.quantity-picker__btn');
         if (!btn) return;
@@ -233,8 +345,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // 3. ВІДЕОПЛЕЄР
     jQuery(document).on('click', '.media__btn', function () {
         const $btn = jQuery(this);
-        const $container = $btn.closest('.media');
-        const $video = $container.find('.media__video');
+        const $container =$btn.closest('.media');
+        const $video =$container.find('.media__video');
         const videoItem = $video.get(0);
 
         if (!videoItem) return;
@@ -242,26 +354,23 @@ document.addEventListener('DOMContentLoaded', () => {
         if (videoItem.paused) {
             videoItem.play();
             $video.attr('controls', '');
-            $btn.addClass('hide');
-            $container.find('.heading').hide();
+            $btn.addClass('hide');$container.find('.heading').hide();
         } else {
             videoItem.pause();
             $video.removeAttr('controls');
-            $btn.removeClass('hide');
-            $container.find('.heading').show();
+            $btn.removeClass('hide');$container.find('.heading').show();
         }
     });
 
-    // Додатково: повертаємо кнопку та ховаємо controls, якщо відео закінчилося
     jQuery(document).on('ended', '.media__video', function () {
         const $video = jQuery(this);
-        const $container = $video.closest('.media');
+        const $container =$video.closest('.media');
 
         $video.removeAttr('controls');
-        $container.find('.media__btn').removeClass('hide');
-        $container.find('.heading').show();
+        $container.find('.media__btn').removeClass('hide');$container.find('.heading').show();
     });
-    // 4. ТАБИ (Універсальні)
+
+    // 4. ТАБИ
     const tabs = document.querySelectorAll(".tab");
     function tabify(tab) {
         const tabList = tab.querySelector(".tab__list");
@@ -286,185 +395,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     tabs.forEach(tabify);
 
-    // 5. АНІМАЦІЯ ЛІЧИЛЬНИКІВ (STATS)
-    const obsCounter = new IntersectionObserver((entries, observer) => {
-        entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
-            entry.target.classList.add("animated");
+    // 5. ЛІЧИЛЬНИКИ
+    if ('IntersectionObserver' in window) {
+        const obsCounter = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add("animated");
 
-            $(entry.target).find(".stats__value--number").each(function () {
-                $(this).prop("Counter", 0).animate({
-                    Counter: $(this).text(),
-                }, {
-                    duration: 1500,
-                    easing: "swing",
-                    step: function (now) {
-                        $(this).text(Math.ceil(now));
-                    },
+                $(entry.target).find(".stats__value--number").each(function () {
+                    $(this).prop("Counter", 0).animate({
+                        Counter: $(this).text(),
+                    }, {
+                        duration: 1500,
+                        easing: "swing",
+                        step: function (now) {
+                            $(this).text(Math.ceil(now));
+                        },
+                    });
                 });
+                observer.unobserve(entry.target);
             });
-            observer.unobserve(entry.target);
         });
-    });
-    document.querySelectorAll(".stats__grid").forEach(block => obsCounter.observe(block));
-
-    // 6. ЗАВАНТАЖЕННЯ ФАЙЛУ (ДЛЯ ФОРМ)
-    $(document).on('change', '.upload-file', function () {
-        const format = $(this).val();
-        const fileName = format.substring(format.lastIndexOf("\\") + 1);
-        const $nameLabel = $('.upload-file__name');
-
-        if (format === '') {
-            $nameLabel.text($nameLabel.data('placeholder-text'));
-        } else {
-            $nameLabel.text(fileName);
-        }
-    });
-
-    // 7. СЕО БЛОК (SEO Блок з плавною висотою)
-    document.querySelectorAll('.info-block').forEach(function (infoBlock) {
-        const content = infoBlock.querySelector('.info-block__content');
-        const text = content ? content.querySelector('.info-block__text') : null;
-        const button = infoBlock.querySelector('.btn-more');
-
-        if (!content || !text || !button) return;
-
-        const fullHeight = text.scrollHeight;
-        const minHeight = parseInt(window.getComputedStyle(content).minHeight) || 0;
-
-        if (fullHeight <= minHeight) {
-            button.style.display = 'none';
-            return;
-        }
-
-        button.addEventListener('click', function () {
-            const isActive = this.classList.toggle('is-active');
-            const targetHeight = isActive ? fullHeight : minHeight;
-
-            content.style.transition = 'height .5s ease';
-            content.style.height = targetHeight + 'px';
-
-            if (isActive) {
-                setTimeout(() => { content.style.height = 'auto'; }, 600);
-            }
-        });
-    });
-
-    // 8. ПЕРЕМИКАЧ МОВ (LANG SWITCHER)
-    const langWrap = document.querySelector('.lang__wrap');
-    if (langWrap) {
-        const langBtn = langWrap.querySelector('.lang__current');
-
-        const toggleLang = () => {
-            const isExpanded = langBtn.getAttribute('aria-expanded') === 'true';
-            langBtn.setAttribute('aria-expanded', !isExpanded);
-        };
-
-        langBtn.addEventListener('click', (e) => {
-            if (window.matchMedia('(pointer: coarse)').matches) {
-                e.preventDefault();
-                e.stopPropagation();
-                toggleLang();
-            }
-        });
-
-        document.addEventListener('click', (e) => {
-            if (!langWrap.contains(e.target)) {
-                langBtn.setAttribute('aria-expanded', 'false');
-            }
-        });
-
-        langWrap.addEventListener('mouseenter', () => {
-            if (window.matchMedia('(hover: hover)').matches) {
-                langBtn.setAttribute('aria-expanded', 'true');
-            }
-        });
-
-        langWrap.addEventListener('mouseleave', () => {
-            if (window.matchMedia('(hover: hover)').matches) {
-                langBtn.setAttribute('aria-expanded', 'false');
-            }
-        });
+        document.querySelectorAll(".stats__grid").forEach(block => obsCounter.observe(block));
     }
-
-    _functions.initSelect = function (parent) {
-        var $container = parent ? $(parent) : $(document);
-
-        $container.find('.SelectBox select').each(function () {
-            var $select = $(this);
-
-            // Ініціалізація SumoSelect
-            $select.SumoSelect({
-                floatWidth: 0,
-                nativeOnDevice: [],
-                placeholder: ''
-            });
-
-            // Перевірка початкового значення при ініціалізації
-            var $box = $select.closest('.SelectBox');
-            $box.toggleClass('value', !!$select.val());
-
-            // Обробники подій відкриття / закриття
-            $select.on('sumo:opened', function () {
-                $box.addClass('focus');
-            });
-
-            $select.on('sumo:closed', function () {
-                $box.removeClass('focus');
-            });
-        });
-    };
-
-    $(document).ready(function () {
-        _functions.initSelect('body');
-    });
-
-    // Глобальний обробник зміни значення
-    $(document).on('change', '.SelectBox select', function () {
-        $(this).closest('.SelectBox').toggleClass('value', !!$(this).val());
-    });
-
-    $(document).ready(function () {
-        $('.file-upload__input').on('change', function (e) {
-            if (this.files) {
-                $.each(this.files, function (index, file) {
-                    $(e.target).closest('.file-upload').find('.file-upload__list').append(
-                        '<div class="file-upload__item">' +
-                        '<span>' + file.name + '</span>' +
-                        '<span class="file-upload__remove">&times;</span>' +
-                        '</div>'
-                    );
-                });
-            }
-        });
-
-        $(document).on('click', '.file-upload__remove', function () {
-            $(this).closest('.file-upload__item').remove();
-        });
-    });
-
-    $(function () {
-        var body = $('body'); $('.location__current').on('click', function (e) {
-            e.preventDefault();
-
-            var winW = $(window).width();
-            var $wrap = $(this).closest('.location__wrap');
-
-            if (winW > 1199) {
-                $wrap.toggleClass('open');
-            } else {
-                $wrap.find('.location').slideToggle(); $wrap.toggleClass('open');
-            }
-        });
-
-        body.on('click', function (e) {
-            if (!$(e.target).closest('.location__wrap').length) {
-                $('.location__wrap').removeClass('open');
-                if ($(window).width() <= 1199) {
-                    $('.location__wrap .location').slideUp();
-                }
-            }
-        });
-    });
-
 });

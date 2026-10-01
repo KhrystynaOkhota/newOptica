@@ -1,4 +1,4 @@
-$(document).ready(function () {
+/*$(document).ready(function () {
 
   // 1. АКОРДЕОНИ ФІЛЬТРА (Виправлено повторний клік)
   $(document).on("click", ".js-filter-toggle", function (e) {
@@ -51,4 +51,12 @@ $(document).ready(function () {
     setTimeout(() => $slider.length && $slider.slider("values", [+$from.val(), +$to.val()]), 0);
   });
 
+});*/
+$(document).on('click', '.fl-title', function () {
+  const th = $(this);
+  const block = $(this).closest('.fl-block');
+  const container = $(".fl-menu");
+
+  th.toggleClass('is-active');
+  block.find('.fl-toggle').slideToggle("slow");
 });
