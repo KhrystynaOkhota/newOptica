@@ -1,79 +1,7 @@
 @use "../abstracts/variables" as *;
 @use "../abstracts/mixins" as *;
 
-// Ваші змінні:
-// $breakpoint-grid-sm: 576px;
-// $breakpoint-grid-md: 768px;
-// $breakpoint-grid-lg: 992px;
-// $breakpoint-grid-xl: 1200px;
-// $breakpoint-sm: 575px;
-// $breakpoint-md: 767px;
-// $breakpoint-lg: 991px;
-// $breakpoint-xl: 1199px;
-// $color-accent: #ee670e;
-// $color-primary: #070404;
-// $color-white: #ffffff;
-// $font-primary: 'Montserrat', sans-serif;
-
-/*--------------------*/
-/*  Filter Menu       */
-/*--------------------*/
-.fl-overlay {
-  cursor: pointer;
-  position: fixed;
-  z-index: 1;
-  inset: 0;
-  opacity: 0;
-  visibility: hidden;
-  background: rgba(0, 0, 0, 0.7);
-  transition: 0.3s linear;
-  display: block;
-}
-
-.fl-menu-top {
-  gap: clamp(0.75rem, 0.1424rem + 1.2658vw, 1.25rem);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1.25rem 1.25rem clamp(0.75rem, 0.4462rem + 0.6329vw, 1rem);
-}
-
-/*
-.fl-menu-inner {
-  // padding: clamp(0.75rem, 0.4462rem + 0.6329vw, 1rem) 1.25rem;
-  height: 100%;
-  overflow-x: clip;
-  overflow-y: auto;
-  // overscroll-behavior-y: none;// скрол прибирається коли є курсор на ньому
-  -webkit-mask-image: linear-gradient(to bottom,
-      transparent,
-      #000 1rem,
-      #000 calc(100% - 1rem),
-      transparent);
-  mask-image: linear-gradient(to bottom,
-      transparent,
-      #000 1rem,
-      #000 calc(100% - 1rem),
-      transparent);
-
-  @media (max-width: $breakpoint-md) {
-    padding-bottom: calc(clamp(0.75rem, 0.4462rem + 0.6329vw, 1rem) + 7rem);
-  }
-}*/
-/* Open state styles */
 .filter-is-open {
-  .fl-overlay {
-    opacity: 1;
-    visibility: visible;
-
-    &::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      -webkit-backdrop-filter: blur(10px);
-      backdrop-filter: blur(10px);
-    }
-  }
 
   .fl-menu {
     transition-delay: 0s;
@@ -86,90 +14,178 @@
   }
 }
 
-/*--------------------*/
-/*  Filter Blocks     */
-/*--------------------*/
-.fl-block {
-  $fl-padd: clamp(1rem, 0.3924rem + 1.2658vw, 1.5rem);
-  position: relative;
-  border-bottom: 1px solid rgba(7, 4, 4, .1);
-}
+.fl {
+  &-search {
+    margin-bottom: 15px;
+  }
 
-.fl-title {
-  $fl-padd: clamp(1rem, 0.3924rem + 1.2658vw, 1.5rem);
-  position: relative;
-  font-family: $font-primary;
-  font-size: 1.125rem;
-  line-height: 1;
-  font-weight: 500;
-  color: $color-primary;
-  letter-spacing: -0.36px;
-  padding-block: $fl-padd;
-  padding-right: calc(#{$fl-padd} * 1.5);
-  transition: 0.3s linear;
-  cursor: pointer;
+  &-title {
 
-  i {
-    display: inline-block;
-    position: absolute;
-    right: 0;
-    top: $fl-padd;
-    width: $fl-padd;
-    height: $fl-padd;
+    position: relative;
+    font-family: $font-primary;
+    font-size: 1.063rem;
+    line-height: 1;
+    font-weight: bold;
+    color: $color-primary;
+
+    padding: 1.188rem 0;
+
     transition: 0.3s linear;
+    cursor: pointer;
 
-    &::before {
-      content: "";
+    i {
+      display: inline-block;
       position: absolute;
-      top: 35%;
-      left: 50%;
-      transform: translate(-50%, -50%) rotate(45deg);
-      width: 8px;
-      height: 8px;
-      border-right: 1px solid $color-primary;
-      border-bottom: 1px solid $color-primary;
-      background-color: transparent;
+      right: 0;
+      top: 1.188rem;
+      width: 10px;
+      height: 10px;
+      transition: 0.3s linear;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 35%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(45deg);
+        width: 8px;
+        height: 8px;
+        border-right: 1px solid $color-primary;
+        border-bottom: 1px solid $color-primary;
+        background-color: transparent;
+      }
+    }
+
+    &.is-active i {
+      transform: rotateX(-180deg);
+    }
+
+    @media (min-width: $breakpoint-grid-xl) {
+      &:hover {
+        color: $color-accent;
+      }
     }
   }
 
-  &.is-active i {
-    transform: rotateX(-180deg);
+  &-block {
+
+    position: relative;
+    border-bottom: 1px solid rgba(7, 4, 4, .1);
   }
 
-  @media (min-width: $breakpoint-grid-xl) {
-    &:hover {
-      color: $color-accent;
+  &-menu {
+
+
+    &-top {
+      padding: 20px 16px;
+      border-bottom: 1px solid rgba(7, 4, 4, .1);
+
+      & .btn--close {
+        color: rgba(35, 61, 77, 1);
+
+      }
     }
+
+    &-actions {
+      margin: 20px auto;
+      padding: 0 20px;
+max-width: 375px;
+      & .btn {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: $breakpoint-grid-md) {
+      /* position: absolute;
+      z-index: 2;
+      top: 0;
+      right: 0;
+      transform: translateX(100%);
+      width: min(33.125rem, 100%);
+      height: 100%;
+      max-height: 100%;
+      display: flex;
+      flex-direction: column;
+
+      transition: 0.3s linear;*/
+      position: fixed;
+      z-index: 101;
+      inset: 0;
+      display: block;
+      visibility: hidden;
+      transition: visibility 0s linear;
+      transition-delay: 0.6s;
+    }
+
+    &-inner {
+      padding: 20px;
+      height: 100%;
+      overflow-x: clip;
+      overflow-y: auto;
+      overscroll-behavior-y: none;
+      -webkit-mask-image: linear-gradient(to bottom, transparent, black 1rem, black calc(100% - 1rem), transparent);
+      mask-image: linear-gradient(to bottom, transparent, black 1rem, black calc(100% - 1rem), transparent);
+
+      @media (max-width: $breakpoint-grid-md) {
+        padding: 0 20px;
+      }
+    }
+
+    &-wrap {
+      border-radius: 20px;
+
+      background-color: rgba(243, 243, 245, 1);
+
+      @media (max-width: $breakpoint-grid-md) {
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        right: 0;
+        transform: translateX(100%);
+        width: 100%;
+        height: 100%;
+
+        border-radius: 0;
+        max-height: 100%;
+        display: flex;
+        flex-direction: column;
+
+        transition: 0.3s linear;
+      }
+    }
+  }
+
+  &-list {
+    li {
+      line-height: 0;
+
+      +li {
+        margin-top: 0.75rem;
+      }
+    }
+  }
+
+  &-toggle {
+    padding-bottom: clamp(1rem, 0.3924rem + 1.2658vw, 1.5rem);
+    display: none;
   }
 }
 
-.fl-toggle {
-  padding-bottom: clamp(1rem, 0.3924rem + 1.2658vw, 1.5rem);
-  display: none;
-}
-
-.fl-list {
-  li {
-    line-height: 0;
-
-    +li {
-      margin-top: 0.75rem;
-    }
-  }
+.more-options+.fl-list-btn {
+  display: block;
 }
 
 .fl-list-btn {
   display: none;
   position: relative;
   cursor: pointer;
-  margin-top: 0.75rem;
-  font-family: $font-primary;
-  font-size: 0.875rem;
+  margin-top: 0.938rem;
+  font-size: 1.063rem;
   line-height: 1.4;
-  font-weight: 500;
-  color: $color-primary;
+  font-weight: 300;
+  color: $color-accent;
 
-  &::before {
+  &:before {
     content: attr(data-show-more);
     display: inline-block;
     vertical-align: middle;
@@ -178,44 +194,16 @@
     text-underline-offset: 3px;
     text-decoration-color: currentColor;
     transition: 0.3s linear;
+
   }
 
-  &.is-active {
-    &::before {
-      content: attr(data-show-less);
-    }
-
-    svg {
-      transform: rotateX(-180deg);
-    }
-  }
-
-  .more-options+& {
-    display: block;
-  }
-
-  @media (min-width: $breakpoint-grid-xl) {
-    &:hover::before {
-      text-decoration-color: transparent;
-      color: $color-accent;
-    }
+  &.is-active:before {
+    content: attr(data-show-less);
   }
 }
 
-.fl-search {
-  margin-bottom: 15px;
-}
-
-.fl-menu-actions {
-  margin-top: 20px;
-
-  & .btn {
-    width: 100%;
-  }
-}
-
-.fl-menu {
-  border-radius: 20px;
-  padding: 20px;
-  background-color: rgba(243, 243, 245, 1);
+html.chrome.filter-is-open,
+html.chrome.filter-is-open body {
+  overflow: clip;
+  scrollbar-gutter: auto;
 }

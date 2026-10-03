@@ -21,51 +21,59 @@
 <body>
 
    
-    <header class="header">
+   <header class="header">
         <div class="h-menu-overlay"></div>
 
         <div class="h-wrap">
             <div class="container">
 
                 <!-- 1. Верхній блок з кнопками/іконками (у мобільній версії — сітка з 5 колонок) -->
-                <div class="h-top-controls d-flex d-md-none">
-                    <button type="button" class="control-btn control-btn--search js_search_open"
-                        aria-label="Відкрити пошук">
-                        <span class="h-icon">
-                            <svg class="icon" aria-hidden="true" width="22" height="22">
-                                <use href="assets/img/symbol.svg#search"></use>
-                            </svg>
-                        </span>
-                    </button>
+                <div class="h-controls h-controls--top d-flex d-md-none">
+                    <div class="h-controls__item d-flex align-center align-middle">
+                        <button type="button" class="control-btn control-btn--search js_search_open"
+                            aria-label="Відкрити пошук">
+                            <span class="control-btn__icon">
+                                <svg class="icon" aria-hidden="true" width="22" height="22">
+                                    <use href="assets/img/symbol.svg#search"></use>
+                                </svg>
+                            </span>
+                        </button>
 
-                    <a class="control-btn control-btn--account" href="account.html" aria-label="Особистий кабінет">
-                        <span class="h-icon">
-                            <svg class="icon" aria-hidden="true" width="22" height="22">
-                                <use href="assets/img/symbol.svg#user"></use>
-                            </svg>
-                        </span>
-                    </a>
-
-                    <a class="control-btn control-btn--favorite" href="account-favourites.html"
-                        aria-label="Обрані товари">
-                        <span class="h-icon">
-                            <svg class="icon" aria-hidden="true" width="22" height="22">
-                                <use href="assets/img/symbol.svg#fav"></use>
-                            </svg>
-                            <span class="header-favorite-count">0</span>
-                        </span>
-                    </a>
-
-                    <button type="button" class="control-btn control-btn--cart js_cart_open"
-                        aria-label="Відкрити кошик">
-                        <span class="h-icon">
-                            <svg class="icon" aria-hidden="true" width="22" height="22">
-                                <use href="assets/img/symbol.svg#bag"></use>
-                            </svg>
-                            <span class="header-cart-count">0</span>
-                        </span>
-                    </button>
-                    <div class="h-burger js-open-menu"><i></i></div>
+                    </div>
+                    <div class="h-controls__item d-flex align-center align-middle">
+                        <a class="control-btn control-btn--account" href="account.html" aria-label="Особистий кабінет">
+                            <span class="control-btn__icon">
+                                <svg class="icon" aria-hidden="true" width="22" height="22">
+                                    <use href="assets/img/symbol.svg#user"></use>
+                                </svg>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="h-controls__item d-flex align-center align-middle">
+                        <a class="control-btn control-btn--favorite" href="account-favourites.html"
+                            aria-label="Обрані товари">
+                            <span class="control-btn__icon">
+                                <svg class="icon" aria-hidden="true" width="22" height="22">
+                                    <use href="assets/img/symbol.svg#fav"></use>
+                                </svg>
+                                <span class="control-btn__count">0</span>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="h-controls__item d-flex align-center align-middle">
+                        <button type="button" class="control-btn control-btn--cart js_cart_open"
+                            aria-label="Відкрити кошик">
+                            <span class="control-btn__icon">
+                                <svg class="icon" aria-hidden="true" width="22" height="22">
+                                    <use href="assets/img/symbol.svg#bag"></use>
+                                </svg>
+                                <span class="control-btn__count">0</span>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="h-controls__item d-flex align-center align-middle">
+                        <div class="h-burger js-open-menu"><i></i></div>
+                    </div>
                 </div>
 
                 <!-- Десктопний верхній рядок -->
@@ -112,10 +120,8 @@
 
                     <div class="h-controls align-center d-none d-md-flex">
 
-                      
-
                         <a class="control-btn control-btn--account" href="account.html" aria-label="Особистий кабінет">
-                            <span class="h-icon">
+                            <span class="control-btn__icon">
                                 <svg class="icon" aria-hidden="true" width="22" height="22">
                                     <use href="assets/img/symbol.svg#user"></use>
                                 </svg>
@@ -124,21 +130,21 @@
 
                         <a class="control-btn control-btn--favorite" href="account-favourites.html"
                             aria-label="Обрані товари">
-                            <span class="h-icon">
+                            <span class="control-btn__icon">
                                 <svg class="icon" aria-hidden="true" width="22" height="22">
                                     <use href="assets/img/symbol.svg#fav"></use>
                                 </svg>
-                                <span class="header-favorite-count">0</span>
+                                <span class="control-btn__count">0</span>
                             </span>
                         </a>
 
                         <button type="button" class="control-btn control-btn--cart js_cart_open"
                             aria-label="Відкрити кошик">
-                            <span class="h-icon">
+                            <span class="control-btn__icon">
                                 <svg class="icon" aria-hidden="true" width="22" height="22">
                                     <use href="assets/img/symbol.svg#bag"></use>
                                 </svg>
-                                <span class="header-cart-count">0</span>
+                                <span class="control-btn__count">0</span>
                             </span>
                         </button>
 
@@ -183,7 +189,6 @@
             </div>
         </div>
     </header>
-
     <main class="main overlap">
         <div class="kama_breadcrumbs__wrap">
             <div class="container">

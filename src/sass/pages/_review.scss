@@ -67,14 +67,17 @@
     font-size: fluid(15, 17);
     line-height: 1.5;
   }
+
   .review-details {
     display: flex;
+
     &__wrap {
       display: grid;
       gap: 10px;
       margin-bottom: 14px;
     }
-    &__term{
+
+    &__term {
       margin-right: 10px;
     }
   }
@@ -114,17 +117,10 @@
 .s-reviews-slider {
   margin-bottom: 50px;
 
-  & .heading {
-    @media (max-width: $breakpoint-md) {
-      margin-bottom: 21px;
-      text-align: center;
-      width: 100%;
-    }
+  &__top {
+    margin-bottom: 31px;
   }
-
   & .description {
-
-
     @media (min-width: $breakpoint-md) {
       margin-top: 35px;
     }
@@ -139,12 +135,6 @@
       width: 100%;
       max-width: 345px;
       margin: 25px auto 0 auto;
-    }
-  }
-
-  & .swiper-container {
-    @media (min-width: $breakpoint-md) {
-      margin-top: 30px;
     }
   }
 }

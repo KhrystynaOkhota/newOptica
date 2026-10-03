@@ -6,11 +6,26 @@
   background-color: rgba(243, 243, 245, 1);
   margin-bottom: 50px;
 
+  &__price {}
+
   & .content {
     padding: 65px 0 110px 0;
+    
+    gap: 25px;
+
+    & .heading {
+      margin-bottom: 20px;
+    }
+
+    & .description {
+      margin-bottom: 20px;
+    }
   }
 
   & .img {
+    height: 100%;
+    object-fit: cover;
+
     &__wrap {
       position: absolute;
       top: 0;
@@ -36,7 +51,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center; // За замовчуванням контент по центру
+  justify-content: center;
   align-items: center;
   border-radius: 16px;
   overflow: hidden;
@@ -182,7 +197,7 @@
 .s-recomended-services {
   margin-bottom: fluid(50, 150);
 
-  & .heading{
+  & .heading {
     margin-bottom: 27px;
   }
 

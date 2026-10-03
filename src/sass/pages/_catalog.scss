@@ -1,6 +1,125 @@
 @use "../abstracts/variables" as *;
 @use "../abstracts/mixins" as *;
 
+
+.range {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  width: 100%;
+  padding-top: 5px;
+
+  &__slider-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0 6px;
+  }
+
+  &__slider.ui-slider {
+    position: relative;
+    height: 5px;
+    background-color: rgba(217, 217, 217, 1);
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1) inset;
+    border: none;
+    border-radius: 3px;
+
+
+    .ui-slider-range {
+      position: absolute;
+      height: 100%;
+      background-color: $color-accent;
+      border-radius: 2px;
+      border: none;
+    }
+
+
+    .ui-slider-handle {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 12px;
+      height: 12px;
+      margin-left: -6px;
+      background-color: $color-accent;
+      border: 2px solid $color-white;
+      border-radius: 50%;
+      box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+      cursor: pointer;
+      outline: none;
+      transition: transform 0.1s ease;
+
+      &:focus,
+      &:hover {
+        transform: translateY(-50%) scale(1.15);
+      }
+    }
+  }
+
+
+  &__slider-limits {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: rgba(35, 61, 77, 1);
+    line-height: 1;
+    margin-top: 10px;
+  }
+
+
+  &__inputs {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__field {
+    flex: 1;
+    display: block;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 11px 12px 10px 12px;
+    background-color: $color-white;
+    border: 1px solid rgba(227, 227, 227, 1);
+    border-radius: 20px;
+    line-height: 1;
+    font-size: 15px;
+    color: rgba(35, 61, 77, 1);
+    text-align: left;
+    outline: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+    &::placeholder {
+      font-size: 15px;
+      opacity: 1;
+      transition: opacity 0.3s ease;
+    }
+
+    &:focus::placeholder {
+      opacity: 0;
+    }
+
+    &:focus {
+      border-color: $color-accent;
+      box-shadow: 0 2px 6px rgba(255, 107, 0, 0.15);
+    }
+
+    /* Прибираємо стрілочки якщо type="number" */
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    &[type='number'] {
+      -moz-appearance: textfield;
+    }
+  }
+}
+
 .s-category {
   margin-bottom: 70px;
 
@@ -251,11 +370,13 @@
 }
 
 .s-catalog {
-  padding-top:fluid(20,40);
+  padding-top: fluid(20, 40);
   padding-bottom: fluid(50, 90);
-& .heading{
-  margin-bottom: 30px;
-}
+
+  & .heading {
+    margin-bottom: 30px;
+  }
+
   .catalog__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -270,6 +391,60 @@
       grid-template-columns: 1fr;
     }
   }
+
+  & .sub-links {
+    margin-bottom: fluid(20, 38);
+  }
+
+  .btn-wrap {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    margin-bottom: 30px;
+    max-width: 375px;
+
+    .btn {
+      flex: 1;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+
+      /* Варіант з контуром (аутлайн) */
+      &--outline {
+        flex: 1;
+        white-space: nowrap;
+        transition: all 0.2s ease;
+
+        &:hover {
+          background-color: #ff6b00;
+          color: #ffffff;
+
+          .btn__icon {
+            stroke: #ffffff;
+            fill: #ffffff;
+          }
+        }
+
+        &:active {
+          transform: translateY(1px);
+        }
+      }
+
+      /* Іконка всередині кнопки */
+      &__icon {
+        flex-shrink: 0;
+        width: 20px;
+        height: 20px;
+        stroke: currentColor;
+        fill: currentColor;
+        margin-right: 10px;
+        transition: stroke 0.2s ease, fill 0.2s ease;
+      }
+    }
+  }
+
+
+
 }
 
 .s-recomended-products {

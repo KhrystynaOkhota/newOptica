@@ -13,7 +13,7 @@
   height: 100%;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 
-  @media (max-width: $breakpoint-md) {
+  @media (max-width: $breakpoint-lg) {
     padding: 10px 10px 18px 10px;
   }
 
@@ -43,13 +43,13 @@
     margin: 0 0 fluid(15, 20) 0;
     font-size: fluid(20, 25);
     font-weight: 700;
-    line-height: 1.3;
+    line-height: 1.2;
   }
 
   &__period {
     margin: 0 0 fluid(15, 20) 0;
     font-size: fluid(15, 18);
-    line-height: 1.4;
+    line-height: 1.2;
     font-weight: 300;
   }
 
@@ -76,7 +76,7 @@
     }
 
     .promo-card__link {
-      color: rgba($color-accent, 0.1);
+      color: rgba(35, 61, 77, 1);
 
     }
   }
@@ -86,6 +86,10 @@
 .s-promotions {
   padding-top: 20px;
   padding-bottom: 150px;
+
+  & .sub-links {
+    margin-bottom: 30px;
+  }
 
   & .heading {
     margin-bottom: fluid(21, 26);
@@ -143,6 +147,10 @@
     padding-bottom: 40px;
   }
 
+  &+.s-catalog {
+    padding-top: 0;
+  }
+
   & .promo {
     &__heading {
       margin-bottom: 22px;
@@ -163,271 +171,10 @@
   }
 }
 
-/*
-.catalog-tabs {
-  position: relative;
-  width: 100%;
-  border-bottom: 0.125rem solid #F6F6F6;
-
-  overflow-x: auto;
-  overflow-y: hidden;
-
-  scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-
-  &::-webkit-scrollbar {
-    display: none;
-    width: 0;
-    height: 0;
-  }
-
-  &__list {
-    display: flex;
-    align-items: center;
-    width: max-content;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    white-space: nowrap;
-  }
-
-  &__item {
-    flex-shrink: 0;
-    scroll-snap-align: start;
-  }
-
-  &__btn {
-    display: inline-block;
-    padding: clamp(0.625rem, 0.1693rem + 0.9494vw, 1rem) clamp(1rem, 0.3924rem + 1.2658vw, 1.5rem);
-    font-family: "Inter Tight", "Inter Tight Fallback", sans-serif;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1em;
-    color: #000000;
-    text-decoration: none;
-    border-bottom: 0.125rem solid transparent;
-    margin-bottom: -0.125rem;
-    transition: border-color 0.3s linear, color 0.3s linear;
-
-    &:hover {
-      border-color: currentColor;
-    }
-
-    &.is-active,
-    &[aria-selected="true"] {
-      border-color: #000000;
-      font-weight: 600;
-    }
-  }
-
-  @media (min-width: 992px) {
-    &.type-2 &__list {
-      width: 100%;
-      flex-direction: column;
-    }
-  }
-
-  @media (max-width: 1199px) {
-    font-size: 0.875rem;
-  }
-
-  @media (max-width: 575px) {
-    margin-inline: -0.75rem;
-    padding-inline: 0.75rem;
-  }
-}*/
-/*.sub-links {
-  position: relative;
-  width: 100%;
-  border-bottom: 0.125rem solid #F6F6F6;
-
-  overflow-x: auto;
-  overflow-y: hidden;
-
-  scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-
-  &::-webkit-scrollbar {
-    display: none;
-    width: 0;
-    height: 0;
-  }
-
-  ul {
-    display: flex;
-    align-items: center;
-    width: max-content;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    white-space: nowrap;
-  }
-
-  li {
-    flex-shrink: 0;
-    scroll-snap-align: start;
-
-    a {
-      display: inline-block;
-      padding: clamp(0.625rem, 0.1693rem + 0.9494vw, 1rem) clamp(1rem, 0.3924rem + 1.2658vw, 1.5rem);
-      font-family: "Inter Tight", "Inter Tight Fallback", sans-serif;
-      font-size: 1rem;
-      font-weight: 400;
-      line-height: 1em;
-      color: #000000;
-      text-decoration: none;
-      border-bottom: 0.125rem solid transparent;
-      margin-bottom: -0.125rem;
-      transition: border-color 0.3s linear, color 0.3s linear;
-
-      &:hover {
-        border-color: currentColor;
-      }
-    }
-
-    &.is-active a {
-      border-color: #000000;
-      font-weight: 600;
-    }
-  }
-
-  @media (min-width: 992px) {
-    &.type-2 ul {
-      width: 100%;
-      flex-direction: column;
-    }
-  }
-
-  @media (max-width: 1199px) {
-    font-size: 0.875rem;
-  }
-
-  @media (max-width: 575px) {
-    margin-inline: -0.75rem;
-    padding-inline: 0.75rem;
-  }
-}*/
-/*.sub-links {
-  position: relative;
-  width: 100%;
-  border-bottom: 0.125rem solid #f6f6f6;
-
-  overflow-x: auto;
-  overflow-y: hidden;
-
-  scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-
-  // Стилі для drag-to-scroll мишкою
-  cursor: grab;
-  user-select: none;
-  -webkit-user-drag: none;
-
-  &.is-dragging {
-    cursor: grabbing;
-    scroll-behavior: auto; // Вимикаємо гладкий скрол під час drag, щоб не було затримок
-    scroll-snap-type: none; // Тимчасово вимикаємо snap для плавності ручного руху
-  }
-
-  &::-webkit-scrollbar {
-    display: none;
-    width: 0;
-    height: 0;
-  }
-
-  &__list {
-    display: flex;
-    align-items: center;
-    width: max-content;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    white-space: nowrap;
-  }
-
-  &__item {
-    flex-shrink: 0;
-    scroll-snap-align: start;
-  }
-
-  &__link {
-    position: relative;
-    display: inline-block;
-    padding: clamp(0.625rem, 0.1693rem + 0.9494vw, 1rem) clamp(1rem, 0.3924rem + 1.2658vw, 1.5rem);
-
-    font-family: "Inter Tight", "Inter Tight Fallback", sans-serif;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1;
-    color: #4a5055;
-    text-decoration: none;
-    white-space: nowrap;
-    -webkit-user-drag: none;
-
-    border-bottom: 0.125rem solid transparent;
-    margin-bottom: -0.125rem;
-
-    transition: color 0.3s linear, border-color 0.3s linear;
-
-    &:hover {
-      color: #000000;
-      border-color: rgba(0, 0, 0, 0.3);
-    }
-
-    &.is-active,
-    &[aria-selected="true"],
-    &[aria-current="page"] {
-      color: #000000;
-      font-weight: 600;
-      border-color: #000000;
-    }
-  }
-
-  @media (min-width: 992px) {
-    &.type-2 {
-      border-bottom: none;
-      cursor: default;
-
-      .sub-links__list {
-        width: 100%;
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .sub-links__link {
-        margin-bottom: 0;
-        border-bottom: none;
-        padding-inline: 0;
-      }
-    }
-  }
-
-  @media (max-width: 1199px) {
-    font-size: 0.875rem;
-  }
-
-  @media (max-width: 575px) {
-    margin-inline: -0.75rem;
-    padding-inline: 0.75rem;
-  }
-}*/
-
 .sub-links {
   position: relative;
   width: 100%;
-  border-bottom: 0.125rem solid #f6f6f6;
+  border-bottom: 0.125rem solid rgba(7, 4, 4, .1);
 
   overflow-x: auto;
   overflow-y: hidden;
@@ -443,6 +190,7 @@
   cursor: grab;
   user-select: none;
   -webkit-user-drag: none;
+
 
   &.is-dragging {
     cursor: grabbing;
@@ -464,6 +212,7 @@
     padding: 0;
     list-style: none;
     white-space: nowrap;
+    gap: fluid(30, 50);
   }
 
   &__item {
@@ -474,40 +223,52 @@
   &__link {
     position: relative;
     display: inline-block;
-    padding: clamp(0.625rem, 0.1693rem + 0.9494vw, 1rem) clamp(1rem, 0.3924rem + 1.2658vw, 1.5rem);
+    padding: fluid(10, 16) 0;
 
-    font-family: "Inter Tight", "Inter Tight Fallback", sans-serif;
-    font-size: 1rem;
-    font-weight: 400;
+    font-family: $font-primary;
+    font-size: fluid(15, 20);
+    font-weight: bold;
     line-height: 1;
-    color: #4a5055;
+    color: rgba(35, 61, 77, 1);
     text-decoration: none;
     white-space: nowrap;
     -webkit-user-drag: none;
 
-    border-bottom: 0.125rem solid transparent;
-    margin-bottom: -0.125rem;
+    border-bottom: 5px solid transparent;
+    margin-bottom: -5px;
 
     transition: color 0.3s linear, border-color 0.3s linear;
 
+    &:after {
+      content: '';
+      width: 0;
+      height: 5px;
+      border-radius: 3px;
+      background-color: $color-accent;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      transition: width 0.3s linear;
+
+    }
+
     &:hover {
-      color: #000000;
-      border-color: rgba(0, 0, 0, 0.3);
+      color: $color-accent;
+      ;
+
     }
 
     // Універсальне визначення активного стану (клас або ARIA)
     &.is-active,
     &[aria-selected="true"],
     &[aria-current="page"] {
-      color: #000000;
-      font-weight: 600;
-      border-color: #000000;
+      &:after {
+        width: 100%;
+      }
+
     }
   }
 
-  /* --- МОДИФІКАТОРИ ДЛЯ ІНШИХ МІСЦЬ ВЕРИФІКАЦІЇ --- */
-
-  // 1. Модифікатор для вертикального меню (наприклад, у колоні/сайдбарі)
   &--vertical {
     border-bottom: none;
     overflow: visible;
@@ -544,12 +305,4 @@
     border-bottom: none;
   }
 
-  @media (max-width: 1199px) {
-    font-size: 0.875rem;
-  }
-
-  @media (max-width: 575px) {
-    margin-inline: -0.75rem;
-    padding-inline: 0.75rem;
-  }
 }

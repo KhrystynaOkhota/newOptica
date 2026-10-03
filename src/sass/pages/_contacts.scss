@@ -350,11 +350,11 @@
 
   & .cta {
     &__heading {
-      margin-bottom: fluid(15,25);
+      margin-bottom: fluid(15, 25);
     }
 
     &__description {
-      margin-bottom: fluid(15,30);
+      margin-bottom: fluid(15, 30);
 
       & p {
         &:not(&:last-child) {
@@ -438,4 +438,16 @@
       }
     }
   }
+}
+
+
+
+.s-contacts {
+
+
+}
+
+#mapW {
+  width: 100%;
+  height: 600px;
 }

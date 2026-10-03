@@ -20,52 +20,59 @@
 
 <body>
 
-    
-    <header class="header">
+   <header class="header">
         <div class="h-menu-overlay"></div>
 
         <div class="h-wrap">
             <div class="container">
 
                 <!-- 1. Верхній блок з кнопками/іконками (у мобільній версії — сітка з 5 колонок) -->
-                <div class="h-top-controls d-flex d-md-none">
-                    <button type="button" class="control-btn control-btn--search js_search_open"
-                        aria-label="Відкрити пошук">
-                        <span class="h-icon">
-                            <svg class="icon" aria-hidden="true" width="22" height="22">
-                                <use href="assets/img/symbol.svg#search"></use>
-                            </svg>
-                        </span>
-                    </button>
+                <div class="h-controls h-controls--top d-flex d-md-none">
+                    <div class="h-controls__item d-flex align-center align-middle">
+                        <button type="button" class="control-btn control-btn--search js_search_open"
+                            aria-label="Відкрити пошук">
+                            <span class="control-btn__icon">
+                                <svg class="icon" aria-hidden="true" width="22" height="22">
+                                    <use href="assets/img/symbol.svg#search"></use>
+                                </svg>
+                            </span>
+                        </button>
 
-                    <a class="control-btn control-btn--account" href="account.html" aria-label="Особистий кабінет">
-                        <span class="h-icon">
-                            <svg class="icon" aria-hidden="true" width="22" height="22">
-                                <use href="assets/img/symbol.svg#user"></use>
-                            </svg>
-                        </span>
-                    </a>
-
-                    <a class="control-btn control-btn--favorite" href="account-favourites.html"
-                        aria-label="Обрані товари">
-                        <span class="h-icon">
-                            <svg class="icon" aria-hidden="true" width="22" height="22">
-                                <use href="assets/img/symbol.svg#fav"></use>
-                            </svg>
-                            <span class="header-favorite-count">0</span>
-                        </span>
-                    </a>
-
-                    <button type="button" class="control-btn control-btn--cart js_cart_open"
-                        aria-label="Відкрити кошик">
-                        <span class="h-icon">
-                            <svg class="icon" aria-hidden="true" width="22" height="22">
-                                <use href="assets/img/symbol.svg#bag"></use>
-                            </svg>
-                            <span class="header-cart-count">0</span>
-                        </span>
-                    </button>
-                    <div class="h-burger js-open-menu"><i></i></div>
+                    </div>
+                    <div class="h-controls__item d-flex align-center align-middle">
+                        <a class="control-btn control-btn--account" href="account.html" aria-label="Особистий кабінет">
+                            <span class="control-btn__icon">
+                                <svg class="icon" aria-hidden="true" width="22" height="22">
+                                    <use href="assets/img/symbol.svg#user"></use>
+                                </svg>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="h-controls__item d-flex align-center align-middle">
+                        <a class="control-btn control-btn--favorite" href="account-favourites.html"
+                            aria-label="Обрані товари">
+                            <span class="control-btn__icon">
+                                <svg class="icon" aria-hidden="true" width="22" height="22">
+                                    <use href="assets/img/symbol.svg#fav"></use>
+                                </svg>
+                                <span class="control-btn__count">0</span>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="h-controls__item d-flex align-center align-middle">
+                        <button type="button" class="control-btn control-btn--cart js_cart_open"
+                            aria-label="Відкрити кошик">
+                            <span class="control-btn__icon">
+                                <svg class="icon" aria-hidden="true" width="22" height="22">
+                                    <use href="assets/img/symbol.svg#bag"></use>
+                                </svg>
+                                <span class="control-btn__count">0</span>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="h-controls__item d-flex align-center align-middle">
+                        <div class="h-burger js-open-menu"><i></i></div>
+                    </div>
                 </div>
 
                 <!-- Десктопний верхній рядок -->
@@ -112,10 +119,8 @@
 
                     <div class="h-controls align-center d-none d-md-flex">
 
-                      
-
                         <a class="control-btn control-btn--account" href="account.html" aria-label="Особистий кабінет">
-                            <span class="h-icon">
+                            <span class="control-btn__icon">
                                 <svg class="icon" aria-hidden="true" width="22" height="22">
                                     <use href="assets/img/symbol.svg#user"></use>
                                 </svg>
@@ -124,21 +129,21 @@
 
                         <a class="control-btn control-btn--favorite" href="account-favourites.html"
                             aria-label="Обрані товари">
-                            <span class="h-icon">
+                            <span class="control-btn__icon">
                                 <svg class="icon" aria-hidden="true" width="22" height="22">
                                     <use href="assets/img/symbol.svg#fav"></use>
                                 </svg>
-                                <span class="header-favorite-count">0</span>
+                                <span class="control-btn__count">0</span>
                             </span>
                         </a>
 
                         <button type="button" class="control-btn control-btn--cart js_cart_open"
                             aria-label="Відкрити кошик">
-                            <span class="h-icon">
+                            <span class="control-btn__icon">
                                 <svg class="icon" aria-hidden="true" width="22" height="22">
                                     <use href="assets/img/symbol.svg#bag"></use>
                                 </svg>
-                                <span class="header-cart-count">0</span>
+                                <span class="control-btn__count">0</span>
                             </span>
                         </button>
 
@@ -194,14 +199,9 @@
                                     <span>Головна</span>
                                 </a>
                             </span>
+                         
                             <span class="kb_sep">/</span>
-                            <span>
-                                <a href="">
-                                    <span>Мій кабінет</span>
-                                </a>
-                            </span>
-                            <span class="kb_sep">/</span>
-                            <span class="kb_title">Особисті дані</span>
+                            <span class="kb_title">Мій кабінет</span>
                         </div>
                     </div>
                 </div>
@@ -217,7 +217,7 @@
                             <nav class="cbn-menu">
                                 <ul class="cbn-menu__list">
                                     <li class="cbn-menu__item">
-                                        <a href="account.html" class="cbn-menu__link is-active">
+                                        <a href="account-data.html" class="cbn-menu__link">
                                             <span class="cbn-menu__icon-wrap">
                                                 <img src="assets/img/cbn-user.svg" alt="" class="cbn-menu__icon">
                                             </span>
@@ -287,192 +287,7 @@
 
                     <!-- Контентна частина -->
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-16 col-xs-16 column">
-                        <div class="cbn-inner">
-                            <h2 class="heading h2 text-bold">Особисті дані</h2>
-
-                            <!-- Форма особистих даних -->
-                            <form class="cbn-form">
-                                <div class="cbn-block">
-                                    <div class="cbn-block__grid">
-                                        <div class="field">
-                                            <label class="field__label" for="last_name">Прізвище</label>
-                                            <input class="field__input" id="last_name" name="last_name" value=""
-                                                placeholder="Коваленко" type="text">
-                                        </div>
-
-                                        <div class="field">
-                                            <label class="field__label" for="first_name">Ім’я</label>
-                                            <input class="field__input" id="first_name" name="first_name" value=""
-                                                placeholder="Вікторія" type="text">
-                                        </div>
-
-                                        <div class="field">
-                                            <label class="field__label" for="middle_name">По батькові</label>
-                                            <input class="field__input" id="middle_name" name="middle_name" value=""
-                                                placeholder="Володимирівна" type="text">
-                                        </div>
-                                    </div>
-
-                                    <div class="cbn-block__">
-                                        <div class="field field--dob SelectBox">
-                                            <label class="field__label">Дата народження</label>
-                                            <div class="field__dob-group">
-                                                <select class="field__select" name="dob_day" aria-label="День">
-                                                    <option value="1" selected>1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                    <option value="5">5</option>
-                                                    <option value="6">6</option>
-                                                    <option value="7">7</option>
-                                                    <option value="8">8</option>
-                                                    <option value="9">9</option>
-                                                    <option value="10">10</option>
-                                                    <option value="11">11</option>
-                                                    <option value="12">12</option>
-                                                    <option value="13">13</option>
-                                                    <option value="14">14</option>
-                                                    <option value="15">15</option>
-                                                </select>
-                                                <select class="field__select" name="dob_month" aria-label="Місяць">
-                                                    <option value="01" selected>01</option>
-                                                    <option value="02">02</option>
-                                                    <option value="03">03</option>
-                                                    <option value="04">04</option>
-                                                    <option value="05">05</option>
-                                                    <option value="06">06</option>
-                                                    <option value="07">07</option>
-                                                    <option value="08">08</option>
-                                                    <option value="09">09</option>
-                                                    <option value="10">10</option>
-                                                    <option value="11">11</option>
-                                                    <option value="12">12</option>
-                                                </select>
-                                                <select class="field__select" name="dob_year" aria-label="Рік">
-                                                    <option value="1990" selected>1990</option>
-                                                     <option value="1991" selected>01</option>
-                                                    <option value="1992">02</option>
-                                                    <option value="1993">03</option>
-                                                    <option value="1994">04</option>
-                                                    <option value="1995">05</option>
-                                                    <option value="1996">06</option>
-                                                    <option value="1997">07</option>
-                                                    <option value="1998">08</option>
-                                                    <option value="1998">09</option>
-                                                    <option value="2000">10</option>
-                                                    <option value="2001">11</option>
-                                                    <option value="2002">2002</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="cbn-block__grid">
-                                        <div class="field">
-                                            <label class="field__label" for="phone">Номер телефону</label>
-                                            <input class="field__input" id="phone" name="phone" value=""
-                                                placeholder="+ 38 (098) 472-01-56" type="tel" inputmode="tel">
-                                        </div>
-
-                                        <div class="field">
-                                            <label class="field__label" for="extra_phone">Додатковий номер
-                                                телефону</label>
-                                            <input class="field__input" id="extra_phone" name="extra_phone" value=""
-                                                placeholder="+ 38 (___) ___-__-__" type="tel" inputmode="tel">
-                                        </div>
-
-                                        <div class="field">
-                                            <label class="field__label" for="email">E-mail</label>
-                                            <input class="field__input" id="email" name="email" value=""
-                                                placeholder="viktoriia@gmail.com" type="email">
-                                        </div>
-                                    </div>
-
-                                    <!-- <div class="field field--dob">
-                                        <label class="field__label">Дата народження</label>
-                                        <div class="field__dob-group">
-                                            <select class="field__select" name="dob_day" aria-label="День">
-                                                <option value="12" selected>12</option>
-                                            </select>
-                                            <select class="field__select" name="dob_month" aria-label="Місяць">
-                                                <option value="03" selected>03</option>
-                                            </select>
-                                            <select class="field__select" name="dob_year" aria-label="Рік">
-                                                <option value="1990" selected>1990</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="field field--gender">
-                                        <label class="field__label">Стать</label>
-                                        <div class="form-field__options d-flex align-left">
-                                            <label class="radio">
-                                                <input type="radio" name="gender" value="female" class="radio__input"
-                                                    checked="">
-                                                <span class="radio__custom"></span>
-                                                <span class="radio__text">Жіноча</span>
-                                            </label>
-                                            <label class="radio-option">
-                                                <input type="radio" name="gender" value="male"
-                                                    class="radio-option__input">
-                                                <span class="radio-option__custom"></span>
-                                                <span class="radio-option__text">Чоловіча</span>
-                                            </label>
-                                        </div>
-
-
-
-
-                                        <div class="field__radio-group">
-                                            <label class="radio">
-                                                <input type="radio" class="radio__input" name="gender" value="male">
-                                                <span class="radio__custom"></span>
-                                                <span class="radio__text">Чоловіча</span>
-                                            </label>
-                                            <label class="radio">
-                                                <input type="radio" class="radio__input" name="gender" value="female"
-                                                    checked>
-                                                <span class="radio__custom"></span>
-                                                <span class="radio__text">Жіноча</span>
-                                            </label>
-                                        </div>
-                                    </div>
--->
-
-                                </div>
-
-                                <button type="submit" class="btn btn--primary">Зберегти</button>
-
-                            </form>
-
-                            <!-- Форма зміни паролю -->
-                            <form class="cbn-form cbn-form--password">
-                                <div class="cbn-block cbn-block--password">
-                                    <div class="cbn-block__title h3 text-bold">Зміна паролю</div>
-
-                                    <div class="cbn-block__grid cbn-block__grid--password">
-                                        <div class="field">
-                                            <label class="field__label" for="old_password">Старий пароль</label>
-                                            <input class="field__input" id="old_password" name="old_password"
-                                                placeholder="*************" type="password">
-                                        </div>
-
-                                        <div class="field">
-                                            <label class="field__label" for="new_password">Новий пароль</label>
-                                            <input class="field__input" id="new_password" name="new_password"
-                                                placeholder="*************" type="password">
-                                        </div>
-
-                                        <div class="field">
-                                            <label class="field__label" for="confirm_password">Повторіть пароль</label>
-                                            <input class="field__input" id="confirm_password" name="confirm_password"
-                                                placeholder="*************" type="password">
-                                        </div>
-                                    </div>
-
-                                    <button type="submit" class="btn btn--primary">Зберегти пароль</button>
-                                </div>
-                            </form>
-                        </div>
+                        
                     </div>
                 </div>
             </div>

@@ -8,19 +8,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
     <meta name="format-detection" content="telephone=no" />
 
-    <title>Veromed</title>
+    <title>Файна-оптика</title>
     <meta name="description" content="" />
 
     <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
 
     <link rel="stylesheet" href="assets/css/sumoselect.min.css" />
-
-    <link rel="stylesheet" href="assets/css/app.css" />
+    <link rel="stylesheet" href="assets/css/app.min.css" />
 
 </head>
 
 <body>
-
 
 
     <header class="header">
@@ -30,44 +28,52 @@
             <div class="container">
 
                 <!-- 1. Верхній блок з кнопками/іконками (у мобільній версії — сітка з 5 колонок) -->
-                <div class="h-top-controls d-flex d-md-none">
-                    <button type="button" class="control-btn control-btn--search js_search_open"
-                        aria-label="Відкрити пошук">
-                        <span class="h-icon">
-                            <svg class="icon" aria-hidden="true" width="22" height="22">
-                                <use href="assets/img/symbol.svg#search"></use>
-                            </svg>
-                        </span>
-                    </button>
+                <div class="h-controls h-controls--top d-flex d-md-none">
+                    <div class="h-controls__item d-flex align-center align-middle">
+                        <button type="button" class="control-btn control-btn--search js_search_open"
+                            aria-label="Відкрити пошук">
+                            <span class="control-btn__icon">
+                                <svg class="icon" aria-hidden="true" width="22" height="22">
+                                    <use href="assets/img/symbol.svg#search"></use>
+                                </svg>
+                            </span>
+                        </button>
 
-                    <a class="control-btn control-btn--account" href="account.html" aria-label="Особистий кабінет">
-                        <span class="h-icon">
-                            <svg class="icon" aria-hidden="true" width="22" height="22">
-                                <use href="assets/img/symbol.svg#user"></use>
-                            </svg>
-                        </span>
-                    </a>
-
-                    <a class="control-btn control-btn--favorite" href="account-favourites.html"
-                        aria-label="Обрані товари">
-                        <span class="h-icon">
-                            <svg class="icon" aria-hidden="true" width="22" height="22">
-                                <use href="assets/img/symbol.svg#fav"></use>
-                            </svg>
-                            <span class="header-favorite-count">0</span>
-                        </span>
-                    </a>
-
-                    <button type="button" class="control-btn control-btn--cart js_cart_open"
-                        aria-label="Відкрити кошик">
-                        <span class="h-icon">
-                            <svg class="icon" aria-hidden="true" width="22" height="22">
-                                <use href="assets/img/symbol.svg#bag"></use>
-                            </svg>
-                            <span class="header-cart-count">0</span>
-                        </span>
-                    </button>
-                    <div class="h-burger js-open-menu"><i></i></div>
+                    </div>
+                    <div class="h-controls__item d-flex align-center align-middle">
+                        <a class="control-btn control-btn--account" href="account.html" aria-label="Особистий кабінет">
+                            <span class="control-btn__icon">
+                                <svg class="icon" aria-hidden="true" width="22" height="22">
+                                    <use href="assets/img/symbol.svg#user"></use>
+                                </svg>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="h-controls__item d-flex align-center align-middle">
+                        <a class="control-btn control-btn--favorite" href="account-favourites.html"
+                            aria-label="Обрані товари">
+                            <span class="control-btn__icon">
+                                <svg class="icon" aria-hidden="true" width="22" height="22">
+                                    <use href="assets/img/symbol.svg#fav"></use>
+                                </svg>
+                                <span class="control-btn__count">0</span>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="h-controls__item d-flex align-center align-middle">
+                        <button type="button" class="control-btn control-btn--cart js_cart_open"
+                            aria-label="Відкрити кошик">
+                            <span class="control-btn__icon">
+                                <svg class="icon" aria-hidden="true" width="22" height="22">
+                                    <use href="assets/img/symbol.svg#bag"></use>
+                                </svg>
+                                <span class="control-btn__count">0</span>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="h-controls__item d-flex align-center align-middle">
+                        <div class="h-burger js-open-menu"><i></i></div>
+                    </div>
                 </div>
 
                 <!-- Десктопний верхній рядок -->
@@ -114,10 +120,8 @@
 
                     <div class="h-controls align-center d-none d-md-flex">
 
-
-
                         <a class="control-btn control-btn--account" href="account.html" aria-label="Особистий кабінет">
-                            <span class="h-icon">
+                            <span class="control-btn__icon">
                                 <svg class="icon" aria-hidden="true" width="22" height="22">
                                     <use href="assets/img/symbol.svg#user"></use>
                                 </svg>
@@ -126,21 +130,21 @@
 
                         <a class="control-btn control-btn--favorite" href="account-favourites.html"
                             aria-label="Обрані товари">
-                            <span class="h-icon">
+                            <span class="control-btn__icon">
                                 <svg class="icon" aria-hidden="true" width="22" height="22">
                                     <use href="assets/img/symbol.svg#fav"></use>
                                 </svg>
-                                <span class="header-favorite-count">0</span>
+                                <span class="control-btn__count">0</span>
                             </span>
                         </a>
 
                         <button type="button" class="control-btn control-btn--cart js_cart_open"
                             aria-label="Відкрити кошик">
-                            <span class="h-icon">
+                            <span class="control-btn__icon">
                                 <svg class="icon" aria-hidden="true" width="22" height="22">
                                     <use href="assets/img/symbol.svg#bag"></use>
                                 </svg>
-                                <span class="header-cart-count">0</span>
+                                <span class="control-btn__count">0</span>
                             </span>
                         </button>
 
@@ -155,7 +159,7 @@
                             <li class="menu-item"><a href="catalog.html">Сонцезахисні окуляри</a></li>
                             <li class="menu-item"><a href="catalog.html">Контактні лінзи</a></li>
                             <li class="menu-item"><a href="catalog.html">Аксесуари/Засоби догляду</a></li>
-                            <li class="menu-item"><a href="catalog.html">Акції</a></li>
+                            <li class="menu-item"><a href="promotions.html">Акції</a></li>
                         </ul>
                     </nav>
 
@@ -186,7 +190,6 @@
         </div>
     </header>
 
-
     <main class="main">
 
         <div class="kama_breadcrumbs__wrap">
@@ -214,161 +217,40 @@
                         <h1 class="heading h2 text-bold">
                             Акції
                         </h1>
-
-                        <!--<nav class="catalog-tabs" aria-label="Категорії товарів">
-                            <ul class="catalog-tabs__list" role="tablist">
-                                <li class="catalog-tabs__item" role="presentation">
-                                    <a href="" class="catalog-tabs__btn" role="tab"
-                                        aria-selected="false">Оправи</a>
-                                </li>
-                                <li class="catalog-tabs__item" role="presentation">
-                                    <a href="" class="catalog-tabs__btn is-active" role="tab"
-                                        aria-selected="true">Окуляри</a>
-                                </li>
-                                <li class="catalog-tabs__item" role="presentation">
-                                    <a href="" class="catalog-tabs__btn" role="tab"
-                                        aria-selected="false">Лінзи</a>
-                                </li>
-                                <li class="catalog-tabs__item" role="presentation">
-                                    <a href="" class="catalog-tabs__btn" role="tab"
-                                        aria-selected="false">Засоби догляду</a>
-                                </li>
-                                <li class="catalog-tabs__item" role="presentation">
-                                    <a href="" class="catalog-tabs__btn" role="tab"
-                                        aria-selected="false">Аксесуари</a>
-                                </li>
-                            </ul>
-                        </nav>-->
-
-                        <!-- <nav class="sub-links" aria-label="Категорії товарів">
-                            <ul class="sub-links__list" role="tablist">
-                                <li class="sub-links__item" role="presentation">
-                                    <a href="https://hinaus.art/shop/" class="sub-links__link" role="tab"
-                                        aria-selected="false">Всі товари</a>
-                                </li>
-                                <li class="sub-links__item" role="presentation">
-                                    <a href="https://hinaus.art/art/" class="sub-links__link is-active" role="tab"
-                                        aria-selected="true">ART</a>
-                                </li>
-                                <li class="sub-links__item" role="presentation">
-                                    <a href="https://hinaus.art/books/" class="sub-links__link" role="tab"
-                                        aria-selected="false">BOOKS</a>
-                                </li>
-                                <li class="sub-links__item" role="presentation">
-                                    <a href="https://hinaus.art/decor/" class="sub-links__link" role="tab"
-                                        aria-selected="false">DECOR</a>
-                                </li>
-                                <li class="sub-links__item" role="presentation">
-                                    <a href="https://hinaus.art/sound/" class="sub-links__link" role="tab"
-                                        aria-selected="false">SOUND</a>
-                                </li>
-                                <li class="sub-links__item" role="presentation">
-                                    <a href="https://hinaus.art/decor/" class="sub-links__link" role="tab"
-                                        aria-selected="false">DECOR</a>
-                                </li>
-                                <li class="sub-links__item" role="presentation">
-                                    <a href="https://hinaus.art/sound/" class="sub-links__link" role="tab"
-                                        aria-selected="false">SOUND</a>
-                                </li>
-                                <li class="sub-links__item" role="presentation">
-                                    <a href="https://hinaus.art/decor/" class="sub-links__link" role="tab"
-                                        aria-selected="false">DECOR</a>
-                                </li>
-                                <li class="sub-links__item" role="presentation">
-                                    <a href="https://hinaus.art/sound/" class="sub-links__link" role="tab"
-                                        aria-selected="false">SOUND</a>
-                                </li>
-                                <li class="sub-links__item" role="presentation">
-                                    <a href="https://hinaus.art/decor/" class="sub-links__link" role="tab"
-                                        aria-selected="false">DECOR</a>
-                                </li>
-                                <li class="sub-links__item" role="presentation">
-                                    <a href="https://hinaus.art/sound/" class="sub-links__link" role="tab"
-                                        aria-selected="false">SOUND</a>
-                                </li>
-                                <li class="sub-links__item" role="presentation">
-                                    <a href="https://hinaus.art/decor/" class="sub-links__link" role="tab"
-                                        aria-selected="false">DECOR</a>
-                                </li>
-                                <li class="sub-links__item" role="presentation">
-                                    <a href="https://hinaus.art/sound/" class="sub-links__link" role="tab"
-                                        aria-selected="false">SOUND</a>
-                                </li>
-                                <li class="sub-links__item" role="presentation">
-                                    <a href="https://hinaus.art/decor/" class="sub-links__link" role="tab"
-                                        aria-selected="false">DECOR</a>
-                                </li>
-                                <li class="sub-links__item" role="presentation">
-                                    <a href="https://hinaus.art/sound/" class="sub-links__link" role="tab"
-                                        aria-selected="false">SOUND</a>
-                                </li>
-                            </ul>
-                        </nav>-->
-
-                        <!--
-                        <div class="s-promotions__filters filter-tabs">
-                            
-                            
-                            <ul class="filter-tabs__list">
-                                <li class="filter-tabs__item">
-                                    <button type="button" class="filter-tabs__btn is-active">Оправи</button>
-                                </li>
-                                <li class="filter-tabs__item">
-                                    <button type="button" class="filter-tabs__btn">Окуляри</button>
-                                </li>
-                                <li class="filter-tabs__item">
-                                    <button type="button" class="filter-tabs__btn">Лінзи</button>
-                                </li>
-                                <li class="filter-tabs__item">
-                                    <button type="button" class="filter-tabs__btn">Засоби догляду</button>
-                                </li>
-                                <li class="filter-tabs__item">
-                                    <button type="button" class="filter-tabs__btn">Аксесуари</button>
-                                </li>
-                            </ul>
-                        </div>-->
-
-                        <!-- Варіант 1: Стандартна горизонтальна стрічка (Каталог / Таби) -->
                         <nav class="sub-links" aria-label="Категорії товарів">
                             <ul class="sub-links__list" role="tablist">
                                 <li class="sub-links__item" role="presentation">
-                                    <a href="https://hinaus.art/shop/" class="sub-links__link">Всі товари</a>
+                                    <a href="" class="sub-links__link">Оправи</a>
                                 </li>
                                 <li class="sub-links__item" role="presentation">
-                                    <a href="https://hinaus.art/art/" class="sub-links__link is-active"
-                                        aria-selected="true">ART</a>
+                                    <a href="" class="sub-links__link is-active" aria-selected="true">Окуляри</a>
                                 </li>
                                 <li class="sub-links__item" role="presentation">
-                                    <a href="https://hinaus.art/books/" class="sub-links__link">BOOKS</a>
+                                    <a href="" class="sub-links__link">Лінзи</a>
                                 </li>
                                 <li class="sub-links__item" role="presentation">
-                                    <a href="https://hinaus.art/decor/" class="sub-links__link">DECOR</a>
+                                    <a href="" class="sub-links__link">Засоби догляду</a>
                                 </li>
                                 <li class="sub-links__item" role="presentation">
-                                    <a href="https://hinaus.art/sound/" class="sub-links__link">SOUND</a>
+                                    <a href="" class="sub-links__link">Аксесуари</a>
                                 </li>
                                 <li class="sub-links__item" role="presentation">
-                                    <a href="https://hinaus.art/shop/" class="sub-links__link">Всі товари</a>
+                                    <a href="" class="sub-links__link">Оправи test</a>
                                 </li>
                                 <li class="sub-links__item" role="presentation">
-                                    <a href="https://hinaus.art/art/" class="sub-links__link is-active"
-                                        aria-selected="true">ART</a>
+                                    <a href="" class="sub-links__link">Окуляри test</a>
                                 </li>
                                 <li class="sub-links__item" role="presentation">
-                                    <a href="https://hinaus.art/books/" class="sub-links__link">BOOKS</a>
+                                    <a href="" class="sub-links__link">Лінзи test</a>
                                 </li>
                                 <li class="sub-links__item" role="presentation">
-                                    <a href="https://hinaus.art/decor/" class="sub-links__link">DECOR</a>
+                                    <a href="" class="sub-links__link">Засоби догляду test</a>
                                 </li>
                                 <li class="sub-links__item" role="presentation">
-                                    <a href="https://hinaus.art/sound/" class="sub-links__link">SOUND</a>
+                                    <a href="" class="sub-links__link">Аксесуари test</a>
                                 </li>
                             </ul>
                         </nav>
-
-
-
-
                     </div>
                 </div>
                 <div class="row m-row ">

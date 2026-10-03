@@ -23,7 +23,7 @@ jQuery(function ($) {
     let popupTop = 0;
 
     _functions.removeScroll = function () {
-        popupTop = $(window).scrollTop();$('html').css({
+        popupTop = $(window).scrollTop(); $('html').css({
             "position": "fixed",
             "top": -popupTop,
             "width": "100%"
@@ -36,7 +36,7 @@ jQuery(function ($) {
     };
 
     _functions.openPopup = function (popup) {
-        $('.popup-content').removeClass('active');$(popup + ', .popup-wrapper').addClass('active');
+        $('.popup-content').removeClass('active'); $(popup + ', .popup-wrapper').addClass('active');
         _functions.removeScroll();
     };
 
@@ -87,13 +87,13 @@ jQuery(function ($) {
 
     // Клік на кнопку "Показати ще / Сховати"
     $(document).on('click', '.fl-list-btn', function () {
-        let $btn =$(this);
+        let $btn = $(this);
         let list = $btn.closest('.fl-toggle').find('.fl-list');
         let li = list.find("li:gt(4)");
         let isVisible = li.is(":visible");
 
         // Запам'ятовуємо ручний вибір користувача
-        $btn.data('user-opened', !isVisible);$btn.toggleClass('is-active', !isVisible);
+        $btn.data('user-opened', !isVisible); $btn.toggleClass('is-active', !isVisible);
 
         if (isVisible) {
             li.hide("slow");
@@ -101,18 +101,26 @@ jQuery(function ($) {
             li.show("slow");
         }
     });
+    $(document).on("click", ".js_fl_open", function () {
+        $("html").addClass("filter-is-open");
+        _functions.removeScroll();
+    });
 
+    $(document).on("click", ".js_fl_close", function () {
+        $("html").removeClass("filter-is-open");
+        _functions.addScroll();
+    });
     // Реакція на зміну стану інпутів у фільтрі
-   // $(document).on('change', '.fl-list input[type="checkbox"], .fl-list input[type="radio"]', function () {
-       // let listContainer = $(this).closest('.fl-toggle');
-       // _functions.initFilterLists(listContainer);
-   // });
+    // $(document).on('change', '.fl-list input[type="checkbox"], .fl-list input[type="radio"]', function () {
+    // let listContainer = $(this).closest('.fl-toggle');
+    // _functions.initFilterLists(listContainer);
+    // });
 
     // Слайдер ціни / діапазону
     if ($('#slider').length) {
-        var $slider =$("#slider");
-        var $inputFrom =$(".js-price-from");
-        var $inputTo =$(".js-price-to");
+        var $slider = $("#slider");
+        var $inputFrom = $(".js-price-from");
+        var $inputTo = $(".js-price-to");
 
         var minVal = 0;
         var maxVal = 10000;
@@ -125,7 +133,7 @@ jQuery(function ($) {
             max: maxVal,
             values: [startFrom, startTo],
             slide: function (event, ui) {
-                $inputFrom.val(ui.values[0]);$inputTo.val(ui.values[1]);
+                $inputFrom.val(ui.values[0]); $inputTo.val(ui.values[1]);
             }
         });
 
@@ -183,16 +191,17 @@ jQuery(function ($) {
     };
 
     function scrollAnime(winScr) {
-        const $animationElements =$('.animation').not('.animated');
+        const $animationElements = $('.animation').not('.animated');
         if ($animationElements.length) {
             const currentWinWidth = $(window).width();
             const currentWinHeight = $(window).height();
 
             $animationElements.each(function () {
-                const $th =$(this);
+                const $th = $(this);
                 const triggerCoef = currentWinWidth < 768 ? 0.95 : 0.85;
 
-                if (winScr >= $th.offset().top - (currentWinHeight * triggerCoef)) {$th.addClass('animated');
+                if (winScr >= $th.offset().top - (currentWinHeight * triggerCoef)) {
+                    $th.addClass('animated');
                 }
             });
         }
@@ -207,46 +216,47 @@ jQuery(function ($) {
     $(document).on('click', '.js-open-menu', function () {
         const isOpen = !$('header').hasClass('open-menu');
 
-        $('html').toggleClass('overflow-menu');$('header').removeClass('hide');
-        $('header').toggleClass('open-menu');$('header').removeClass('open-search');
+        $('html').toggleClass('overflow-menu'); $('header').removeClass('hide');
+        $('header').toggleClass('open-menu'); $('header').removeClass('open-search');
 
         $('.h-search-form input').val("");
         $(".h-search-results").removeClass("is-active");
     });
 
     /* Close menu */
-    $(document).on('click', '.h-menu-overlay', function () {$('html').removeClass('overflow-menu');
-        $('header').removeClass('open-menu open-search');$('.h-search-form input').val("");
+    $(document).on('click', '.h-menu-overlay', function () {
+        $('html').removeClass('overflow-menu');
+        $('header').removeClass('open-menu open-search'); $('.h-search-form input').val("");
         $(".h-search-results").removeClass("is-active");
     });
 
     // 5. ТАБИ (DESKTOP) ТА АКОРДЕОН (MOBILE)
-    const $tabBtns =$('.p-tabs__nav-btn');
-    const $tabPanels =$('.p-tabs__panel');
+    const $tabBtns = $('.p-tabs__nav-btn');
+    const $tabPanels = $('.p-tabs__panel');
 
     $(document).on('click', '.p-tabs__nav-btn', function () {
         const targetId = $(this).data('tab');
 
-        $tabBtns.removeClass('is-active');$(this).addClass('is-active');
+        $tabBtns.removeClass('is-active'); $(this).addClass('is-active');
 
-        $tabPanels.removeClass('is-active').find('.p-tabs__body').removeAttr('style');$(`#${targetId}`).addClass('is-active');
+        $tabPanels.removeClass('is-active').find('.p-tabs__body').removeAttr('style'); $(`#${targetId}`).addClass('is-active');
     });
 
     $(document).on('click', '.js-tab-acc-btn', function () {
-        const $currentPanel =$(this).closest('.p-tabs__panel');
-        const $currentBody =$currentPanel.find('.p-tabs__body');
+        const $currentPanel = $(this).closest('.p-tabs__panel');
+        const $currentBody = $currentPanel.find('.p-tabs__body');
         const isOpen = $currentPanel.hasClass('is-active');
 
         $tabPanels.not($currentPanel).removeClass('is-active');
         $('.p-tabs__body').not($currentBody).slideUp(300);
 
         if (isOpen) {
-            $currentPanel.removeClass('is-active');$currentBody.slideUp(300);
+            $currentPanel.removeClass('is-active'); $currentBody.slideUp(300);
         } else {
-            $currentPanel.addClass('is-active');$currentBody.slideDown(300);
+            $currentPanel.addClass('is-active'); $currentBody.slideDown(300);
 
             const panelId = $currentPanel.attr('id');
-            $tabBtns.removeClass('is-active');$tabBtns.filter(`[data-tab="${panelId}"]`).addClass('is-active');
+            $tabBtns.removeClass('is-active'); $tabBtns.filter(`[data-tab="${panelId}"]`).addClass('is-active');
         }
     });
 
@@ -266,16 +276,16 @@ jQuery(function ($) {
 
     $(document).on("input", ".search input", function () {
         const val = $(this).val();
-        const $res =$(this).closest(".search").find(".search__results-wrap");
+        const $res = $(this).closest(".search").find(".search__results-wrap");
         $res.toggleClass("active", val.length > 0);
     });
 
     // 7. СЕЛЕКТИ (SumoSelect)
     _functions.initSelect = function (parent) {
-        var $container = parent ? $(parent) :$(document);
+        var $container = parent ? $(parent) : $(document);
 
         $container.find('.SelectBox select').each(function () {
-            var $select =$(this);
+            var $select = $(this);
 
             $select.SumoSelect({
                 floatWidth: 0,
@@ -283,13 +293,15 @@ jQuery(function ($) {
                 placeholder: ''
             });
 
-            var $box =$select.closest('.SelectBox');
+            var $box = $select.closest('.SelectBox');
             $box.toggleClass('value', !!$select.val());
 
-            $select.on('sumo:opened', function () {$box.addClass('focus');
+            $select.on('sumo:opened', function () {
+                $box.addClass('focus');
             });
 
-            $select.on('sumo:closed', function () {$box.removeClass('focus');
+            $select.on('sumo:closed', function () {
+                $box.removeClass('focus');
             });
         });
     };
@@ -308,15 +320,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 1. АКОРДЕОНИ
     document.addEventListener('click', function (e) {
-        const $title =$(e.target).closest('.accordeon-title');
+        const $title = $(e.target).closest('.accordeon-title');
         if (!$title.length) return;
 
-        const $item =$title.closest('.accordeon-item');
-        const $accordeon =$title.closest('.accordeon');
+        const $item = $title.closest('.accordeon-item');
+        const $accordeon = $title.closest('.accordeon');
         const isOpen = $item.hasClass('active');
 
         $accordeon.find('.accordeon-item.active').not($item).removeClass('active').find('.accordeon-title').next().slideUp();
-        $item.toggleClass('active', !isOpen);$title.next().slideToggle(!isOpen);
+        $item.toggleClass('active', !isOpen); $title.next().slideToggle(!isOpen);
     });
 
     // 2. КЛІКЕР КІЛЬКОСТІ
@@ -345,8 +357,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // 3. ВІДЕОПЛЕЄР
     jQuery(document).on('click', '.media__btn', function () {
         const $btn = jQuery(this);
-        const $container =$btn.closest('.media');
-        const $video =$container.find('.media__video');
+        const $container = $btn.closest('.media');
+        const $video = $container.find('.media__video');
         const videoItem = $video.get(0);
 
         if (!videoItem) return;
@@ -354,20 +366,20 @@ document.addEventListener('DOMContentLoaded', () => {
         if (videoItem.paused) {
             videoItem.play();
             $video.attr('controls', '');
-            $btn.addClass('hide');$container.find('.heading').hide();
+            $btn.addClass('hide'); $container.find('.heading').hide();
         } else {
             videoItem.pause();
             $video.removeAttr('controls');
-            $btn.removeClass('hide');$container.find('.heading').show();
+            $btn.removeClass('hide'); $container.find('.heading').show();
         }
     });
 
     jQuery(document).on('ended', '.media__video', function () {
         const $video = jQuery(this);
-        const $container =$video.closest('.media');
+        const $container = $video.closest('.media');
 
         $video.removeAttr('controls');
-        $container.find('.media__btn').removeClass('hide');$container.find('.heading').show();
+        $container.find('.media__btn').removeClass('hide'); $container.find('.heading').show();
     });
 
     // 4. ТАБИ

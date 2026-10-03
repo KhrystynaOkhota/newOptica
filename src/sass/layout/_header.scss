@@ -1,6 +1,51 @@
 @use "../abstracts/variables" as *;
 @use "../abstracts/mixins" as *;
 
+.control-btn {
+  width: 27px;
+  height: 27px;
+  border: none;
+  background: transparent;
+  color: rgba(35, 61, 77, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  transition: all ease-out .4s;
+
+  &:not(&:last-child) {
+    margin-right: 30px;
+  }
+
+  &__icon {
+    height: 100%;
+    max-height: 23px;
+  }
+
+  &__count {
+    position: absolute;
+    top: -9px;
+    right: -9px;
+    font-size: 9px;
+    font-family: $font-primary;
+    width: 18px;
+    height: 18px;
+    background: $color-accent;
+    border-radius: 100%;
+    text-align: center;
+    display: flex;
+    color: $color-white;
+    justify-content: center;
+    align-items: center;
+    transition: all ease-out .4s;
+  }
+
+  &:hover {
+    color: $color-accent;
+  }
+}
+
 .header {
   .menu {
     display: flex;
@@ -55,28 +100,27 @@
     padding: 10px 0;
   }
 
-  &-top-controls {
-    @media (max-width: $breakpoint-md) {
-      display: grid !important;
-      grid-template-columns: repeat(5, 1fr);
-      width: 100%;
-      border-bottom: 1px solid rgba(7, 4, 4, .1);
-
-      & .control-btn,
-      & .h-account,
-      & .h-favorite,
-      & .h-cart,
-      & .h-burger {
+  &-controls {
+    &__item {
+      @media (max-width: $breakpoint-md) {
         display: flex !important;
         align-items: center;
         justify-content: center;
         height: 48px;
-        margin: 0;
-        border-right: 1px solid rgba(7, 4, 4, .1);
 
-        &:last-child {
-          border-right: none;
+        &:not(&:last-child) {
+          border-right: 1px solid rgba(7, 4, 4, .1);
         }
+      }
+    }
+
+    &--top {
+      @media (max-width: $breakpoint-md) {
+        display: grid !important;
+        grid-template-columns: repeat(5, 1fr);
+        width: calc(100% + 30px);
+        margin-left: -15px;
+        border-bottom: 1px solid rgba(7, 4, 4, .1);
       }
     }
   }
@@ -93,7 +137,7 @@
         width: 100vw;
         height: 100%;
         position: absolute;
-       
+
         background-color: $color-accent;
         top: 0;
         left: 50%;
@@ -148,12 +192,12 @@
     @media (max-width: $breakpoint-md) {
       position: fixed;
       z-index: 99;
-      top: 110px;
+      top: 123px;
       left: 0;
       transform: translateX(-100%);
       transition: 0.3s linear;
       width: 100%;
-      height: calc(100vh - 110px);
+      height: calc(100vh - 123px);
       overflow-y: auto;
       overflow-x: hidden;
       display: flex;
@@ -259,7 +303,7 @@
     width: 2.5rem;
     height: 2.5rem;
     flex-shrink: 0;
-    margin-left: auto;
+    cursor: pointer;
     z-index: 101;
 
     @media (max-width: $breakpoint-md) {
@@ -273,8 +317,9 @@
       left: 50%;
       transform: translate(-50%, -50%);
       width: 60%;
-      height: 0.125rem;
-      background-color: $color-primary;
+      //height: 0.125rem;
+      height:1px;
+      background-color: rgba(35, 61, 77, 1);
       transition: 0.3s linear;
 
       &:before,
@@ -285,7 +330,7 @@
         top: -0.375rem;
         width: 100%;
         height: 100%;
-        background-color: $color-primary;
+        background-color: rgba(35, 61, 77, 1);
         transition: 0.3s linear;
       }
 
@@ -303,6 +348,22 @@
       width: 100%;
     }
 
+  }
+
+  &-logo {
+    width: 220px;
+    height: 80px;
+
+    @media (max-width: $breakpoint-md) {
+      height: 54px;
+      width: 146px;
+    }
+
+    &__img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
   }
 }
 

@@ -21,51 +21,59 @@
 <body>
 
   
-    <header class="header">
+     <header class="header">
         <div class="h-menu-overlay"></div>
 
         <div class="h-wrap">
             <div class="container">
 
                 <!-- 1. Верхній блок з кнопками/іконками (у мобільній версії — сітка з 5 колонок) -->
-                <div class="h-top-controls d-flex d-md-none">
-                    <button type="button" class="control-btn control-btn--search js_search_open"
-                        aria-label="Відкрити пошук">
-                        <span class="h-icon">
-                            <svg class="icon" aria-hidden="true" width="22" height="22">
-                                <use href="assets/img/symbol.svg#search"></use>
-                            </svg>
-                        </span>
-                    </button>
+                <div class="h-controls h-controls--top d-flex d-md-none">
+                    <div class="h-controls__item d-flex align-center align-middle">
+                        <button type="button" class="control-btn control-btn--search js_search_open"
+                            aria-label="Відкрити пошук">
+                            <span class="control-btn__icon">
+                                <svg class="icon" aria-hidden="true" width="22" height="22">
+                                    <use href="assets/img/symbol.svg#search"></use>
+                                </svg>
+                            </span>
+                        </button>
 
-                    <a class="control-btn control-btn--account" href="account.html" aria-label="Особистий кабінет">
-                        <span class="h-icon">
-                            <svg class="icon" aria-hidden="true" width="22" height="22">
-                                <use href="assets/img/symbol.svg#user"></use>
-                            </svg>
-                        </span>
-                    </a>
-
-                    <a class="control-btn control-btn--favorite" href="account-favourites.html"
-                        aria-label="Обрані товари">
-                        <span class="h-icon">
-                            <svg class="icon" aria-hidden="true" width="22" height="22">
-                                <use href="assets/img/symbol.svg#fav"></use>
-                            </svg>
-                            <span class="header-favorite-count">0</span>
-                        </span>
-                    </a>
-
-                    <button type="button" class="control-btn control-btn--cart js_cart_open"
-                        aria-label="Відкрити кошик">
-                        <span class="h-icon">
-                            <svg class="icon" aria-hidden="true" width="22" height="22">
-                                <use href="assets/img/symbol.svg#bag"></use>
-                            </svg>
-                            <span class="header-cart-count">0</span>
-                        </span>
-                    </button>
-                    <div class="h-burger js-open-menu"><i></i></div>
+                    </div>
+                    <div class="h-controls__item d-flex align-center align-middle">
+                        <a class="control-btn control-btn--account" href="account.html" aria-label="Особистий кабінет">
+                            <span class="control-btn__icon">
+                                <svg class="icon" aria-hidden="true" width="22" height="22">
+                                    <use href="assets/img/symbol.svg#user"></use>
+                                </svg>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="h-controls__item d-flex align-center align-middle">
+                        <a class="control-btn control-btn--favorite" href="account-favourites.html"
+                            aria-label="Обрані товари">
+                            <span class="control-btn__icon">
+                                <svg class="icon" aria-hidden="true" width="22" height="22">
+                                    <use href="assets/img/symbol.svg#fav"></use>
+                                </svg>
+                                <span class="control-btn__count">0</span>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="h-controls__item d-flex align-center align-middle">
+                        <button type="button" class="control-btn control-btn--cart js_cart_open"
+                            aria-label="Відкрити кошик">
+                            <span class="control-btn__icon">
+                                <svg class="icon" aria-hidden="true" width="22" height="22">
+                                    <use href="assets/img/symbol.svg#bag"></use>
+                                </svg>
+                                <span class="control-btn__count">0</span>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="h-controls__item d-flex align-center align-middle">
+                        <div class="h-burger js-open-menu"><i></i></div>
+                    </div>
                 </div>
 
                 <!-- Десктопний верхній рядок -->
@@ -112,10 +120,8 @@
 
                     <div class="h-controls align-center d-none d-md-flex">
 
-                      
-
                         <a class="control-btn control-btn--account" href="account.html" aria-label="Особистий кабінет">
-                            <span class="h-icon">
+                            <span class="control-btn__icon">
                                 <svg class="icon" aria-hidden="true" width="22" height="22">
                                     <use href="assets/img/symbol.svg#user"></use>
                                 </svg>
@@ -124,21 +130,21 @@
 
                         <a class="control-btn control-btn--favorite" href="account-favourites.html"
                             aria-label="Обрані товари">
-                            <span class="h-icon">
+                            <span class="control-btn__icon">
                                 <svg class="icon" aria-hidden="true" width="22" height="22">
                                     <use href="assets/img/symbol.svg#fav"></use>
                                 </svg>
-                                <span class="header-favorite-count">0</span>
+                                <span class="control-btn__count">0</span>
                             </span>
                         </a>
 
                         <button type="button" class="control-btn control-btn--cart js_cart_open"
                             aria-label="Відкрити кошик">
-                            <span class="h-icon">
+                            <span class="control-btn__icon">
                                 <svg class="icon" aria-hidden="true" width="22" height="22">
                                     <use href="assets/img/symbol.svg#bag"></use>
                                 </svg>
-                                <span class="header-cart-count">0</span>
+                                <span class="control-btn__count">0</span>
                             </span>
                         </button>
 
@@ -676,7 +682,7 @@
                 </div>
             </div>
         </section>
-        <section class="s-cta">
+         <section class="s-cta">
 
             <div class="container">
                 <div class="row cta__wrap">
@@ -729,7 +735,7 @@
 
                                         <div class="socials__icon-wrap">
                                             <svg class="socials__icon" aria-hidden="true" width="36" height="36">
-                                                <use href="assets/img/sprite.svg#viber"></use>
+                                                <use href="assets/img/symbol.svg#viber"></use>
                                             </svg>
                                         </div>
                                         <span class="socials__text">Viber</span>
@@ -741,7 +747,7 @@
                                         target="_blank" rel="noopener" aria-label="WhatsApp">
                                         <div class="socials__icon-wrap">
                                             <svg class="socials__icon" aria-hidden="true" width="36" height="36">
-                                                <use href="assets/img/sprite.svg#whatsapp"></use>
+                                                <use href="assets/img/symbol.svg#whatsapp"></use>
                                             </svg>
                                         </div>
                                         <span class="socials__text">WhatsApp</span>
@@ -753,7 +759,7 @@
                                         target="_blank" rel="noopener" aria-label="Telegram">
                                         <div class="socials__icon-wrap">
                                             <svg class="socials__icon" aria-hidden="true" width="36" height="36">
-                                                <use href="assets/img/sprite.svg#telegram"></use>
+                                                <use href="assets/img/symbol.svg#telegram"></use>
                                             </svg>
                                         </div>
                                         <span class="socials__text">Telegram</span>
@@ -763,7 +769,7 @@
                         </div>
 
                         <!-- Блок 2: Підписуйтесь (соцмережі) -->
-                        <div class="socials">
+                        <!-- <div class="socials">
                             <span class="socials__label">Підписуйтесь:</span>
 
                             <ul class="socials__list" role="list">
@@ -772,7 +778,7 @@
                                         rel="noopener" aria-label="YouTube">
                                         <div class="socials__icon-wrap">
                                             <svg class="socials__icon" aria-hidden="true" width="36" height="36">
-                                                <use href="assets/img/sprite.svg#youtube"></use>
+                                                <use href="assets/img/symbol.svg#youtube"></use>
                                             </svg>
                                         </div>
                                     </a>
@@ -783,7 +789,7 @@
                                         rel="noopener" aria-label="Threads">
                                         <div class="socials__icon-wrap">
                                             <svg class="socials__icon" aria-hidden="true" width="36" height="36">
-                                                <use href="assets/img/sprite.svg#threads"></use>
+                                                <use href="assets/img/symbol.svg#threads"></use>
                                             </svg>
                                         </div>
                                     </a>
@@ -794,7 +800,7 @@
                                         rel="noopener" aria-label="Facebook">
                                         <div class="socials__icon-wrap">
                                             <svg class="socials__icon" aria-hidden="true" width="36" height="36">
-                                                <use href="assets/img/sprite.svg#facebook"></use>
+                                                <use href="assets/img/symbol.svg#facebook"></use>
                                             </svg>
                                         </div>
                                     </a>
@@ -805,7 +811,7 @@
                                         rel="noopener" aria-label="Instagram">
                                         <div class="socials__icon-wrap">
                                             <svg class="socials__icon" aria-hidden="true" width="36" height="36">
-                                                <use href="assets/img/sprite.svg#instagram"></use>
+                                                <use href="assets/img/symbol.svg#instagram"></use>
                                             </svg>
                                         </div>
                                     </a>
@@ -816,7 +822,7 @@
                                         rel="noopener" aria-label="TikTok">
                                         <div class="socials__icon-wrap">
                                             <svg class="socials__icon" aria-hidden="true" width="36" height="36">
-                                                <use href="assets/img/sprite.svg#tiktok"></use>
+                                                <use href="assets/img/symbol.svg#tiktok"></use>
                                             </svg>
                                         </div>
                                     </a>
@@ -834,7 +840,7 @@
                                         aria-label="Viber">
                                         <div class="socials__icon-wrap">
                                             <svg class="socials__icon" aria-hidden="true" width="36" height="36">
-                                                <use href="assets/img/sprite.svg#viber"></use>
+                                                <use href="assets/img/symbol.svg#viber"></use>
                                             </svg>
                                         </div>
                                         <span class="socials__text">Viber</span>
@@ -846,7 +852,7 @@
                                         target="_blank" rel="noopener" aria-label="WhatsApp">
                                         <div class="socials__icon-wrap">
                                             <svg class="socials__icon" aria-hidden="true" width="36" height="36">
-                                                <use href="assets/img/sprite.svg#whatsapp"></use>
+                                                <use href="assets/img/symbol.svg#whatsapp"></use>
                                             </svg>
                                         </div>
                                         <span class="socials__text">WhatsApp</span>
@@ -858,14 +864,14 @@
                                         target="_blank" rel="noopener" aria-label="Telegram">
                                         <div class="socials__icon-wrap">
                                             <svg class="socials__icon" aria-hidden="true" width="36" height="36">
-                                                <use href="assets/img/sprite.svg#telegram"></use>
+                                                <use href="assets/img/symbol.svg#telegram"></use>
                                             </svg>
                                         </div>
                                         <span class="socials__text">Telegram</span>
                                     </a>
                                 </li>
                             </ul>
-                        </div>
+                        </div>-->
                     </div>
                     <div class="cta__img--wrap">
                         <img src="assets/img/consultation-2.png" alt="cta img" class="cta__img">
