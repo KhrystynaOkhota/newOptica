@@ -19,12 +19,15 @@
   .d-sm-block {
     display: block !important;
   }
+
   .d-sm-none {
     display: none !important;
   }
+
   .d-sm-flex {
     display: flex !important;
   }
+
   .d-sm-inline-block {
     display: inline-block !important;
   }
@@ -35,9 +38,11 @@
   .d-md-block {
     display: block !important;
   }
+
   .d-md-none {
     display: none !important;
   }
+
   .d-md-flex {
     display: flex !important;
 
@@ -48,6 +53,7 @@
     -webkit-flex-flow: row wrap;
     flex-flow: row wrap;
   }
+
   .d-md-inline-block {
     display: inline-block !important;
   }
@@ -57,12 +63,15 @@
   .d-lg-block {
     display: block !important;
   }
+
   .d-lg-none {
     display: none !important;
   }
+
   .d-lg-flex {
     display: flex !important;
   }
+
   .d-lg-inline-block {
     display: inline-block !important;
   }
@@ -72,12 +81,15 @@
   .d-xl-block {
     display: block !important;
   }
+
   .d-xl-none {
     display: none !important;
   }
+
   .d-xl-flex {
     display: flex !important;
   }
+
   .d-xl-inline-block {
     display: inline-block !important;
   }
@@ -88,21 +100,15 @@
   width: 100%;
   max-width: 1290px;
   margin: auto;
-  padding: 0 20px;
-   @media (max-width: $breakpoint-md) {
-    padding: 0 15px;
-  }
+  padding: 0 10px;
 }
 
 .container-fluid {
   width: 100%;
-  padding-right: 20px;
-  padding-left: 20px;
+  padding-right: 10px;
+  padding-left: 10px;
   margin-right: auto;
   margin-left: auto;
-   @media (max-width: $breakpoint-md) {
-    padding: 0 15px;
-  }
 }
 
 .row {
@@ -135,6 +141,7 @@
 
 .p-0 {
   padding: 0;
+
   @media (max-width: $breakpoint-sm) {
     // padding: 0 15px;
   }
@@ -143,7 +150,7 @@
 
 .column {
   padding: 0 10px;
-  
+
 }
 
 .align-self-middle {
@@ -272,6 +279,7 @@
     }
   }
 }
+
 .order-xs-2 {
   @media (max-width: $breakpoint-sm) {
     @include order(2);

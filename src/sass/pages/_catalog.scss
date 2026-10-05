@@ -1,6 +1,52 @@
 @use "../abstracts/variables" as *;
 @use "../abstracts/mixins" as *;
 
+.quantity-picker {
+  padding: 8px;
+  border: 1px solid rgba(243, 243, 245, 1);
+  border-radius: 50px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 150px;
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 100%;
+    border: none;
+    background-color: rgba(59, 72, 89, 0.4);
+    color: $color-white;
+    cursor: pointer;
+    padding: 0;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: #9299a5;
+    }
+  }
+
+  &__input {
+    width: 56px;
+    border: none;
+    font-family: $font-primary;
+    background: transparent;
+    text-align: center;
+    font-size: 17px;
+    font-weight: 500;
+    color: #070404;
+    appearance: textfield;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      appearance: none;
+      margin: 0;
+    }
+  }
+}
 
 .range {
   display: flex;
@@ -256,7 +302,6 @@
   }
 
   &__price-wrap {
-
     .price {
       display: flex;
       align-items: center;
@@ -274,14 +319,20 @@
         line-height: 1;
       }
 
-      del+ins bdi,
-      del~.amount bdi {
+      /* Якщо у .price є закреслена ціна <del> — робимо актуальну ціну в <ins> червоною */
+      &:has(del) ins bdi,
+      &:has(del)>.amount bdi {
         color: #cc0000;
+      }
+
+      ins {
+        order: 1;
       }
 
       del {
         order: 2;
 
+        bdi,
         >.amount bdi {
           font-size: fluid(14, 17);
           color: #949597;
@@ -290,15 +341,27 @@
           line-height: 1;
         }
       }
-
-      ins {
-        order: 1;
-      }
     }
   }
 
   .btn--cart {
     margin-bottom: 20px;
+  }
+
+  &__btn {
+    &--remove {
+      background-color: transparent;
+      color: #C40000;
+      border: none;
+      padding: 0;
+
+      cursor: pointer;
+      transition: all ease-out .4s;
+
+      &:hover {
+        color: #cd590d;
+      }
+    }
   }
 
   &__promo {

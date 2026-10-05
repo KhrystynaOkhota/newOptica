@@ -83,14 +83,22 @@
 .footer {
 
   background: rgba(29, 33, 40, 1);
-  border-radius: 80px 80px 0 0;
-  padding: 50px 0;
+
+  padding: fluid(30, 50) 0 0 0;
+
+  @media (min-width: $breakpoint-xl) {
+    border-radius: 80px 80px 0 0;
+  }
 
   &__logo {
     width: 240px;
     display: block;
     height: 88px;
     margin-bottom: 13px;
+
+    @media (max-width: $breakpoint-lg) {
+      margin: 0 auto 22px auto;
+    }
 
     & img {
       width: 100%;
@@ -113,31 +121,8 @@
     }
   }
 
-  &__copyright {
-    p {
-      margin-block: 0 8px;
-
-      &:last-child {
-        margin-block-end: 0;
-      }
-    }
-  }
-
-  &__developer {
-    color: rgba(255, 255, 255, 0.7);
-    font-weight: 500;
-  }
-
   .footer-nav {
 
-
-
-    &__title {
-      color: #ffffff;
-      font-size: 17px;
-      font-weight: 700;
-      margin-bottom: 20px;
-    }
 
     .menu {
       list-style: none;
@@ -145,7 +130,7 @@
       padding-inline-start: 0;
       margin-block: 0;
       display: grid;
-
+      gap: 20px;
 
 
       .menu-item,
@@ -158,7 +143,6 @@
 
         }
 
-        // Активний стан сторінки за стандартами WP
         &.current-menu-item,
         &:hover {
           >a {
@@ -170,5 +154,152 @@
     }
   }
 
+  .footer-nav {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 
+    @media (min-width: $breakpoint-lg) {
+      border-bottom: none;
+    }
+
+    &__title {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+      background: none;
+      border: none;
+      color: $color-white;
+      font-size: 17px;
+      font-weight: 700;
+
+      text-align: left;
+      cursor: pointer;
+
+      @media (min-width: 992px) {
+        padding: 0 0 20px 0;
+        margin-bottom: 20px;
+        cursor: default;
+      }
+
+      &-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+
+    &__icon {
+      transition: transform 0.3s ease;
+      color: $color-white;
+
+      @media (min-width: 992px) {
+        display: none;
+      }
+    }
+
+    &__content {
+      display: none;
+      /* Для JS-аккордеона на мобільних */
+      padding-bottom: 16px;
+
+      @media (min-width: 992px) {
+        display: block !important;
+        padding-bottom: 0;
+      }
+    }
+
+    /* Стан відкритого аккордеону */
+    &.is-open {
+      .footer-nav__icon {
+        transform: rotate(180deg);
+      }
+
+      .footer-nav__content {
+        display: block;
+      }
+    }
+  }
+
+  &__bottom {
+    margin-top: 10px;
+    padding: 20px 10px;
+    position: relative;
+    font-size: fluid(15, 17);
+    color: $color-white;
+    line-height: 1;
+
+    &:before {
+      @media (min-width: $breakpoint-lg) {
+
+        content: "";
+        height: 1px;
+        background-color: hsla(0, 0%, 100%, .1);
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: calc(100% - 20px);
+        max-width: 1270px;
+        transform: translateX(-50%);
+      }
+    }
+
+    @media (max-width: $breakpoint-lg) {
+      text-align: center;
+    }
+
+    & .legal-menu {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      @media (max-width: $breakpoint-lg) {
+        gap: 7px;
+      }
+
+      & li {
+        position: relative;
+
+        &:not(&:last-child) {
+          @media (min-width: $breakpoint-lg) {
+            &:after {
+              content: '';
+              height: 70%;
+              width: 1px;
+              background-color: $color-white;
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              right: -7px;
+            }
+          }
+        }
+      }
+
+      a {
+        color: $color-white;
+
+        &:hover {
+          color: #fff;
+        }
+      }
+    }
+
+    & .copyright,
+    & .legal-menu {
+      @media (max-width: $breakpoint-lg) {
+        margin-bottom: 7px;
+      }
+    }
+
+    .develop {
+      a {
+        text-decoration: underline;
+      }
+    }
+  }
 }

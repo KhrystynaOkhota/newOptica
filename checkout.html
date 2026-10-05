@@ -20,8 +20,8 @@
 
 <body>
 
-  
-     <header class="header">
+
+    <header class="header">
         <div class="h-menu-overlay"></div>
 
         <div class="h-wrap">
@@ -279,13 +279,10 @@
                                         </div>
 
                                         <!-- 5. Кнопка видалення -->
-                                        <button class="product__remove-btn js-remove-product" type="button"
+                                        <button class="product__btn--remove js-remove-product" type="button"
                                             aria-label="Видалити з кошика">
-                                            <svg width="16" height="18" viewBox="0 0 16 18" fill="none"
-                                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                                stroke-linejoin="round">
-                                                <path
-                                                    d="M1 4.5h14M5.5 4.5V3a1.5 1.5 0 011.5-1.5h2A1.5 1.5 0 0110.5 3v1.5M13.5 4.5v10.5a1.5 1.5 0 01-1.5 1.5H4a1.5 1.5 0 01-1.5-1.5V4.5" />
+                                            <svg class="icon" aria-hidden="true" width="24" height="24">
+                                                <use href="assets/img/symbol.svg#del"></use>
                                             </svg>
                                         </button>
                                     </div>
@@ -347,13 +344,10 @@
                                         </div>
 
                                         <!-- 5. Кнопка видалення -->
-                                        <button class="product__remove-btn js-remove-product" type="button"
+                                        <button class="product__btn--remove js-remove-product" type="button"
                                             aria-label="Видалити з кошика">
-                                            <svg width="16" height="18" viewBox="0 0 16 18" fill="none"
-                                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                                stroke-linejoin="round">
-                                                <path
-                                                    d="M1 4.5h14M5.5 4.5V3a1.5 1.5 0 011.5-1.5h2A1.5 1.5 0 0110.5 3v1.5M13.5 4.5v10.5a1.5 1.5 0 01-1.5 1.5H4a1.5 1.5 0 01-1.5-1.5V4.5" />
+                                            <svg class="icon" aria-hidden="true" width="24" height="24">
+                                                <use href="assets/img/symbol.svg#del"></use>
                                             </svg>
                                         </button>
                                     </div>
@@ -415,13 +409,10 @@
                                         </div>
 
                                         <!-- 5. Кнопка видалення -->
-                                        <button class="product__remove-btn js-remove-product" type="button"
+                                        <button class="product__btn--remove js-remove-product" type="button"
                                             aria-label="Видалити з кошика">
-                                            <svg width="16" height="18" viewBox="0 0 16 18" fill="none"
-                                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                                stroke-linejoin="round">
-                                                <path
-                                                    d="M1 4.5h14M5.5 4.5V3a1.5 1.5 0 011.5-1.5h2A1.5 1.5 0 0110.5 3v1.5M13.5 4.5v10.5a1.5 1.5 0 01-1.5 1.5H4a1.5 1.5 0 01-1.5-1.5V4.5" />
+                                            <svg class="icon" aria-hidden="true" width="24" height="24">
+                                                <use href="assets/img/symbol.svg#del"></use>
                                             </svg>
                                         </button>
                                     </div>
@@ -483,13 +474,10 @@
                                         </div>
 
                                         <!-- 5. Кнопка видалення -->
-                                        <button class="product__remove-btn js-remove-product" type="button"
+                                        <button class="product__btn--remove js-remove-product" type="button"
                                             aria-label="Видалити з кошика">
-                                            <svg width="16" height="18" viewBox="0 0 16 18" fill="none"
-                                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                                stroke-linejoin="round">
-                                                <path
-                                                    d="M1 4.5h14M5.5 4.5V3a1.5 1.5 0 011.5-1.5h2A1.5 1.5 0 0110.5 3v1.5M13.5 4.5v10.5a1.5 1.5 0 01-1.5 1.5H4a1.5 1.5 0 01-1.5-1.5V4.5" />
+                                            <svg class="icon" aria-hidden="true" width="24" height="24">
+                                                <use href="assets/img/symbol.svg#del"></use>
                                             </svg>
                                         </button>
                                     </div>
@@ -550,7 +538,7 @@
                                         </label>
 
                                         <div class="delivery-card__content js-delivery-block" id="pickup-block">
-                                            <div class="field">
+                                            <div class="field SelectBox">
                                                 <select class="field__input field__input--select"
                                                     name="pickup_location">
                                                     <option value="" disabled selected hidden>Адреса</option>
@@ -647,13 +635,16 @@
                             </div>
 
                             <!-- 4. Промокод / Сертифікат -->
-                            <div class="checkout-form__section checkout-form__promo promo-code">
-                                <label class="promo-code__label" for="promocode">Промокод/сертифікат</label>
-                                <div class="promo-code__group">
-                                    <input class="field__input promo-code__input" id="promocode" type="text"
-                                        name="promocode" placeholder="Промокод/сертифікат">
-                                    <button class="btn btn--secondary promo-code__btn"
-                                        type="button">Застосувати</button>
+                            <div class="checkout-form__section ">
+                                <div class="promo-code">
+                                    <label class="promo-code__label ield__label"
+                                        for="promocode">Промокод/сертифікат</label>
+                                    <div class="promo-code__group">
+                                        <input class="field__input promo-code__input" id="promocode" type="text"
+                                            name="promocode" placeholder="Промокод/сертифікат">
+                                        <button class="btn btn--secondary promo-code__btn"
+                                            type="button">Застосувати</button>
+                                    </div>
                                 </div>
                             </div>
 
@@ -682,7 +673,7 @@
                 </div>
             </div>
         </section>
-         <section class="s-cta">
+        <section class="s-cta">
 
             <div class="container">
                 <div class="row cta__wrap">

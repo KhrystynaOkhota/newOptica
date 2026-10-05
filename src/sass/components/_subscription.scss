@@ -6,17 +6,29 @@
   width: 100%;
   position: relative;
 
-  
-  &__heading {
-    margin-bottom: fluid(10, 14);
+  @media (max-width: $breakpoint-lg) {
+    margin-bottom: 20px;
+  }
 
+  &__heading {
+    margin: 0 auto fluid(10, 14) auto;
     color: $color-white;
-    font-size: fluid(16, 20);
+    font-size: 20px;
+
+    @media (max-width: $breakpoint-lg) {
+      max-width: 380px;
+      text-align: center;
+    }
   }
 
   &__field {
     position: relative;
     width: 100%;
+
+    @media (max-width: $breakpoint-lg) {
+      max-width: 380px;
+      margin: 0 auto;
+    }
   }
 
   &__input {
@@ -26,5 +38,9 @@
   &__btn {
     width: 100%;
     max-width: 226px;
+
+    @media (max-width: $breakpoint-lg) {
+      max-width: 100%;
+    }
   }
 }

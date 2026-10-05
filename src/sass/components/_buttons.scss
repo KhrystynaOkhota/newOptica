@@ -28,6 +28,14 @@
     }
   }
 
+  &--secondary {
+    background-color: #949597;
+    color:$color-white;
+    width:100%;
+    max-width: 226px;
+    white-space: nowrap;
+  }
+
   &--white {
     color: #8b1818;
     background-color: #fff;
@@ -90,7 +98,7 @@
     }
 
     &:hover {
-      color: $color-accent!important;
+      color: $color-accent !important;
     }
 
 

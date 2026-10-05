@@ -66,50 +66,6 @@
 }
 
 
-.quantity-picker {
-  padding: 8px;
-  border: 1px solid rgba(243, 243, 245, 1);
-  border-radius: 50px;
-  display: inline-flex;
-  align-items: center;
-
-  &__btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 34px;
-    height: 34px;
-    border-radius: 100%;
-    border: none;
-    background-color: rgba(59, 72, 89, 0.4);
-    color: #ffffff;
-    cursor: pointer;
-    padding: 0;
-    transition: background-color 0.2s ease;
-
-    &:hover {
-      background-color: #9299a5;
-    }
-  }
-
-  &__input {
-    width: 56px;
-    border: none;
-    font-family: "Montserrat", sans-serif;
-    background: transparent;
-    text-align: center;
-    font-size: 15px;
-    font-weight: 500;
-    color: #000000;
-    appearance: textfield;
-
-    &::-webkit-outer-spin-button,
-    &::-webkit-inner-spin-button {
-      appearance: none;
-      margin: 0;
-    }
-  }
-}
 
 .delivery-card {
   padding: 16px 20px;
@@ -163,6 +119,15 @@
   & .radio {
     &__label {
       font-weight: bold;
+      display: flex;
+      align-items: center;
+    }
+
+    &__icon {
+      width: 30px;
+      height: 30px;
+      margin-right: 10px;
+      object-fit: contain;
     }
   }
 
@@ -180,19 +145,52 @@
 
   .promo-code {
     display: flex;
-    align-items: center;
-    gap: 16px;
+    flex-direction: column;
+    gap: fluid(7,20);
+
+    @media (min-width: $breakpoint-lg) {
+
+      flex-direction: row;
+      align-items: center;
+      gap: fluid(10,20);
+
+    }
+
+    @media (min-width: $breakpoint-grid-xl) {
+      max-width: 75%;
+    }
+
+    &__label {
+      margin: 0;
+      white-space: nowrap;
+
+    }
 
     &__group {
       display: flex;
-      align-items: center;
+      flex-direction: column;
       gap: 12px;
+      width: 100%;
+
+      @media (min-width: $breakpoint-lg) {
+        flex-direction: row;
+        align-items: center;
+        gap: 20px;
+        flex: 1;
+
+      }
     }
 
     &__input {
-      max-width: 280px;
+      width: 100%;
+
+      @media (min-width: $breakpoint-lg) {
+        flex: 1;
+       
+      }
     }
   }
+
 
   .checkout-summary {
     display: flex;
@@ -275,7 +273,7 @@
         }
       }
 
-      &__remove-btn {
+      &__btn--remove {
 
         @media (max-width: $breakpoint-md) {
           position: absolute;
