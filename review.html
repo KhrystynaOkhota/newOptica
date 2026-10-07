@@ -432,12 +432,12 @@
     </main>
 
 
-    <footer class="footer">
+   <footer class="footer">
         <div class="footer__inner">
             <div class="container">
                 <h2 class="visually-hidden">Інформація про компанію та навігація</h2>
-                <div class="row m-row">
-                    <div class="col-xl-5 col-lg-5 col-md-16 col-sm-16 col-xs-16 column">
+                <div class="row m-row align-center">
+                    <div class="col-xl-5 col-lg-5 col-md-10 col-sm-16 col-xs-16 column">
                         <a href="/" class="footer__logo" aria-label="VeroMed — На головну">
                             <img src="assets/img/logo-light.svg" alt="" width="180" height="60" loading="lazy">
                         </a>
@@ -447,8 +447,8 @@
                             </div>
                             <form>
                                 <div class="subscription__field --relative">
-                                    <input type="email" value="" name="email"
-                                        class="subscription__input form-field__input" placeholder="E-mail">
+                                    <input type="email" value="" name="email" class="subscription__input field__input"
+                                        placeholder="E-mail">
                                     <button class="subscription__btn btn btn--primary"
                                         type="submit">Підписатись</button>
                                 </div>
@@ -456,11 +456,17 @@
                             </form>
                         </div>
                     </div>
-                    <div class="col-xl-3 col-lg-3 col-md-5 col-sm-16 col-xs-16 column">
+                    <div class="col-xl-3 col-lg-3 col-md-10 col-sm-16 col-xs-16 column">
 
-                        <div class="footer-nav">
-                            <h3 class="footer-nav__title text-bold">Про нас</h3>
-                            <div>
+                        <div class="footer-nav js-footer-accordion">
+                            <div class="footer-nav__title-wrap">
+                                <h3 class="footer-nav__title text-bold">Про нас</h3>
+                                <svg class="footer-nav__icon" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                                    <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="1.5"
+                                        stroke-linecap="round" />
+                                </svg>
+                            </div>
+                            <div class="footer-nav__content">
                                 <ul class="menu">
                                     <li class="menu-item current-menu-item"><a href="about.html">Про компанію</a></li>
                                     <li class="menu-item "><a href="services.html">Послуги</a></li>
@@ -473,10 +479,16 @@
                         </div>
 
                     </div>
-                    <div class="col-xl-4 col-lg-4 col-md-5 col-sm-16 col-xs-16 column">
-                        <div class="footer-nav">
-                            <h3 class="footer-nav__title text-bold">Каталог</h3>
-                            <div>
+                    <div class="col-xl-4 col-lg-4 col-md-10 col-sm-16 col-xs-16 column">
+                        <div class="footer-nav js-footer-accordion">
+                            <div class="footer-nav__title-wrap">
+                                <h3 class="footer-nav__title text-bold">Каталог</h3>
+                                <svg class="footer-nav__icon" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                                    <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="1.5"
+                                        stroke-linecap="round" />
+                                </svg>
+                            </div>
+                            <div class="footer-nav__content">
                                 <ul class="menu">
                                     <li class="menu-item "><a href="">Оправи для зору</a></li>
                                     <li class="menu-item "><a href="">Сонцезахисні окуляри</a></li>
@@ -488,132 +500,165 @@
                         </div>
 
                     </div>
-                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-16 col-xs-16 column">
-                        <div class="footer-nav">
-                            <h3 class="footer-nav__title text-bold">Контакти</h3>
-                            <div class="contact">
-                                <div class="contact__item">
-                                    <a href="mailto:info@rybnuy-kombinat.com" class="contact__text">
-                                        info@rybnuy-kombinat.com
-                                    </a>
-                                </div>
-
-                                <div class="contact__item ">
-                                    <a href="tel:+380500749888" class="contact__text">+38 050 07 49 888</a>
-                                </div>
+                    <div class="col-xl-4 col-lg-4 col-md-10 col-sm-16 col-xs-16 column">
+                        <div class="footer-nav js-footer-accordion">
+                            <div class="footer-nav__title-wrap">
+                                <h3 class="footer-nav__title text-bold">Контакти</h3>
+                                <svg class="footer-nav__icon" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                                    <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="1.5"
+                                        stroke-linecap="round" />
+                                </svg>
                             </div>
-                            <div class="socials">
-                                <span class="socials__label">Написати нам:</span>
-
-                                <ul class="socials__list" role="list">
-                                    <li class="socials__item">
-                                        <a href="viber://chat?number=%2B380500136888"
-                                            class="socials__link socials__link--viber" target="_blank" rel="noopener"
-                                            aria-label="Viber">
-                                            <svg class="icon" aria-hidden="true" width="36" height="36">
-                                                <use href="assets/img/sprite.svg#viber"></use>
-                                            </svg>
-
+                            <div class="footer-nav__content">
+                                <div class="contact">
+                                    <div class="contact__item">
+                                        <a href="mailto:info@rybnuy-kombinat.com" class="contact__text">
+                                            info@rybnuy-kombinat.com
                                         </a>
-                                    </li>
+                                    </div>
 
-                                    <li class="socials__item">
-                                        <a href="https://wa.me/380500136888"
-                                            class="socials__link socials__link--whatsapp" target="_blank" rel="noopener"
-                                            aria-label="WhatsApp">
-                                            <svg class="icon" aria-hidden="true" width="36" height="36">
-                                                <use href="assets/img/sprite.svg#whatsapp"></use>
-                                            </svg>
+                                    <div class="contact__item ">
+                                        <a href="tel:+380500749888" class="contact__text">+38 050 07 49 888</a>
+                                    </div>
+                                </div>
+                                <div class="socials">
+                                    <span class="socials__label">Написати нам:</span>
 
-                                        </a>
-                                    </li>
+                                    <ul class="socials__list" role="list">
 
-                                    <li class="socials__item">
-                                        <a href="https://t.me/+380500136888"
-                                            class="socials__link socials__link--telegram" target="_blank" rel="noopener"
-                                            aria-label="Telegram">
-                                            <svg class="icon" aria-hidden="true" width="36" height="36">
-                                                <use href="assets/img/sprite.svg#telegram"></use>
-                                            </svg>
+                                        <li class="socials__item">
+                                            <a href="https://t.me/+380500136888"
+                                                class="socials__link socials__link--telegram" target="_blank"
+                                                rel="noopener" aria-label="Telegram">
+                                                <div class="socials__icon-wrap">
+                                                    <svg class="socials__icon" aria-hidden="true" width="36"
+                                                        height="36">
+                                                        <use href="assets/img/symbol.svg#telegram"></use>
+                                                    </svg>
+                                                </div>
 
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="socials socials--col">
-                                <span class="socials__label d-block">Підписуйтесь:</span>
+                                            </a>
+                                        </li>
+                                        <li class="socials__item">
+                                            <a href="https://wa.me/380500136888"
+                                                class="socials__link socials__link--whatsapp" target="_blank"
+                                                rel="noopener" aria-label="WhatsApp">
+                                                <div class="socials__icon-wrap">
+                                                    <svg class="socials__icon" aria-hidden="true" width="36"
+                                                        height="36">
+                                                        <use href="assets/img/symbol.svg#whatsapp"></use>
+                                                    </svg>
+                                                </div>
 
-                                <ul class="socials__list" role="list">
-                                    <li class="socials__item">
-                                        <a href="#" class="socials__link socials__link--youtube" target="_blank"
-                                            rel="noopener" aria-label="YouTube">
-                                            <svg class="icon" aria-hidden="true" width="36" height="36">
-                                                <use href="assets/img/sprite.svg#youtube"></use>
-                                            </svg>
-                                        </a>
-                                    </li>
+                                            </a>
+                                        </li>
+                                        <li class="socials__item">
+                                            <a href="viber://chat?number=%2B380500136888"
+                                                class="socials__link socials__link--viber" target="_blank"
+                                                rel="noopener" aria-label="Viber">
 
-                                    <li class="socials__item">
-                                        <a href="#" class="socials__link socials__link--threads" target="_blank"
-                                            rel="noopener" aria-label="Threads">
-                                            <svg class="icon" aria-hidden="true" width="36" height="36">
-                                                <use href="assets/img/sprite.svg#threads"></use>
-                                            </svg>
-                                        </a>
-                                    </li>
+                                                <div class="socials__icon-wrap">
+                                                    <svg class="socials__icon" aria-hidden="true" width="36"
+                                                        height="36">
+                                                        <use href="assets/img/symbol.svg#viber"></use>
+                                                    </svg>
+                                                </div>
 
-                                    <li class="socials__item">
-                                        <a href="#" class="socials__link socials__link--facebook" target="_blank"
-                                            rel="noopener" aria-label="Facebook">
-                                            <svg class="icon" aria-hidden="true" width="36" height="36">
-                                                <use href="assets/img/sprite.svg#facebook"></use>
-                                            </svg>
-                                        </a>
-                                    </li>
+                                            </a>
+                                        </li>
 
-                                    <li class="socials__item">
-                                        <a href="#" class="socials__link socials__link--instagram" target="_blank"
-                                            rel="noopener" aria-label="Instagram">
-                                            <svg class="icon" aria-hidden="true" width="36" height="36">
-                                                <use href="assets/img/sprite.svg#instagram"></use>
-                                            </svg>
-                                        </a>
-                                    </li>
+                                    </ul>
+                                </div>
+                                <div class="socials socials--col">
+                                    <span class="socials__label d-block">Підписуйтесь:</span>
 
-                                    <li class="socials__item">
-                                        <a href="#" class="socials__link socials__link--tiktok" target="_blank"
-                                            rel="noopener" aria-label="TikTok">
-                                            <svg class="icon" aria-hidden="true" width="36" height="36">
-                                                <use href="assets/img/sprite.svg#tiktok"></use>
-                                            </svg>
-                                        </a>
-                                    </li>
-                                </ul>
+                                    <ul class="socials__list" role="list">
+                                        <li class="socials__item">
+                                            <a href="#" class="socials__link socials__link--youtube" target="_blank"
+                                                rel="noopener" aria-label="YouTube">
+                                                <div class="socials__icon-wrap">
+                                                    <svg class="socials__icon" aria-hidden="true" width="36"
+                                                        height="36">
+                                                        <use href="assets/img/symbol.svg#youtube"></use>
+                                                    </svg>
+                                                </div>
+                                            </a>
+                                        </li>
+
+                                        <li class="socials__item">
+                                            <a href="#" class="socials__link socials__link--threads" target="_blank"
+                                                rel="noopener" aria-label="Threads">
+                                                <div class="socials__icon-wrap">
+                                                    <svg class="socials__icon" aria-hidden="true" width="36"
+                                                        height="36">
+                                                        <use href="assets/img/symbol.svg#threads"></use>
+                                                    </svg>
+                                                </div>
+                                            </a>
+                                        </li>
+
+                                        <li class="socials__item">
+                                            <a href="#" class="socials__link socials__link--facebook" target="_blank"
+                                                rel="noopener" aria-label="Facebook">
+                                                <div class="socials__icon-wrap">
+                                                    <svg class="socials__icon" aria-hidden="true" width="36"
+                                                        height="36">
+                                                        <use href="assets/img/symbol.svg#facebook"></use>
+                                                    </svg>
+                                                </div>
+                                            </a>
+                                        </li>
+
+                                        <li class="socials__item">
+                                            <a href="#" class="socials__link socials__link--instagram" target="_blank"
+                                                rel="noopener" aria-label="Instagram">
+                                                <div class="socials__icon-wrap">
+                                                    <svg class="socials__icon" aria-hidden="true" width="36"
+                                                        height="36">
+                                                        <use href="assets/img/symbol.svg#instagram"></use>
+                                                    </svg>
+                                                </div>
+                                            </a>
+                                        </li>
+
+                                        <li class="socials__item">
+                                            <a href="#" class="socials__link socials__link--tiktok" target="_blank"
+                                                rel="noopener" aria-label="TikTok">
+                                                <div class="socials__icon-wrap">
+                                                    <svg class="socials__icon" aria-hidden="true" width="36"
+                                                        height="36">
+                                                        <use href="assets/img/symbol.svg#tiktok"></use>
+                                                    </svg>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
-
-        <div class="container footer__bottom">
-            <div class="row m-row">
-                <div class="col-xl-5 col-lg-5 col-md-16 col-sm-16 col-xs-16 column ">
-                    <div class="copyright">© 2026 Усі права захищено </div>
-                </div>
-                <div class="col-xl-6 col-lg-6 col-md-16 col-sm-16 col-xs-16 column ">
-                    <ul class="menu">
-                        <li class="menu-item current-menu-item"><a href="">Договір оферта</a></li>
-                        <li class="menu-item "><a href="">Політика конфіденційності</a></li>
-                    </ul>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-16 col-sm-16 col-xs-16 column ">
-                    <div class="develop d-flex align-middle align-left">
-                        Дизайн та розробка -
-                        <a href="https://webtune.com.ua/" target="_blank" rel="nofollow" class="develop__link">
-                            WebTune
-                        </a>
+        <div class="footer__bottom">
+            <div class="container ">
+                <div class="row m-row">
+                    <div class="col-xl-4 col-lg-4 col-md-16 col-sm-16 col-xs-16 column ">
+                        <div class="copyright">© 2026 Усі права захищено </div>
+                    </div>
+                    <div class="col-xl-8 col-lg-7 col-md-16 col-sm-16 col-xs-16 column ">
+                        <ul class="legal-menu">
+                            <li class="legal-menu__item current-menu-item"><a href="">Договір оферта</a></li>
+                            <li class="legal-menu__item "><a href="">Політика конфіденційності</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xl-4 col-lg-5 col-md-16 col-sm-16 col-xs-16 column ">
+                        <div class="develop">
+                            Дизайн та розробка -
+                            <a href="https://webtune.com.ua/" target="_blank" rel="nofollow" class="develop__link">
+                                WebTune
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -626,49 +671,41 @@
         <div class="popup-content cta" data-rel="cta">
             <div class="layer-close"></div>
             <div class="popup-container ">
-                <div class="btn-close d-flex align-middle align-center"><img src="assets/img/close.svg"
-                        alt="close icon">
-                </div>
+                <div class="popup-container__inner">
+                    <div class="btn--close d-flex align-middle align-center">
 
-                <div class="popup-form text-center">
-                    <h4 class="popup-form__heading heading-accent h2 text-bold">Записатись на прийом</h4>
-                    <form class="">
+                    </div>
 
-                        <div class="form-field__grid">
-                            <div class="form-field form-field--full">
-                                <label class="form-field__label text-left" for="user-name">Як до вас звертатися?</label>
-                                <input class="form-field__input" type="text" id="p-user-name" name="name"
-                                    placeholder="Ваше ім’я">
-                            </div>
+                    <div class="popup-form text-center">
+                        <h4 class="popup-form__heading text-bold h3">Записатись на прийом</h4>
+                        <form class="">
 
-                            <div class="form-field form-field--full">
-                                <label class="form-field__label text-left" for="user-phone">Ваш номер телефону</label>
-                                <input class="form-field__input" type="tel" id="p-user-phone" name="phone"
-                                    value="+38 (_ _ _) _ _ _  - _ _ - _ _" aria-invalid="true"
-                                    aria-describedby="phone-error">
+                            <div class="row m-row">
+                                <div class="col-xl-16 col-lg-16 col-md-16 col-sm-16 col-xs-16 column">
+                                    <div class="field">
+                                        <label class="field__label text-left" for="user-name">Як до вас
+                                            звертатися?</label>
+                                        <input class="field__input" type="text" id="p-user-name" name="name"
+                                            placeholder="Ваше ім’я">
+                                    </div>
+                                    <div class="form-field ">
+                                        <label class="field__label text-left" for="user-phone">Ваш номер
+                                            телефону</label>
+                                        <input class="field__input" type="tel" id="p-user-phone" name="phone"
+                                            value="+38 (_ _ _) _ _ _  - _ _ - _ _" aria-invalid="true"
+                                            aria-describedby="phone-error">
 
-                            </div>
+                                    </div>
 
-
-
-                            <div class="form-field form-field--full">
-                                <label class="form-field__label text-left" for="user-direction">Обрати напрямок</label>
-                                <div class="form-select">
-                                    <select class="form-field__select" name="direction">
-                                        <option value="" disabled selected hidden>Вибрати</option>
-                                        <option value="1">Напрямок 1</option>
-                                        <option value="2">Напрямок 2</option>
-                                    </select>
+                                    <div class="form-field ">
+                                        <button class="btn btn--primary" type="submit">
+                                            Записатися на прийом
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-
-                            <div class="form-field form-field--full">
-                                <button class="btn btn--primary" type="submit">
-                                    Записатися на прийом
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

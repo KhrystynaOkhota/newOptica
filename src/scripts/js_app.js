@@ -234,27 +234,57 @@ jQuery(function ($) {
     const $tabBtns = $('.p-tabs__nav-btn');
     const $tabPanels = $('.p-tabs__panel');
 
+    // Функція ініціалізації: відкриваємо перший таб за замовчуванням
+    function initTabs() {
+        // Знімаємо класи з усіх
+        $tabBtns.removeClass('is-active'); $tabPanels.removeClass('is-active');
+
+        // Активуємо першу кнопку та першу панель
+        const $firstBtn = $tabBtns.first();
+        const $firstPanel = $tabPanels.first();
+
+        $firstBtn.addClass('is-active'); $firstPanel.addClass('is-active');
+
+        // На мобільних пристроях показуємо тіло першої панелі
+        if ($(window).width() < 992) {
+            $firstPanel.find('.p-tabs__body').show();
+        }
+    }
+
+    // Запускаємо ініціалізацію
+    initTabs();
+
+    // Клік по табах (Desktop)
     $(document).on('click', '.p-tabs__nav-btn', function () {
         const targetId = $(this).data('tab');
 
         $tabBtns.removeClass('is-active'); $(this).addClass('is-active');
 
-        $tabPanels.removeClass('is-active').find('.p-tabs__body').removeAttr('style'); $(`#${targetId}`).addClass('is-active');
+        $tabPanels.removeClass('is-active')
+            .find('.p-tabs__body')
+            .removeAttr('style');
+
+        $(`#${targetId}`).addClass('is-active');
     });
 
+    // Клік по акордеону (Mobile)
     $(document).on('click', '.js-tab-acc-btn', function () {
         const $currentPanel = $(this).closest('.p-tabs__panel');
         const $currentBody = $currentPanel.find('.p-tabs__body');
         const isOpen = $currentPanel.hasClass('is-active');
 
+        // Закриваємо всі інші панелі
         $tabPanels.not($currentPanel).removeClass('is-active');
-        $('.p-tabs__body').not($currentBody).slideUp(300);
+        $('.p-tabs__body').not($currentBody).stop(true, true).slideUp(300);
 
+        // Перемикаємо поточну панель
         if (isOpen) {
-            $currentPanel.removeClass('is-active'); $currentBody.slideUp(300);
+            $currentPanel.removeClass('is-active');
+            $currentBody.stop(true, true).slideUp(300); $tabBtns.removeClass('is-active');
         } else {
-            $currentPanel.addClass('is-active'); $currentBody.slideDown(300);
+            $currentPanel.addClass('is-active'); $currentBody.stop(true, true).slideDown(300);
 
+            // Синхронізуємо десктопну кнопку
             const panelId = $currentPanel.attr('id');
             $tabBtns.removeClass('is-active'); $tabBtns.filter(`[data-tab="${panelId}"]`).addClass('is-active');
         }

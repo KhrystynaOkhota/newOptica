@@ -2,32 +2,37 @@
 @use "../abstracts/variables" as *;
 @use "../abstracts/mixins" as *;
 
-// ==================================================
-// СЕКЦІЯ ОСОБИСТОГО КАБІНЕТУ (.s-cbn)
-// ==================================================
-
-
 .s-cbn {
   padding: 40px 0;
   font-family: $font-primary;
   color: $color-primary;
 
-  // --------------------------------------------------
-  // Сайдбар навігації
-  // --------------------------------------------------
   .cbn-sidebar {
-    background: $color-white;
-    border-radius: 20px;
-    padding: 20px 0;
-    box-shadow: 0px 4px 59px 0px rgba(0, 0, 0, 0.04);
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+
+    @media (min-width: $breakpoint-lg) {
+      background: $color-white;
+      border-radius: 20px;
+      padding: 20px 0;
+      box-shadow: 0px 4px 59px 0px rgba(0, 0, 0, 0.04);
+    }
 
     &__title {
-      font-size: 20px;
+      font-size: fluid(28, 40);
       font-weight: 700;
       color: $color-primary;
       padding-bottom: 16px;
-      padding-left: 20px;
-      border-bottom: 1px solid rgba(7, 4, 4, 0.1);
+      padding-left: 0;
+      border-bottom: none;
+      margin-bottom: 20px;
+
+      @media (min-width: $breakpoint-lg) {
+        padding-left: 20px;
+        border-bottom: 1px solid rgba(7, 4, 4, 0.1);
+        margin-bottom: 0;
+      }
     }
   }
 
@@ -36,70 +41,104 @@
       list-style: none;
       padding: 0;
       margin: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 0;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+
+      @media (min-width: $breakpoint-lg) {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
     }
 
     &__link {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 12px;
-      padding: 21px 20px;
-      border-radius: 0;
-      border-left: 2px solid transparent;
-      color: $color-primary;
+      justify-content: center;
+      text-align: center;
+      gap: 20px;
+      padding: 24px 12px;
+      background-color: $color-white;
+      border-radius: 20px;
+      box-shadow: 0px 4px 59px 0px rgba(0, 0, 0, 0.04);
+      color: rgba(35, 61, 77, 1);
       font-size: 17px;
       font-weight: 400;
       text-decoration: none;
-      transition: all 0.2s ease;
+      transition: color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
       position: relative;
+      height: 100%;
 
       &::after {
-        content: '';
-        width: calc(100% - 40px);
-        height: 1px;
-        background-color: rgba(35, 61, 77, 0.1);
-        position: absolute;
-        bottom: 0;
+        display: none;
       }
 
       &:hover {
         color: $color-accent;
+        transform: translateY(-2px);
       }
 
       &.is-active {
-        background-color: rgba(238, 103, 14, 0.1);
+        background-color: rgba(238, 103, 14, 0.08);
         color: $color-accent;
-        border-left-color: $color-accent;
       }
 
-      &--logout {
+      @media (min-width: $breakpoint-lg) {
+        flex-direction: row;
+        justify-content: flex-start;
+        text-align: left;
+        padding: 21px 20px;
+        border-radius: 0;
+        background-color: transparent;
+        box-shadow: none;
+        border-left: 2px solid transparent;
+
         &::after {
+          content: '';
+          display: block;
+          width: calc(100% - 40px);
+          height: 1px;
+          background-color: rgba(35, 61, 77, 0.1);
+          position: absolute;
+          bottom: 0;
+        }
+
+        &:hover {
+          transform: none;
+        }
+
+        &.is-active {
+          background-color: rgba(238, 103, 14, 0.1);
+          border-left-color: $color-accent;
+        }
+
+        &--logout::after {
           display: none;
         }
       }
     }
 
     &__icon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 20px;
-      height: 20px;
-      font-size: 18px;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+
+      &-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+      }
     }
   }
 
-  // --------------------------------------------------
-  // Контентна частина та Блоки
-  // --------------------------------------------------
   .cbn-inner {
     .heading {
-      font-size: 28px;
-      font-weight: 700;
       color: $color-primary;
-      margin-bottom: 24px;
+      margin-bottom: fluid(21,24);
     }
   }
 
@@ -128,7 +167,6 @@
       }
     }
 
-    // Блок зміни паролю
     &--password {
       background-color: rgba(243, 243, 245, 1);
       border-radius: 20px;
@@ -142,36 +180,24 @@
     }
   }
 
-  // --------------------------------------------------
-  // Форми та поля
-  // --------------------------------------------------
   .field {
     display: flex;
     flex-direction: column;
 
-    // Поля дати народження
-    &--dob {
-      .field__dob-group {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1.2fr;
-        gap: 8px;
-      }
+    &--dob .field__dob-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1.2fr;
+      gap: 8px;
     }
 
-    // Поле вибору статі
-    &--gender {
-      .field__radio-group {
-        display: flex;
-        align-items: center;
-        gap: 24px;
-        height: 46px;
-      }
+    &--gender .field__radio-group {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      height: 46px;
     }
   }
 
-  // --------------------------------------------------
-  // Секція списку обраного (Favorites)
-  // --------------------------------------------------
   .cbn-favorites {
     &__grid {
       display: grid;
@@ -193,9 +219,6 @@
     }
   }
 
-  // --------------------------------------------------
-  // Історія замовлень (.cbn-orders)
-  // --------------------------------------------------
   .cbn-orders {
     &__search {
       margin-bottom: 24px;
@@ -203,56 +226,6 @@
   }
 }
 
-
-
-// --------------------------------------------------
-// Кастомні Радіо-кнопки (.radio)
-// --------------------------------------------------
-/*.radio {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-
-  &__input {
-    appearance: none;
-    -webkit-appearance: none;
-    width: 18px;
-    height: 18px;
-    border: 2px solid red;
-    border-radius: 50%;
-    outline: none;
-    margin: 0;
-    position: relative;
-    cursor: pointer;
-    transition: all 0.2s ease;
-
-    &:checked {
-      border-color: $color-accent;
-
-      &::after {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 8px;
-        height: 8px;
-        background-color: $color-accent;
-        border-radius: 50%;
-      }
-    }
-  }
-
-  &__text {
-    font-size: 14px;
-    color: $color-primary;
-  }
-}
-*/
-// --------------------------------------------------
-// Шапка Акордеону та Замовлення
-// --------------------------------------------------
 .accordeon-title {
   display: flex;
   align-items: center;
@@ -280,11 +253,10 @@
   &__date,
   &__category {
     font-size: 14px;
-    color: red;
+    color: rgba(35, 61, 77, 0.6);
   }
 }
 
-// Статуси замовлень
 .order-status {
   font-size: 14px;
   font-weight: 600;
@@ -305,11 +277,8 @@
   }
 }
 
-// --------------------------------------------------
-// Блок з деталями замовлення всередині accordeon-content
-// --------------------------------------------------
 .order-details {
-  background-color: red;
+  background-color: #f8f9fa;
   border-radius: 16px;
   padding: 24px;
   margin: 12px 0 16px;
@@ -341,7 +310,7 @@
   &__text {
     font-size: 13px;
     line-height: 1.5;
-    color: red;
+    color: rgba(35, 61, 77, 0.8);
     margin: 0;
   }
 
@@ -370,7 +339,6 @@
   }
 }
 
-// Товар у замовленні
 .order-product {
   display: flex;
   align-items: center;
@@ -397,7 +365,7 @@
   }
 
   &__count {
-    color: red;
+    color: rgba(35, 61, 77, 0.5);
   }
 
   &__price {
@@ -405,19 +373,18 @@
   }
 }
 
-// Підсумок замовлення
 .order-summary {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  border-top: 1px solid red;
+  border-top: 1px solid rgba(35, 61, 77, 0.1);
   padding-top: 16px;
 
   &__row {
     display: flex;
     justify-content: space-between;
     font-size: 13px;
-    color: red;
+    color: rgba(35, 61, 77, 0.7);
 
     &--total {
       margin-top: 4px;
@@ -431,9 +398,8 @@
 .cbn-address {
   margin-bottom: 32px;
 
-  // 1. Блок основної адреси (сіра картка)
   &__primary {
-    background-color: color.scale($color-primary, $lightness: 97%);
+    background-color: #f8f9fa;
     border-radius: 16px;
     padding: 20px;
     margin-bottom: 28px;
@@ -446,7 +412,6 @@
     }
   }
 
-  // 2. Список полів адрес
   &__list {
     display: flex;
     flex-direction: column;
@@ -456,7 +421,7 @@
 
   &__item {
     padding-bottom: 24px;
-    border-bottom: 1px solid color.scale($color-primary, $lightness: 90%);
+    border-bottom: 1px solid rgba(35, 61, 77, 0.1);
 
     &:last-child {
       border-bottom: none;
@@ -471,7 +436,6 @@
     margin-bottom: 14px;
   }
 
-  // Сітка полів: Місто | Вулиця | Будинок | Квартира
   &__grid {
     display: grid;
     grid-template-columns: 2fr 2.5fr 1fr 1fr;
@@ -486,7 +450,6 @@
     }
   }
 
-  // 3. Кнопка "+ Додати ще адресу"
   &__add-btn {
     display: inline-flex;
     align-items: center;
@@ -506,7 +469,6 @@
     }
   }
 
-  // 4. Кнопки збереження/скасування
   &__actions {
     display: flex;
     align-items: center;

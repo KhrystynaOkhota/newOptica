@@ -129,13 +129,9 @@
     &::before {
       content: '';
       display: block;
-      width: 24px;
-      height: 24px;
-
-      // Початковий колір іконки
+      width: 100%;
+      height: 100%;
       background-color: #0f172a;
-
-      // Задаємо маску
       -webkit-mask: url('../img/fav.svg') no-repeat center / contain;
       mask: url('../img/fav.svg') no-repeat center / contain;
 

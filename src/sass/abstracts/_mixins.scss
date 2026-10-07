@@ -65,7 +65,7 @@ $output: $weight;
 font-weight: $output;
 }
 
-@function fluid($min, $max, $min-vw: 320, $max-vw: 1960) {
+@function fluid($min, $max, $min-vw: 300, $max-vw: 2260) {
   // Видаляємо units (px), якщо вони були передані
   $min-raw: math.div($min, ($min * 0 + 1));
   $max-raw: math.div($max, ($max * 0 + 1));

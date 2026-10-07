@@ -121,6 +121,12 @@
     }
   }
 
+  &__inner {
+    @media (min-width: $breakpoint-lg) {
+      margin-bottom: 30px;
+    }
+  }
+
   .footer-nav {
 
 
@@ -221,13 +227,37 @@
     }
   }
 
+  & .contact {
+    display: grid;
+    gap: 20px;
+
+    &__item {
+      color: $color-white;
+      text-decoration: none;
+      transition: color 0.2s ease;
+      font-size: fluid(15, 18);
+    }
+  }
+
+  & .socials {
+    margin-top: 20px;
+
+    &__label {
+      color: $color-white;
+    }
+  }
+
   &__bottom {
-    margin-top: 10px;
+
     padding: 20px 10px;
     position: relative;
     font-size: fluid(15, 17);
     color: $color-white;
     line-height: 1;
+
+    @media (max-width: $breakpoint-lg) {
+      margin-top: 10px;
+    }
 
     &:before {
       @media (min-width: $breakpoint-lg) {
