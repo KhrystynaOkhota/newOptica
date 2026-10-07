@@ -296,20 +296,14 @@
                             <h2 class="heading h2 text-bold">Адреса доставки</h2>
 
                             <div class="cbn-address__primary">
-                                <div class="field">
+                                <div class="field SelectBox">
                                     <label class="field__label">Адреса доставки (основна)</label>
-                                    <div class="select-field">
-                                        <select class="select-field__control" aria-label="Адреса доставки (основна)">
-                                            <option value="1">Дніпропетровська обл., Дніпро, Свободи вул., б.67, кв.13
+                                    <select class="field__input field__input--select" name="delivery">
+                                        <option value="" disabled selected hidden>Адреса</option>
+                                        <option value="1">м. Київ, вул. Хрещатик, 1</option>
+                                       <option value="2">Дніпропетровська обл., Дніпро, Свободи вул., б.67, кв.13
                                             </option>
-                                        </select>
-                                        <span class="select-field__arrow" aria-hidden="true">
-                                            <svg width="12" height="8" viewBox="0 0 12 8" fill="none"
-                                                stroke="currentColor" stroke-width="1.5">
-                                                <path d="M1 1.5L6 6.5L11 1.5" />
-                                            </svg>
-                                        </span>
-                                    </div>
+                                    </select>
                                 </div>
                             </div>
 
@@ -666,9 +660,65 @@
     <script src="./assets/js/jquery-3.7.0.min.js"></script>
     <script src="assets/js/jquery-ui.min.js"></script>
     <script src="assets/js/swiper-bundle.min.js"></script>
+    <script src="assets/js/jquery.sumoselect.min.js"></script>
 
     <script src="assets/js/app-swiper.js"></script>
     <script src="src/scripts/js_app.js"></script>
 </body>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const addressList = document.querySelector('.cbn-address__list');
+        const addAddressBtn = document.querySelector('.cbn-address__add-btn');
+
+        if (!addressList || !addAddressBtn) return;
+
+        // 1. Кешуємо заготовка-шаблон в оперативній пам'яті один раз
+        const firstItem = addressList.querySelector('.cbn-address__item');
+        if (!firstItem) return;
+
+        const templateNode = firstItem.cloneNode(true);
+
+        // Очищаємо початкові значення з шаблону
+        const templateInputs = templateNode.querySelectorAll('input');
+        for (let i = 0; i < templateInputs.length; i++) {
+            templateInputs[i].defaultValue = '';
+            templateInputs[i].value = '';
+        }
+
+        // 2. Оптимізована функція створення елемента
+        const addAddressItem = () => {
+            const nextIndex = addressList.childElementCount + 1;
+
+            // Клонуємо заготовка-шаблон з пам'яті (без повторного пошуку в DOM)
+            const newItem = templateNode.cloneNode(true);
+
+            // Встановлюємо новий заголовок
+            const subtitle = newItem.querySelector('.cbn-address__subtitle');
+            if (subtitle) {
+                subtitle.textContent = `Адреса доставки ${nextIndex}`;
+            }
+
+            // Якщо у вас є атрибути name — оновлюємо їх індекс
+            const inputs = newItem.querySelectorAll('input');
+            for (let i = 0; i < inputs.length; i++) {
+                const input = inputs[i];
+                if (input.name) {
+                    input.name = input.name.replace(/\[\d+\]/, `[${nextIndex - 1}]`);
+                }
+            }
+
+            // Вставляємо через DocumentFragment за 1 мікрооперацію
+            const fragment = document.createDocumentFragment();
+            fragment.appendChild(newItem);
+            addressList.appendChild(fragment);
+        };
+
+        // 3. Додаємо Listener через requestAnimationFrame для максимальних 60/120 FPS
+        addAddressBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            requestAnimationFrame(addAddressItem);
+        });
+    });
+</script>
 
 </html>
