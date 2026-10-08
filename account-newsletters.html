@@ -21,7 +21,7 @@
 <body>
 
 
-   <header class="header">
+    <header class="header">
         <div class="h-menu-overlay"></div>
 
         <div class="h-wrap">
@@ -207,7 +207,7 @@
                                 </a>
                             </span>
                             <span class="kb_sep">/</span>
-                            <span class="kb_title">Особисті дані</span>
+                            <span class="kb_title">Розсилки</span>
                         </div>
                     </div>
                 </div>
@@ -218,55 +218,88 @@
                 <div class="row m-row">
                     <!-- Сайдбар навігації -->
                     <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 column">
-                        <aside class="cbn-sidebar">
+                        <aside class="cbn-sidebar d-none d-md-block">
                             <div class="cbn-sidebar__title h3 text-bold">Мій кабінет</div>
                             <nav class="cbn-menu">
                                 <ul class="cbn-menu__list">
                                     <li class="cbn-menu__item">
-                                        <a href="account.html" class="cbn-menu__link is-active">
-                                            <span class="cbn-menu__icon icon-user"></span>
+                                        <a href="account-data.html" class="cbn-menu__link">
+                                            <span class="cbn-menu__icon-wrap">
+
+                                                <svg class="cbn-menu__icon" aria-hidden="true" width="22" height="22">
+                                                    <use href="assets/img/symbol.svg#user"></use>
+                                                </svg>
+                                            </span>
                                             <span>Особисті дані</span>
                                         </a>
                                     </li>
                                     <li class="cbn-menu__item">
-                                        <a href="account-delivery.html" class="cbn-menu__link">
-                                            <span class="cbn-menu__icon icon-location"></span>
+                                        <a href="account-delivery.html" class="cbn-menu__link ">
+                                            <span class="cbn-menu__icon-wrap">
+                                                <svg class="cbn-menu__icon" aria-hidden="true" width="22" height="22">
+                                                    <use href="assets/img/symbol.svg#delivery"></use>
+                                                </svg>
+                                            </span>
                                             <span>Адреса доставки</span>
                                         </a>
                                     </li>
                                     <li class="cbn-menu__item">
                                         <a href="account-history.html" class="cbn-menu__link">
-                                            <span class="cbn-menu__icon icon-bag"></span>
+                                            <span class="cbn-menu__icon-wrap">
+                                                <svg class="cbn-menu__icon" aria-hidden="true" width="22" height="22">
+                                                    <use href="assets/img/symbol.svg#bag"></use>
+                                                </svg>
+                                            </span>
                                             <span>Замовлення</span>
                                         </a>
                                     </li>
                                     <li class="cbn-menu__item">
-                                        <a href="account-newsletters.html" class="cbn-menu__link">
-                                            <span class="cbn-menu__icon icon-mail"></span>
+                                        <a href="account-newsletters.html" class="cbn-menu__link is-active">
+                                            <span class="cbn-menu__icon-wrap">
+                                                <svg class="cbn-menu__icon" aria-hidden="true" width="22" height="22">
+                                                    <use href="assets/img/symbol.svg#newsletters"></use>
+                                                </svg>
+                                            </span>
                                             <span>Розсилки</span>
                                         </a>
                                     </li>
                                     <li class="cbn-menu__item">
                                         <a href="account-favourites.html" class="cbn-menu__link">
-                                            <span class="cbn-menu__icon icon-heart"></span>
+                                            <span class="cbn-menu__icon-wrap">
+                                                <svg class="cbn-menu__icon" aria-hidden="true" width="22" height="22">
+                                                    <use href="assets/img/symbol.svg#fav"></use>
+                                                </svg>
+                                            </span>
                                             <span>Вибране</span>
                                         </a>
                                     </li>
                                     <li class="cbn-menu__item">
                                         <a href="account-bonuses.html" class="cbn-menu__link">
-                                            <span class="cbn-menu__icon icon-gift"></span>
+                                            <span class="cbn-menu__icon-wrap">
+                                                <svg class="cbn-menu__icon" aria-hidden="true" width="22" height="22">
+                                                    <use href="assets/img/symbol.svg#gift"></use>
+                                                </svg>
+                                            </span>
                                             <span>Мої бонуси</span>
                                         </a>
                                     </li>
                                     <li class="cbn-menu__item">
                                         <a href="account-diagnostics.html" class="cbn-menu__link">
-                                            <span class="cbn-menu__icon icon-eye"></span>
+                                            <span class="cbn-menu__icon-wrap">
+                                                <svg class="cbn-menu__icon" aria-hidden="true" width="32" height="22">
+                                                    <use href="assets/img/symbol.svg#eye"></use>
+                                                </svg>
+                                            </span>
                                             <span>Мої діагностики</span>
                                         </a>
                                     </li>
                                     <li class="cbn-menu__item">
                                         <a href="/logout" class="cbn-menu__link cbn-menu__link--logout">
-                                            <span class="cbn-menu__icon icon-logout"></span>
+                                            <span class="cbn-menu__icon-wrap">
+                                                <svg class="cbn-menu__icon" aria-hidden="true" width="22" height="22">
+                                                    <use href="assets/img/symbol.svg#logout"></use>
+                                                </svg>
+                                            </span>
                                             <span>Вийти</span>
                                         </a>
                                     </li>
@@ -278,8 +311,8 @@
                     <!-- Контентна частина -->
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-16 col-xs-16 column">
                         <div class="cbn-inner">
-                            <h2 class="heading h2 text-bold">Особисті дані</h2>
-
+                            <h2 class="heading h2 text-bold">Розсилки</h2>
+                            <div class="description text-bold">Керування підписками на розсилки</div>
                             <!-- Форма особистих даних -->
                             <form action="#" class="cbn-newsletters">
                                 <div class="cbn-newsletters__list">
@@ -336,7 +369,8 @@
 
                                 <!-- Кнопка відписки -->
                                 <div class="cbn-newsletters__actions">
-                                    <button type="button" class="btn btn--outline">Відписатись від усіх розсилок</button>
+                                    <button type="button" class="btn btn--outline">Відписатись від усіх
+                                        розсилок</button>
                                 </div>
                             </form>
                         </div>

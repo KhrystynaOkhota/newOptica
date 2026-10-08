@@ -217,22 +217,27 @@
             <div class="container">
                 <div class="row m-row">
                     <div class="col-xl-4 col-lg-5 col-md-6 col-sm-16 col-xs-16 column">
-                        <aside class="cbn-sidebar">
+                        <aside class="cbn-sidebar d-none d-md-block">
                             <div class="cbn-sidebar__title h3 text-bold">Мій кабінет</div>
                             <nav class="cbn-menu">
                                 <ul class="cbn-menu__list">
                                     <li class="cbn-menu__item">
                                         <a href="account-data.html" class="cbn-menu__link">
                                             <span class="cbn-menu__icon-wrap">
-                                                <img src="assets/img/cbn-user.svg" alt="" class="cbn-menu__icon">
+
+                                                <svg class="cbn-menu__icon" aria-hidden="true" width="22" height="22">
+                                                    <use href="assets/img/symbol.svg#user"></use>
+                                                </svg>
                                             </span>
                                             <span>Особисті дані</span>
                                         </a>
                                     </li>
                                     <li class="cbn-menu__item">
-                                        <a href="account-delivery.html" class="cbn-menu__link">
+                                        <a href="account-delivery.html" class="cbn-menu__link is-active">
                                             <span class="cbn-menu__icon-wrap">
-                                                <img src="assets/img/cbn-delivery.svg" alt="" class="cbn-menu__icon">
+                                               <svg class="cbn-menu__icon" aria-hidden="true" width="22" height="22">
+                                                    <use href="assets/img/symbol.svg#delivery"></use>
+                                                </svg>
                                             </span>
                                             <span>Адреса доставки</span>
                                         </a>
@@ -240,7 +245,9 @@
                                     <li class="cbn-menu__item">
                                         <a href="account-history.html" class="cbn-menu__link">
                                             <span class="cbn-menu__icon-wrap">
-                                                <img src="assets/img/cbn-history.svg" alt="" class="cbn-menu__icon">
+                                                <svg class="cbn-menu__icon" aria-hidden="true" width="22" height="22">
+                                                    <use href="assets/img/symbol.svg#bag"></use>
+                                                </svg>
                                             </span>
                                             <span>Замовлення</span>
                                         </a>
@@ -248,7 +255,9 @@
                                     <li class="cbn-menu__item">
                                         <a href="account-newsletters.html" class="cbn-menu__link">
                                             <span class="cbn-menu__icon-wrap">
-                                                <img src="assets/img/cbn-newsletters.svg" alt="" class="cbn-menu__icon">
+                                                <svg class="cbn-menu__icon" aria-hidden="true" width="22" height="22">
+                                                    <use href="assets/img/symbol.svg#newsletters"></use>
+                                                </svg>
                                             </span>
                                             <span>Розсилки</span>
                                         </a>
@@ -256,7 +265,9 @@
                                     <li class="cbn-menu__item">
                                         <a href="account-favourites.html" class="cbn-menu__link">
                                             <span class="cbn-menu__icon-wrap">
-                                                <img src="assets/img/cbn-favourites.svg" alt="" class="cbn-menu__icon">
+                                               <svg class="cbn-menu__icon" aria-hidden="true" width="22" height="22">
+                                                    <use href="assets/img/symbol.svg#fav"></use>
+                                                </svg>
                                             </span>
                                             <span>Вибране</span>
                                         </a>
@@ -264,7 +275,9 @@
                                     <li class="cbn-menu__item">
                                         <a href="account-bonuses.html" class="cbn-menu__link">
                                             <span class="cbn-menu__icon-wrap">
-                                                <img src="assets/img/cbn-bonuses.svg" alt="" class="cbn-menu__icon">
+                                                <svg class="cbn-menu__icon" aria-hidden="true" width="22" height="22">
+                                                    <use href="assets/img/symbol.svg#gift"></use>
+                                                </svg>
                                             </span>
                                             <span>Мої бонуси</span>
                                         </a>
@@ -272,7 +285,9 @@
                                     <li class="cbn-menu__item">
                                         <a href="account-diagnostics.html" class="cbn-menu__link">
                                             <span class="cbn-menu__icon-wrap">
-                                                <img src="assets/img/cbn-diagnostics.svg" alt="" class="cbn-menu__icon">
+                                                <svg class="cbn-menu__icon" aria-hidden="true" width="32" height="22">
+                                                    <use href="assets/img/symbol.svg#eye"></use>
+                                                </svg>
                                             </span>
                                             <span>Мої діагностики</span>
                                         </a>
@@ -280,7 +295,9 @@
                                     <li class="cbn-menu__item">
                                         <a href="/logout" class="cbn-menu__link cbn-menu__link--logout">
                                             <span class="cbn-menu__icon-wrap">
-                                                <img src="assets/img/cbn-logout.svg" alt="" class="cbn-menu__icon">
+                                                <svg class="cbn-menu__icon" aria-hidden="true" width="22" height="22">
+                                                    <use href="assets/img/symbol.svg#logout"></use>
+                                                </svg>
                                             </span>
                                             <span>Вийти</span>
                                         </a>
@@ -301,8 +318,8 @@
                                     <select class="field__input field__input--select" name="delivery">
                                         <option value="" disabled selected hidden>Адреса</option>
                                         <option value="1">м. Київ, вул. Хрещатик, 1</option>
-                                       <option value="2">Дніпропетровська обл., Дніпро, Свободи вул., б.67, кв.13
-                                            </option>
+                                        <option value="2">Дніпропетровська обл., Дніпро, Свободи вул., б.67, кв.13
+                                        </option>
                                     </select>
                                 </div>
                             </div>

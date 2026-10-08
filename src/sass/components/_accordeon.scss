@@ -13,24 +13,23 @@
 
     &.active {
       & .accordeon-icon {
-        transform: rotate(0);
+        transform: rotate(180deg);
       }
     }
 
   }
 
   &-icon {
-    width: fluid(40, 50);
-    height: fluid(40, 50);
-    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.15);
-    border-radius: 50%;
-    background-color: #f2f2f2; // Фон кружечка у звичайному стані
+    width: 16px;
+    height: 16px;
+    
+    
     display: inline-flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
     transition: background-color 0.25s ease, transform 0.3s ease;
-    transform: rotate(-90deg);
+    transform: rotate(0);
 
     // 2. Внутрішня стрілка через маску на псевдоелементі
     &::before {
@@ -70,7 +69,7 @@
       color: #b82828;
 
       .accordeon-icon {
-        transform: rotate(0);
+        transform: rotate(180deg);
       }
     }
   }
