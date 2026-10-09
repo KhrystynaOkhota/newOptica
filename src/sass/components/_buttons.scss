@@ -16,6 +16,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
 
+ 
   &--primary {
     color: $color-white;
     background-color: $color-accent;
@@ -30,8 +31,8 @@
 
   &--secondary {
     background-color: #949597;
-    color:$color-white;
-    width:100%;
+    color: $color-white;
+    width: 100%;
     max-width: 226px;
     white-space: nowrap;
   }
@@ -166,6 +167,11 @@
     &:active {
       transform: scale(0.85);
     }
+  }
+ @media (max-width: 420px) {
+    font-size: 13px;
+    padding: 10px 18px 11px 18px;
+    min-width: max-content;
   }
 
 }

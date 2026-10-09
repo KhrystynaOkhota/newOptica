@@ -30,7 +30,7 @@
                 <!-- 1. Верхній блок з кнопками/іконками (у мобільній версії — сітка з 5 колонок) -->
                 <div class="h-controls h-controls--top d-flex d-md-none">
                     <div class="h-controls__item d-flex align-center align-middle">
-                        <button type="button" class="control-btn control-btn--search js_search_open"
+                        <button type="button" class="control-btn control-btn--search js_open_search"
                             aria-label="Відкрити пошук">
                             <span class="control-btn__icon">
                                 <svg class="icon" aria-hidden="true" width="22" height="22">
@@ -188,6 +188,23 @@
 
             </div>
         </div>
+
+        <div class="h-search-wrap">
+            <div class="container-fluid">
+                <form class="h-search-inner search" action="https://lulacoco.com/" autocomplete="off"> <svg width="24"
+                        height="24">
+                        <use xlink:href="https://lulacoco.com/wp-content/themes/lulacoco/img/icons/icons_product.svg#search"
+                            fill="none"></use>
+                    </svg> <input type="text" name="s" placeholder="Enter the product name" aria-label="Search input">
+                    <div class="btn btn-md btn-thirdy search-btn"> <b>Search</b></div>
+                    <div class="btn-close js_close_search"></div>
+                </form>
+                <div class="h-search-dropdown">
+                    <div class="h-search-dropdown-inner"></div>
+                </div>
+            </div>
+        </div>
+        <div class="h-search-overlay"></div>
     </header>
     <main class="main">
 
@@ -2146,6 +2163,33 @@
                     }
                 });
             });
+        });
+    </script>
+
+    <script>
+        $(document).on('click', '.js_open_search', function () {
+            const $input = $('.h-search-wrap').find('input');
+            $('html').addClass('search-is-open');
+            setTimeout(() => {
+                if ($input.length && $input.is(':visible')) {
+                    $input.trigger('focus');
+                }
+            }
+                , 50);
+        });
+        $(document).on('keyup', '.h-search-wrap input', function () {
+            if ($(this).val().length > 0) {
+                $('.h-search-wrap').addClass('is-active');
+            } else {
+                $('.h-search-wrap').removeClass('is-active');
+            }
+        });
+        $(document).on('click', '.js_close_search, .h-search-overlay', function () {
+            $('html').removeClass('search-is-open');
+            $('.h-search-wrap').removeClass('is-active').find('input').val('');
+        });
+        $(document).on('click', '.h-cabinet:not(.open-popup)', function () {
+            $(this).toggleClass('is-active');
         });
     </script>
 </body>
