@@ -1,9 +1,10 @@
 @use "../abstracts/variables" as *;
 @use "../abstracts/mixins" as *;
 
+
 .s-hero {
+  background: rgba(243, 243, 245, 1);
   position: relative;
-  background-color: #f9f9f9;
   overflow: hidden;
 }
 
@@ -11,20 +12,21 @@
   position: relative;
   width: 100%;
 
-  // Ліва вертикальна пагінація (крапки)
   .swiper-pagination--vertical {
     position: absolute;
-    left: 24px;
+    left: 50px;
     top: 50%;
     transform: translateY(-50%);
     z-index: 10;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 40px;
+    width: auto !important;
+    bottom: auto;
 
     .swiper-pagination-bullet {
-      width: 6px;
-      height: 6px;
+      width: 7px;
+      height: 7px;
       background-color: #d1d1d1;
       border-radius: 50%;
       opacity: 1;
@@ -32,9 +34,8 @@
       transition: all 0.3s ease;
       position: relative;
 
-      // Активна крапка з помаранчевим кільцем
       &-active {
-        background-color: #ff6b00;
+        background-color: $color-accent;
 
         &::before {
           content: '';
@@ -42,9 +43,9 @@
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
-          width: 18px;
-          height: 18px;
-          border: 1px solid #ff6b00;
+          width: 30px;
+          height: 30px;
+          border: 1px solid $color-accent;
           border-radius: 50%;
         }
       }
@@ -53,149 +54,170 @@
 
   &__nav-container {
     position: absolute;
-    bottom: 30px; // Відступ від нижнього краю слайдера
+    bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
-    pointer-events: none; // Щоб область навколо кнопок була клікабельною для слайду
 
     .hero-slide__navigation {
       pointer-events: auto;
-      padding-left: 20px; // Вирівнювання з текстом .hero-slide__content
+      padding-left: 20px;
     }
-  }
-}
 
-.hero-slide {
-  &__inner {
-    position: relative;
-
-    display: flex;
-    align-items: center;
-    padding: 90px 0 135px 0;
-  }
-
-  // Фон з фоновими зображеннями
-  &__bg {
-    background-position: 50% 50%;
-    background-repeat: no-repeat;
-    background-attachment: scroll;
-    background-size: cover;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-
-    &--wrap {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: auto;
-      z-index: 1;
-      width: 60vw;
-
-      &:before {
-        content: '';
-        width: 395px;
-        height: 100%;
-        position: absolute;
-        left: 0;
-        background: linear-gradient(270deg, rgba(243, 243, 245, 0) 0%, #F3F3F5 100%);
-        z-index: 1;
-      }
-    }
-  }
-
-  // Контентна частина слайду
-  &__content {
-    position: relative;
-    z-index: 2;
-
-  }
-
-  // Акцентні "-20%"
-  &__badge {
-    font-size: fluid(70, 130);
-    font-weight: 800;
-    color: $color-accent;
-    line-height: 1;
-    margin-bottom: fluid(15, 30);
-
-  }
-
-  // Заголовок
-  &__title {
-    font-size: 28px;
-    font-weight: 700;
-    color: $color-primary;
-    line-height: 1.2;
-    margin-bottom: fluid(20, 30);
-
-    .text-underline {
+    .swiper-button-prev,
+    .swiper-button-next {
       position: relative;
-      display: inline-block;
+      height: 22px;
+      width: 10px;
+      top: auto;
+      left: auto;
+      right: auto;
+    }
+  }
 
-      // Підкреслення лінією під Nikon
-      &::after {
-        content: '';
+  .hero-slide {
+    &__inner {
+      position: relative;
+      padding-top: 30px;
+
+      @media (min-width: $breakpoint-md) {
+        display: flex;
+        align-items: center;
+        padding: 90px 0 135px 0;
+      }
+    }
+
+    &__bg {
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      background-attachment: scroll;
+      background-size: cover;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+
+      &--wrap {
         position: absolute;
-        bottom: -6px;
-        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: auto;
+        z-index: 1;
+        width: 60vw;
+
+        @media (max-width: $breakpoint-md) {
+          width: 100vw;
+          height: 300px;
+          position: relative;
+        }
+
+        &:before {
+          content: '';
+          width: 395px;
+          height: 100%;
+          position: absolute;
+          left: 0;
+          background: linear-gradient(270deg, rgba(243, 243, 245, 0) 0%, #F3F3F5 100%);
+          z-index: 1;
+
+          @media (max-width: $breakpoint-md) {
+            width: 100%;
+            height: 63%;
+            background: linear-gradient(0, rgba(243, 243, 245, 0) 0%, #F3F3F5 100%);
+          }
+        }
+      }
+    }
+
+    &__content {
+      position: relative;
+      z-index: 2;
+    }
+
+    &__badge {
+      font-size: fluid(70, 130);
+      font-weight: 800;
+      color: $color-accent;
+      line-height: 1;
+      margin-bottom: fluid(15, 30);
+    }
+
+    &__title {
+      font-size: fluid(30, 50);
+      font-weight: 700;
+      color: $color-primary;
+      line-height: 1.2;
+      margin-bottom: fluid(20, 30);
+
+      .decor {
+        position: relative;
+        display: inline-block;
+
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: -35px;
+          left: 50%;
+          width: 140%;
+          height: 29px;
+          background: url(../img/decor-line.svg) no-repeat;
+          border-radius: 2px;
+          background-size: contain;
+          transform: rotate(-4deg) translate(-50%, -50%);
+        }
+      }
+    }
+
+    &__description {
+      font-size: 17px;
+      line-height: 1.5;
+      margin-bottom: 40px;
+
+      p {
+        color: rgba(35, 61, 77, 1);
+        margin: 0 0 2px 0;
+      }
+    }
+
+    &__link {
+      color: $color-accent;
+      text-decoration: none;
+      position: relative;
+      transition: opacity 0.2s ease;
+
+      &:after {
+        content: '';
         width: 100%;
-        height: 3px;
-        background-color: #ff6b00;
-        border-radius: 2px;
+        height: 1px;
+        background-color: $color-accent;
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+      }
+
+      &:hover {
+        opacity: 0.8;
       }
     }
-  }
 
-  // Опис акції
-  &__description {
-    font-size: 13px;
-    line-height: 1.5;
-    margin-bottom: 24px;
-
-    p {
-      color: #777777;
-      margin: 0 0 2px 0;
-
-      strong {
-        color: #111111;
-        font-weight: 700;
+    &__action {
+      @media (min-width: $breakpoint-md) {
+        margin-bottom: 32px;
       }
     }
-  }
 
-  &__link {
-    color: #ff6b00;
-    text-decoration: underline;
-    transition: opacity 0.2s ease;
-
-    &:hover {
-      opacity: 0.8;
+    &__navigation {
+      display: flex;
+      align-items: center;
+      gap: 16px;
     }
-  }
-
-  // Кнопка
-  &__action {
-    margin-bottom: 32px;
-  }
-
-  // Стрілки навігації
-  &__navigation {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-
-    
   }
 }
-
 
 .s-brands {
-  padding: 70px 0;
+  padding: fluid(50, 70) 0;
 
   .container {
     position: relative;
@@ -204,7 +226,7 @@
 
   .swiper-wrapper {
     display: flex;
-    align-items: center; // Вирівнювання логотипів по вертикалі
+    align-items: center;
   }
 
   .brand-card {
@@ -220,22 +242,13 @@
       width: auto;
       height: auto;
       object-fit: contain;
-
-      // Початковий стан: чорно-біле лого та легка прозорість
       filter: grayscale(100%) opacity(0.7);
       transition: filter 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
 
-      // Ховер стан: кольорове та 100% чітке
       &:hover {
         filter: grayscale(0%) opacity(1);
-        transform: scale(1.05); // Легке збільшення при наведенні
+        transform: scale(1.05);
       }
     }
   }
-}
-
-.s-hero {
-  background: (243, 243, 245, 1);
-  position: relative;
-
 }

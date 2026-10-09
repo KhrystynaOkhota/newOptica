@@ -73,34 +73,24 @@
 
 
 .s-locations {
-
-
   &__title {
     margin-bottom: 32px;
     font-size: 32px;
     font-weight: 700;
   }
 
-  &__wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-
-    @include media-down($breakpoint-md) {
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
-  }
+  &__wrapper {}
 
   &__map-wrap {
     position: relative;
     width: 100%;
-    height: 680px;
+    height: 100%;
+    min-height: 100%;
     border-radius: 20px;
     overflow: hidden;
-    background-color: #e5e3df; // Фолбек поки завантажується карта
+    background-color: #e5e3df;
 
-    @include media-down($breakpoint-sm) {
+    @media (max-width: 576px) {
       height: 420px;
       border-radius: 16px;
     }
@@ -108,23 +98,22 @@
 
   &__map {
     width: 100%;
-    height: 680px;
+    height: 100%;
   }
 }
 
-// Компонент перемикача адреси (адаптивний: Grid на PC, Dropdown на Mobile)
 .picker {
   position: relative;
 
   &__trigger {
-    display: none; // На десктопі кнопка селекту прихована
+    display: none;
 
-    @include media-down($breakpoint-md) {
+    @media (max-width: 992px) {
       display: flex;
       align-items: center;
       width: 100%;
       padding: 14px 16px;
-      background: #ffffff;
+      background-color: #ffffff;
       border: 1px solid #eaeaea;
       border-radius: 12px;
       cursor: pointer;
@@ -135,7 +124,6 @@
         height: 20px;
         margin-right: 10px;
         background-color: #ee670e;
-        -webkit-mask: url("../img/icons/pin.svg") no-repeat center / contain;
         mask: url("../img/icons/pin.svg") no-repeat center / contain;
         flex-shrink: 0;
       }
@@ -152,7 +140,6 @@
         width: 16px;
         height: 16px;
         background-color: #1e1e1e;
-        -webkit-mask: url("../img/icons/arrow-down.svg") no-repeat center / contain;
         mask: url("../img/icons/arrow-down.svg") no-repeat center / contain;
         transition: transform 0.2s ease;
       }
@@ -166,11 +153,11 @@
   &__list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+    gap: 20px;
     align-content: start;
 
-    @include media-down($breakpoint-md) {
-      display: none; // Приховуємо список на мобільному за замовчуванням
+    @media (max-width: 992px) {
+      display: none;
       position: absolute;
       top: calc(100% + 8px);
       left: 0;
@@ -178,12 +165,12 @@
       z-index: 25;
       grid-template-columns: 1fr;
       gap: 0;
-      background: #ffffff;
+      background-color: #ffffff;
       border-radius: 12px;
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
       overflow: hidden;
 
-      .is-open & {
+      .picker.is-open & {
         display: block;
       }
     }
@@ -195,40 +182,44 @@
     gap: 12px;
     padding: 14px 16px;
     background-color: #ffffff;
-    border: 1px solid #f0f0f0;
-    border-radius: 12px;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4.8px 32.26px rgba(15, 25, 49, 0.05);
     cursor: pointer;
     text-align: left;
-    transition: background-color 0.2s ease, border-color 0.2s ease;
+    transition: background-color 0.2s ease;
 
     &-icon {
-      width: 20px;
-      height: 20px;
-      background-color: #ee670e;
-      -webkit-mask: url("../img/icons/pin.svg") no-repeat center / contain;
-      mask: url("../img/icons/pin.svg") no-repeat center / contain;
-      flex-shrink: 0;
+      
+      &--wrap {
+        width: 46px;
+        height: 46px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 245, 238, 1);
+        border-radius: 5px;
+        color: rgba(238, 103, 14, 1);
+      }
     }
 
     &-text {
       font-size: 14px;
       font-weight: 500;
       color: #1e1e1e;
+      transition: color 0.2s ease;
     }
 
     &:hover,
     &.is-active {
       background-color: #fdeee5;
-      border-color: #fdeee5;
 
       .picker__item-text {
         color: #ee670e;
-        font-weight: 600;
       }
     }
 
-    @include media-down($breakpoint-md) {
-      border: none;
+    @media (max-width: 992px) {
       border-radius: 0;
       border-bottom: 1px solid #f5f5f5;
 
@@ -239,7 +230,6 @@
   }
 }
 
-// Картка поверх карти
 .map-info-card {
   position: absolute;
   bottom: 20px;
@@ -252,7 +242,7 @@
   border-radius: 16px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 
-  @include media-down($breakpoint-sm) {
+  @media (max-width: 576px) {
     bottom: 12px;
     left: 12px;
     right: 12px;
@@ -263,11 +253,11 @@
 
   &__phone {
     display: inline-block;
+    margin-bottom: 12px;
     font-size: 16px;
     font-weight: 700;
     color: #1e1e1e;
     text-decoration: none;
-    margin-bottom: 12px;
   }
 
   &__socials {
@@ -280,21 +270,21 @@
     font-size: 13px;
     color: #4a4a4a;
 
-    -title {
-      font-weight: 700;
+    &-title {
       margin-bottom: 6px;
+      font-weight: 700;
       color: #1e1e1e;
     }
 
-    -list {
-      padding: 0;
+    &-list {
       margin: 0;
+      padding: 0;
       list-style: none;
 
       li {
         position: relative;
-        padding-left: 10px;
         margin-bottom: 4px;
+        padding-left: 10px;
 
         &::before {
           content: "•";
@@ -310,10 +300,9 @@
 .map-custom-tooltip {
   position: absolute;
   z-index: 100;
-  /* Зсуваємо плашку ліворуч на 100% її ширини та додаємо відступ вправо */
   transform: translate(calc(-100% - 12px), -20px);
   white-space: nowrap;
-  pointer-events: none; // Щоб під плашкою можна було скролити карту
+  pointer-events: none;
 
   &__content {
     position: relative;
@@ -325,17 +314,16 @@
     color: #ee670e;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 
-    /* Маленька помаранчева крапка праворуч від плашки */
     &::after {
       content: "";
       position: absolute;
       top: 50%;
       right: -8px;
-      transform: translateY(-50%);
       width: 6px;
       height: 6px;
       background-color: #ee670e;
       border-radius: 50%;
+      transform: translateY(-50%);
     }
   }
 }
@@ -442,10 +430,7 @@
 
 
 
-.s-contacts {
-
-
-}
+.s-contacts {}
 
 #mapW {
   width: 100%;

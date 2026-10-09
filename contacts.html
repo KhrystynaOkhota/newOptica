@@ -492,125 +492,160 @@
     <script src="src/scripts/js_app.js"></script>
     <!--<script src="src/scripts/app_map.js"></script>-->
     <script>
-        let map;
-        const markersMap = new Map();
-        const locationsData = [];
+        let map = null;
+        let markers = [];
+        let customTooltip = null;
 
-        // Зчитуємо дані з розмітки
-        function parseLocationsFromHTML() {
-            locationsData.length = 0;
-            const cards = document.querySelectorAll(".salon-card");
+        // Оголошуємо window.initMap, який викликає Google Maps API через callback=initMap
+        window.initMap = function initMap() {
+            const pickerItems = document.querySelectorAll(".picker__item");
+            if (!pickerItems.length) return;
 
-            cards.forEach((card, index) => {
-                const id = card.getAttribute("data-id") || `loc-${index}`;
-                const rawLat = (card.getAttribute("data-lat") || "").replace(",", ".");
-                const rawLng = (card.getAttribute("data-lng") || "").replace(",", ".");
+            // Клас розширює OverlayView СТРОГО після завантаження Google Maps API
+            class CustomTooltip extends google.maps.OverlayView {
+                constructor() {
+                    super();
+                    this.div = null;
+                    this.position = null;
+                    this.text = "";
+                }
 
-                const lat = parseFloat(rawLat);
-                const lng = parseFloat(rawLng);
+                onAdd() {
+                    this.div = document.createElement("div");
+                    this.div.className = "map-custom-tooltip";
+                    this.div.innerHTML = `<div class="map-custom-tooltip__content"></div>`;
 
-                const title = card.querySelector(".salon-card__title")?.textContent.trim() || "";
-                const address = card.querySelector(".salon-card__address")?.textContent.trim() || "";
-                const phone = card.querySelector(".salon-card__phone")?.textContent.trim() || "";
+                    const panes = this.getPanes();
+                    panes.floatPane.appendChild(this.div);
+                }
 
-                locationsData.push({ id, lat, lng, title, address, phone });
-            });
-        }
+                draw() {
+                    if (!this.div || !this.position) return;
 
-        // Головна функція ініціалізації
-        window.initMap = function () {
-            const mapElement = document.getElementById("mapW");
-            if (!mapElement) return;
+                    const overlayProjection = this.getProjection();
+                    const point = overlayProjection.fromLatLngToDivPixel(this.position);
 
-            // Створюємо карту
-            map = new google.maps.Map(mapElement, {
-                zoom: 13,
-                center: { lat: 49.8397, lng: 24.0297 },
-                disableDefaultUI: false,
+                    if (point) {
+                        this.div.style.left = point.x + "px";
+                        this.div.style.top = point.y + "px";
+                        const contentEl = this.div.querySelector(".map-custom-tooltip__content");
+                        if (contentEl) contentEl.textContent = this.text;
+                    }
+                }
+
+                onRemove() {
+                    if (this.div && this.div.parentNode) {
+                        this.div.parentNode.removeChild(this.div);
+                        this.div = null;
+                    }
+                }
+
+                show(position, text, mapInstance) {
+                    this.position = position;
+                    this.text = text;
+                    this.setMap(mapInstance);
+                    this.draw();
+                }
+
+                hide() {
+                    this.setMap(null);
+                }
+            }
+
+            const firstItem = pickerItems[0];
+            const initialCenter = {
+                lat: parseFloat(firstItem.dataset.lat),
+                lng: parseFloat(firstItem.dataset.lng),
+            };
+
+            map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 15,
+                center: initialCenter,
+                disableDefaultUI: true,
                 zoomControl: true,
             });
 
-            parseLocationsFromHTML();
-            createMarkers();
-            bindEvents();
-        };
+            // Створюємо екземпляр класу тултипа
+            customTooltip = new CustomTooltip();
 
-        // Додавання маркерів
-        function createMarkers() {
-            const bounds = new google.maps.LatLngBounds();
-            let count = 0;
-
-            locationsData.forEach((item) => {
-                if (isNaN(item.lat) || isNaN(item.lng)) return;
-
-                const pos = { lat: item.lat, lng: item.lng };
+            // Додаємо маркери для кожної точки
+            pickerItems.forEach((item) => {
+                const id = item.dataset.id;
+                const lat = parseFloat(item.dataset.lat);
+                const lng = parseFloat(item.dataset.lng);
 
                 const marker = new google.maps.Marker({
-                    position: pos,
+                    position: { lat, lng },
                     map: map,
-                    title: item.title,
+                    icon: {
+                        url: "assets/img/pin.svg",
+                        scaledSize: new google.maps.Size(32, 40),
+                    },
                 });
 
-                const infoWindow = new google.maps.InfoWindow({
-                    content: `
-          <div style="padding: 6px; font-family: sans-serif; color: #111;">
-            <h4 style="margin: 0 0 4px 0; font-size: 14px;">${item.title}</h4>
-            <p style="margin: 0 0 2px 0; font-size: 12px; color: #555;">${item.address}</p>
-            <p style="margin: 0; font-size: 12px; font-weight: bold;">${item.phone}</p>
-          </div>
-        `,
-                });
+                markers.push({ id, marker, item });
 
                 marker.addListener("click", () => {
-                    infoWindow.open(map, marker);
+                    setActiveLocation(item);
                 });
-
-                markersMap.set(String(item.id), marker);
-                bounds.extend(pos);
-                count++;
             });
 
-            if (count > 0) {
-                map.fitBounds(bounds);
-                if (count === 1) map.setZoom(15);
+            setActiveLocation(firstItem);
+        };
+
+        // Аліас на випадок, якщо десь у коді викликається initMapComponent
+        window.initMapComponent = window.initMap;
+
+        function setActiveLocation(targetItem) {
+            const id = targetItem.dataset.id;
+            const lat = parseFloat(targetItem.dataset.lat);
+            const lng = parseFloat(targetItem.dataset.lng);
+            const address = targetItem.dataset.address;
+            const phone = targetItem.dataset.phone;
+
+            const match = markers.find((m) => m.id === id);
+
+            if (map && match && customTooltip) {
+                map.panTo({ lat, lng });
+                map.setZoom(14);
+
+                const latLng = new google.maps.LatLng(lat, lng);
+                customTooltip.show(latLng, address, map);
             }
+
+            document.querySelectorAll(".picker__item").forEach((el) => el.classList.remove("is-active"));
+            targetItem.classList.add("is-active");
+
+            const currentText = document.getElementById("picker-current-text");
+            if (currentText) currentText.textContent = address;
+
+            const phoneLink = document.getElementById("card-phone");
+            if (phoneLink) {
+                phoneLink.textContent = phone;
+                phoneLink.href = `tel:${phone.replace(/[^+\d]/g, "")}`;
+            }
+
+            const picker = document.getElementById("locations-picker");
+            if (picker) picker.classList.remove("is-open");
         }
 
-        // Фокусування на карті при натисканні "Показати на карті"
-        function focusOnLocation(id) {
-            const location = locationsData.find((loc) => String(loc.id) === String(id));
-            const marker = markersMap.get(String(id));
+        document.addEventListener("DOMContentLoaded", () => {
+            const picker = document.getElementById("locations-picker");
+            if (!picker) return;
 
-            if (location && map) {
-                const pos = { lat: location.lat, lng: location.lng };
-
-                map.panTo(pos);
-                map.setZoom(16);
-
-                if (marker) {
-                    marker.setAnimation(google.maps.Animation.BOUNCE);
-                    setTimeout(() => marker.setAnimation(null), 1400);
-                }
+            const trigger = picker.querySelector(".picker__trigger");
+            if (trigger) {
+                trigger.addEventListener("click", () => picker.classList.toggle("is-open"));
             }
-        }
 
-        // Події кліків
-        function bindEvents() {
-            const locationsList = document.getElementById("locationsList");
+            picker.querySelectorAll(".picker__item").forEach((item) => {
+                item.addEventListener("click", () => setActiveLocation(item));
+            });
 
-            if (locationsList) {
-                locationsList.addEventListener("click", (e) => {
-                    const btn = e.target.closest(".salon-card__route-btn");
-                    if (!btn) return;
-
-                    const card = btn.closest(".salon-card");
-                    if (!card) return;
-
-                    const id = card.getAttribute("data-id");
-                    if (id) focusOnLocation(id);
-                });
-            }
-        }
+            document.addEventListener("click", (e) => {
+                if (!picker.contains(e.target)) picker.classList.remove("is-open");
+            });
+        });
     </script>
 
     <!-- 4. Підключення Google Maps API в кінці (з атрибутом loading=async) -->

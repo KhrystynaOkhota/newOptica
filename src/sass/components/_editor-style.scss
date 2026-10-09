@@ -20,9 +20,9 @@
   }
 
   & p {
-    font-size: fluid(15, 18);
+    font-size: fluid(15, 17);
     line-height: 1.5;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 
     &+ul,
     &+ol {
@@ -188,8 +188,8 @@
     width: 100%;
     background: $color-white;
     border-radius: 0;
-    padding: 34px 20px;
-    margin-bottom: 30px;
+    padding: 10px;
+
     position: relative;
 
     @media (max-width: $breakpoint-lg) {
