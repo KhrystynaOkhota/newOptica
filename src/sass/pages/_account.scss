@@ -2,6 +2,70 @@
 @use "../abstracts/variables" as *;
 @use "../abstracts/mixins" as *;
 
+.s-registration,
+.s-login {
+  padding: fluid(50, 100) 0;
+
+  & .heading {
+    margin-bottom: 30px;
+  }
+
+  & a {
+    color: $color-accent;
+    position: relative;
+    transition: 0.3s linear;
+    font-size: fluid(15, 17);
+
+    &:after {
+      content: '';
+      width: 100%;
+      height: 1px;
+      background: $color-accent;
+      position: absolute;
+      left: 0;
+      margin: 0 auto;
+      right: 0;
+      bottom: 0;
+      transition: 0.3s linear;
+
+    }
+
+    &:hover {
+      color: #cd590d;
+
+      &:after {
+        width: 0;
+      }
+    }
+  }
+
+
+  .field {
+
+
+    &__grid {
+      margin-bottom: 30px;
+    }
+  }
+}
+
+.s-login {
+  .reset-pass {
+    display: inline-block;
+    margin-top: 30px;
+  }
+
+  .field {
+    &__grid {}
+  }
+}
+
+.s-registration {
+  & .login-prompt {
+    margin-bottom: 20px;
+  }
+}
+
 .s-cbn {
   padding: 40px 0;
   font-family: $font-primary;
