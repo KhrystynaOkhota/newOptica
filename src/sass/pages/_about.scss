@@ -13,6 +13,11 @@
   }
 
   &__icon {
+    width: 50%;
+    height: 50%;
+    object-fit: contain;
+    object-position: center;
+
     &-wrap {
       display: flex;
       align-items: center;
