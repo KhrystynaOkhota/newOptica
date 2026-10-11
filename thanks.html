@@ -19,8 +19,7 @@
 </head>
 
 <body>
-
-     <header class="header">
+    <header class="header">
         <div class="h-menu-overlay"></div>
 
         <div class="h-wrap">
@@ -29,7 +28,7 @@
                 <!-- 1. Верхній блок з кнопками/іконками (у мобільній версії — сітка з 5 колонок) -->
                 <div class="h-controls h-controls--top d-flex d-md-none">
                     <div class="h-controls__item d-flex align-center align-middle">
-                        <button type="button" class="control-btn control-btn--search js_search_open"
+                        <button type="button" class="control-btn control-btn--search js_open_search"
                             aria-label="Відкрити пошук">
                             <span class="control-btn__icon">
                                 <svg class="icon" aria-hidden="true" width="22" height="22">
@@ -158,7 +157,7 @@
                             <li class="menu-item"><a href="catalog.html">Сонцезахисні окуляри</a></li>
                             <li class="menu-item"><a href="catalog.html">Контактні лінзи</a></li>
                             <li class="menu-item"><a href="catalog.html">Аксесуари/Засоби догляду</a></li>
-                            <li class="menu-item"><a href="catalog.html">Акції</a></li>
+                            <li class="menu-item"><a href="promotions.html">Акції</a></li>
                         </ul>
                     </nav>
 
@@ -187,159 +186,190 @@
 
             </div>
         </div>
+
+        <div class="h-search-wrap">
+            <div class="container-fluid">
+                <form class="h-search-inner search" action="https://lulacoco.com/" autocomplete="off"> <svg width="24"
+                        height="24">
+                        <use xlink:href="https://lulacoco.com/wp-content/themes/lulacoco/img/icons/icons_product.svg#search"
+                            fill="none"></use>
+                    </svg> <input type="text" name="s" placeholder="Enter the product name" aria-label="Search input">
+                    <div class="btn btn-md btn-thirdy search-btn"> <b>Search</b></div>
+                    <div class="btn-close js_close_search"></div>
+                </form>
+                <div class="h-search-dropdown">
+                    <div class="h-search-dropdown-inner"></div>
+                </div>
+            </div>
+        </div>
+        <div class="h-search-overlay"></div>
     </header>
-
     <main class="main">
+        <section class="s-thanks">
 
-
-        <main class="main ">
-
-            <section class="s-thanks">
-
-                <div class="container overlap">
-                    <div class="row m-row ">
-                        <div class="col-xl-9 col-lg-9 col-md-9 col-sm-16 col-xs-16 column">
-                            <div class="content">
-                                <h1 class="title text-bold">
-                                    Дякуємо за замовлення!
-                                </h1>
-                                <div class="subtitle text-extrabold">Ми отримали ваш запит і вже почали його обробку.
-                                </div>
-                                <div class="description text-s">
-                                    Наш спеціаліст зв’яжеться з вами найближчим часом.
-                                </div>
-
+            <div class="container overlap">
+                <div class="row m-row ">
+                    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-16 col-xs-16 column">
+                        <div class="content">
+                            <h1 class="title text-bold">
+                                <span class="decor text-uppercase">Дякуємо</span> <span>за замовлення!</span>
+                            </h1>
+                            <div class="subtitle text-extrabold">Ми отримали ваш запит і вже почали його обробку.
+                            </div>
+                            <div class="description">
+                                Наш спеціаліст зв’яжеться з вами найближчим часом.
                             </div>
 
-                            <div class="order-summary">
-                                <!-- Продукти -->
-                                <div class="cart-products">
-                                    <article class="cart-product">
-                                        <div class="cart-product__media">
-                                            <img src="assets/img/product-1.png" alt="Сонцезахисні окуляри RAY-BAN 3767"
-                                                class="cart-product__img" loading="lazy" width="80" height="65">
-                                        </div>
-                                        <div class="cart-product__content">
-                                            <h3 class="cart-product__title">Сонцезахисні окуляри RAY-BAN 3767</h3>
-                                            <span class="cart-product__qty">1x</span>
-                                            <span class="cart-product__price">8 099 грн</span>
-                                        </div>
-                                    </article>
+                        </div>
 
-                                    <article class="cart-product">
-                                        <div class="cart-product__media">
-                                            <img src="assets/img/product-1.png" alt="Сонцезахисні окуляри RAY-BAN 3767"
-                                                class="cart-product__img" loading="lazy" width="80" height="65">
-                                        </div>
-                                        <div class="cart-product__content">
-                                            <h3 class="cart-product__title">Сонцезахисні окуляри RAY-BAN 3767</h3>
-                                            <span class="cart-product__qty">1x</span>
-                                            <span class="cart-product__price">1 099 грн</span>
-                                        </div>
-                                    </article>
-                                </div>
+                        <div class="order-summary">
+                            <!-- Продукти -->
+                            <div class="cart-products">
+                                <article class="cart-product">
+                                    <div class="cart-product__media">
+                                        <img src="assets/img/product-1.png" alt="Сонцезахисні окуляри RAY-BAN 3767"
+                                            class="cart-product__img" loading="lazy" width="80" height="65">
+                                    </div>
+                                    <div class="cart-product__content">
+                                        <h3 class="cart-product__title">Сонцезахисні окуляри RAY-BAN 3767</h3>
+                                        <span class="cart-product__qty">1x</span>
+                                        <span class="cart-product__price">8 099 грн</span>
+                                    </div>
+                                </article>
 
-                                <!-- Деталі замовлення -->
-                                <div class="order-summary__details">
-                                    <div class="order-summary__row">
-                                        <span class="order-summary__label">2 товар на суму:</span>
-                                        <span class="order-summary__value">12 098 грн</span>
+                                <article class="cart-product">
+                                    <div class="cart-product__media">
+                                        <img src="assets/img/product-1.png" alt="Сонцезахисні окуляри RAY-BAN 3767"
+                                            class="cart-product__img" loading="lazy" width="80" height="65">
                                     </div>
-                                    <div class="order-summary__row">
-                                        <span class="order-summary__label">Вартість доставки:</span>
-                                        <span class="order-summary__value">0 грн</span>
+                                    <div class="cart-product__content">
+                                        <h3 class="cart-product__title">Сонцезахисні окуляри RAY-BAN 3767</h3>
+                                        <span class="cart-product__qty">1x</span>
+                                        <span class="cart-product__price">1 099 грн</span>
                                     </div>
-                                    <div class="order-summary__row">
-                                        <span class="order-summary__label">Спосіб оплати:</span>
-                                        <span class="order-summary__value">Оплата після уточнення деталей</span>
-                                    </div>
-                                    <div class="order-summary__row">
-                                        <span class="order-summary__label">Дата:</span>
-                                        <span class="order-summary__value"><time datetime="2026-09-03">03 вересня
-                                                2026</time></span>
-                                    </div>
-                                    <div class="order-summary__row order-summary__row--total">
-                                        <span class="order-summary__label">Разом:</span>
-                                        <span class="order-summary__value">12 098 грн</span>
-                                    </div>
-                                </div>
+                                </article>
+                            </div>
 
-                                <!-- Кнопка -->
-                                <div class="order-summary__actions">
-                                    <a href="/" class="order-summary__btn">На головну</a>
+                            <!-- Деталі замовлення -->
+                            <div class="order-summary__details">
+                                <div class="order-summary__row">
+                                    <span class="order-summary__label">2 товар на суму:</span>
+                                    <span class="order-summary__value">12 098 грн</span>
                                 </div>
+                                <div class="order-summary__row">
+                                    <span class="order-summary__label">Вартість доставки:</span>
+                                    <span class="order-summary__value">0 грн</span>
+                                </div>
+                                <div class="order-summary__row">
+                                    <span class="order-summary__label">Спосіб оплати:</span>
+                                    <span class="order-summary__value">Оплата після уточнення деталей</span>
+                                </div>
+                                <div class="order-summary__row">
+                                    <span class="order-summary__label">Дата:</span>
+                                    <span class="order-summary__value"><time datetime="2026-09-03">03 вересня
+                                            2026</time></span>
+                                </div>
+                                <div class="order-summary__row order-summary__row--total">
+                                    <span class="order-summary__label">Разом:</span>
+                                    <span class="order-summary__value">12 098 грн</span>
+                                </div>
+                            </div>
+
+                            <!-- Кнопка -->
+                            <div class="order-summary__actions">
+                                <a href="/" class="order-summary__btn">На головну</a>
                             </div>
                         </div>
                     </div>
-
                 </div>
-                <div class="bg__wrap">
-                    <img src="assets/img/thanks.png" alt="thanks bg" class="bg">
-                </div>
-            </section>
 
-        </main>
+            </div>
+            <div class="bg__wrap">
+                <img src="assets/img/thanks.png" alt="thanks bg" class="bg">
+            </div>
+        </section>
 
-        <footer class="footer">
-            <div class="footer__inner">
-                <div class="container">
-                    <h2 class="visually-hidden">Інформація про компанію та навігація</h2>
-                    <div class="row m-row">
-                        <div class="col-xl-5 col-lg-5 col-md-16 col-sm-16 col-xs-16 column">
-                            <a href="/" class="footer__logo" aria-label="VeroMed — На головну">
-                                <img src="assets/img/logo-light.svg" alt="" width="180" height="60" loading="lazy">
-                            </a>
-                            <div class="subscription">
-                                <div class="subscription__heading"><strong>Підпишись на нашу розсилку</strong>
-                                    і отримай знижку 10%.
-                                </div>
-                                <form>
-                                    <div class="subscription__field --relative">
-                                        <input type="email" value="" name="email"
-                                            class="subscription__input form-field__input" placeholder="E-mail">
-                                        <button class="subscription__btn btn btn--primary"
-                                            type="submit">Підписатись</button>
-                                    </div>
+    </main>
 
-                                </form>
+
+    <footer class="footer">
+        <div class="footer__inner">
+            <div class="container">
+                <h2 class="visually-hidden">Інформація про компанію та навігація</h2>
+                <div class="row m-row align-center">
+                    <div class="col-xl-5 col-lg-5 col-md-10 col-sm-16 col-xs-16 column">
+                        <a href="/" class="footer__logo" aria-label="VeroMed — На головну">
+                            <img src="assets/img/logo-light.svg" alt="" width="180" height="60" loading="lazy">
+                        </a>
+                        <div class="subscription">
+                            <div class="subscription__heading"><strong>Підпишись на нашу розсилку</strong>
+                                і отримай знижку 10%.
                             </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-3 col-md-5 col-sm-16 col-xs-16 column">
+                            <form>
+                                <div class="subscription__field --relative">
+                                    <input type="email" value="" name="email" class="subscription__input field__input"
+                                        placeholder="E-mail">
+                                    <button class="subscription__btn btn btn--primary"
+                                        type="submit">Підписатись</button>
+                                </div>
 
-                            <div class="footer-nav">
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-10 col-sm-16 col-xs-16 column">
+
+                        <div class="footer-nav js-footer-accordion">
+                            <div class="footer-nav__title-wrap">
                                 <h3 class="footer-nav__title text-bold">Про нас</h3>
-                                <div>
-                                    <ul class="menu">
-                                        <li class="menu-item current-menu-item"><a href="about.html">Про компанію</a>
-                                        </li>
-                                        <li class="menu-item "><a href="services.html">Послуги</a></li>
-                                        <li class="menu-item "><a href="delivery.html">Доставка і оплата</a></li>
-                                        <li class="menu-item "><a href="#">Обмін і повернення</a></li>
-                                        <li class="menu-item "><a href="blog.html">Блог</a></li>
-                                        <li class="menu-item "><a href="#">Мережа салонів</a></li>
-                                    </ul>
-                                </div>
+                                <svg class="footer-nav__icon" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                                    <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="1.5"
+                                        stroke-linecap="round" />
+                                </svg>
                             </div>
-
+                            <div class="footer-nav__content">
+                                <ul class="menu">
+                                    <li class="menu-item current-menu-item"><a href="about.html">Про компанію</a></li>
+                                    <li class="menu-item "><a href="services.html">Послуги</a></li>
+                                    <li class="menu-item "><a href="delivery.html">Доставка і оплата</a></li>
+                                    <li class="menu-item "><a href="#">Обмін і повернення</a></li>
+                                    <li class="menu-item "><a href="blog.html">Блог</a></li>
+                                    <li class="menu-item "><a href="#">Мережа салонів</a></li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="col-xl-4 col-lg-4 col-md-5 col-sm-16 col-xs-16 column">
-                            <div class="footer-nav">
+
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-10 col-sm-16 col-xs-16 column">
+                        <div class="footer-nav js-footer-accordion">
+                            <div class="footer-nav__title-wrap">
                                 <h3 class="footer-nav__title text-bold">Каталог</h3>
-                                <div>
-                                    <ul class="menu">
-                                        <li class="menu-item "><a href="">Оправи для зору</a></li>
-                                        <li class="menu-item "><a href="">Сонцезахисні окуляри</a></li>
-                                        <li class="menu-item "><a href="">Контактні лінзи</a></li>
-                                        <li class="menu-item "><a href="">Аксесуари/засоби догляду</a></li>
-                                        <li class="menu-item "><a href="">Акції</a></li>
-                                    </ul>
-                                </div>
+                                <svg class="footer-nav__icon" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                                    <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="1.5"
+                                        stroke-linecap="round" />
+                                </svg>
                             </div>
-
+                            <div class="footer-nav__content">
+                                <ul class="menu">
+                                    <li class="menu-item "><a href="">Оправи для зору</a></li>
+                                    <li class="menu-item "><a href="">Сонцезахисні окуляри</a></li>
+                                    <li class="menu-item "><a href="">Контактні лінзи</a></li>
+                                    <li class="menu-item "><a href="">Аксесуари/засоби догляду</a></li>
+                                    <li class="menu-item "><a href="">Акції</a></li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-16 col-xs-16 column">
-                            <div class="footer-nav">
+
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-10 col-sm-16 col-xs-16 column">
+                        <div class="footer-nav js-footer-accordion">
+                            <div class="footer-nav__title-wrap">
                                 <h3 class="footer-nav__title text-bold">Контакти</h3>
+                                <svg class="footer-nav__icon" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                                    <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="1.5"
+                                        stroke-linecap="round" />
+                                </svg>
+                            </div>
+                            <div class="footer-nav__content">
                                 <div class="contact">
                                     <div class="contact__item">
                                         <a href="mailto:info@rybnuy-kombinat.com" class="contact__text">
@@ -355,38 +385,48 @@
                                     <span class="socials__label">Написати нам:</span>
 
                                     <ul class="socials__list" role="list">
-                                        <li class="socials__item">
-                                            <a href="viber://chat?number=%2B380500136888"
-                                                class="socials__link socials__link--viber" target="_blank"
-                                                rel="noopener" aria-label="Viber">
-                                                <svg class="icon" aria-hidden="true" width="36" height="36">
-                                                    <use href="assets/img/sprite.svg#viber"></use>
-                                                </svg>
-
-                                            </a>
-                                        </li>
-
-                                        <li class="socials__item">
-                                            <a href="https://wa.me/380500136888"
-                                                class="socials__link socials__link--whatsapp" target="_blank"
-                                                rel="noopener" aria-label="WhatsApp">
-                                                <svg class="icon" aria-hidden="true" width="36" height="36">
-                                                    <use href="assets/img/sprite.svg#whatsapp"></use>
-                                                </svg>
-
-                                            </a>
-                                        </li>
 
                                         <li class="socials__item">
                                             <a href="https://t.me/+380500136888"
                                                 class="socials__link socials__link--telegram" target="_blank"
                                                 rel="noopener" aria-label="Telegram">
-                                                <svg class="icon" aria-hidden="true" width="36" height="36">
-                                                    <use href="assets/img/sprite.svg#telegram"></use>
-                                                </svg>
+                                                <div class="socials__icon-wrap">
+                                                    <svg class="socials__icon" aria-hidden="true" width="36"
+                                                        height="36">
+                                                        <use href="assets/img/symbol.svg#telegram"></use>
+                                                    </svg>
+                                                </div>
 
                                             </a>
                                         </li>
+                                        <li class="socials__item">
+                                            <a href="https://wa.me/380500136888"
+                                                class="socials__link socials__link--whatsapp" target="_blank"
+                                                rel="noopener" aria-label="WhatsApp">
+                                                <div class="socials__icon-wrap">
+                                                    <svg class="socials__icon" aria-hidden="true" width="36"
+                                                        height="36">
+                                                        <use href="assets/img/symbol.svg#whatsapp"></use>
+                                                    </svg>
+                                                </div>
+
+                                            </a>
+                                        </li>
+                                        <li class="socials__item">
+                                            <a href="viber://chat?number=%2B380500136888"
+                                                class="socials__link socials__link--viber" target="_blank"
+                                                rel="noopener" aria-label="Viber">
+
+                                                <div class="socials__icon-wrap">
+                                                    <svg class="socials__icon" aria-hidden="true" width="36"
+                                                        height="36">
+                                                        <use href="assets/img/symbol.svg#viber"></use>
+                                                    </svg>
+                                                </div>
+
+                                            </a>
+                                        </li>
+
                                     </ul>
                                 </div>
                                 <div class="socials socials--col">
@@ -396,45 +436,60 @@
                                         <li class="socials__item">
                                             <a href="#" class="socials__link socials__link--youtube" target="_blank"
                                                 rel="noopener" aria-label="YouTube">
-                                                <svg class="icon" aria-hidden="true" width="36" height="36">
-                                                    <use href="assets/img/sprite.svg#youtube"></use>
-                                                </svg>
+                                                <div class="socials__icon-wrap">
+                                                    <svg class="socials__icon" aria-hidden="true" width="36"
+                                                        height="36">
+                                                        <use href="assets/img/symbol.svg#youtube"></use>
+                                                    </svg>
+                                                </div>
                                             </a>
                                         </li>
 
                                         <li class="socials__item">
                                             <a href="#" class="socials__link socials__link--threads" target="_blank"
                                                 rel="noopener" aria-label="Threads">
-                                                <svg class="icon" aria-hidden="true" width="36" height="36">
-                                                    <use href="assets/img/sprite.svg#threads"></use>
-                                                </svg>
+                                                <div class="socials__icon-wrap">
+                                                    <svg class="socials__icon" aria-hidden="true" width="36"
+                                                        height="36">
+                                                        <use href="assets/img/symbol.svg#threads"></use>
+                                                    </svg>
+                                                </div>
                                             </a>
                                         </li>
 
                                         <li class="socials__item">
                                             <a href="#" class="socials__link socials__link--facebook" target="_blank"
                                                 rel="noopener" aria-label="Facebook">
-                                                <svg class="icon" aria-hidden="true" width="36" height="36">
-                                                    <use href="assets/img/sprite.svg#facebook"></use>
-                                                </svg>
+                                                <div class="socials__icon-wrap">
+                                                    <svg class="socials__icon" aria-hidden="true" width="36"
+                                                        height="36">
+                                                        <use href="assets/img/symbol.svg#facebook"></use>
+                                                    </svg>
+                                                </div>
                                             </a>
                                         </li>
 
                                         <li class="socials__item">
                                             <a href="#" class="socials__link socials__link--instagram" target="_blank"
                                                 rel="noopener" aria-label="Instagram">
-                                                <svg class="icon" aria-hidden="true" width="36" height="36">
-                                                    <use href="assets/img/sprite.svg#instagram"></use>
-                                                </svg>
+                                                <div class="socials__icon-wrap">
+                                                    <svg class="socials__icon" aria-hidden="true" width="36"
+                                                        height="36">
+                                                        <use href="assets/img/symbol.svg#instagram"></use>
+                                                    </svg>
+                                                </div>
                                             </a>
                                         </li>
 
                                         <li class="socials__item">
                                             <a href="#" class="socials__link socials__link--tiktok" target="_blank"
                                                 rel="noopener" aria-label="TikTok">
-                                                <svg class="icon" aria-hidden="true" width="36" height="36">
-                                                    <use href="assets/img/sprite.svg#tiktok"></use>
-                                                </svg>
+                                                <div class="socials__icon-wrap">
+                                                    <svg class="socials__icon" aria-hidden="true" width="36"
+                                                        height="36">
+                                                        <use href="assets/img/symbol.svg#tiktok"></use>
+                                                    </svg>
+                                                </div>
                                             </a>
                                         </li>
                                     </ul>
@@ -443,22 +498,22 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-
-            <div class="container footer__bottom">
+        </div>
+        <div class="footer__bottom">
+            <div class="container ">
                 <div class="row m-row">
-                    <div class="col-xl-5 col-lg-5 col-md-16 col-sm-16 col-xs-16 column ">
+                    <div class="col-xl-4 col-lg-4 col-md-16 col-sm-16 col-xs-16 column ">
                         <div class="copyright">© 2026 Усі права захищено </div>
                     </div>
-                    <div class="col-xl-6 col-lg-6 col-md-16 col-sm-16 col-xs-16 column ">
-                        <ul class="menu">
-                            <li class="menu-item current-menu-item"><a href="">Договір оферта</a></li>
-                            <li class="menu-item "><a href="">Політика конфіденційності</a></li>
+                    <div class="col-xl-8 col-lg-7 col-md-16 col-sm-16 col-xs-16 column ">
+                        <ul class="legal-menu">
+                            <li class="legal-menu__item current-menu-item"><a href="">Договір оферта</a></li>
+                            <li class="legal-menu__item "><a href="">Політика конфіденційності</a></li>
                         </ul>
                     </div>
-                    <div class="col-xl-4 col-lg-4 col-md-16 col-sm-16 col-xs-16 column ">
-                        <div class="develop d-flex align-middle align-left">
+                    <div class="col-xl-4 col-lg-5 col-md-16 col-sm-16 col-xs-16 column ">
+                        <div class="develop">
                             Дизайн та розробка -
                             <a href="https://webtune.com.ua/" target="_blank" rel="nofollow" class="develop__link">
                                 WebTune
@@ -467,80 +522,70 @@
                     </div>
                 </div>
             </div>
-        </footer>
+        </div>
+    </footer>
 
-        <div class="popup-wrapper">
-            <div class="bg-layer"></div>
+    <div class="popup-wrapper">
+        <div class="bg-layer"></div>
 
-            <div class="popup-content cta" data-rel="cta">
-                <div class="layer-close"></div>
-                <div class="popup-container ">
-                    <div class="btn-close d-flex align-middle align-center"><img src="assets/img/close.svg"
-                            alt="close icon">
+        <div class="popup-content cta" data-rel="cta">
+            <div class="layer-close"></div>
+            <div class="popup-container ">
+                <div class="popup-container__inner">
+                    <div class="btn--close d-flex align-middle align-center">
+
                     </div>
 
                     <div class="popup-form text-center">
-                        <h4 class="popup-form__heading heading-accent h2 text-bold">Записатись на прийом</h4>
+                        <h4 class="popup-form__heading text-bold h3">Записатись на прийом</h4>
                         <form class="">
 
-                            <div class="form-field__grid">
-                                <div class="form-field form-field--full">
-                                    <label class="form-field__label text-left" for="user-name">Як до вас
-                                        звертатися?</label>
-                                    <input class="form-field__input" type="text" id="p-user-name" name="name"
-                                        placeholder="Ваше ім’я">
-                                </div>
-
-                                <div class="form-field form-field--full">
-                                    <label class="form-field__label text-left" for="user-phone">Ваш номер
-                                        телефону</label>
-                                    <input class="form-field__input" type="tel" id="p-user-phone" name="phone"
-                                        value="+38 (_ _ _) _ _ _  - _ _ - _ _" aria-invalid="true"
-                                        aria-describedby="phone-error">
-
-                                </div>
-
-
-
-                                <div class="form-field form-field--full">
-                                    <label class="form-field__label text-left" for="user-direction">Обрати
-                                        напрямок</label>
-                                    <div class="form-select">
-                                        <select class="form-field__select" name="direction">
-                                            <option value="" disabled selected hidden>Вибрати</option>
-                                            <option value="1">Напрямок 1</option>
-                                            <option value="2">Напрямок 2</option>
-                                        </select>
+                            <div class="row m-row">
+                                <div class="col-xl-16 col-lg-16 col-md-16 col-sm-16 col-xs-16 column">
+                                    <div class="field">
+                                        <label class="field__label text-left" for="user-name">Як до вас
+                                            звертатися?</label>
+                                        <input class="field__input" type="text" id="p-user-name" name="name"
+                                            placeholder="Ваше ім’я">
                                     </div>
-                                </div>
+                                    <div class="form-field ">
+                                        <label class="field__label text-left" for="user-phone">Ваш номер
+                                            телефону</label>
+                                        <input class="field__input" type="tel" id="p-user-phone" name="phone"
+                                            value="+38 (_ _ _) _ _ _  - _ _ - _ _" aria-invalid="true"
+                                            aria-describedby="phone-error">
 
-                                <div class="form-field form-field--full">
-                                    <button class="btn btn--primary" type="submit">
-                                        Записатися на прийом
-                                    </button>
+                                    </div>
+
+                                    <div class="form-field ">
+                                        <button class="btn btn--primary" type="submit">
+                                            Записатися на прийом
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-
         </div>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9h5L2xSWEvRFgLc7y4d16KPUDydNgs9Y"
-            type="text/javascript"></script>
 
-        <script src="./assets/js/jquery-3.7.0.min.js"></script>
-        <script src="assets/js/jquery-ui.min.js"></script>
-        <script src="assets/js/swiper-bundle.min.js"></script>
-        <script src="assets/js/jquery.sumoselect.min.js"></script>
-        <script src="assets/js/sumoselectCustom.js"></script>
+    </div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9h5L2xSWEvRFgLc7y4d16KPUDydNgs9Y"
+        type="text/javascript"></script>
+
+    <script src="./assets/js/jquery-3.7.0.min.js"></script>
+    <script src="assets/js/jquery-ui.min.js"></script>
+    <script src="assets/js/swiper-bundle.min.js"></script>
+    <script src="assets/js/jquery.sumoselect.min.js"></script>
+    <script src="assets/js/sumoselectCustom.js"></script>
 
 
-        <script src="src/scripts/app-swiper.js"></script>
-        <script src="src/scripts/app.js"></script>
-        <script src="src/scripts/js_app.js"></script>
+    <script src="src/scripts/app-swiper.js"></script>
+    <script src="src/scripts/app.js"></script>
+    <script src="src/scripts/js_app.js"></script>
 
-        <script src="src/scripts/app_map.js"></script>
+    <script src="src/scripts/app_map.js"></script>
 </body>
 
 </html>
