@@ -135,8 +135,8 @@
 
   .swiper-container,
   .swiper {
-    overflow: visible; // КРИТИЧНО: вимикає обрізання тіней
-    padding: 12px 0; // Додаємо вертикальний padding, щоб тіні зверху та знизу мали місце
+   // overflow: visible; 
+    padding: 12px ; 
   }
 }
 

@@ -120,17 +120,9 @@
     margin: 0;
     font-size: fluid(20, 35);
 
-    line-height: 1.2;
-    //text-transform: uppercase;
+    line-height: 1.4;
+    text-transform: uppercase;
     color: $color-white;
-
-    @media (min-width: 768px) {
-      font-size: 22px;
-    }
-
-    @media (min-width: 1200px) {
-      font-size: 24px; // Максимальний комфортний розмір для 3-4 карток у ряд
-    }
   }
 
   &__link {

@@ -127,7 +127,7 @@
 
 
 .s-blog {
-  padding: 40px 0 140px 0;
+  padding: fluid(20, 40) 0 fluid(100, 140) 0;
 
   & .heading {
     margin-bottom: 30px;
@@ -138,29 +138,28 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 32px 24px;
+    margin-bottom: 30px;
 
-    @media (max-width: 992px) {
+    @media (max-width: $breakpoint-lg) {
       grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
     }
 
-    @media (max-width: 576px) {
+    @media (max-width: $breakpoint-sm) {
       grid-template-columns: 1fr;
     }
 
-
-
     & .news-card--featured {
-      @media (min-width: 993px) {
+      @media (min-width: $breakpoint-grid-lg) {
         grid-column: span 2;
       }
     }
-
   }
 }
 
 .s-article {
-  margin-bottom: fluid(50,70);
-
+  margin-bottom: fluid(50, 70);
+padding-top: fluid(20,40);
   & .container {
     padding-bottom: fluid(50, 70);
   }

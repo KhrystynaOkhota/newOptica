@@ -203,7 +203,7 @@
   background-color: rgba(243, 243, 245, 1);
 
   @media (max-width: $breakpoint-sm) {
-    padding: 0;
+    padding: 40px 0 0 0;
   }
 
   & .bg {
@@ -217,6 +217,15 @@
       width: 100%;
       height: 100%;
 
+      &:after {
+        content: '';
+        width: 100%;
+        height: 90px;
+        background: linear-gradient(180deg, #F3F3F5 0%, rgba(243, 243, 245, 0) 100%);
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
 
       @media (max-width: $breakpoint-sm) {
         position: relative;
@@ -225,22 +234,71 @@
   }
 
   & .content {
-    
+
     & .title {
-      margin-bottom: fluid(15, 30);
-      font-size: fluid(25, 55);
+      margin-bottom: fluid(25, 40);
+
+
+      & span:not(.decor) {
+        font-size: fluid(30, 50);
+
+        @media (max-width: $breakpoint-md) {
+          display: block;
+          text-transform: uppercase;
+          margin-top: 35px;
+        }
+      }
+
+      & .decor {
+        color: $color-accent;
+        position: relative;
+        font-size: fluid(45, 50);
+
+        @media (max-width: $breakpoint-md) {
+          display: inline-block;
+        }
+
+        &:after {
+
+          content: "";
+          position: absolute;
+          bottom: -43px;
+          left: 50%;
+          width: 100%;
+          height: 29px;
+          background: url(../img/decor-line.svg) no-repeat;
+          border-radius: 2px;
+          background-size: contain;
+          -webkit-transform: rotate(-4deg) translate(-50%, -50%);
+          -ms-transform: rotate(-4deg) translate(-50%, -50%);
+          transform: rotate(-4deg) translate(-50%, -50%);
+
+        }
+      }
+    }
+
+    & .subtitle,
+    & .description {
+      color: rgba(35, 61, 77, 1);
+      font-size: fluid(18, 20);
+
+      @media (min-width: $breakpoint-md) {
+        width: 70%;
+      }
     }
 
     & .subtitle {
-      margin-bottom: fluid(6, 35);
-      font-size: fluid(18, 30);
+      margin-bottom: fluid(10, 20);
     }
 
     & .description {
-      margin-bottom: fluid(20, 40);
+      margin-bottom: 24px;
     }
   }
 
+  .order-summary {
+    max-width: 580px;
+  }
 }
 
 .s-returns {
@@ -318,12 +376,17 @@
 .s-delivery {
   padding: fluid(20, 40) 0 fluid(50, 90);
 
+  & .divider {
+    margin: fluid(30, 35) 0;
+
+  }
+
   & .heading {
     margin-bottom: 21px;
   }
 
   & .description {
-    margin-bottom: 16px;
+    margin-bottom: 40px;
   }
 
   & .info-block {
@@ -332,12 +395,50 @@
       border-left: 5px solid rgba(196, 0, 0, 0.6);
       border-radius: 20px;
       padding: 40px 30px;
+      margin-top: 30px;
 
       & .info-block {
         &__title {
           color: rgba(196, 0, 0, 1);
           margin-bottom: 16px;
         }
+      }
+    }
+  }
+
+  .delivery,
+  .payment {
+    &__heading {
+      gap: 19px;
+      font-size: fluid(20, 25);
+      font-weight: bold;
+      color: rgba(0, 0, 0, 1);
+      margin: 0 0 27px 0;
+    }
+
+    &__icon {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+
+    }
+  }
+
+  .cms-content {
+    & p {
+      margin-bottom: 10px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    h3 {
+      margin-top: 30px;
+      margin-bottom: 10px;
+
+      &:first-child {
+        margin-top: 0;
       }
     }
   }
