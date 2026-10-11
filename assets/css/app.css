@@ -229,7 +229,7 @@ img::selection {
   width: 100%;
   height: 1px;
   background-color: rgba(7, 4, 4, 0.1);
-  max-width: 1250px;
+  max-width: 1270px;
   margin: auto;
 }
 
@@ -5675,8 +5675,7 @@ html.chrome.filter-is-open body {
 
 .s-current-promotions .swiper-container,
 .s-current-promotions .swiper {
-  overflow: visible;
-  padding: 12px 0;
+  padding: 12px;
 }
 
 .s-promo {
@@ -5930,7 +5929,7 @@ html.chrome.filter-is-open body {
 }
 
 .s-blog {
-  padding: 40px 0 140px 0;
+  padding: clamp(1.25rem, 1.25rem + 20 * (100vw - 300px) / 1960, 2.5rem) 0 clamp(6.25rem, 6.25rem + 40 * (100vw - 300px) / 1960, 8.75rem) 0;
 }
 .s-blog .heading {
   margin-bottom: 30px;
@@ -5939,18 +5938,20 @@ html.chrome.filter-is-open body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 32px 24px;
+  margin-bottom: 30px;
 }
-@media (max-width: 992px) {
+@media (max-width: 991px) {
   .s-blog__grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
   }
 }
-@media (max-width: 576px) {
+@media (max-width: 575px) {
   .s-blog__grid {
     grid-template-columns: 1fr;
   }
 }
-@media (min-width: 993px) {
+@media (min-width: 992px) {
   .s-blog__grid .news-card--featured {
     grid-column: span 2;
   }
@@ -5958,6 +5959,7 @@ html.chrome.filter-is-open body {
 
 .s-article {
   margin-bottom: clamp(3.125rem, 3.125rem + 20 * (100vw - 300px) / 1960, 4.375rem);
+  padding-top: clamp(1.25rem, 1.25rem + 20 * (100vw - 300px) / 1960, 2.5rem);
 }
 .s-article .container {
   padding-bottom: clamp(3.125rem, 3.125rem + 20 * (100vw - 300px) / 1960, 4.375rem);
@@ -7508,18 +7510,9 @@ html.chrome.filter-is-open body {
 .service-card__title {
   margin: 0;
   font-size: clamp(1.25rem, 1.25rem + 15 * (100vw - 300px) / 1960, 2.1875rem);
-  line-height: 1.2;
+  line-height: 1.4;
+  text-transform: uppercase;
   color: #ffffff;
-}
-@media (min-width: 768px) {
-  .service-card__title {
-    font-size: 22px;
-  }
-}
-@media (min-width: 1200px) {
-  .service-card__title {
-    font-size: 24px;
-  }
 }
 .service-card__link {
   color: inherit;
@@ -9470,7 +9463,7 @@ html.chrome.filter-is-open body {
 }
 @media (max-width: 575px) {
   .s-thanks {
-    padding: 0;
+    padding: 40px 0 0 0;
   }
 }
 .s-thanks .bg {
@@ -9485,21 +9478,75 @@ html.chrome.filter-is-open body {
   width: 100%;
   height: 100%;
 }
+.s-thanks .bg__wrap:after {
+  content: "";
+  width: 100%;
+  height: 90px;
+  background: -webkit-gradient(linear, left top, left bottom, from(#F3F3F5), to(rgba(243, 243, 245, 0)));
+  background: linear-gradient(180deg, #F3F3F5 0%, rgba(243, 243, 245, 0) 100%);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 @media (max-width: 575px) {
   .s-thanks .bg__wrap {
     position: relative;
   }
 }
 .s-thanks .content .title {
-  margin-bottom: clamp(0.9375rem, 0.9375rem + 15 * (100vw - 300px) / 1960, 1.875rem);
-  font-size: clamp(1.5625rem, 1.5625rem + 30 * (100vw - 300px) / 1960, 3.4375rem);
+  margin-bottom: clamp(1.5625rem, 1.5625rem + 15 * (100vw - 300px) / 1960, 2.5rem);
+}
+.s-thanks .content .title span:not(.decor) {
+  font-size: clamp(1.875rem, 1.875rem + 20 * (100vw - 300px) / 1960, 3.125rem);
+}
+@media (max-width: 767px) {
+  .s-thanks .content .title span:not(.decor) {
+    display: block;
+    text-transform: uppercase;
+    margin-top: 35px;
+  }
+}
+.s-thanks .content .title .decor {
+  color: #ee670e;
+  position: relative;
+  font-size: clamp(2.8125rem, 2.8125rem + 5 * (100vw - 300px) / 1960, 3.125rem);
+}
+@media (max-width: 767px) {
+  .s-thanks .content .title .decor {
+    display: inline-block;
+  }
+}
+.s-thanks .content .title .decor:after {
+  content: "";
+  position: absolute;
+  bottom: -43px;
+  left: 50%;
+  width: 100%;
+  height: 29px;
+  background: url(../img/decor-line.svg) no-repeat;
+  border-radius: 2px;
+  background-size: contain;
+  -webkit-transform: rotate(-4deg) translate(-50%, -50%);
+  -ms-transform: rotate(-4deg) translate(-50%, -50%);
+  transform: rotate(-4deg) translate(-50%, -50%);
+}
+.s-thanks .content .subtitle, .s-thanks .content .description {
+  color: rgb(35, 61, 77);
+  font-size: clamp(1.125rem, 1.125rem + 2 * (100vw - 300px) / 1960, 1.25rem);
+}
+@media (min-width: 767px) {
+  .s-thanks .content .subtitle, .s-thanks .content .description {
+    width: 70%;
+  }
 }
 .s-thanks .content .subtitle {
-  margin-bottom: clamp(0.375rem, 0.375rem + 29 * (100vw - 300px) / 1960, 2.1875rem);
-  font-size: clamp(1.125rem, 1.125rem + 12 * (100vw - 300px) / 1960, 1.875rem);
+  margin-bottom: clamp(0.625rem, 0.625rem + 10 * (100vw - 300px) / 1960, 1.25rem);
 }
 .s-thanks .content .description {
-  margin-bottom: clamp(1.25rem, 1.25rem + 20 * (100vw - 300px) / 1960, 2.5rem);
+  margin-bottom: 24px;
+}
+.s-thanks .order-summary {
+  max-width: 580px;
 }
 
 .s-returns {
@@ -9579,19 +9626,51 @@ html.chrome.filter-is-open body {
 .s-delivery {
   padding: clamp(1.25rem, 1.25rem + 20 * (100vw - 300px) / 1960, 2.5rem) 0 clamp(3.125rem, 3.125rem + 40 * (100vw - 300px) / 1960, 5.625rem);
 }
+.s-delivery .divider {
+  margin: clamp(1.875rem, 1.875rem + 5 * (100vw - 300px) / 1960, 2.1875rem) 0;
+}
 .s-delivery .heading {
   margin-bottom: 21px;
 }
 .s-delivery .description {
-  margin-bottom: 16px;
+  margin-bottom: 40px;
 }
 .s-delivery .info-block--accent {
   background-color: rgb(243, 243, 245);
   border-left: 5px solid rgba(196, 0, 0, 0.6);
   border-radius: 20px;
   padding: 40px 30px;
+  margin-top: 30px;
 }
 .s-delivery .info-block--accent .info-block__title {
   color: rgb(196, 0, 0);
   margin-bottom: 16px;
+}
+.s-delivery .delivery__heading,
+.s-delivery .payment__heading {
+  gap: 19px;
+  font-size: clamp(1.25rem, 1.25rem + 5 * (100vw - 300px) / 1960, 1.5625rem);
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+  margin: 0 0 27px 0;
+}
+.s-delivery .delivery__icon,
+.s-delivery .payment__icon {
+  width: 24px;
+  height: 24px;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+.s-delivery .cms-content p {
+  margin-bottom: 10px;
+}
+.s-delivery .cms-content p:last-child {
+  margin-bottom: 0;
+}
+.s-delivery .cms-content h3 {
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+.s-delivery .cms-content h3:first-child {
+  margin-top: 0;
 }/*# sourceMappingURL=app.css.map */
