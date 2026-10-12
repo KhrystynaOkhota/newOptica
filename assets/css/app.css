@@ -3499,6 +3499,12 @@ div.wpcf7 .ajax-loader {
   position: relative;
   width: 100%;
 }
+.search-form__label {
+  font-weight: bold;
+  font-size: clamp(0.9375rem, 0.9375rem + 2 * (100vw - 300px) / 1960, 1.0625rem);
+  margin-bottom: clamp(0.6875rem, 0.6875rem + 6 * (100vw - 300px) / 1960, 1.0625rem);
+  display: block;
+}
 .search-form__input {
   width: 100%;
   height: 48px;
@@ -5536,6 +5542,43 @@ html.chrome.filter-is-open body {
 #mapW {
   width: 100%;
   height: 600px;
+}
+
+.s-contacts {
+  padding: clamp(1.25rem, 1.25rem + 20 * (100vw - 300px) / 1960, 2.5rem) 0 clamp(3.125rem, 3.125rem + 50 * (100vw - 300px) / 1960, 6.25rem) 0;
+}
+.s-contacts .heading {
+  margin-bottom: 30px;
+}
+.s-contacts .search-form {
+  margin-bottom: 30px;
+}
+.s-contacts .location-card {
+  background: #ffffff;
+  /* border: 1px solid #E5E7EB; */
+  -webkit-box-shadow: 0px 4.8px 32.26px 0px rgba(15, 25, 49, 0.05);
+          box-shadow: 0px 4.8px 32.26px 0px rgba(15, 25, 49, 0.05);
+  border-radius: 16px;
+  padding: 20px;
+  cursor: pointer;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+.s-contacts .location__img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.s-contacts .location__img-wrap {
+  height: 150px;
+  width: 100%;
+  border-radius: 10px;
+  background-color: rgb(243, 243, 245);
+  overflow: hidden;
 }
 
 .promo-card {
@@ -8318,6 +8361,17 @@ html.chrome.filter-is-open body {
   -webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
           box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
 }
+.s-cbn .cbn-diagnostics .heading {
+  margin-bottom: clamp(1.4375rem, 1.4375rem + 6 * (100vw - 300px) / 1960, 1.8125rem);
+}
+.s-cbn .cbn-diagnostics .subtitle {
+  margin-bottom: 21px;
+  font-size: 20px;
+}
+.s-cbn .cbn-diagnostics .description {
+  margin-bottom: 26px;
+  font-size: 16px;
+}
 .s-cbn .cbn-diagnostics .medical-info {
   display: grid;
   grid-template-columns: 200px 150px 1fr;
@@ -8337,10 +8391,7 @@ html.chrome.filter-is-open body {
 .s-cbn .cbn-diagnostics .medical-info__type {
   font-weight: 700;
 }
-.s-cbn .cbn-diagnostics .medical-info__date {
-  color: rgba(35, 61, 77, 0.7);
-}
-.s-cbn .cbn-diagnostics .medical-info__location {
+.s-cbn .cbn-diagnostics .medical-info__date, .s-cbn .cbn-diagnostics .medical-info__location {
   color: rgba(35, 61, 77, 0.7);
 }
 .s-cbn .cbn-diagnostics .medical-details {
@@ -8427,14 +8478,14 @@ html.chrome.filter-is-open body {
   color: #070404;
   margin: 16px 0 0 0;
 }
-.s-cbn .cbn-diagnostics .medical-table-wrap {
-  width: 100%;
-  overflow-x: auto;
-}
 .s-cbn .cbn-diagnostics .medical-table {
   width: 100%;
   border-collapse: collapse;
   font-size: 14px;
+}
+.s-cbn .cbn-diagnostics .medical-table-wrap {
+  width: 100%;
+  overflow-x: auto;
 }
 .s-cbn .cbn-diagnostics .medical-table th,
 .s-cbn .cbn-diagnostics .medical-table td {
