@@ -22,8 +22,8 @@
     <style>
         .contacts-map {
             width: 100%;
-            height: 400px;
-            border-radius: 16px;
+            height: 600px;
+            border-radius: 30px;
             margin-bottom: 30px;
         }
 
@@ -73,16 +73,7 @@
             gap: 16px;
         }
 
-        .location-card {
-            background: #FFFFFF;
-            border: 1px solid #E5E7EB;
-            border-radius: 16px;
-            padding: 20px;
-            display: flex;
-            gap: 20px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
+        
 
         .location-card:hover,
         .location-card.is-active {
@@ -180,11 +171,7 @@
 
         /* Адаптивність для мобільних пристроїв */
         @media (max-width: 768px) {
-            .location-card {
-                flex-direction: column;
-                gap: 12px;
-                padding: 16px;
-            }
+           
 
             .location-card__image {
                 width: 100%;
@@ -381,7 +368,7 @@
                                     <span>Головна</span>
                                 </a>
                                 <span class="kb_sep">/</span>
-                                <span class="kb_title">Доставка і оплата</span>
+                                <span class="kb_title">Контакти</span>
                             </span>
                         </div>
                     </div>
@@ -389,7 +376,7 @@
             </div>
         </div>
 
-        <!--<section class="s-contacts">
+        <section class="s-contacts">
 
             <div class="container ">
                 <div class="row m-row ">
@@ -402,315 +389,385 @@
                     <div class="col-xl-16 col-lg-16 col-md-16 col-sm-16 col-xs-16 column">
 
 
-                        <div id="locationsList" class="locations-list">
-                            <div class="salon-card" data-id="1" data-lat="49.8397" data-lng="24.0297">
-                                <h3 class="salon-card__title">Головний салон</h3>
-                                <p class="salon-card__address">м. Львів, пр. Свободи, 1</p>
-                                <p class="salon-card__phone">+380 67 000 00 01</p>
-                                <button class="salon-card__route-btn" type="button">Показати на карті</button>
-                            </div>
+                        <!-- Карта -->
+                        <div id="map" class="contacts-map"></div>
 
-                            <div class="salon-card" data-id="2" data-lat="49.8320" data-lng="24.0120">
-                                <h3 class="salon-card__title">Філія біля Вокзалу</h3>
-                                <p class="salon-card__address">м. Львів, вул. Чернівецька, 12</p>
-                                <p class="salon-card__phone">+380 67 000 00 02</p>
-                                <button class="salon-card__route-btn" type="button">Показати на карті</button>
+                        <!-- Пошук за адресою -->
+                        <!--<div class="contacts-search-wrapper">
+                            <label for="locations-search" class="contacts-search-label">Пошук за адресою</label>
+                            <div class="contacts-search-box">
+                                <input type="text" id="locations-search" class="contacts-search-input"
+                                    placeholder="Пошук">
+                                <svg class="contacts-search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                </svg>
                             </div>
-                        </div>
+                        </div>-->
+                        <form class="search-form" action="#" method="get" role="search">
+                            <label for="locations-search" class="search-form__label">Пошук за адресою</label>
+                            <input type="search" class="search-form__input" placeholder="Пошук" aria-label="Пошук"
+                                id="locations-search">
+                            <button type="submit" class="search-form__btn" aria-label="Шукати">
+                                <svg class="icon" aria-hidden="true" width="22" height="22">
+                                    <use href="assets/img/symbol.svg#search"></use>
+                                </svg>
+                            </button>
+                        </form>
 
-                        <div id="mapW"></div>
                     </div>
                 </div>
             </div>
-        </section>-->
-        <section class="contacts-section">
-            <div class="container">
-                <h1 class="contacts-title">Контакти</h1>
-
-                <!-- Карта -->
-                <div id="map" class="contacts-map"></div>
-
-                <!-- Пошук за адресою -->
-                <div class="contacts-search-wrapper">
-                    <label for="locations-search" class="contacts-search-label">Пошук за адресою</label>
-                    <div class="contacts-search-box">
-                        <input type="text" id="locations-search" class="contacts-search-input" placeholder="Пошук">
-                        <svg class="contacts-search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2">
-                            <circle cx="11" cy="11" r="8"></circle>
-                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                        </svg>
-                    </div>
-                </div>
-
-                <!-- Список карток -->
+            <div class="container locations-list" id="locations-list">
                 <div class="locations-list" id="locations-list">
-
-                    <!-- 1. пр-т В'ячеслава Чорновола, 93 -->
-                    <div class="location-card" data-id="1" data-lat="49.856200" data-lng="24.026100"
+                    <div class="row location-card" data-id="1" data-lat="49.856200" data-lng="24.026100"
                         data-address="пр-т В'ячеслава Чорновола, 93, ТЦ «Арсен»" data-phone="+38 (050) 031 6888">
-                        <div class="location-card__image">
-                            <img src="assets/img/salon-1.jpg" alt="Файна Оптика">
+                        <div class="col-xl-3 col-lg-16 col-md-16 col-sm-6 col-xs-6 column">
+                            <div class="location__img-wrap">
+                                <img src="assets/img/salon-1.png" alt="Файна Оптика" class="location__img">
+                            </div>
                         </div>
-                        <div class="location-card__info">
-                            <div class="location-card__address-row">
-                                <h3 class="location-card__address">пр-т В'ячеслава Чорновола, 93, ТЦ «Арсен»</h3>
+                        <div class="col-xl-4 col-lg-16 col-md-16 col-sm-10 col-xs-10 column">
+                            <div class="location__address-wrap">
+                                <h3 class="location-card__address">пр-т В'ячеслава Чорновола, 93, ТЦ «Арсен»
+                                </h3>
                                 <a href="https://www.google.com/maps/search/?api=1&query=49.856200,24.026100"
                                     target="_blank" class="location-card__route">Прокласти маршрут</a>
                             </div>
-                            <div class="location-card__details">
-                                <div class="location-card__row">
-                                    <span class="location-card__label">Телефон</span>
-                                    <span class="location-card__value">+38 (050) 031 6888</span>
-                                </div>
-                                <div class="location-card__row">
-                                    <span class="location-card__label">Графік роботи салону</span>
-                                    <span class="location-card__value">Пн–Нд: 10:00–20:00</span>
-                                </div>
-                                <div class="location-card__row">
-                                    <span class="location-card__label">Графік роботи майстра</span>
-                                    <span class="location-card__value">-</span>
-                                </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-16 col-md-16 col-sm-16 col-xs-16 column">
+                            <div class="location-details">
+                                <div class="location-details__label">Телефон</div>
+                                <div class="location-details__value">+38 (050) 031 6888</div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-16 col-md-16 col-sm-16 col-xs-16 column">
+                            <div class="location-details">
+
+
+                                <div class="location-details__label">Графік роботи салону</div>
+                                <div class="location-details__value">Пн–Нд: 10:00–20:00</div>
+
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-16 col-md-16 col-sm-16 col-xs-16 column">
+                            <div class="location-details">
+                                <div class="location-details__label">Графік роботи майстра</div>
+                                <div class="location-details__value">-</div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- 2. вул. Городоцька, 35 -->
-                    <div class="location-card" data-id="2" data-lat="49.843100" data-lng="24.019500"
+                    <div class="row location-card" data-id="2" data-lat="49.843100" data-lng="24.019500"
                         data-address="вул. Городоцька, 35" data-phone="+38 (050) 022 3344">
-                        <div class="location-card__image">
-                            <img src="assets/img/salon-2.jpg" alt="Файна Оптика">
-                        </div>
-                        <div class="location-card__info">
-                            <div class="location-card__address-row">
-                                <h3 class="location-card__address">вул. Городоцька, 35</h3>
-                                <a href="https://www.google.com/maps/search/?api=1&query=49.843100,24.019500"
-                                    target="_blank" class="location-card__route">Прокласти маршрут</a>
+                        <div class="col-xl-3 col-lg-16 col-md-16 col-sm-6 col-xs-6 column">
+                            <div class="location__img-wrap">
+                                <img src="assets/img/salon-1.png" alt="Файна Оптика" class="location__img">
                             </div>
-                            <div class="location-card__details">
-                                <div class="location-card__row">
-                                    <span class="location-card__label">Телефон</span>
-                                    <span class="location-card__value">+38 (050) 022 3344</span>
-                                </div>
-                                <div class="location-card__row">
-                                    <span class="location-card__label">Графік роботи салону</span>
-                                    <span class="location-card__value">Пн–Сб: 10:00–19:00<br>Нд: 10:00–16:00</span>
-                                </div>
-                                <div class="location-card__row">
-                                    <span class="location-card__label">Графік роботи майстра</span>
-                                    <span class="location-card__value">-</span>
-                                </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-16 col-md-16 col-sm-10 col-xs-10 column">
+                            <div class="location__address-wrap">
+                                <h3 class="location__address">вул. Городоцька, 35</h3>
+                            <a href="https://www.google.com/maps/search/?api=1&query=49.843100,24.019500"
+                                target="_blank" class="location__route">Прокласти маршрут</a>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-16 col-md-16 col-sm-16 col-xs-16 column">
+                            <div class="location-details">
+                                <div class="location-details__label">Телефон</div>
+                                <div class="location-details__value">+38 (050) 031 6888</div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-16 col-md-16 col-sm-16 col-xs-16 column">
+                            <div class="location-details">
+
+
+                                <div class="location-details__label">Графік роботи салону</div>
+                                <div class="location-details__value">Пн–Нд: 10:00–20:00</div>
+
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-16 col-md-16 col-sm-16 col-xs-16 column">
+                            <div class="location-details">
+                                <div class="location-details__label">Графік роботи майстра</div>
+                                <div class="location-details__value">-</div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- 3. вул. Городоцька, 77 -->
-                    <div class="location-card" data-id="3" data-lat="49.844800" data-lng="24.015200"
-                        data-address="вул. Городоцька, 77" data-phone="+38 (050) 033 4455">
-                        <div class="location-card__image">
-                            <img src="assets/img/salon-3.jpg" alt="Файна Оптика">
-                        </div>
-                        <div class="location-card__info">
-                            <div class="location-card__address-row">
-                                <h3 class="location-card__address">вул. Городоцька, 77</h3>
-                                <a href="https://www.google.com/maps/search/?api=1&query=49.844800,24.015200"
-                                    target="_blank" class="location-card__route">Прокласти маршрут</a>
-                            </div>
-                            <div class="location-card__details">
-                                <div class="location-card__row">
-                                    <span class="location-card__label">Телефон</span>
-                                    <span class="location-card__value">+38 (050) 033 4455</span>
-                                </div>
-                                <div class="location-card__row">
-                                    <span class="location-card__label">Графік роботи салону</span>
-                                    <span class="location-card__value">Пн–Сб: 10:00–19:00<br>Нд: вихідний</span>
-                                </div>
-                                <div class="location-card__row">
-                                    <span class="location-card__label">Графік роботи майстра</span>
-                                    <span class="location-card__value">-</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 4. вул. Городоцька, 133 -->
-                    <div class="location-card" data-id="4" data-lat="49.848500" data-lng="24.004200"
-                        data-address="вул. Городоцька, 133" data-phone="+38 (050) 044 5566">
-                        <div class="location-card__image">
-                            <img src="assets/img/salon-4.jpg" alt="Файна Оптика">
-                        </div>
-                        <div class="location-card__info">
-                            <div class="location-card__address-row">
-                                <h3 class="location-card__address">вул. Городоцька, 133</h3>
-                                <a href="https://www.google.com/maps/search/?api=1&query=49.848500,24.004200"
-                                    target="_blank" class="location-card__route">Прокласти маршрут</a>
-                            </div>
-                            <div class="location-card__details">
-                                <div class="location-card__row">
-                                    <span class="location-card__label">Телефон</span>
-                                    <span class="location-card__value">+38 (050) 044 5566</span>
-                                </div>
-                                <div class="location-card__row">
-                                    <span class="location-card__label">Графік роботи салону</span>
-                                    <span class="location-card__value">Пн–Сб: 10:00–19:00<br>Нд: 10:00–16:00</span>
-                                </div>
-                                <div class="location-card__row">
-                                    <span class="location-card__label">Графік роботи майстра</span>
-                                    <span class="location-card__value">-</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 5. вул. Кавалерідзе, 1 -->
-                    <div class="location-card" data-id="5" data-lat="49.824500" data-lng="24.053100"
-                        data-address="вул. Кавалерідзе, 1" data-phone="+38 (050) 055 6677">
-                        <div class="location-card__image">
-                            <img src="assets/img/salon-5.jpg" alt="Файна Оптика">
-                        </div>
-                        <div class="location-card__info">
-                            <div class="location-card__address-row">
-                                <h3 class="location-card__address">вул. Кавалерідзе, 1</h3>
-                                <a href="https://www.google.com/maps/search/?api=1&query=49.824500,24.053100"
-                                    target="_blank" class="location-card__route">Прокласти маршрут</a>
-                            </div>
-                            <div class="location-card__details">
-                                <div class="location-card__row">
-                                    <span class="location-card__label">Телефон</span>
-                                    <span class="location-card__value">+38 (050) 055 6677</span>
-                                </div>
-                                <div class="location-card__row">
-                                    <span class="location-card__label">Графік роботи салону</span>
-                                    <span class="location-card__value">Пн–Сб: 10:00–19:00<br>Нд: вихідний</span>
-                                </div>
-                                <div class="location-card__row">
-                                    <span class="location-card__label">Графік роботи майстра</span>
-                                    <span class="location-card__value">-</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 6. вул. Куліша, 43 -->
-                    <div class="location-card" data-id="6" data-lat="49.846300" data-lng="24.025800"
-                        data-address="вул. Куліша, 43" data-phone="+38 (050) 066 7788">
-                        <div class="location-card__image">
-                            <img src="assets/img/salon-6.jpg" alt="Файна Оптика">
-                        </div>
-                        <div class="location-card__info">
-                            <div class="location-card__address-row">
-                                <h3 class="location-card__address">вул. Куліша, 43</h3>
-                                <a href="https://www.google.com/maps/search/?api=1&query=49.846300,24.025800"
-                                    target="_blank" class="location-card__route">Прокласти маршрут</a>
-                            </div>
-                            <div class="location-card__details">
-                                <div class="location-card__row">
-                                    <span class="location-card__label">Телефон</span>
-                                    <span class="location-card__value">+38 (050) 066 7788</span>
-                                </div>
-                                <div class="location-card__row">
-                                    <span class="location-card__label">Графік роботи салону</span>
-                                    <span class="location-card__value">Пн–Нд: 10:00–20:00</span>
-                                </div>
-                                <div class="location-card__row">
-                                    <span class="location-card__label">Графік роботи майстра</span>
-                                    <span class="location-card__value">-</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 7. вул. Широка-Низинна, 2 -->
-                    <div class="location-card" data-id="7" data-lat="49.851200" data-lng="23.968400"
-                        data-address="вул. Широка-Низинна, 2" data-phone="+38 (050) 077 8899">
-                        <div class="location-card__image">
-                            <img src="assets/img/salon-7.jpg" alt="Файна Оптика">
-                        </div>
-                        <div class="location-card__info">
-                            <div class="location-card__address-row">
-                                <h3 class="location-card__address">вул. Широка-Низинна, 2</h3>
-                                <a href="https://www.google.com/maps/search/?api=1&query=49.851200,23.968400"
-                                    target="_blank" class="location-card__route">Прокласти маршрут</a>
-                            </div>
-                            <div class="location-card__details">
-                                <div class="location-card__row">
-                                    <span class="location-card__label">Телефон</span>
-                                    <span class="location-card__value">+38 (050) 077 8899</span>
-                                </div>
-                                <div class="location-card__row">
-                                    <span class="location-card__label">Графік роботи салону</span>
-                                    <span class="location-card__value">Пн–Сб: 10:00–19:00<br>Нд: 10:00–16:00</span>
-                                </div>
-                                <div class="location-card__row">
-                                    <span class="location-card__label">Графік роботи майстра</span>
-                                    <span class="location-card__value">-</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 8. вул. Мазепи, 25а -->
-                    <div class="location-card" data-id="8" data-lat="49.871400" data-lng="24.030200"
-                        data-address="вул. Мазепи, 25а" data-phone="+38 (050) 088 9900">
-                        <div class="location-card__image">
-                            <img src="assets/img/salon-8.jpg" alt="Файна Оптика">
-                        </div>
-                        <div class="location-card__info">
-                            <div class="location-card__address-row">
-                                <h3 class="location-card__address">вул. Мазепи, 25а</h3>
-                                <a href="https://www.google.com/maps/search/?api=1&query=49.871400,24.030200"
-                                    target="_blank" class="location-card__route">Прокласти маршрут</a>
-                            </div>
-                            <div class="location-card__details">
-                                <div class="location-card__row">
-                                    <span class="location-card__label">Телефон</span>
-                                    <span class="location-card__value">+38 (050) 088 9900</span>
-                                </div>
-                                <div class="location-card__row">
-                                    <span class="location-card__label">Графік роботи салону</span>
-                                    <span class="location-card__value">Пн–Сб: 10:00–19:00<br>Нд: вихідний</span>
-                                </div>
-                                <div class="location-card__row">
-                                    <span class="location-card__label">Графік роботи майстра</span>
-                                    <span class="location-card__value">-</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 9. вул. Петлюри, 2 -->
-                    <div class="location-card" data-id="9" data-lat="49.828300" data-lng="23.985100"
-                        data-address="вул. Петлюри, 2" data-phone="+38 (050) 099 1122">
-                        <div class="location-card__image">
-                            <img src="assets/img/salon-9.jpg" alt="Файна Оптика">
-                        </div>
-                        <div class="location-card__info">
-                            <div class="location-card__address-row">
-                                <h3 class="location-card__address">вул. Петлюри, 2</h3>
-                                <a href="https://www.google.com/maps/search/?api=1&query=49.828300,23.985100"
-                                    target="_blank" class="location-card__route">Прокласти маршрут</a>
-                            </div>
-                            <div class="location-card__details">
-                                <div class="location-card__row">
-                                    <span class="location-card__label">Телефон</span>
-                                    <span class="location-card__value">+38 (050) 099 1122</span>
-                                </div>
-                                <div class="location-card__row">
-                                    <span class="location-card__label">Графік роботи салону</span>
-                                    <span class="location-card__value">Пн–Сб: 10:00–19:00<br>Нд: 10:00–16:00</span>
-                                </div>
-                                <div class="location-card__row">
-                                    <span class="location-card__label">Графік роботи майстра</span>
-                                    <span class="location-card__value">-</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
-        </section>
+            <!-- Список карток --
+            <div class="locations-list" id="locations-list">
 
+              
+                <div class="location-card" data-id="1" data-lat="49.856200" data-lng="24.026100"
+                    data-address="пр-т В'ячеслава Чорновола, 93, ТЦ «Арсен»" data-phone="+38 (050) 031 6888">
+                    <div class="location-card__image">
+                        <img src="assets/img/salon-1.png" alt="Файна Оптика">
+                    </div>
+                    <div class="location-card__info">
+                        <div class="location-card__address-row">
+                            <h3 class="location-card__address">пр-т В'ячеслава Чорновола, 93, ТЦ «Арсен»
+                            </h3>
+                            <a href="https://www.google.com/maps/search/?api=1&query=49.856200,24.026100"
+                                target="_blank" class="location-card__route">Прокласти маршрут</a>
+                        </div>
+                        <div class="location-card__details">
+                            <div class="location-card__row">
+                                <span class="location-card__label">Телефон</span>
+                                <span class="location-card__value">+38 (050) 031 6888</span>
+                            </div>
+                            <div class="location-card__row">
+                                <span class="location-card__label">Графік роботи салону</span>
+                                <span class="location-card__value">Пн–Нд: 10:00–20:00</span>
+                            </div>
+                            <div class="location-card__row">
+                                <span class="location-card__label">Графік роботи майстра</span>
+                                <span class="location-card__value">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="location-card" data-id="2" data-lat="49.843100" data-lng="24.019500"
+                    data-address="вул. Городоцька, 35" data-phone="+38 (050) 022 3344">
+                    <div class="location-card__image">
+                        <img src="assets/img/salon-2.jpg" alt="Файна Оптика">
+                    </div>
+                    <div class="location-card__info">
+                        <div class="location-card__address-row">
+                            <h3 class="location-card__address">вул. Городоцька, 35</h3>
+                            <a href="https://www.google.com/maps/search/?api=1&query=49.843100,24.019500"
+                                target="_blank" class="location-card__route">Прокласти маршрут</a>
+                        </div>
+                        <div class="location-card__details">
+                            <div class="location-card__row">
+                                <span class="location-card__label">Телефон</span>
+                                <span class="location-card__value">+38 (050) 022 3344</span>
+                            </div>
+                            <div class="location-card__row">
+                                <span class="location-card__label">Графік роботи салону</span>
+                                <span class="location-card__value">Пн–Сб: 10:00–19:00<br>Нд:
+                                    10:00–16:00</span>
+                            </div>
+                            <div class="location-card__row">
+                                <span class="location-card__label">Графік роботи майстра</span>
+                                <span class="location-card__value">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+          
+                <div class="location-card" data-id="3" data-lat="49.844800" data-lng="24.015200"
+                    data-address="вул. Городоцька, 77" data-phone="+38 (050) 033 4455">
+                    <div class="location-card__image">
+                        <img src="assets/img/salon-3.jpg" alt="Файна Оптика">
+                    </div>
+                    <div class="location-card__info">
+                        <div class="location-card__address-row">
+                            <h3 class="location-card__address">вул. Городоцька, 77</h3>
+                            <a href="https://www.google.com/maps/search/?api=1&query=49.844800,24.015200"
+                                target="_blank" class="location-card__route">Прокласти маршрут</a>
+                        </div>
+                        <div class="location-card__details">
+                            <div class="location-card__row">
+                                <span class="location-card__label">Телефон</span>
+                                <span class="location-card__value">+38 (050) 033 4455</span>
+                            </div>
+                            <div class="location-card__row">
+                                <span class="location-card__label">Графік роботи салону</span>
+                                <span class="location-card__value">Пн–Сб: 10:00–19:00<br>Нд: вихідний</span>
+                            </div>
+                            <div class="location-card__row">
+                                <span class="location-card__label">Графік роботи майстра</span>
+                                <span class="location-card__value">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+               
+                <div class="location-card" data-id="4" data-lat="49.848500" data-lng="24.004200"
+                    data-address="вул. Городоцька, 133" data-phone="+38 (050) 044 5566">
+                    <div class="location-card__image">
+                        <img src="assets/img/salon-4.jpg" alt="Файна Оптика">
+                    </div>
+                    <div class="location-card__info">
+                        <div class="location-card__address-row">
+                            <h3 class="location-card__address">вул. Городоцька, 133</h3>
+                            <a href="https://www.google.com/maps/search/?api=1&query=49.848500,24.004200"
+                                target="_blank" class="location-card__route">Прокласти маршрут</a>
+                        </div>
+                        <div class="location-card__details">
+                            <div class="location-card__row">
+                                <span class="location-card__label">Телефон</span>
+                                <span class="location-card__value">+38 (050) 044 5566</span>
+                            </div>
+                            <div class="location-card__row">
+                                <span class="location-card__label">Графік роботи салону</span>
+                                <span class="location-card__value">Пн–Сб: 10:00–19:00<br>Нд:
+                                    10:00–16:00</span>
+                            </div>
+                            <div class="location-card__row">
+                                <span class="location-card__label">Графік роботи майстра</span>
+                                <span class="location-card__value">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="location-card" data-id="5" data-lat="49.824500" data-lng="24.053100"
+                    data-address="вул. Кавалерідзе, 1" data-phone="+38 (050) 055 6677">
+                    <div class="location-card__image">
+                        <img src="assets/img/salon-5.jpg" alt="Файна Оптика">
+                    </div>
+                    <div class="location-card__info">
+                        <div class="location-card__address-row">
+                            <h3 class="location-card__address">вул. Кавалерідзе, 1</h3>
+                            <a href="https://www.google.com/maps/search/?api=1&query=49.824500,24.053100"
+                                target="_blank" class="location-card__route">Прокласти маршрут</a>
+                        </div>
+                        <div class="location-card__details">
+                            <div class="location-card__row">
+                                <span class="location-card__label">Телефон</span>
+                                <span class="location-card__value">+38 (050) 055 6677</span>
+                            </div>
+                            <div class="location-card__row">
+                                <span class="location-card__label">Графік роботи салону</span>
+                                <span class="location-card__value">Пн–Сб: 10:00–19:00<br>Нд: вихідний</span>
+                            </div>
+                            <div class="location-card__row">
+                                <span class="location-card__label">Графік роботи майстра</span>
+                                <span class="location-card__value">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+             
+                <div class="location-card" data-id="6" data-lat="49.846300" data-lng="24.025800"
+                    data-address="вул. Куліша, 43" data-phone="+38 (050) 066 7788">
+                    <div class="location-card__image">
+                        <img src="assets/img/salon-6.jpg" alt="Файна Оптика">
+                    </div>
+                    <div class="location-card__info">
+                        <div class="location-card__address-row">
+                            <h3 class="location-card__address">вул. Куліша, 43</h3>
+                            <a href="https://www.google.com/maps/search/?api=1&query=49.846300,24.025800"
+                                target="_blank" class="location-card__route">Прокласти маршрут</a>
+                        </div>
+                        <div class="location-card__details">
+                            <div class="location-card__row">
+                                <span class="location-card__label">Телефон</span>
+                                <span class="location-card__value">+38 (050) 066 7788</span>
+                            </div>
+                            <div class="location-card__row">
+                                <span class="location-card__label">Графік роботи салону</span>
+                                <span class="location-card__value">Пн–Нд: 10:00–20:00</span>
+                            </div>
+                            <div class="location-card__row">
+                                <span class="location-card__label">Графік роботи майстра</span>
+                                <span class="location-card__value">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+               
+                <div class="location-card" data-id="7" data-lat="49.851200" data-lng="23.968400"
+                    data-address="вул. Широка-Низинна, 2" data-phone="+38 (050) 077 8899">
+                    <div class="location-card__image">
+                        <img src="assets/img/salon-7.jpg" alt="Файна Оптика">
+                    </div>
+                    <div class="location-card__info">
+                        <div class="location-card__address-row">
+                            <h3 class="location-card__address">вул. Широка-Низинна, 2</h3>
+                            <a href="https://www.google.com/maps/search/?api=1&query=49.851200,23.968400"
+                                target="_blank" class="location-card__route">Прокласти маршрут</a>
+                        </div>
+                        <div class="location-card__details">
+                            <div class="location-card__row">
+                                <span class="location-card__label">Телефон</span>
+                                <span class="location-card__value">+38 (050) 077 8899</span>
+                            </div>
+                            <div class="location-card__row">
+                                <span class="location-card__label">Графік роботи салону</span>
+                                <span class="location-card__value">Пн–Сб: 10:00–19:00<br>Нд:
+                                    10:00–16:00</span>
+                            </div>
+                            <div class="location-card__row">
+                                <span class="location-card__label">Графік роботи майстра</span>
+                                <span class="location-card__value">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+               
+                <div class="location-card" data-id="8" data-lat="49.871400" data-lng="24.030200"
+                    data-address="вул. Мазепи, 25а" data-phone="+38 (050) 088 9900">
+                    <div class="location-card__image">
+                        <img src="assets/img/salon-8.jpg" alt="Файна Оптика">
+                    </div>
+                    <div class="location-card__info">
+                        <div class="location-card__address-row">
+                            <h3 class="location-card__address">вул. Мазепи, 25а</h3>
+                            <a href="https://www.google.com/maps/search/?api=1&query=49.871400,24.030200"
+                                target="_blank" class="location-card__route">Прокласти маршрут</a>
+                        </div>
+                        <div class="location-card__details">
+                            <div class="location-card__row">
+                                <span class="location-card__label">Телефон</span>
+                                <span class="location-card__value">+38 (050) 088 9900</span>
+                            </div>
+                            <div class="location-card__row">
+                                <span class="location-card__label">Графік роботи салону</span>
+                                <span class="location-card__value">Пн–Сб: 10:00–19:00<br>Нд: вихідний</span>
+                            </div>
+                            <div class="location-card__row">
+                                <span class="location-card__label">Графік роботи майстра</span>
+                                <span class="location-card__value">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+               
+                <div class="location-card" data-id="9" data-lat="49.828300" data-lng="23.985100"
+                    data-address="вул. Петлюри, 2" data-phone="+38 (050) 099 1122">
+                    <div class="location-card__image">
+                        <img src="assets/img/salon-9.jpg" alt="Файна Оптика">
+                    </div>
+                    <div class="location-card__info">
+                        <div class="location-card__address-row">
+                            <h3 class="location-card__address">вул. Петлюри, 2</h3>
+                            <a href="https://www.google.com/maps/search/?api=1&query=49.828300,23.985100"
+                                target="_blank" class="location-card__route">Прокласти маршрут</a>
+                        </div>
+                        <div class="location-card__details">
+                            <div class="location-card__row">
+                                <span class="location-card__label">Телефон</span>
+                                <span class="location-card__value">+38 (050) 099 1122</span>
+                            </div>
+                            <div class="location-card__row">
+                                <span class="location-card__label">Графік роботи салону</span>
+                                <span class="location-card__value">Пн–Сб: 10:00–19:00<br>Нд:
+                                    10:00–16:00</span>
+                            </div>
+                            <div class="location-card__row">
+                                <span class="location-card__label">Графік роботи майстра</span>
+                                <span class="location-card__value">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>-->
+
+        </section>
+       
         <section class="s-cta">
             <div class="container">
                 <div class="row cta__wrap">
