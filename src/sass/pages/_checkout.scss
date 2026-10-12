@@ -87,6 +87,11 @@
       display: none !important;
     }
   }
+
+  &:not(&:last-child) {
+    margin-bottom: 20px;
+  }
+
 }
 
 .checkout-form {
@@ -146,13 +151,13 @@
   .promo-code {
     display: flex;
     flex-direction: column;
-    gap: fluid(7,20);
+    gap: fluid(7, 20);
 
     @media (min-width: $breakpoint-lg) {
 
       flex-direction: row;
       align-items: center;
-      gap: fluid(10,20);
+      gap: fluid(10, 20);
 
     }
 
@@ -186,7 +191,7 @@
 
       @media (min-width: $breakpoint-lg) {
         flex: 1;
-       
+
       }
     }
   }
