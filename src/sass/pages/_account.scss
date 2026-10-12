@@ -84,7 +84,7 @@
     }
 
     &__title {
-      font-size: fluid(28, 40);
+      font-size: 25px;
       font-weight: 700;
       color: $color-primary;
       padding-bottom: 16px;
@@ -705,6 +705,31 @@
       }
     }
   }
+
+  .cbn-bonuses {
+    display: flex;
+    flex-direction: column;
+
+    &:has(.cbn-bonuses__media) {
+      display: grid;
+      grid-template-columns: 0.9fr 1fr;
+      align-items: center;
+      gap: 20px;
+
+      @media (max-width: 767px) {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    & .heading {
+      margin-bottom: fluid(23,40);
+    }
+
+    & .subtitle {
+      margin-bottom: fluid(26,35);
+      font-size: fluid(20, 25);
+    }
+  }
 }
 
 .accordeon-title {
@@ -746,15 +771,15 @@
   margin-right: 12px;
 
   &--warning {
-    color: #f59e0b;
+    color: rgba(238, 103, 14, 1);
   }
 
   &--danger {
-    color: #d92d20;
+    color: rgba(196, 0, 0, 1);
   }
 
   &--success {
-    color: #12b76a;
+    color: rgba(40, 163, 62, 1);
   }
 }
 
