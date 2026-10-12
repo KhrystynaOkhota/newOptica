@@ -8882,6 +8882,9 @@ html.chrome.filter-is-open body {
 .delivery-card__content[hidden] {
   display: none !important;
 }
+.delivery-card:not(.delivery-card:last-child) {
+  margin-bottom: 20px;
+}
 
 .checkout-form__title {
   font-size: clamp(1.25rem, 1.25rem + 5 * (100vw - 300px) / 1960, 1.5625rem);
