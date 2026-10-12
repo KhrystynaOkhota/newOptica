@@ -19,7 +19,188 @@
 </head>
 
 <body>
+    <style>
+        .contacts-map {
+            width: 100%;
+            height: 400px;
+            border-radius: 16px;
+            margin-bottom: 30px;
+        }
 
+        .contacts-search-wrapper {
+            margin-bottom: 24px;
+        }
+
+        .contacts-search-label {
+            display: block;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #111;
+        }
+
+        .contacts-search-box {
+            position: relative;
+        }
+
+        .contacts-search-input {
+            width: 100%;
+            padding: 12px 16px 12px 42px;
+            border: 1px solid #E5E7EB;
+            border-radius: 12px;
+            font-size: 15px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .contacts-search-input:focus {
+            border-color: #FF6600;
+            /* або твій акцентний колір */
+        }
+
+        .contacts-search-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9CA3AF;
+            pointer-events: none;
+        }
+
+        .locations-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .location-card {
+            background: #FFFFFF;
+            border: 1px solid #E5E7EB;
+            border-radius: 16px;
+            padding: 20px;
+            display: flex;
+            gap: 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .location-card:hover,
+        .location-card.is-active {
+            border-color: #FF6600;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .location-card__image {
+            width: 120px;
+            height: 90px;
+            border-radius: 8px;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: #F3F4F6;
+        }
+
+        .location-card__image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .location-card__info {
+            flex-grow: 1;
+        }
+
+        .location-card__address-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .location-card__address {
+            font-size: 16px;
+            font-weight: 700;
+            color: #111;
+            margin: 0;
+        }
+
+        .location-card__route {
+            font-size: 14px;
+            font-weight: 500;
+            color: #FF6600;
+            text-decoration: none;
+        }
+
+        .location-card__route:hover {
+            text-decoration: underline;
+        }
+
+        .location-card__details {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            border-top: 1px solid #F3F4F6;
+            padding-top: 10px;
+        }
+
+        .location-card__row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+        }
+
+        .location-card__label {
+            color: #6B7280;
+        }
+
+        .location-card__value {
+            color: #111;
+            font-weight: 500;
+            text-align: right;
+        }
+
+        /* Стилі для кастомного попапа на карті */
+        .map-custom-tooltip {
+            position: absolute;
+            transform: translate(-50%, -100%);
+            margin-top: -12px;
+            z-index: 100;
+            pointer-events: none;
+        }
+
+        .map-custom-tooltip__content {
+            background: #FFFFFF;
+            padding: 6px 12px;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            font-size: 13px;
+            font-weight: 600;
+            color: #111;
+            white-space: nowrap;
+        }
+
+        /* Адаптивність для мобільних пристроїв */
+        @media (max-width: 768px) {
+            .location-card {
+                flex-direction: column;
+                gap: 12px;
+                padding: 16px;
+            }
+
+            .location-card__image {
+                width: 100%;
+                height: 140px;
+            }
+
+            .location-card__row {
+                flex-direction: column;
+                gap: 2px;
+            }
+
+            .location-card__value {
+                text-align: left;
+            }
+        }
+    </style>
 
     <header class="header">
         <div class="h-menu-overlay"></div>
@@ -208,7 +389,7 @@
             </div>
         </div>
 
-        <section class="s-contacts">
+        <!--<section class="s-contacts">
 
             <div class="container ">
                 <div class="row m-row ">
@@ -241,14 +422,393 @@
                     </div>
                 </div>
             </div>
+        </section>-->
+        <section class="contacts-section">
+            <div class="container">
+                <h1 class="contacts-title">Контакти</h1>
+
+                <!-- Карта -->
+                <div id="map" class="contacts-map"></div>
+
+                <!-- Пошук за адресою -->
+                <div class="contacts-search-wrapper">
+                    <label for="locations-search" class="contacts-search-label">Пошук за адресою</label>
+                    <div class="contacts-search-box">
+                        <input type="text" id="locations-search" class="contacts-search-input" placeholder="Пошук">
+                        <svg class="contacts-search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Список карток -->
+                <div class="locations-list" id="locations-list">
+
+                    <!-- 1. пр-т В'ячеслава Чорновола, 93 -->
+                    <div class="location-card" data-id="1" data-lat="49.856200" data-lng="24.026100"
+                        data-address="пр-т В'ячеслава Чорновола, 93, ТЦ «Арсен»" data-phone="+38 (050) 031 6888">
+                        <div class="location-card__image">
+                            <img src="assets/img/salon-1.jpg" alt="Файна Оптика">
+                        </div>
+                        <div class="location-card__info">
+                            <div class="location-card__address-row">
+                                <h3 class="location-card__address">пр-т В'ячеслава Чорновола, 93, ТЦ «Арсен»</h3>
+                                <a href="https://www.google.com/maps/search/?api=1&query=49.856200,24.026100"
+                                    target="_blank" class="location-card__route">Прокласти маршрут</a>
+                            </div>
+                            <div class="location-card__details">
+                                <div class="location-card__row">
+                                    <span class="location-card__label">Телефон</span>
+                                    <span class="location-card__value">+38 (050) 031 6888</span>
+                                </div>
+                                <div class="location-card__row">
+                                    <span class="location-card__label">Графік роботи салону</span>
+                                    <span class="location-card__value">Пн–Нд: 10:00–20:00</span>
+                                </div>
+                                <div class="location-card__row">
+                                    <span class="location-card__label">Графік роботи майстра</span>
+                                    <span class="location-card__value">-</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. вул. Городоцька, 35 -->
+                    <div class="location-card" data-id="2" data-lat="49.843100" data-lng="24.019500"
+                        data-address="вул. Городоцька, 35" data-phone="+38 (050) 022 3344">
+                        <div class="location-card__image">
+                            <img src="assets/img/salon-2.jpg" alt="Файна Оптика">
+                        </div>
+                        <div class="location-card__info">
+                            <div class="location-card__address-row">
+                                <h3 class="location-card__address">вул. Городоцька, 35</h3>
+                                <a href="https://www.google.com/maps/search/?api=1&query=49.843100,24.019500"
+                                    target="_blank" class="location-card__route">Прокласти маршрут</a>
+                            </div>
+                            <div class="location-card__details">
+                                <div class="location-card__row">
+                                    <span class="location-card__label">Телефон</span>
+                                    <span class="location-card__value">+38 (050) 022 3344</span>
+                                </div>
+                                <div class="location-card__row">
+                                    <span class="location-card__label">Графік роботи салону</span>
+                                    <span class="location-card__value">Пн–Сб: 10:00–19:00<br>Нд: 10:00–16:00</span>
+                                </div>
+                                <div class="location-card__row">
+                                    <span class="location-card__label">Графік роботи майстра</span>
+                                    <span class="location-card__value">-</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. вул. Городоцька, 77 -->
+                    <div class="location-card" data-id="3" data-lat="49.844800" data-lng="24.015200"
+                        data-address="вул. Городоцька, 77" data-phone="+38 (050) 033 4455">
+                        <div class="location-card__image">
+                            <img src="assets/img/salon-3.jpg" alt="Файна Оптика">
+                        </div>
+                        <div class="location-card__info">
+                            <div class="location-card__address-row">
+                                <h3 class="location-card__address">вул. Городоцька, 77</h3>
+                                <a href="https://www.google.com/maps/search/?api=1&query=49.844800,24.015200"
+                                    target="_blank" class="location-card__route">Прокласти маршрут</a>
+                            </div>
+                            <div class="location-card__details">
+                                <div class="location-card__row">
+                                    <span class="location-card__label">Телефон</span>
+                                    <span class="location-card__value">+38 (050) 033 4455</span>
+                                </div>
+                                <div class="location-card__row">
+                                    <span class="location-card__label">Графік роботи салону</span>
+                                    <span class="location-card__value">Пн–Сб: 10:00–19:00<br>Нд: вихідний</span>
+                                </div>
+                                <div class="location-card__row">
+                                    <span class="location-card__label">Графік роботи майстра</span>
+                                    <span class="location-card__value">-</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4. вул. Городоцька, 133 -->
+                    <div class="location-card" data-id="4" data-lat="49.848500" data-lng="24.004200"
+                        data-address="вул. Городоцька, 133" data-phone="+38 (050) 044 5566">
+                        <div class="location-card__image">
+                            <img src="assets/img/salon-4.jpg" alt="Файна Оптика">
+                        </div>
+                        <div class="location-card__info">
+                            <div class="location-card__address-row">
+                                <h3 class="location-card__address">вул. Городоцька, 133</h3>
+                                <a href="https://www.google.com/maps/search/?api=1&query=49.848500,24.004200"
+                                    target="_blank" class="location-card__route">Прокласти маршрут</a>
+                            </div>
+                            <div class="location-card__details">
+                                <div class="location-card__row">
+                                    <span class="location-card__label">Телефон</span>
+                                    <span class="location-card__value">+38 (050) 044 5566</span>
+                                </div>
+                                <div class="location-card__row">
+                                    <span class="location-card__label">Графік роботи салону</span>
+                                    <span class="location-card__value">Пн–Сб: 10:00–19:00<br>Нд: 10:00–16:00</span>
+                                </div>
+                                <div class="location-card__row">
+                                    <span class="location-card__label">Графік роботи майстра</span>
+                                    <span class="location-card__value">-</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 5. вул. Кавалерідзе, 1 -->
+                    <div class="location-card" data-id="5" data-lat="49.824500" data-lng="24.053100"
+                        data-address="вул. Кавалерідзе, 1" data-phone="+38 (050) 055 6677">
+                        <div class="location-card__image">
+                            <img src="assets/img/salon-5.jpg" alt="Файна Оптика">
+                        </div>
+                        <div class="location-card__info">
+                            <div class="location-card__address-row">
+                                <h3 class="location-card__address">вул. Кавалерідзе, 1</h3>
+                                <a href="https://www.google.com/maps/search/?api=1&query=49.824500,24.053100"
+                                    target="_blank" class="location-card__route">Прокласти маршрут</a>
+                            </div>
+                            <div class="location-card__details">
+                                <div class="location-card__row">
+                                    <span class="location-card__label">Телефон</span>
+                                    <span class="location-card__value">+38 (050) 055 6677</span>
+                                </div>
+                                <div class="location-card__row">
+                                    <span class="location-card__label">Графік роботи салону</span>
+                                    <span class="location-card__value">Пн–Сб: 10:00–19:00<br>Нд: вихідний</span>
+                                </div>
+                                <div class="location-card__row">
+                                    <span class="location-card__label">Графік роботи майстра</span>
+                                    <span class="location-card__value">-</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 6. вул. Куліша, 43 -->
+                    <div class="location-card" data-id="6" data-lat="49.846300" data-lng="24.025800"
+                        data-address="вул. Куліша, 43" data-phone="+38 (050) 066 7788">
+                        <div class="location-card__image">
+                            <img src="assets/img/salon-6.jpg" alt="Файна Оптика">
+                        </div>
+                        <div class="location-card__info">
+                            <div class="location-card__address-row">
+                                <h3 class="location-card__address">вул. Куліша, 43</h3>
+                                <a href="https://www.google.com/maps/search/?api=1&query=49.846300,24.025800"
+                                    target="_blank" class="location-card__route">Прокласти маршрут</a>
+                            </div>
+                            <div class="location-card__details">
+                                <div class="location-card__row">
+                                    <span class="location-card__label">Телефон</span>
+                                    <span class="location-card__value">+38 (050) 066 7788</span>
+                                </div>
+                                <div class="location-card__row">
+                                    <span class="location-card__label">Графік роботи салону</span>
+                                    <span class="location-card__value">Пн–Нд: 10:00–20:00</span>
+                                </div>
+                                <div class="location-card__row">
+                                    <span class="location-card__label">Графік роботи майстра</span>
+                                    <span class="location-card__value">-</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 7. вул. Широка-Низинна, 2 -->
+                    <div class="location-card" data-id="7" data-lat="49.851200" data-lng="23.968400"
+                        data-address="вул. Широка-Низинна, 2" data-phone="+38 (050) 077 8899">
+                        <div class="location-card__image">
+                            <img src="assets/img/salon-7.jpg" alt="Файна Оптика">
+                        </div>
+                        <div class="location-card__info">
+                            <div class="location-card__address-row">
+                                <h3 class="location-card__address">вул. Широка-Низинна, 2</h3>
+                                <a href="https://www.google.com/maps/search/?api=1&query=49.851200,23.968400"
+                                    target="_blank" class="location-card__route">Прокласти маршрут</a>
+                            </div>
+                            <div class="location-card__details">
+                                <div class="location-card__row">
+                                    <span class="location-card__label">Телефон</span>
+                                    <span class="location-card__value">+38 (050) 077 8899</span>
+                                </div>
+                                <div class="location-card__row">
+                                    <span class="location-card__label">Графік роботи салону</span>
+                                    <span class="location-card__value">Пн–Сб: 10:00–19:00<br>Нд: 10:00–16:00</span>
+                                </div>
+                                <div class="location-card__row">
+                                    <span class="location-card__label">Графік роботи майстра</span>
+                                    <span class="location-card__value">-</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 8. вул. Мазепи, 25а -->
+                    <div class="location-card" data-id="8" data-lat="49.871400" data-lng="24.030200"
+                        data-address="вул. Мазепи, 25а" data-phone="+38 (050) 088 9900">
+                        <div class="location-card__image">
+                            <img src="assets/img/salon-8.jpg" alt="Файна Оптика">
+                        </div>
+                        <div class="location-card__info">
+                            <div class="location-card__address-row">
+                                <h3 class="location-card__address">вул. Мазепи, 25а</h3>
+                                <a href="https://www.google.com/maps/search/?api=1&query=49.871400,24.030200"
+                                    target="_blank" class="location-card__route">Прокласти маршрут</a>
+                            </div>
+                            <div class="location-card__details">
+                                <div class="location-card__row">
+                                    <span class="location-card__label">Телефон</span>
+                                    <span class="location-card__value">+38 (050) 088 9900</span>
+                                </div>
+                                <div class="location-card__row">
+                                    <span class="location-card__label">Графік роботи салону</span>
+                                    <span class="location-card__value">Пн–Сб: 10:00–19:00<br>Нд: вихідний</span>
+                                </div>
+                                <div class="location-card__row">
+                                    <span class="location-card__label">Графік роботи майстра</span>
+                                    <span class="location-card__value">-</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 9. вул. Петлюри, 2 -->
+                    <div class="location-card" data-id="9" data-lat="49.828300" data-lng="23.985100"
+                        data-address="вул. Петлюри, 2" data-phone="+38 (050) 099 1122">
+                        <div class="location-card__image">
+                            <img src="assets/img/salon-9.jpg" alt="Файна Оптика">
+                        </div>
+                        <div class="location-card__info">
+                            <div class="location-card__address-row">
+                                <h3 class="location-card__address">вул. Петлюри, 2</h3>
+                                <a href="https://www.google.com/maps/search/?api=1&query=49.828300,23.985100"
+                                    target="_blank" class="location-card__route">Прокласти маршрут</a>
+                            </div>
+                            <div class="location-card__details">
+                                <div class="location-card__row">
+                                    <span class="location-card__label">Телефон</span>
+                                    <span class="location-card__value">+38 (050) 099 1122</span>
+                                </div>
+                                <div class="location-card__row">
+                                    <span class="location-card__label">Графік роботи салону</span>
+                                    <span class="location-card__value">Пн–Сб: 10:00–19:00<br>Нд: 10:00–16:00</span>
+                                </div>
+                                <div class="location-card__row">
+                                    <span class="location-card__label">Графік роботи майстра</span>
+                                    <span class="location-card__value">-</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="s-cta">
+            <div class="container">
+                <div class="row cta__wrap">
+                    <div class="col-xl-9 col-lg-9 col-md-16 col-sm-16 col-xs-16 overlap">
+                        <h2 class="cta__heading h2 text-bold">Виникли запитання?</h2>
+                        <div class="cta__description text-bold">Наш спеціаліст відповість на них впродовж 15
+                            хв</div>
+
+                        <div class="cta__form">
+                            <form>
+                                <div class="row m-row">
+                                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-16 col-xs-16 column">
+                                        <div class="field">
+                                            <label class="field__label" for="user-name">Ваше
+                                                ім’я</label>
+                                            <input class="field__input" type="text" id="user-name" name="name"
+                                                placeholder="Ваше ім’я">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-8 col-lg-16 col-md-8 col-sm-16 col-xs-16 column">
+                                        <div class="field ">
+                                            <label class="field__label" for="user-phone">Ваш номер
+                                                телефону</label>
+                                            <input class="field__input" type="tel" id="user-phone" name="phone"
+                                                placeholder="Ваш номер телефону">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row m-row">
+                                    <div class="col-xl-16 col-lg-16 col-md-16 col-sm-16 col-xs-16 column">
+                                        <button class="btn btn--primary" type="submit">
+                                            Відправити
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Блок 1: Написати нам (месенджери) -->
+                        <div class="socials">
+                            <span class="socials__label">Написати нам:</span>
+
+                            <ul class="socials__list" role="list">
+                                <li class="socials__item">
+                                    <a href="viber://chat?number=%2B380500136888"
+                                        class="socials__link socials__link--viber" target="_blank" rel="noopener"
+                                        aria-label="Viber">
+
+                                        <div class="socials__icon-wrap">
+                                            <svg class="socials__icon" aria-hidden="true" width="36" height="36">
+                                                <use href="assets/img/symbol.svg#viber"></use>
+                                            </svg>
+                                        </div>
+                                        <span class="socials__text">Viber</span>
+                                    </a>
+                                </li>
+
+                                <li class="socials__item">
+                                    <a href="https://wa.me/380500136888" class="socials__link socials__link--whatsapp"
+                                        target="_blank" rel="noopener" aria-label="WhatsApp">
+                                        <div class="socials__icon-wrap">
+                                            <svg class="socials__icon" aria-hidden="true" width="36" height="36">
+                                                <use href="assets/img/symbol.svg#whatsapp"></use>
+                                            </svg>
+                                        </div>
+                                        <span class="socials__text">WhatsApp</span>
+                                    </a>
+                                </li>
+
+                                <li class="socials__item">
+                                    <a href="https://t.me/+380500136888" class="socials__link socials__link--telegram"
+                                        target="_blank" rel="noopener" aria-label="Telegram">
+                                        <div class="socials__icon-wrap">
+                                            <svg class="socials__icon" aria-hidden="true" width="36" height="36">
+                                                <use href="assets/img/symbol.svg#telegram"></use>
+                                            </svg>
+                                        </div>
+                                        <span class="socials__text">Telegram</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="cta__img--wrap">
+                        <img src="assets/img/consultation-2.png" alt="cta img" class="cta__img">
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
     <footer class="footer">
         <div class="footer__inner">
             <div class="container">
                 <h2 class="visually-hidden">Інформація про компанію та навігація</h2>
-                <div class="row m-row">
-                    <div class="col-xl-5 col-lg-5 col-md-16 col-sm-16 col-xs-16 column">
+                <div class="row m-row align-center">
+                    <div class="col-xl-5 col-lg-5 col-md-10 col-sm-16 col-xs-16 column">
                         <a href="/" class="footer__logo" aria-label="VeroMed — На головну">
                             <img src="assets/img/logo-light.svg" alt="" width="180" height="60" loading="lazy">
                         </a>
@@ -267,11 +827,17 @@
                             </form>
                         </div>
                     </div>
-                    <div class="col-xl-3 col-lg-3 col-md-5 col-sm-16 col-xs-16 column">
+                    <div class="col-xl-3 col-lg-3 col-md-10 col-sm-16 col-xs-16 column">
 
-                        <div class="footer-nav">
-                            <h3 class="footer-nav__title text-bold">Про нас</h3>
-                            <div>
+                        <div class="footer-nav js-footer-accordion">
+                            <div class="footer-nav__title-wrap">
+                                <h3 class="footer-nav__title text-bold">Про нас</h3>
+                                <svg class="footer-nav__icon" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                                    <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="1.5"
+                                        stroke-linecap="round" />
+                                </svg>
+                            </div>
+                            <div class="footer-nav__content">
                                 <ul class="menu">
                                     <li class="menu-item current-menu-item"><a href="about.html">Про компанію</a></li>
                                     <li class="menu-item "><a href="services.html">Послуги</a></li>
@@ -284,10 +850,16 @@
                         </div>
 
                     </div>
-                    <div class="col-xl-4 col-lg-4 col-md-5 col-sm-16 col-xs-16 column">
-                        <div class="footer-nav">
-                            <h3 class="footer-nav__title text-bold">Каталог</h3>
-                            <div>
+                    <div class="col-xl-4 col-lg-4 col-md-10 col-sm-16 col-xs-16 column">
+                        <div class="footer-nav js-footer-accordion">
+                            <div class="footer-nav__title-wrap">
+                                <h3 class="footer-nav__title text-bold">Каталог</h3>
+                                <svg class="footer-nav__icon" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                                    <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="1.5"
+                                        stroke-linecap="round" />
+                                </svg>
+                            </div>
+                            <div class="footer-nav__content">
                                 <ul class="menu">
                                     <li class="menu-item "><a href="">Оправи для зору</a></li>
                                     <li class="menu-item "><a href="">Сонцезахисні окуляри</a></li>
@@ -299,132 +871,165 @@
                         </div>
 
                     </div>
-                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-16 col-xs-16 column">
-                        <div class="footer-nav">
-                            <h3 class="footer-nav__title text-bold">Контакти</h3>
-                            <div class="contact">
-                                <div class="contact__item">
-                                    <a href="mailto:info@rybnuy-kombinat.com" class="contact__text">
-                                        info@rybnuy-kombinat.com
-                                    </a>
-                                </div>
-
-                                <div class="contact__item ">
-                                    <a href="tel:+380500749888" class="contact__text">+38 050 07 49 888</a>
-                                </div>
+                    <div class="col-xl-4 col-lg-4 col-md-10 col-sm-16 col-xs-16 column">
+                        <div class="footer-nav js-footer-accordion">
+                            <div class="footer-nav__title-wrap">
+                                <h3 class="footer-nav__title text-bold">Контакти</h3>
+                                <svg class="footer-nav__icon" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                                    <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="1.5"
+                                        stroke-linecap="round" />
+                                </svg>
                             </div>
-                            <div class="socials">
-                                <span class="socials__label">Написати нам:</span>
-
-                                <ul class="socials__list" role="list">
-                                    <li class="socials__item">
-                                        <a href="viber://chat?number=%2B380500136888"
-                                            class="socials__link socials__link--viber" target="_blank" rel="noopener"
-                                            aria-label="Viber">
-                                            <svg class="icon" aria-hidden="true" width="36" height="36">
-                                                <use href="assets/img/symbol.svg#viber"></use>
-                                            </svg>
-
+                            <div class="footer-nav__content">
+                                <div class="contact">
+                                    <div class="contact__item">
+                                        <a href="mailto:info@rybnuy-kombinat.com" class="contact__text">
+                                            info@rybnuy-kombinat.com
                                         </a>
-                                    </li>
+                                    </div>
 
-                                    <li class="socials__item">
-                                        <a href="https://wa.me/380500136888"
-                                            class="socials__link socials__link--whatsapp" target="_blank" rel="noopener"
-                                            aria-label="WhatsApp">
-                                            <svg class="icon" aria-hidden="true" width="36" height="36">
-                                                <use href="assets/img/symbol.svg#whatsapp"></use>
-                                            </svg>
+                                    <div class="contact__item ">
+                                        <a href="tel:+380500749888" class="contact__text">+38 050 07 49 888</a>
+                                    </div>
+                                </div>
+                                <div class="socials">
+                                    <span class="socials__label">Написати нам:</span>
 
-                                        </a>
-                                    </li>
+                                    <ul class="socials__list" role="list">
 
-                                    <li class="socials__item">
-                                        <a href="https://t.me/+380500136888"
-                                            class="socials__link socials__link--telegram" target="_blank" rel="noopener"
-                                            aria-label="Telegram">
-                                            <svg class="icon" aria-hidden="true" width="36" height="36">
-                                                <use href="assets/img/symbol.svg#telegram"></use>
-                                            </svg>
+                                        <li class="socials__item">
+                                            <a href="https://t.me/+380500136888"
+                                                class="socials__link socials__link--telegram" target="_blank"
+                                                rel="noopener" aria-label="Telegram">
+                                                <div class="socials__icon-wrap">
+                                                    <svg class="socials__icon" aria-hidden="true" width="36"
+                                                        height="36">
+                                                        <use href="assets/img/symbol.svg#telegram"></use>
+                                                    </svg>
+                                                </div>
 
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="socials socials--col">
-                                <span class="socials__label d-block">Підписуйтесь:</span>
+                                            </a>
+                                        </li>
+                                        <li class="socials__item">
+                                            <a href="https://wa.me/380500136888"
+                                                class="socials__link socials__link--whatsapp" target="_blank"
+                                                rel="noopener" aria-label="WhatsApp">
+                                                <div class="socials__icon-wrap">
+                                                    <svg class="socials__icon" aria-hidden="true" width="36"
+                                                        height="36">
+                                                        <use href="assets/img/symbol.svg#whatsapp"></use>
+                                                    </svg>
+                                                </div>
 
-                                <ul class="socials__list" role="list">
-                                    <li class="socials__item">
-                                        <a href="#" class="socials__link socials__link--youtube" target="_blank"
-                                            rel="noopener" aria-label="YouTube">
-                                            <svg class="icon" aria-hidden="true" width="36" height="36">
-                                                <use href="assets/img/symbol.svg#youtube"></use>
-                                            </svg>
-                                        </a>
-                                    </li>
+                                            </a>
+                                        </li>
+                                        <li class="socials__item">
+                                            <a href="viber://chat?number=%2B380500136888"
+                                                class="socials__link socials__link--viber" target="_blank"
+                                                rel="noopener" aria-label="Viber">
 
-                                    <li class="socials__item">
-                                        <a href="#" class="socials__link socials__link--threads" target="_blank"
-                                            rel="noopener" aria-label="Threads">
-                                            <svg class="icon" aria-hidden="true" width="36" height="36">
-                                                <use href="assets/img/symbol.svg#threads"></use>
-                                            </svg>
-                                        </a>
-                                    </li>
+                                                <div class="socials__icon-wrap">
+                                                    <svg class="socials__icon" aria-hidden="true" width="36"
+                                                        height="36">
+                                                        <use href="assets/img/symbol.svg#viber"></use>
+                                                    </svg>
+                                                </div>
 
-                                    <li class="socials__item">
-                                        <a href="#" class="socials__link socials__link--facebook" target="_blank"
-                                            rel="noopener" aria-label="Facebook">
-                                            <svg class="icon" aria-hidden="true" width="36" height="36">
-                                                <use href="assets/img/symbol.svg#facebook"></use>
-                                            </svg>
-                                        </a>
-                                    </li>
+                                            </a>
+                                        </li>
 
-                                    <li class="socials__item">
-                                        <a href="#" class="socials__link socials__link--instagram" target="_blank"
-                                            rel="noopener" aria-label="Instagram">
-                                            <svg class="icon" aria-hidden="true" width="36" height="36">
-                                                <use href="assets/img/symbol.svg#instagram"></use>
-                                            </svg>
-                                        </a>
-                                    </li>
+                                    </ul>
+                                </div>
+                                <div class="socials socials--col">
+                                    <span class="socials__label d-block">Підписуйтесь:</span>
 
-                                    <li class="socials__item">
-                                        <a href="#" class="socials__link socials__link--tiktok" target="_blank"
-                                            rel="noopener" aria-label="TikTok">
-                                            <svg class="icon" aria-hidden="true" width="36" height="36">
-                                                <use href="assets/img/symbol.svg#tiktok"></use>
-                                            </svg>
-                                        </a>
-                                    </li>
-                                </ul>
+                                    <ul class="socials__list" role="list">
+                                        <li class="socials__item">
+                                            <a href="#" class="socials__link socials__link--youtube" target="_blank"
+                                                rel="noopener" aria-label="YouTube">
+                                                <div class="socials__icon-wrap">
+                                                    <svg class="socials__icon" aria-hidden="true" width="36"
+                                                        height="36">
+                                                        <use href="assets/img/symbol.svg#youtube"></use>
+                                                    </svg>
+                                                </div>
+                                            </a>
+                                        </li>
+
+                                        <li class="socials__item">
+                                            <a href="#" class="socials__link socials__link--threads" target="_blank"
+                                                rel="noopener" aria-label="Threads">
+                                                <div class="socials__icon-wrap">
+                                                    <svg class="socials__icon" aria-hidden="true" width="36"
+                                                        height="36">
+                                                        <use href="assets/img/symbol.svg#threads"></use>
+                                                    </svg>
+                                                </div>
+                                            </a>
+                                        </li>
+
+                                        <li class="socials__item">
+                                            <a href="#" class="socials__link socials__link--facebook" target="_blank"
+                                                rel="noopener" aria-label="Facebook">
+                                                <div class="socials__icon-wrap">
+                                                    <svg class="socials__icon" aria-hidden="true" width="36"
+                                                        height="36">
+                                                        <use href="assets/img/symbol.svg#facebook"></use>
+                                                    </svg>
+                                                </div>
+                                            </a>
+                                        </li>
+
+                                        <li class="socials__item">
+                                            <a href="#" class="socials__link socials__link--instagram" target="_blank"
+                                                rel="noopener" aria-label="Instagram">
+                                                <div class="socials__icon-wrap">
+                                                    <svg class="socials__icon" aria-hidden="true" width="36"
+                                                        height="36">
+                                                        <use href="assets/img/symbol.svg#instagram"></use>
+                                                    </svg>
+                                                </div>
+                                            </a>
+                                        </li>
+
+                                        <li class="socials__item">
+                                            <a href="#" class="socials__link socials__link--tiktok" target="_blank"
+                                                rel="noopener" aria-label="TikTok">
+                                                <div class="socials__icon-wrap">
+                                                    <svg class="socials__icon" aria-hidden="true" width="36"
+                                                        height="36">
+                                                        <use href="assets/img/symbol.svg#tiktok"></use>
+                                                    </svg>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
-
-        <div class="container footer__bottom">
-            <div class="row m-row">
-                <div class="col-xl-5 col-lg-5 col-md-16 col-sm-16 col-xs-16 column ">
-                    <div class="copyright">© 2026 Усі права захищено </div>
-                </div>
-                <div class="col-xl-6 col-lg-6 col-md-16 col-sm-16 col-xs-16 column ">
-                    <ul class="menu">
-                        <li class="menu-item current-menu-item"><a href="">Договір оферта</a></li>
-                        <li class="menu-item "><a href="">Політика конфіденційності</a></li>
-                    </ul>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-16 col-sm-16 col-xs-16 column ">
-                    <div class="develop d-flex align-middle align-left">
-                        Дизайн та розробка -
-                        <a href="https://webtune.com.ua/" target="_blank" rel="nofollow" class="develop__link">
-                            WebTune
-                        </a>
+        <div class="footer__bottom">
+            <div class="container ">
+                <div class="row m-row">
+                    <div class="col-xl-4 col-lg-4 col-md-16 col-sm-16 col-xs-16 column ">
+                        <div class="copyright">© 2026 Усі права захищено </div>
+                    </div>
+                    <div class="col-xl-8 col-lg-7 col-md-16 col-sm-16 col-xs-16 column ">
+                        <ul class="legal-menu">
+                            <li class="legal-menu__item current-menu-item"><a href="">Договір оферта</a></li>
+                            <li class="legal-menu__item "><a href="">Політика конфіденційності</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xl-4 col-lg-5 col-md-16 col-sm-16 col-xs-16 column ">
+                        <div class="develop">
+                            Дизайн та розробка -
+                            <a href="https://webtune.com.ua/" target="_blank" rel="nofollow" class="develop__link">
+                                WebTune
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -477,10 +1082,11 @@
         </div>
 
     </div>
-    <!--<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9h5L2xSWEvRFgLc7y4d16KPUDydNgs9Y"
-        type="text/javascript" ></script>-->
-
-
+    <!-- Підключення скрипта Google Maps -->
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9h5L2xSWEvRFgLc7y4d16KPUDydNgs9Y&libraries=places&callback=initMapComponent&loading=async"
+        async defer>
+        </script>
 
 
     <script src="assets/js/jquery-3.7.0.min.js"></script>
@@ -490,169 +1096,170 @@
 
     <script src="src/scripts/app-swiper.js"></script>
     <script src="src/scripts/js_app.js"></script>
-    <!--<script src="src/scripts/app_map.js"></script>-->
     <script>
         let map = null;
         let markers = [];
         let customTooltip = null;
 
-        // Оголошуємо window.initMap, який викликає Google Maps API через callback=initMap
-        window.initMap = function initMap() {
-            const pickerItems = document.querySelectorAll(".picker__item");
-            if (!pickerItems.length) return;
+        window.initMapComponent = async function initMapComponent() {
+            const mapContainer = document.getElementById('map');
+            const locationCards = document.querySelectorAll('.location-card');
 
-            // Клас розширює OverlayView СТРОГО після завантаження Google Maps API
-            class CustomTooltip extends google.maps.OverlayView {
-                constructor() {
-                    super();
-                    this.div = null;
-                    this.position = null;
-                    this.text = "";
-                }
+            if (!mapContainer || !locationCards.length) return;
 
-                onAdd() {
-                    this.div = document.createElement("div");
-                    this.div.className = "map-custom-tooltip";
-                    this.div.innerHTML = `<div class="map-custom-tooltip__content"></div>`;
+            try {
+                const { AdvancedMarkerElement } = await google.maps.importLibrary('marker');
 
-                    const panes = this.getPanes();
-                    panes.floatPane.appendChild(this.div);
-                }
-
-                draw() {
-                    if (!this.div || !this.position) return;
-
-                    const overlayProjection = this.getProjection();
-                    const point = overlayProjection.fromLatLngToDivPixel(this.position);
-
-                    if (point) {
-                        this.div.style.left = point.x + "px";
-                        this.div.style.top = point.y + "px";
-                        const contentEl = this.div.querySelector(".map-custom-tooltip__content");
-                        if (contentEl) contentEl.textContent = this.text;
-                    }
-                }
-
-                onRemove() {
-                    if (this.div && this.div.parentNode) {
-                        this.div.parentNode.removeChild(this.div);
+                // Кастомний клас тултипа для карти
+                class CustomTooltip extends google.maps.OverlayView {
+                    constructor() {
+                        super();
                         this.div = null;
+                        this.position = null;
+                        this.text = '';
+                    }
+
+                    onAdd() {
+                        this.div = document.createElement('div');
+                        this.div.className = 'map-custom-tooltip';
+                        this.div.innerHTML = `<div class="map-custom-tooltip__content"></div>`;
+                        const panes = this.getPanes();
+                        if (panes && panes.floatPane) panes.floatPane.appendChild(this.div);
+                    }
+
+                    draw() {
+                        if (!this.div || !this.position) return;
+                        const projection = this.getProjection();
+                        if (!projection) return;
+                        const point = projection.fromLatLngToDivPixel(this.position);
+                        if (point) {
+                            this.div.style.left = `${point.x}px`;
+                            this.div.style.top = `${point.y}px`;
+                            const contentEl = this.div.querySelector('.map-custom-tooltip__content');
+                            if (contentEl) contentEl.textContent = this.text;
+                        }
+                    }
+
+                    onRemove() {
+                        if (this.div && this.div.parentNode) {
+                            this.div.parentNode.removeChild(this.div);
+                            this.div = null;
+                        }
+                    }
+
+                    show(position, text, mapInstance) {
+                        this.position = position;
+                        this.text = text;
+                        this.setMap(mapInstance);
+                        this.draw();
+                    }
+
+                    hide() {
+                        this.setMap(null);
                     }
                 }
 
-                show(position, text, mapInstance) {
-                    this.position = position;
-                    this.text = text;
-                    this.setMap(mapInstance);
-                    this.draw();
-                }
+                // Створюємо карту без початкового зуму, щоб скористатись bounds
+                map = new google.maps.Map(mapContainer, {
+                    disableDefaultUI: true,
+                    zoomControl: true,
+                    mapId: 'DEMO_MAP_ID',
+                });
 
-                hide() {
-                    this.setMap(null);
-                }
+                customTooltip = new CustomTooltip();
+                markers = [];
+                const bounds = new google.maps.LatLngBounds();
+
+                // Генерація маркерів для кожної картки
+                locationCards.forEach((card) => {
+                    const id = card.dataset.id;
+                    const lat = parseFloat(card.dataset.lat);
+                    const lng = parseFloat(card.dataset.lng);
+                    const address = card.dataset.address;
+
+                    const pinImg = document.createElement('img');
+                    pinImg.src = 'assets/img/pin.svg';
+                    pinImg.style.width = '32px';
+                    pinImg.style.height = '40px';
+
+                    const marker = new AdvancedMarkerElement({
+                        map: map,
+                        position: { lat, lng },
+                        content: pinImg,
+                    });
+
+                    markers.push({ id, marker, card, lat, lng, address });
+                    bounds.extend({ lat, lng });
+
+                    // Клік по маркеру на карті
+                    marker.addListener('click', () => {
+                        setActiveCard(card);
+                        card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    });
+                });
+
+                // Автоматично охоплюємо всі маркери на екрані
+                map.fitBounds(bounds);
+
+                // Клік по самій картці у списку
+                locationCards.forEach((card) => {
+                    card.addEventListener('click', (e) => {
+                        if (e.target.closest('.location-card__route')) return;
+                        setActiveCard(card);
+                    });
+                });
+
+            } catch (error) {
+                console.error('Помилка ініціалізації Google Maps:', error);
             }
-
-            const firstItem = pickerItems[0];
-            const initialCenter = {
-                lat: parseFloat(firstItem.dataset.lat),
-                lng: parseFloat(firstItem.dataset.lng),
-            };
-
-            map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 15,
-                center: initialCenter,
-                disableDefaultUI: true,
-                zoomControl: true,
-            });
-
-            // Створюємо екземпляр класу тултипа
-            customTooltip = new CustomTooltip();
-
-            // Додаємо маркери для кожної точки
-            pickerItems.forEach((item) => {
-                const id = item.dataset.id;
-                const lat = parseFloat(item.dataset.lat);
-                const lng = parseFloat(item.dataset.lng);
-
-                const marker = new google.maps.Marker({
-                    position: { lat, lng },
-                    map: map,
-                    icon: {
-                        url: "assets/img/pin.svg",
-                        scaledSize: new google.maps.Size(32, 40),
-                    },
-                });
-
-                markers.push({ id, marker, item });
-
-                marker.addListener("click", () => {
-                    setActiveLocation(item);
-                });
-            });
-
-            setActiveLocation(firstItem);
         };
 
-        // Аліас на випадок, якщо десь у коді викликається initMapComponent
-        window.initMapComponent = window.initMap;
+        window.initMap = window.initMapComponent;
 
-        function setActiveLocation(targetItem) {
-            const id = targetItem.dataset.id;
-            const lat = parseFloat(targetItem.dataset.lat);
-            const lng = parseFloat(targetItem.dataset.lng);
-            const address = targetItem.dataset.address;
-            const phone = targetItem.dataset.phone;
-
+        // Функція активної картки та центрування карти
+        function setActiveCard(targetCard) {
+            const id = targetCard.dataset.id;
             const match = markers.find((m) => m.id === id);
 
             if (map && match && customTooltip) {
-                map.panTo({ lat, lng });
-                map.setZoom(14);
-
-                const latLng = new google.maps.LatLng(lat, lng);
-                customTooltip.show(latLng, address, map);
+                map.panTo({ lat: match.lat, lng: match.lng });
+                map.setZoom(15);
+                const latLng = new google.maps.LatLng(match.lat, match.lng);
+                customTooltip.show(latLng, match.address, map);
             }
 
-            document.querySelectorAll(".picker__item").forEach((el) => el.classList.remove("is-active"));
-            targetItem.classList.add("is-active");
+            document.querySelectorAll('.location-card').forEach((el) => {
+                el.classList.remove('is-active');
+            });
 
-            const currentText = document.getElementById("picker-current-text");
-            if (currentText) currentText.textContent = address;
-
-            const phoneLink = document.getElementById("card-phone");
-            if (phoneLink) {
-                phoneLink.textContent = phone;
-                phoneLink.href = `tel:${phone.replace(/[^+\d]/g, "")}`;
-            }
-
-            const picker = document.getElementById("locations-picker");
-            if (picker) picker.classList.remove("is-open");
+            targetCard.classList.add('is-active');
         }
 
-        document.addEventListener("DOMContentLoaded", () => {
-            const picker = document.getElementById("locations-picker");
-            if (!picker) return;
+        // Живий пошук/фільтрація
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('locations-search');
 
-            const trigger = picker.querySelector(".picker__trigger");
-            if (trigger) {
-                trigger.addEventListener("click", () => picker.classList.toggle("is-open"));
+            if (searchInput) {
+                searchInput.addEventListener('input', (e) => {
+                    const query = e.target.value.toLowerCase().trim();
+
+                    markers.forEach(({ marker, card }) => {
+                        const address = (card.dataset.address || '').toLowerCase();
+                        const phone = (card.dataset.phone || '').toLowerCase();
+                        const matches = address.includes(query) || phone.includes(query);
+
+                        card.style.display = matches ? '' : 'none';
+                        marker.map = matches ? map : null;
+                    });
+                });
             }
 
-            picker.querySelectorAll(".picker__item").forEach((item) => {
-                item.addEventListener("click", () => setActiveLocation(item));
-            });
-
-            document.addEventListener("click", (e) => {
-                if (!picker.contains(e.target)) picker.classList.remove("is-open");
-            });
+            if (window.google && window.google.maps && typeof window.initMapComponent === 'function') {
+                window.initMapComponent();
+            }
         });
     </script>
 
-    <!-- 4. Підключення Google Maps API в кінці (з атрибутом loading=async) -->
-    <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9h5L2xSWEvRFgLc7y4d16KPUDydNgs9Y&callback=initMap&loading=async"
-        async defer>
-        </script>
 </body>
 
 </html>
