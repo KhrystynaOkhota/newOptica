@@ -541,6 +541,20 @@
   }
 
   .cbn-diagnostics {
+    & .heading {
+      margin-bottom: fluid(23, 29);
+    }
+
+    & .subtitle {
+      margin-bottom: 21px;
+      font-size: 20px;
+    }
+
+    & .description {
+      margin-bottom: 26px;
+      font-size: 16px;
+    }
+
     .medical-info {
       display: grid;
       grid-template-columns: 200px 150px 1fr;
@@ -558,10 +572,7 @@
         font-weight: 700;
       }
 
-      &__date {
-        color: rgba(35, 61, 77, 0.7);
-      }
-
+      &__date,
       &__location {
         color: rgba(35, 61, 77, 0.7);
       }
@@ -647,15 +658,16 @@
       }
     }
 
-    .medical-table-wrap {
-      width: 100%;
-      overflow-x: auto;
-    }
 
     .medical-table {
       width: 100%;
       border-collapse: collapse;
       font-size: 14px;
+
+      &-wrap {
+        width: 100%;
+        overflow-x: auto;
+      }
 
       th,
       td {
@@ -722,11 +734,11 @@
     }
 
     & .heading {
-      margin-bottom: fluid(23,40);
+      margin-bottom: fluid(23, 40);
     }
 
     & .subtitle {
-      margin-bottom: fluid(26,35);
+      margin-bottom: fluid(26, 35);
       font-size: fluid(20, 25);
     }
   }
