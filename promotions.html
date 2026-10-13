@@ -672,21 +672,9 @@
 
     <script src="src/scripts/js_app.js"></script>
 
-    <script src="src/scripts/app_map.js"></script>
+  
 
-    <script>
-        const filterTabs = document.querySelector('.filter-tabs');
-
-        if (filterTabs) {
-            filterTabs.addEventListener('wheel', (evt) => {
-                // Якщо є горизонтальний оверфлоу
-                if (filterTabs.scrollWidth > filterTabs.clientWidth) {
-                    evt.preventDefault();
-                    filterTabs.scrollLeft += evt.deltaY;
-                }
-            }, { passive: false });
-        }
-    </script>
+    
 
     <script>
         /* document.addEventListener('DOMContentLoaded', () => {

@@ -617,7 +617,7 @@
                                             </p>
                                         </div>
 
-                                        <button type="button" class="btn btn--cart js-add-cart">До кошика</button>
+                                        <button type="button" class="btn btn--primary js-add-cart">До кошика</button>
 
                                         <div class="product__promo">
                                             Авторизуйся і отримай знижку <strong>до -10%</strong>
@@ -625,7 +625,6 @@
                                     </article>
 
                                 </div>
-
                                 <div class="swiper-slide">
                                     <article class="product">
                                         <ul class="product__label-wrap">
@@ -661,7 +660,50 @@
                                             </p>
                                         </div>
 
-                                        <button type="button" class="btn btn--cart js-add-cart">До кошика</button>
+                                        <button type="button" class="btn btn--primary js-add-cart">До кошика</button>
+
+                                        <div class="product__promo">
+                                            Авторизуйся і отримай знижку <strong>до -10%</strong>
+                                        </div>
+                                    </article>
+
+                                </div>
+                                <div class="swiper-slide">
+                                    <article class="product">
+                                        <ul class="product__label-wrap">
+                                            <li class="product__label product__label--promo">Акція</li>
+                                        </ul>
+
+                                        <button type="button" class="btn--fav is-active js-fav-btn"
+                                            aria-label="Додати в обране"></button>
+
+                                        <a class="product__img-link" href="product-detail.html">
+                                            <img src="assets/img/product-1.png" alt="Сонцезахисні окуляри MIU MIU 04ZS"
+                                                class="product__img">
+                                        </a>
+
+                                        <a href="product-detail.html" class="product__title" itemprop="name">
+                                            Сонцезахисні окуляри MIU MIU 04ZS 1AB5S0 DARK GREY
+                                        </a>
+
+                                        <div class="product__price-wrap">
+                                            <p class="price">
+                                                <del aria-hidden="true">
+                                                    <span class="woocommerce-Price-amount amount">
+                                                        <bdi>1 599<span
+                                                                class="woocommerce-Price-currencySymbol">грн</span></bdi>
+                                                    </span>
+                                                </del>
+                                                <ins>
+                                                    <span class="woocommerce-Price-amount amount">
+                                                        <bdi>800<span
+                                                                class="woocommerce-Price-currencySymbol">грн</span></bdi>
+                                                    </span>
+                                                </ins>
+                                            </p>
+                                        </div>
+
+                                        <button type="button" class="btn btn--primary js-add-cart">До кошика</button>
 
                                         <div class="product__promo">
                                             Авторизуйся і отримай знижку <strong>до -10%</strong>
@@ -701,7 +743,7 @@
                                             </p>
                                         </div>
 
-                                        <button type="button" class="btn btn--cart js-add-cart">До кошика</button>
+                                        <button type="button" class="btn btn--primary js-add-cart">До кошика</button>
 
                                         <div class="product__promo">
                                             Авторизуйся і отримай знижку <strong>до -10%</strong>
@@ -744,7 +786,7 @@
                                             </p>
                                         </div>
 
-                                        <button type="button" class="btn btn--cart js-add-cart">До кошика</button>
+                                        <button type="button" class="btn btn--primary js-add-cart">До кошика</button>
 
                                         <div class="product__promo">
                                             Авторизуйся і отримай знижку <strong>до -10%</strong>
@@ -972,118 +1014,120 @@
 
                             <button type="button" class="picker__trigger" aria-expanded="false"
                                 aria-controls="picker-list" aria-label="Оберіть адресу">
-                                <span class="picker__trigger-icon" aria-hidden="true"></span>
-                                <span class="picker__trigger-text" id="picker-current-text">вул. Городоцька, 35</span>
-                                <span class="picker__trigger-arrow" aria-hidden="true"></span>
+                                <div class="picker__icon--wrap" aria-hidden="true">
+                                    <span class="picker__icon"></span>
+                                </div>
+                                <span class="picker__text" id="picker-current-text">вул. Городоцька, 35</span>
+                                <span class="picker__arrow" aria-hidden="true"></span>
                             </button>
 
                             <div class="picker__list" id="picker-list" role="listbox">
                                 <button type="button" class="picker__item is-active" role="option" aria-selected="true"
                                     data-id="1" data-lat="49.8397" data-lng="24.0297" data-address="вул. Городоцька, 35"
                                     data-phone="+38 (050) 013-68-88">
-                                    <div class="picker__item-icon--wrap" aria-hidden="true">
-                                        <span class="picker__item-icon"></span>
+                                    <div class="picker__icon--wrap" aria-hidden="true">
+                                        <span class="picker__icon"></span>
                                     </div>
-                                    <span class="picker__item-text">вул. Городоцька, 35</span>
+                                    <span class="picker__text">вул. Городоцька, 35</span>
                                 </button>
 
                                 <button type="button" class="picker__item" role="option" aria-selected="false"
                                     data-id="2" data-lat="49.8375" data-lng="24.0150" data-address="вул. Городоцька, 77"
                                     data-phone="+38 (050) 013-68-88">
-                                    <div class="picker__item-icon--wrap" aria-hidden="true">
-                                        <span class="picker__item-icon"></span>
+                                    <div class="picker__icon--wrap" aria-hidden="true">
+                                        <span class="picker__icon"></span>
                                     </div>
-                                    <span class="picker__item-text">вул. Городоцька, 77</span>
+                                    <span class="picker__text">вул. Городоцька, 77</span>
                                 </button>
 
                                 <button type="button" class="picker__item" role="option" aria-selected="false"
                                     data-id="3" data-lat="49.8335" data-lng="23.9982"
                                     data-address="вул. Городоцька, 133" data-phone="+38 (050) 013-68-88">
-                                    <div class="picker__item-icon--wrap" aria-hidden="true">
-                                        <span class="picker__item-icon"></span>
+                                    <div class="picker__icon--wrap" aria-hidden="true">
+                                        <span class="picker__icon"></span>
                                     </div>
-                                    <span class="picker__item-text">вул. Городоцька, 133</span>
+                                    <span class="picker__text">вул. Городоцька, 133</span>
                                 </button>
 
                                 <button type="button" class="picker__item" role="option" aria-selected="false"
                                     data-id="4" data-lat="49.7915" data-lng="24.0538" data-address="вул. Кавалерідзе, 1"
                                     data-phone="+38 (050) 013-68-88">
-                                    <div class="picker__item-icon--wrap" aria-hidden="true">
-                                        <span class="picker__item-icon"></span>
+                                    <div class="picker__icon--wrap" aria-hidden="true">
+                                        <span class="picker__icon"></span>
                                     </div>
-                                    <span class="picker__item-text">вул. Кавалерідзе, 1</span>
+                                    <span class="picker__text">вул. Кавалерідзе, 1</span>
                                 </button>
 
                                 <button type="button" class="picker__item" role="option" aria-selected="false"
                                     data-id="5" data-lat="49.8492" data-lng="24.0245" data-address="вул. Куліша, 43"
                                     data-phone="+38 (050) 013-68-88">
-                                    <div class="picker__item-icon--wrap" aria-hidden="true">
-                                        <span class="picker__item-icon"></span>
+                                    <div class="picker__icon--wrap" aria-hidden="true">
+                                        <span class="picker__icon"></span>
                                     </div>
-                                    <span class="picker__item-text">вул. Куліша, 43</span>
+                                    <span class="picker__text">вул. Куліша, 43</span>
                                 </button>
 
                                 <button type="button" class="picker__item" role="option" aria-selected="false"
                                     data-id="6" data-lat="49.8687" data-lng="24.0312" data-address="вул. Мазепи, 25а"
                                     data-phone="+38 (050) 013-68-88">
                                     <div class="picker__item-icon--wrap" aria-hidden="true">
-                                        <span class="picker__item-icon"></span>
+                                        <span class="picker__icon"></span>
                                     </div>
-                                    <span class="picker__item-text">вул. Мазепи, 25а</span>
+                                    <span class="picker__text">вул. Мазепи, 25а</span>
                                 </button>
 
                                 <button type="button" class="picker__item" role="option" aria-selected="false"
                                     data-id="7" data-lat="49.8236" data-lng="23.9803" data-address="вул. Петлюри, 2"
                                     data-phone="+38 (050) 013-68-88">
-                                    <div class="picker__item-icon--wrap" aria-hidden="true">
-                                        <span class="picker__item-icon"></span>
+                                    <div class="picker__icon--wrap" aria-hidden="true">
+                                        <span class="picker__icon"></span>
                                     </div>
-                                    <span class="picker__item-text">вул. Петлюри, 2</span>
+                                    <span class="picker__text">вул. Петлюри, 2</span>
                                 </button>
 
                                 <button type="button" class="picker__item" role="option" aria-selected="false"
                                     data-id="8" data-lat="49.8441" data-lng="24.0261" data-address="Пр. Свободи, 37"
                                     data-phone="+38 (050) 013-68-88">
-                                    <div class="picker__item-icon--wrap" aria-hidden="true">
-                                        <span class="picker__item-icon"></span>
+                                    <div class="picker__icon--wrap" aria-hidden="true">
+                                        <span class="picker__icon"></span>
                                     </div>
-                                    <span class="picker__item-text">Пр. Свободи, 37</span>
+                                    <span class="picker__text">Пр. Свободи, 37</span>
                                 </button>
 
                                 <button type="button" class="picker__item" role="option" aria-selected="false"
                                     data-id="9" data-lat="49.8398" data-lng="24.0345" data-address="Соборна площа, 10"
                                     data-phone="+38 (050) 013-68-88">
-                                    <div class="picker__item-icon--wrap" aria-hidden="true">
-                                        <span class="picker__item-icon"></span>
+                                    <div class="picker__icon--wrap" aria-hidden="true">
+                                        <span class="picker__icon"></span>
                                     </div>
-                                    <span class="picker__item-text">Соборна площа, 10</span>
+                                    <span class="picker__text">Соборна площа, 10</span>
                                 </button>
 
                                 <button type="button" class="picker__item" role="option" aria-selected="false"
                                     data-id="10" data-lat="49.8406" data-lng="24.0272" data-address="вул. Дорошенка, 13"
                                     data-phone="+38 (050) 013-68-88">
-                                    <div class="picker__item-icon--wrap" aria-hidden="true">
-                                        <span class="picker__item-icon"></span>
+                                    <div class="picker__icon--wrap" aria-hidden="true">
+                                        <span class="picker__icon"></span>
                                     </div>
-                                    <span class="picker__item-text">вул. Дорошенка, 13</span>
+                                    <span class="picker__text">вул. Дорошенка, 13</span>
                                 </button>
 
                                 <button type="button" class="picker__item" role="option" aria-selected="false"
                                     data-id="11" data-lat="49.8430" data-lng="23.9650"
                                     data-address="Вул. Широка-Низинна, 2" data-phone="+38 (050) 013-68-88">
-                                    <div class="picker__item-icon--wrap" aria-hidden="true">
-                                        <span class="picker__item-icon"></span>
+                                    <div class="picker__icon--wrap" aria-hidden="true">
+                                        <span class="picker__icon"></span>
                                     </div>
-                                    <span class="picker__item-text">Вул. Широка-Низинна, 2</span>
+                                    <span class="picker__text">Вул. Широка-Низинна, 2</span>
                                 </button>
 
                                 <button type="button" class="picker__item" role="option" aria-selected="false"
                                     data-id="12" data-lat="49.8665" data-lng="24.0238"
                                     data-address="Пр-т. Чорновола 93, ТЦ Арсен" data-phone="+38 (050) 013-68-88">
-                                    <div class="picker__item-icon--wrap" aria-hidden="true">
-                                        <span class="picker__item-icon"></span>
+                                    <div class="picker__icon--wrap" aria-hidden="true">
+                                        <span class="picker__icon"></span>
                                     </div>
-                                    <span class="picker__item-text">Пр-т. Чорновола 93, ТЦ Арсен</span>
+                                    <span class="picker__text">Пр-т. Чорновола 93, ТЦ Арсен</span>
                                 </button>
                             </div>
 
@@ -1163,8 +1207,6 @@
 
 
         </section>
-
-
     </main>
 
     <footer class="footer">
@@ -1495,7 +1537,7 @@
 
     <script src="src/scripts/app_map-tab.js"></script>
     <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9h5L2xSWEvRFgLc7y4d16KPUDydNgs9Y&libraries=places&callback=initMapComponent&loading=async"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9h5L2xSWEvRFgLc7y4d16KPUDydNgs9Y&libraries=places,marker&loading=async&callback=initMapComponent"
         async defer>
         </script>
 </body>

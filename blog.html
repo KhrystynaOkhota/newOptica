@@ -20,7 +20,7 @@
 
 <body>
 
-  
+
     <header class="header">
         <div class="h-menu-overlay"></div>
 
@@ -189,7 +189,7 @@
             </div>
         </div>
     </header>
-   
+
     <main class=" main">
         <div class="kama_breadcrumbs__wrap">
             <div class="container">
@@ -315,7 +315,7 @@
         </section>
     </main>
 
-     <footer class="footer">
+    <footer class="footer">
         <div class="footer__inner">
             <div class="container">
                 <h2 class="visually-hidden">Інформація про компанію та навігація</h2>
@@ -594,102 +594,18 @@
         </div>
 
     </div>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9h5L2xSWEvRFgLc7y4d16KPUDydNgs9Y"
-        type="text/javascript"></script>
 
-     <script src="assets/js/jquery-4.0.0.min.js"></script>
 
+    <script src="assets/js/jquery-4.0.0.min.js"></script>
     <script src="assets/js/swiper-bundle.min.js"></script>
     <script src="assets/js/jquery.sumoselect.min.js"></script>
 
 
 
     <script src="src/scripts/app-swiper.js"></script>
-    <script src="src/scripts/app.js"></script>
     <script src="src/scripts/js_app.js"></script>
 
-    <script src="src/scripts/app_map.js"></script>
 
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const trigger = document.querySelector('.services-filter__trigger');
-            const nav = document.querySelector('.services-filter__nav');
-            const buttons = document.querySelectorAll('.services-filter__btn');
-            const triggerText = document.querySelector('.services-filter__trigger-text');
-
-            const arrowPrev = document.querySelector('.services-filter__arrow--prev');
-            const arrowNext = document.querySelector('.services-filter__arrow--next');
-
-            // 1. Переключення мобільного меню
-            trigger?.addEventListener('click', () => {
-                const isOpen = trigger.getAttribute('aria-expanded') === 'true';
-                trigger.setAttribute('aria-expanded', !isOpen);
-                nav.classList.toggle('services-filter__nav--open');
-            });
-
-            // 2. Кліки по табах
-            buttons.forEach((btn) => {
-                btn.addEventListener('click', () => {
-                    buttons.forEach((b) => b.classList.remove('services-filter__btn--active'));
-                    btn.classList.add('services-filter__btn--active');
-
-                    if (window.innerWidth < 992) {
-                        triggerText.textContent = btn.textContent.trim();
-                        trigger.setAttribute('aria-expanded', 'false');
-                        nav.classList.remove('services-filter__nav--open');
-                    }
-                });
-            });
-
-            // 3. Перевірка та оновлення стрілок
-            const checkScroll = () => {
-                if (!nav || window.innerWidth < 992) return;
-
-                // Порівнюємо реальну ширину контенту з шириною видимої області
-                const scrollLeft = Math.ceil(nav.scrollLeft);
-                const maxScroll = nav.scrollWidth - nav.clientWidth;
-
-                // Якщо контент ширший за блок (є скрол)
-                if (nav.scrollWidth > nav.clientWidth) {
-                    // Ліва стрілка
-                    if (scrollLeft > 2) {
-                        arrowPrev?.classList.add('services-filter__arrow--visible');
-                    } else {
-                        arrowPrev?.classList.remove('services-filter__arrow--visible');
-                    }
-
-                    // Права стрілка
-                    if (scrollLeft < maxScroll - 2) {
-                        arrowNext?.classList.add('services-filter__arrow--visible');
-                    } else {
-                        arrowNext?.classList.remove('services-filter__arrow--visible');
-                    }
-                } else {
-                    // Якщо всі елементи вміщуються — ховаємо обидві стрілки
-                    arrowPrev?.classList.remove('services-filter__arrow--visible');
-                    arrowNext?.classList.remove('services-filter__arrow--visible');
-                }
-            };
-
-            // Кліки по стрілках прокрутки
-            arrowPrev?.addEventListener('click', () => {
-                nav.scrollBy({ left: -200, behavior: 'smooth' });
-            });
-
-            arrowNext?.addEventListener('click', () => {
-                nav.scrollBy({ left: 200, behavior: 'smooth' });
-            });
-
-            // Слухачі подій
-            nav?.addEventListener('scroll', checkScroll);
-            window.addEventListener('resize', checkScroll);
-
-            // Запуск перевірки при завантаженні
-            checkScroll();
-            setTimeout(checkScroll, 150); // Додатковий виклик після рендерингу стилів
-        });
-    </script>
 </body>
 
 </html>
