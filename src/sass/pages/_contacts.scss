@@ -1,6 +1,7 @@
 @use "../abstracts/variables" as *;
 @use "../abstracts/mixins" as *;
 
+/*
 .location-card {
   padding: 20px;
 
@@ -62,7 +63,7 @@
     bottom: -20px;
   }
 }
-
+*/
 .s-locations {
   padding-bottom: fluid(100, 150);
 
@@ -125,7 +126,7 @@
       align-items: center;
       gap: 12px;
       width: 100%;
-             padding: 5px 40px 5px 10px;
+      padding: 5px 40px 5px 10px;
       background-color: $color-white;
       border: none;
       border-radius: 5px;
@@ -543,10 +544,38 @@
       /* border: 1px solid #E5E7EB; */
       box-shadow: 0px 4.8px 32.26px 0px rgba(15, 25, 49, 0.05);
       border-radius: 16px;
-      padding: 20px;
+      padding: 20px 10px 20px 10px;
       cursor: pointer;
-      align-items: center;
+
       transition: all 0.2s ease;
+
+      & .column {
+        @media (max-width: $breakpoint-md) {
+
+          &:nth-child(3),
+          &:nth-child(4),
+          &:nth-child(5) {
+            padding-top: 10px;
+            padding-bottom: 10px;
+          }
+
+          &:nth-child(3),
+          &:nth-child(4) {
+            position: relative;
+
+            &:after {
+              content: "";
+              width: calc(100% - 20px);
+              height: 1px;
+              background-color: rgba(0, 0, 0, .1);
+              position: absolute;
+              bottom: 0;
+              left: 10px;
+            }
+
+          }
+        }
+      }
     }
 
     &__img {
@@ -560,6 +589,60 @@
         border-radius: 10px;
         background-color: rgba(243, 243, 245, 1);
         overflow: hidden;
+
+        &.no-img {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          & img {
+            -o-object-fit: contain;
+            object-fit: contain;
+            height: auto;
+            width: auto;
+          }
+        }
+      }
+    }
+
+    &-details {
+      &__title {
+
+        font-size: fluid(13, 17);
+        font-weight: 700;
+
+        @media (min-width: $breakpoint-md) {
+          margin-top: 18px;
+          margin-bottom: 17px;
+        }
+      }
+
+      &__content {
+        font-size: fluid(13, 17);
+
+        & .location {
+
+          &__address,
+          &__route {
+            font-size: fluid(13, 17);
+            font-weight: normal;
+          }
+
+          &__route {
+            color: $color-accent;
+          }
+        }
+      }
+
+      &:not(.location-details--address) {
+
+
+        @media (max-width: $breakpoint-lg) {
+          display: grid;
+          grid-template-columns: 40% 1fr;
+          gap: 20px;
+
+        }
       }
     }
   }

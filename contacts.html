@@ -73,7 +73,7 @@
             gap: 16px;
         }
 
-        
+
 
         .location-card:hover,
         .location-card.is-active {
@@ -171,7 +171,7 @@
 
         /* Адаптивність для мобільних пристроїв */
         @media (max-width: 768px) {
-           
+
 
             .location-card__image {
                 width: 100%;
@@ -421,76 +421,105 @@
             </div>
             <div class="container locations-list" id="locations-list">
                 <div class="locations-list" id="locations-list">
-                    <div class="row location-card" data-id="1" data-lat="49.856200" data-lng="24.026100"
+                    <div class="row m-row location-card" data-id="1" data-lat="49.856200" data-lng="24.026100"
                         data-address="пр-т В'ячеслава Чорновола, 93, ТЦ «Арсен»" data-phone="+38 (050) 031 6888">
-                        <div class="col-xl-3 col-lg-16 col-md-16 col-sm-6 col-xs-6 column">
-                            <div class="location__img-wrap">
-                                <img src="assets/img/salon-1.png" alt="Файна Оптика" class="location__img">
+                        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-6 column">
+                            <div class="location__img-wrap no-img">
+                                <img src="assets/img/no-img.png" alt="Фото відгуку" loading="lazy">
                             </div>
                         </div>
-                        <div class="col-xl-4 col-lg-16 col-md-16 col-sm-10 col-xs-10 column">
-                            <div class="location__address-wrap">
-                                <h3 class="location-card__address">пр-т В'ячеслава Чорновола, 93, ТЦ «Арсен»
-                                </h3>
-                                <a href="https://www.google.com/maps/search/?api=1&query=49.856200,24.026100"
-                                    target="_blank" class="location-card__route">Прокласти маршрут</a>
+                        <div class="col-xl-4 col-lg-10 col-md-10 col-sm-10 col-xs-10 column">
+                            <div class="location-details location-details--address">
+                                <div class="location-details__title d-none d-lg-block">Адреса</div>
+                                <div class="location-details__content">
+                                    <h3 class="location__address">пр-т В'ячеслава Чорновола, 93, ТЦ «Арсен»
+                                    </h3>
+                                    <a href="https://www.google.com/maps/search/?api=1&query=49.856200,24.026100"
+                                        target="_blank" class="location__route">Прокласти маршрут</a>
+                                </div>
                             </div>
                         </div>
                         <div class="col-xl-3 col-lg-16 col-md-16 col-sm-16 col-xs-16 column">
                             <div class="location-details">
-                                <div class="location-details__label">Телефон</div>
-                                <div class="location-details__value">+38 (050) 031 6888</div>
+                                <div class="location-details__title">Телефон</div>
+                                <div class="location-details__content">+38 (050) 031 6888</div>
                             </div>
                         </div>
                         <div class="col-xl-3 col-lg-16 col-md-16 col-sm-16 col-xs-16 column">
                             <div class="location-details">
 
 
-                                <div class="location-details__label">Графік роботи салону</div>
-                                <div class="location-details__value">Пн–Нд: 10:00–20:00</div>
+                                <div class="location-details__title">Графік роботи салону</div>
+                                <div class="location-details__content">
+                                    <ul>
+                                        <li>
+                                            Пн–Сб: 10:00–19:00
+                                        </li>
+                                        <li>Нд: 10:00–16:00</li>
+                                    </ul>
+                                </div>
 
                             </div>
                         </div>
                         <div class="col-xl-3 col-lg-16 col-md-16 col-sm-16 col-xs-16 column">
                             <div class="location-details">
-                                <div class="location-details__label">Графік роботи майстра</div>
-                                <div class="location-details__value">-</div>
+                                <div class="location-details__title">Графік роботи майстра</div>
+                                <div class="location-details__content">-</div>
                             </div>
                         </div>
                     </div>
-                    <div class="row location-card" data-id="2" data-lat="49.843100" data-lng="24.019500"
+                    <div class="row m-row location-card" data-id="2" data-lat="49.843100" data-lng="24.019500"
                         data-address="вул. Городоцька, 35" data-phone="+38 (050) 022 3344">
-                        <div class="col-xl-3 col-lg-16 col-md-16 col-sm-6 col-xs-6 column">
+                        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-6 column">
                             <div class="location__img-wrap">
                                 <img src="assets/img/salon-1.png" alt="Файна Оптика" class="location__img">
                             </div>
                         </div>
-                        <div class="col-xl-4 col-lg-16 col-md-16 col-sm-10 col-xs-10 column">
-                            <div class="location__address-wrap">
-                                <h3 class="location__address">вул. Городоцька, 35</h3>
-                            <a href="https://www.google.com/maps/search/?api=1&query=49.843100,24.019500"
-                                target="_blank" class="location__route">Прокласти маршрут</a>
+                        <div class="col-xl-4 col-lg-10 col-md-10 col-sm-10 col-xs-10 column">
+                            <div class="location-details location-details--address">
+                                <div class="location-details__title">Адреса</div>
+                                <div class="location-details__content">
+                                    <h3 class="location__address">вул. Городоцька, 35</h3>
+                                    <a href="https://www.google.com/maps/search/?api=1&query=49.843100,24.019500"
+                                        target="_blank" class="location__route">Прокласти маршрут</a>
+                                </div>
                             </div>
                         </div>
                         <div class="col-xl-3 col-lg-16 col-md-16 col-sm-16 col-xs-16 column">
                             <div class="location-details">
-                                <div class="location-details__label">Телефон</div>
-                                <div class="location-details__value">+38 (050) 031 6888</div>
+                                <div class="location-details__title">Телефон</div>
+                                <div class="location-details__content">+38 (050) 031 6888</div>
                             </div>
                         </div>
                         <div class="col-xl-3 col-lg-16 col-md-16 col-sm-16 col-xs-16 column">
                             <div class="location-details">
+                                <div class="location-details__title">Графік роботи салону</div>
+                                <div class="location-details__content">
+                                    <ul>
+                                        <li>
+                                            Пн–Пт: 10:00–19:00
+                                        </li>
+                                        <li>
+                                            Сб: 11:00–19:00
+                                        </li>
+                                        <li>Нд: 11:00–18:00</li>
+                                    </ul>
 
-
-                                <div class="location-details__label">Графік роботи салону</div>
-                                <div class="location-details__value">Пн–Нд: 10:00–20:00</div>
+                                </div>
 
                             </div>
                         </div>
                         <div class="col-xl-3 col-lg-16 col-md-16 col-sm-16 col-xs-16 column">
                             <div class="location-details">
-                                <div class="location-details__label">Графік роботи майстра</div>
-                                <div class="location-details__value">-</div>
+                                <div class="location-details__title">Графік роботи майстра</div>
+                                <div class="location-details__content">
+                                    <ul>
+                                        <li>
+                                            Пн–Пт: 10:00–17:00
+                                        </li>
+                                        <li>Сб–Нд: вихідні</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -767,7 +796,7 @@
             </div>-->
 
         </section>
-       
+
         <section class="s-cta">
             <div class="container">
                 <div class="row cta__wrap">
@@ -1146,7 +1175,7 @@
         </script>
 
 
-     <script src="assets/js/jquery-4.0.0.min.js"></script>
+    <script src="assets/js/jquery-4.0.0.min.js"></script>
 
     <script src="assets/js/swiper-bundle.min.js"></script>
     <script src="assets/js/jquery.sumoselect.min.js"></script>
