@@ -2,23 +2,19 @@ let map = null;
 let markers = [];
 let customTooltip = null;
 
-// Головна функція ініціалізації
-window.initMapComponent = async function initMapComponent() {
+// Головна функція ініціалізації (її викликає Google Maps автоматично через callback)
+window.initMapComponent = function initMapComponent() {
   const mapContainer = document.getElementById('map');
   const pickerItems = document.querySelectorAll('.picker__item');
 
-  // Якщо DOM ще не готовий, чекаємо завантаження сторінки
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => initMapComponent());
+  if (!mapContainer || !pickerItems.length) return;
+
+  if (typeof google === 'undefined' || !google.maps || !google.maps.OverlayView) {
+    console.error('Google Maps API ще не готовий!');
     return;
   }
 
-  if (!mapContainer || !pickerItems.length) return;
-
   try {
-    // Динамічний імпорт біблотеки маркерів
-    const { AdvancedMarkerElement } = await google.maps.importLibrary('marker');
-
     class CustomTooltip extends google.maps.OverlayView {
       constructor() {
         super();
@@ -100,17 +96,18 @@ window.initMapComponent = async function initMapComponent() {
       pinImg.style.width = '32px';
       pinImg.style.height = '40px';
 
-      const marker = new AdvancedMarkerElement({
+      // Використовуємо сучасний маркер напряму, оскільки бібліотека 'marker' тепер завантажена через HTML
+      const marker = new google.maps.marker.AdvancedMarkerElement({
         map: map,
         position: { lat, lng },
         content: pinImg,
       });
 
-      markers.push({ id, marker, item });
-
-      marker.addListener('click', () => {
+      marker.element.addEventListener('gmp-click', () => {
         setActiveLocation(item);
       });
+
+      markers.push({ id, marker, item });
     });
 
     setActiveLocation(firstItem);
@@ -168,6 +165,7 @@ function closePicker() {
   if (trigger) trigger.setAttribute('aria-expanded', 'false');
 }
 
+// UI-логіка вибору локацій (працює незалежно від мапи)
 document.addEventListener('DOMContentLoaded', () => {
   const picker = document.getElementById('locations-picker');
   if (picker) {
@@ -190,10 +188,5 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') closePicker();
     });
-  }
-
-  // Перевірка: якщо Google Maps API завантажився до DOMContentLoaded
-  if (window.google && window.google.maps && typeof window.initMapComponent === 'function') {
-    window.initMapComponent();
   }
 });
