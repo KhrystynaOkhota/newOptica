@@ -241,7 +241,7 @@ section {
 .main {
   overflow: hidden;
   min-height: 50vh;
-  padding-top: 210px;
+  padding-top: 209px;
 }
 @media (max-width: 767px) {
   .main {
@@ -5539,6 +5539,7 @@ html.chrome.filter-is-open body {
 }
 .map-info-card__schedule-title {
   margin-bottom: 6px;
+  margin-top: 10px;
   font-weight: 700;
   color: #1e1e1e;
 }
@@ -5916,9 +5917,23 @@ html.chrome.filter-is-open body {
   }
 }
 
+.s-current-promotions {
+  padding-bottom: clamp(3.125rem, 3.125rem + 20 * (100vw - 300px) / 1960, 4.375rem);
+}
+.s-current-promotions__top {
+  margin-bottom: 30px;
+}
 .s-current-promotions .swiper-container,
 .s-current-promotions .swiper {
-  padding: 12px;
+  overflow: visible;
+}
+.s-current-promotions .swiper-slide {
+  opacity: 0;
+  -webkit-transition: opacity 0.2s ease-out;
+  transition: opacity 0.2s ease-out;
+}
+.s-current-promotions .swiper-slide-next, .s-current-promotions .swiper-slide-active {
+  opacity: 1;
 }
 
 .s-promo {
@@ -6651,6 +6666,16 @@ html.chrome.filter-is-open body {
 .s-category__top {
   margin-bottom: 30px;
 }
+.s-category__grid {
+  display: none;
+}
+@media (max-width: 767px) {
+  .s-category__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 15px;
+  }
+}
 .s-category .container {
   padding-bottom: 70px;
 }
@@ -6724,6 +6749,7 @@ html.chrome.filter-is-open body {
   margin: 0;
   -webkit-transition: color 0.3s ease;
   transition: color 0.3s ease;
+  min-height: 45px;
 }
 
 /*
@@ -7867,7 +7893,9 @@ html.chrome.filter-is-open body {
 .s-service-steps .heading {
   margin-bottom: clamp(0.5625rem, 0.5625rem + 15 * (100vw - 300px) / 1960, 1.5rem);
 }
-.s-service-steps .benefit-card__icon {
+.s-service-steps span.benefit-card__icon {
+  width: auto;
+  height: auto;
   font-size: clamp(1.875rem, 1.875rem + 5 * (100vw - 300px) / 1960, 2.1875rem);
   font-weight: bold;
   color: #ee670e;
