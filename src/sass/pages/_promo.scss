@@ -132,11 +132,29 @@
 }
 
 .s-current-promotions {
+  padding-bottom: fluid(50, 70);
+
+  &__top {
+    margin-bottom: 30px;
+  }
 
   .swiper-container,
   .swiper {
-    // overflow: visible; 
-    padding: 12px;
+    overflow: visible;
+    //padding: 12px;
+  }
+
+  & .swiper {
+    &-slide {
+      opacity: 0;
+      transition: opacity .2s ease-out;
+
+      &-next,
+      &-active {
+        opacity: 1;
+      }
+
+    }
   }
 }
 
@@ -243,11 +261,12 @@
     white-space: nowrap;
     -webkit-user-drag: none;
 
-   // border-bottom: 5px solid transparent;
+    // border-bottom: 5px solid transparent;
     //margin-bottom: -5px;
 
     transition: color 0.3s linear, border-color 0.3s linear;
-z-index: 2;
+    z-index: 2;
+
     &:after {
       content: '';
       width: 0;

@@ -254,8 +254,10 @@
       margin-bottom: fluid(9, 24);
     }
 
-    .benefit-card {
+    span.benefit-card {
       &__icon {
+        width:auto;
+        height:auto;
         font-size: fluid(30,35);
         font-weight: bold;
         color: $color-accent;
