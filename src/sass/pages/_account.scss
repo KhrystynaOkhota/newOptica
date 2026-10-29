@@ -235,6 +235,18 @@
       }
     }
 
+    &--two-column {
+      display: grid;
+      grid-template-columns: 50% 1fr;
+      gap: fluid(50, 120);
+      margin-bottom: 24px;
+
+      @media (max-width: $breakpoint-md) {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+    }
+
     &--password {
       background-color: rgba(243, 243, 245, 1);
       border-radius: 20px;
