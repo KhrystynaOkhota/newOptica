@@ -20,7 +20,7 @@
 
 <body>
 
-   <header class="header">
+    <header class="header">
         <div class="h-menu-overlay"></div>
 
         <div class="h-wrap">
@@ -217,7 +217,7 @@
                 <div class="row m-row">
                     <!-- Сайдбар навігації -->
                     <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 column">
-                      <aside class="cbn-sidebar d-none d-md-block">
+                        <aside class="cbn-sidebar d-none d-md-block">
                             <div class="cbn-sidebar__title h3 text-bold">Мій кабінет</div>
                             <nav class="cbn-menu">
                                 <ul class="cbn-menu__list">
@@ -335,11 +335,12 @@
                                         </div>
                                     </div>
 
-                                    <div class="cbn-block__">
+                                    <div class="cbn-block--two-column">
                                         <div class="field field--dob SelectBox">
                                             <label class="field__label">Дата народження</label>
                                             <div class="field__dob-group">
-                                                <select class="field__select" name="dob_day" aria-label="День">
+                                                <select class="field__input field__input--select" name="dob_day"
+                                                    aria-label="День">
                                                     <option value="1" selected>1</option>
                                                     <option value="2">2</option>
                                                     <option value="3">3</option>
@@ -356,7 +357,8 @@
                                                     <option value="14">14</option>
                                                     <option value="15">15</option>
                                                 </select>
-                                                <select class="field__select" name="dob_month" aria-label="Місяць">
+                                                <select class="field__input field__input--select" name="dob_month"
+                                                    aria-label="Місяць">
                                                     <option value="01" selected>01</option>
                                                     <option value="02">02</option>
                                                     <option value="03">03</option>
@@ -370,21 +372,41 @@
                                                     <option value="11">11</option>
                                                     <option value="12">12</option>
                                                 </select>
-                                                <select class="field__select" name="dob_year" aria-label="Рік">
+                                                <select class="field__input field__input--select" name="dob_year"
+                                                    aria-label="Рік">
                                                     <option value="1990" selected>1990</option>
-                                                     <option value="1991" selected>01</option>
-                                                    <option value="1992">02</option>
-                                                    <option value="1993">03</option>
-                                                    <option value="1994">04</option>
-                                                    <option value="1995">05</option>
-                                                    <option value="1996">06</option>
-                                                    <option value="1997">07</option>
-                                                    <option value="1998">08</option>
-                                                    <option value="1998">09</option>
-                                                    <option value="2000">10</option>
-                                                    <option value="2001">11</option>
+                                                    <option value="1991">1991</option>
+                                                    <option value="1992">1992</option>
+                                                    <option value="1993">1993</option>
+                                                    <option value="1994">1994</option>
+                                                    <option value="1995">1995</option>
+                                                    <option value="1996">1996</option>
+                                                    <option value="1997">1997</option>
+                                                    <option value="1998">1998</option>
+                                                    <option value="1999">1999</option>
+                                                    <option value="2000">2000</option>
+                                                    <option value="2001">2001</option>
                                                     <option value="2002">2002</option>
                                                 </select>
+                                            </div>
+                                        </div>
+                                        <div class="field field--radio">
+                                            <div class="field form-field--inline">
+                                                <span class="field__label">Стать</span>
+                                                <div class="field__options d-flex align-left">
+                                                    <label class="radio-option">
+                                                        <input type="radio" name="preferred_gender" value="female"
+                                                            class="radio-option__input" checked="">
+                                                        <span class="radio-option__custom"></span>
+                                                        <span class="radio-option__text">Жіноча</span>
+                                                    </label>
+                                                    <label class="radio-option">
+                                                        <input type="radio" name="preferred_gender" value="male"
+                                                            class="radio-option__input">
+                                                        <span class="radio-option__custom"></span>
+                                                        <span class="radio-option__text">Чоловіча</span>
+                                                    </label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -729,9 +751,10 @@
 
     </div>
 
-     <script src="assets/js/jquery-4.0.0.min.js"></script>
+    <script src="assets/js/jquery-4.0.0.min.js"></script>
     <script src="assets/js/jquery-ui.min.js"></script>
     <script src="assets/js/swiper-bundle.min.js"></script>
+    <script src="assets/js/jquery.sumoselect.min.js"></script>
 
     <script src="assets/js/app-swiper.js"></script>
     <script src="src/scripts/js_app.js"></script>
