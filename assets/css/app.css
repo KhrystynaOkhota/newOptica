@@ -3043,6 +3043,63 @@ div.wpcf7 .ajax-loader {
   text-decoration: none;
 }
 
+.radio-option {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.radio-option__input {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.radio-option__input:checked ~ .radio-option__custom::after {
+  opacity: 1;
+}
+.radio-option__custom {
+  position: relative;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin-right: 7px;
+  background-color: #ffffff;
+  border: 1px solid #c0c0c0;
+  border-radius: 50%;
+  -webkit-transition: all 0.4s ease-out;
+  transition: all 0.4s ease-out;
+}
+.radio-option__custom::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 13px;
+  height: 13px;
+  background: #ee670e;
+  border-radius: 50%;
+  opacity: 0;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transition: all 0.4s ease-out;
+  transition: all 0.4s ease-out;
+}
+.radio-option__text {
+  font-size: 16px;
+  color: #1b1b1b;
+}
+
 /* ==========================================================================
    FILE UPLOAD COMPONENT
    ========================================================================== */
@@ -8261,6 +8318,18 @@ html.chrome.filter-is-open body {
     grid-template-columns: 1fr;
   }
 }
+.s-cbn .cbn-block--two-column {
+  display: grid;
+  grid-template-columns: 50% 1fr;
+  gap: clamp(3.125rem, 3.125rem + 70 * (100vw - 300px) / 1960, 7.5rem);
+  margin-bottom: 24px;
+}
+@media (max-width: 767px) {
+  .s-cbn .cbn-block--two-column {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
 .s-cbn .cbn-block--password {
   background-color: rgb(243, 243, 245);
   border-radius: 20px;
@@ -9926,9 +9995,9 @@ html.chrome.filter-is-open body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 35px;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
 }
 @media (max-width: 767px) {
   .s-returns .steps {
